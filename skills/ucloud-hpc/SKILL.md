@@ -17,9 +17,8 @@ cat /work/.script-params.yaml         # template params
 cat /etc/ucloud/nodes.txt             # head node hostname
 cat /etc/ucloud/number_of_nodes.txt   # node count
 cat /tmp/hostfile 2>/dev/null || echo "single-node"
-lscpu | head -20; free -h; df -h /work
-# Host has 256 cores / 754 GiB, but your allocation is much smaller:
-# current job: 1 vCPU, 3 GiB, 0 GPU, 1 node, 8h walltime (example)
+lscpu | head -20; free -h; df -h /work  # lscpu/free show HOST (e.g. 256 cores / 754 GiB), not your allocation
+jq . /work/JobParameters.json  # YOUR allocation: cpu/memory/gpu/nodes/time vary per job — never hardcode 1 vCPU / 3 GiB
 env | grep -E "UCLOUD|PI_|MODULEPATH"
 ```
 
@@ -111,8 +110,8 @@ sinfo 2>&1 | head; squeue 2>&1 | head
 ## 7. Runtime Environment
 
 - OS: Ubuntu 24.04 Noble, kernel 6.12.0-211 EL10, x86_64, cgroup2.
-- CPU: `AMD EPYC 9535 64-Core ×2` (256 threads, 2 NUMA nodes). Alloc may be 1 vCPU — respect cgroups, don't spawn 256 threads naïvely.
-- Memory: host 754 GiB, but job 3 GiB. `free -h` shows host memory; check `JobParameters.json` for true limit.
+- CPU: host has `AMD EPYC 9535 64-Core ×2` (256 threads, 2 NUMA nodes) — but your job's vCPUs vary (request determines it). Respect cgroups; don't spawn 256 threads naïvely — use `nproc` or `JobParameters.json` cpu count, pin with `OMP_NUM_THREADS`.
+- Memory: host 754 GiB visible via `free -h`, but your job's memory varies per request (e.g. this job was 3 GiB, others may be 16/64/192 GiB). Always check `JobParameters.json` / `JobParameters.json` `memoryInGigs` for true limit — `free` lies.
 - `ulimit -n 1048576`, `stack 8192k`, `sudo NOPASSWD:ALL`.
 - Locale: `LC_ALL=C.UTF-8` (not `en_US`). Some tools expect UTF-8 — keep it.
 - `starship` prompt + `fastfetch` + `tmux -u` preconfigured; `BASH_ENV=/opt/lmod/lmod/init/bash` auto-loads Lmod.
@@ -148,7 +147,7 @@ which singularity apptainer docker  # none — WekaFS container, no user contain
 - **MODULEPATH overwritten** — `/opt/easybuild/ubuntu-24.04/amd/modules/all` is set in `~/.bashrc`; `module use /opt/easybuild/modules/all` silently masks vendor modules.
 - **Writing to /home** → lost on reschedule. Use `/work`.
 - **Assuming GPU** → `nvidia-smi` fails; check `JobParameters.json` `gpu` field before `module load CUDA`.
-- **256-thread spawn** → OOM-killer on 1-vCPU job. Pin with `OMP_NUM_THREADS=$CORES`.
+- **256-thread spawn** → OOM-killer (host has 256 threads but job may have 1–64 vCPUs). Pin with `OMP_NUM_THREADS=$(nproc)` or `$(jq .resources[0].memoryInGigs)` / `cpu` from `JobParameters.json`.
 - **Systemd** → `systemctl` always fails (`PID 1` is bash). Use direct daemon calls.
 - **Locale build failures** → some autotools check for `en_US.UTF-8`; export `LC_ALL=C.UTF-8` is fine, but install `language-pack-en` if needed.
 
@@ -170,8 +169,8 @@ int main(int argc,char**argv){MPI_Init(&argc,&argv);int r,s;MPI_Comm_rank(MPI_CO
 EOF
 mpicc /tmp/hello.c -o /tmp/hello && mpirun -np 2 /tmp/hello
 
-# slurm gen (if missing)
-sed "s/UCORES/1/;s/UMEMORY/3/;s/UGPUS/0/;s/UGPU_TYPE/cpu-amd-zen5/" /usr/bin/gen_slurm_conf | head -n 80
+# slurm gen (if missing) — use YOUR allocation, not hardcoded 1/3:
+CORES=$(jq -r '.resources[0].cpu // .machineType.cpu // 1' /work/JobParameters.json 2>/dev/null || echo 1); MEM=$(jq -r '.resources[0].memoryInGigs // .machineType.memoryInGigs // 3' /work/JobParameters.json 2>/dev/null || echo 3); sed "s/UCORES/$CORES/;s/UMEMORY/$MEM/;s/UGPUS/0/;s/UGPU_TYPE/cpu-amd-zen5/" /usr/bin/gen_slurm_conf | head -n 80
 
 # persistent install
 npm install -g cowsay        # lands in $COLLECTION_ROOT/bin (e.g. /work/<COLLECTION>/bin) via npm_config_prefix
