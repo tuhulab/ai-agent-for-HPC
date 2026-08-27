@@ -80,6 +80,31 @@ Feel free to fork and customize these documents for your specific:
 - Additional HPC systems
 - Local policies and quotas
 
+
+## 🤖 Pi Coding Agent (Skills)
+
+This repo is now a **pi package** — install the `ucloud-hpc` skill directly:
+
+```bash
+# from GitHub (pinned)
+pi install git:github.com/tuhulab/ai-agent-for-HPC@v1.1.0
+# or local
+pi install /path/to/ai-agent-for-HPC
+# ephemeral try
+pi -e git:github.com/tuhulab/ai-agent-for-HPC
+```
+
+Then `/skill:ucloud-hpc` or auto-trigger on HPC tasks. Skill lives at `skills/ucloud-hpc/SKILL.md` (12 sections, ~10KB) and covers:
+
+- WekaFS layout (`/work` persistent, `/work/<COLLECTION>` homedir)
+- Lmod/EasyBuild vendor paths (`amd`/`intel`)
+- OpenMPI 5.0.10 + PMIx, CUDA checks
+- Emulated Slurm (`gen_slurm_conf` sed template, no systemd)
+- Multi-node SSH via `/etc/ucloud` + `/tmp/hostfile`
+- Resource truth from `JobParameters.json`
+
+> Also installable via `npm` when published: `pi install npm:ai-agent-for-hpc`
+
 ## 🤝 Contributing
 
 Contributions are welcome! If you have experience with other HPC systems, please consider:
