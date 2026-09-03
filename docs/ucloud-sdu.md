@@ -433,8 +433,46 @@ module load Python/3.11.3    # Load module
 
 ---
 
+## Access & Automation
+
+### Login Methods
+
+UCloud supports two primary login mechanisms:
+
+1.  **SAML / WAYF (SSO)**:
+    - The default "Login" button redirects to the WAYF (Where Are You From) service.
+    - Used for university credentials (e.g., SDU, AU, KU).
+
+2.  **Local Credentials**:
+    - Accessed via the "**Other login options →**" link on the login page.
+    - Requires **Username** (e.g., `User#1234`) and **Password**.
+    - **Two-Factor Authentication (2FA)**: A 6-digit TOTP code is required after password submission.
+
+### Automation Notes
+
+- **URL**: `https://cloud.sdu.dk/app`
+- **Project Context**: The active project is displayed in the **top right corner** (e.g., "BINF INFIMM"). Jobs are billed to and run within this project. **Always verify** the correct project is selected before exploring apps or starting jobs. Click the project name to switch contexts.
+- **2FA Handling**: Automated agents must pause to request the 2FA code or use a programmatic TOTP generator if the secret is available.
+- **Job Submission**: Jobs are submitted via the "Apps" interface. The `terminal-ubuntu` app provides a standard environment.
+- **Input Field Caution**: When setting job duration (e.g., "Hours"), the input field may have a default value. Automation scripts must **clear the field** before typing to avoid appending values (e.g., typing "1" into a field with "1" results in "11").
+- **Stopping Applications**: The "Stop application" button features an "anti-dump" mechanism. It requires a **Long Click** (press and hold for ~2-3 seconds) to trigger. Standard clicks will not stop the job.
+- **Cleanup Protocol**: Automated agents should **always prompt the user** after a job session to ask if the job should be stopped (using the Long Click method) to prevent unnecessary resource usage.
+- **Backup Implementation** (Added Dec 2025):
+    - **Strategy**: Periodic backup using `restic` (snapshot-based, incremental).
+    - **Source**: `TB group` drive (mount to `/work/TB_group`).
+    - **Destination**: `Data_backup` drive (mount to `/work/Data_backup`).
+    - **Setup**:
+        1.  **Critical**: Ensure drives are mounted correctly in the job configuration. For "TB group", verify it appears in `/work` after starting the job.
+        2.  Copy the `restic_wrapper.sh` script to the destination drive (or `/work`).
+        3.  Create a secure password file (e.g., `restic_pw.txt`).
+        4.  Run: `./restic_wrapper.sh backup -r /work/Data_backup/repo -s /work/TB_group -p /work/Data_backup/restic_pw.txt`.
+
+## Changelog
+
 ## Changelog
 
 | Version | Date | Changes |
 |---------|------|---------|
 | 1.0 | November 2025 | Initial release |
+| 1.1 | December 2025 | Added Access & Automation section |
+
