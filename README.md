@@ -94,8 +94,9 @@ pi install /path/to/ai-agent-for-HPC
 pi -e git:github.com/tuhulab/ai-agent-for-HPC
 ```
 
-Then `/skill:ucloud-hpc` or auto-trigger on HPC tasks. Skill lives at `skills/ucloud-hpc/SKILL.md` (12 sections, ~10KB) and covers:
+Then `/skill:ucloud-hpc` or auto-trigger on HPC tasks. Skill lives at `skills/ucloud-hpc/SKILL.md` (19 sections, ~26KB) and covers:
 
+- **Job lifecycle automation via the web portal** — direct login + TOTP, workspace/project switcher, app create form (machine type, folder attach, SSH, init script), Import/`JobParameters.json`, monitoring states (queued → running → completed/suspended), rerun/stop/properties, hotkeys
 - WekaFS layout (`/work` persistent, `/work/<COLLECTION>` homedir)
 - Lmod/EasyBuild vendor paths (`amd`/`intel`)
 - OpenMPI 5.0.10 + PMIx, CUDA checks

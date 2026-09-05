@@ -1,6 +1,6 @@
 {
   "name": "ai-agent-for-hpc",
-  "version": "1.2.1",
+  "version": "1.3.0",
   "description": "UCloud & Computerome know-how to supercharge AI copilots \u2014 now as pi skills (Kubernetes+WekaFS+EasyBuild+Lmod+Slurm).",
   "keywords": [
     "pi-package",
