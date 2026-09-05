@@ -133,6 +133,22 @@ ssh ucloud@ssh.cloud.sdu.dk -p <PORT>
 - `ssh.cloud.sdu.dk` is the gateway; the job itself answers as `ucloud@j-<jobid>-job-0` inside the cluster. Verify: `ssh -p <PORT> ucloud@ssh.cloud.sdu.dk 'hostname'` should print `j-<jobid>-job-0`.
 - The only way to get SSH on a running-but-not-ssh-enabled job is to stop it and relaunch with SSH enabled — the setting cannot be added mid-run (the SSH widget is absent for non-SSH jobs).
 
+### 2.5 Connecting with the local `connect_ucloud` utility
+
+On the **host machine** (not inside the job), connect with the bundled helper:
+
+```bash
+connect_ucloud <PORT>     # installed at /usr/local/bin/connect_ucloud
+```
+
+Source: [`skills/ucloud-hpc/connect_ucloud.sh`](skills/ucloud-hpc/connect_ucloud.sh) in this repo (copy to `/usr/local/bin/connect_ucloud` if not installed). It:
+
+1. backs up `~/.ssh/config` → `~/.ssh/config_backups/config_<timestamp>`,
+2. rewrites the `Host ucloud` block's `Port` to the job's gateway port,
+3. opens VSCode Remote-SSH at `vscode-remote://ssh-remote+ucloud/work`.
+
+Afterwards `ssh ucloud` connects straight to the job. Verify: `ssh ucloud 'hostname'` → `j-<jobid>-job-0`. (VSCode window only appears if `code` is installed; the config rewrite works regardless, so CLI `ssh ucloud` is always usable.)
+
 ## 3. Machine Types & Products (DeiC Interactive HPC SDU/K8s)
 
 From `https://docs.cloud.sdu.dk/guide/resources-products.html` + live dialog:
