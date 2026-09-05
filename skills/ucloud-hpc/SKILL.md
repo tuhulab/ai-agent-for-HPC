@@ -216,7 +216,8 @@ Selecting a row reveals the action bar: **Run again (⌥B)** · **Rename (⌥R)*
 [09:27] Your machine is currently powered off.
 ```
 
-- **Scheduled/queued**: "Cancel reservation" button removes it before start.
+- **Scheduled/queued**: "Cancel reservation" button removes it before start (**also requires a press-and-hold ~3 s** — a plain click is ignored; `mouse.down()` → wait ~3 s → `mouse.up()`).
+- **Suspended** (job paused, machine powered off, e.g. idle expiry): the progress view shows "Your job is temporarily suspended" with ONLY **Cancel reservation** (no Stop application). Hold it the same way — the job then completes ("Your job has completed (ID: …)").
 - **Running**: time allocation can be extended; **"Stop application" requires a press-and-hold (~3 s)** — a plain click is ignored, so `mouse.down()` → wait ~3 s → `mouse.up()` on the button center. Terminating early this way completes the job (state flips to "Your job has completed … processed successfully"). "Open terminal" opens an in-browser terminal; the **SSH widget** (see §2.4) shows `ssh ucloud@ssh.cloud.sdu.dk -p <PORT>` with a copy button when SSH was enabled; live CPU/memory/network (+GPU) widgets top-right; the job id shown in the title (`(ID: …)`).
 - **Completed**: "Your job has completed" + **Run again** button (reruns with identical params); output folder + results listed (`Jobs/<app>/<id>` in your drive). Jobs can be **Suspended** when idle (machine powered off) — resume by starting it again.
 
@@ -397,7 +398,7 @@ which singularity apptainer docker  # none — WekaFS container, no user contain
 
 Portal / launch side:
 - **Top-right dropdown is the workspace switcher** (see §1.3) — never treat it as settings/account; verify the active project before submitting or picking folders, or you bill the wrong project.
-- **Stop application needs a press-and-hold (~3 s)**, not a click — a plain click silently does nothing; hold and release on the button (§5.2).
+- **Destructive actions are press-and-hold (~3 s), not clicks** — Stop application (running jobs) AND Cancel reservation (scheduled/suspended jobs) both ignore a plain click; must `mouse.down()` → ~3 s → `mouse.up()` (§5.2).
 - **Form selects are native `<select>`s** even though AX reports "combobox" — set `.value` + dispatch `change`; clicking visible "Enabled/Disabled" options is flaky. SSH access ships as `Enabled`/`Disabled` with `value` `true`/`false`.
 - **SSH is a submission-time choice** — the SSH widget (and port) does not exist for jobs launched without it; must stop + relaunch (§2.4).
 - **SAML/WAYF flow hangs** under automation (spinner on the ForgeRock consent page) — prefer the direct login form off "Other login options →"; don't fight the IdP redirect loops.
