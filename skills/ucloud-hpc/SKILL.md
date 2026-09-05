@@ -73,14 +73,21 @@ Form structure (AX snapshot roles observed on UCloud 2026.5.0):
 | Service provider | button "DeiC Interactive HPC (SDU/K8s)" | REQUIRED; may offer others (SDU-Odense) |
 | Machine type | button "No machine type selected" | opens selector dialog → see §3 |
 | Folder #1… | readonly textbox "Folder #1" | opens Places browser → see §2.2 |
-| SSH access | combobox (Enabled/Disabled) | enable to get an `ssh` command in the progress view |
+| SSH access | **native `<select>`** (Enabled/Disabled) | enable to get an `ssh` command in the progress view → see §2.4 |
 | Private network #1 / Public IP #1 | readonly textbox | advanced connectivity |
-| Job report sample rate | combobox, default 250 ms | writes `/work/job-report.csv` |
+| Job report sample rate | native `<select>`, default 250 ms | writes `/work/job-report.csv` |
 | Modules path | readonly textbox | auto-load an Lmod modules folder at startup |
 | Initialization | readonly textbox | **startup shell script** — see §2.3 |
 | Extra options | textbox | extra args passed to the initialization script |
-| E-mail notification settings | combobox, default "Do not notify me" | |
+| E-mail notification settings | native `<select>` (id `job-email-notifications`) | |
 | Submit | button "Submit ⌘⌥ Enter" | submit the job |
+
+terminal-ubuntu specifics (observed UCloud 2026.5.0):
+
+- **vCPU slider**: after picking `cpu-amd-zen5`, a range slider appears with markers `1 2 4 8 16 32 64 128`; default = 1 → product `cpu-amd-zen5-1-vcpu`, caption "1 vCPU (AMD EPYC 9535) · 3 GB RAM (DDR5-6000)". The selected product id is staged in a hidden input as JSON: `{"provider":"ucloud","category":"cpu-amd-zen5","id":"cpu-amd-zen5-1-vcpu"}`. Changing the slider updates the product id (e.g. `...-2-vcpu`).
+- **Number of nodes** textbox (multi-node: set >1 for a cluster; see §3/§13).
+- Additional selects: `Shell type` (Bash/Zsh/Fish), `Enable tmux` (On/Off), `Slurm cluster` (Yes/No), `Job report sample rate` (`app-param-ucMetricSampleRate`), E-mail notifications.
+- To programmatically set a select: assign `select.value` and dispatch `change` + `input` (bubbles) — the AX "combobox" snapshot lies; these are native `<select>` elements with `class=select20`.
 
 ### 2.1 Machine type dialog
 
@@ -111,6 +118,20 @@ export PATH="/work/<COLLECTION>/nodejs/current/bin:$PATH"
 ```
 
 "Extra options" passes CLI args to that script. Pair with a persistent `initiation.sh` in your collection (see §9) for idempotent setup.
+
+### 2.4 SSH access — enable + read the port
+
+Enable `SSH access` (native select → `Enabled`) at submission time; the connection endpoint only exists on SSH-enabled jobs.
+
+After the job starts, the progress view shows an **SSH widget** with a "Copy to clipboard" button containing:
+
+```
+ssh ucloud@ssh.cloud.sdu.dk -p <PORT>
+```
+
+- The **port is per-job and assigned at startup** (example: `-p 2820`). Parse it out of the progress view (it renders in a `<pre>`/`<code>`, not plain text — query `pre, code` selectors), or click Copy to clipboard.
+- `ssh.cloud.sdu.dk` is the gateway; the job itself answers as `ucloud@j-<jobid>-job-0` inside the cluster. Verify: `ssh -p <PORT> ucloud@ssh.cloud.sdu.dk 'hostname'` should print `j-<jobid>-job-0`.
+- The only way to get SSH on a running-but-not-ssh-enabled job is to stop it and relaunch with SSH enabled — the setting cannot be added mid-run (the SSH widget is absent for non-SSH jobs).
 
 ## 3. Machine Types & Products (DeiC Interactive HPC SDU/K8s)
 
@@ -180,8 +201,8 @@ Selecting a row reveals the action bar: **Run again (⌥B)** · **Rename (⌥R)*
 ```
 
 - **Scheduled/queued**: "Cancel reservation" button removes it before start.
-- **Running**: time allocation can be extended; "Stop application" terminates early; "Open terminal" opens an in-browser terminal; SSH command and public links appear in SSH/Links tabs when enabled; live CPU/memory/network (+GPU) widgets top-right.
-- **Completed**: output folder + results listed; "Run application again" reruns with identical params. Jobs can be **Suspended** when idle (machine powered off) — resume by starting it again.
+- **Running**: time allocation can be extended; **"Stop application" requires a press-and-hold (~3 s)** — a plain click is ignored, so `mouse.down()` → wait ~3 s → `mouse.up()` on the button center. Terminating early this way completes the job (state flips to "Your job has completed … processed successfully"). "Open terminal" opens an in-browser terminal; the **SSH widget** (see §2.4) shows `ssh ucloud@ssh.cloud.sdu.dk -p <PORT>` with a copy button when SSH was enabled; live CPU/memory/network (+GPU) widgets top-right; the job id shown in the title (`(ID: …)`).
+- **Completed**: "Your job has completed" + **Run again** button (reruns with identical params); output folder + results listed (`Jobs/<app>/<id>` in your drive). Jobs can be **Suspended** when idle (machine powered off) — resume by starting it again.
 
 ### 5.3 Job output folder
 
@@ -197,10 +218,10 @@ Selecting a row reveals the action bar: **Run again (⌥B)** · **Rename (⌥R)*
 1. **Confirm session**: load `/app`; if it redirects to `/app/login`, do §1.2 (direct login form + TOTP).
 2. **Verify workspace**: read the top-right dropdown; switch if wrong (§1.3).
 3. **Open the create form** by URL: `/app/jobs/create?app=<app-id>` — read form via AX snapshot; note required fields (marked `*`).
-4. **Configure**: set Job name; Hours (+1/+8/+24 or type); Machine type via dialog (§2.1); attach folders via Places (§2.2); set SSH enabled if you'll need `ssh`/`scp`; attach Initialization script if the job must self-bootstrap (§2.3); set sample rate / notifications as needed.
+4. **Configure**: set Job name; Hours (+1/+8/+24 or type); Machine type via dialog (§2.1); attach folders via Places (§2.2); **set SSH access select = Enabled** (§2.4) if the agent will connect over SSH; attach Initialization script if the job must self-bootstrap (§2.3); set sample rate / notifications as needed.
 5. **Submit** (⌘⌥ Enter or the Submit button). You land on the job's progress view.
 6. **Reach Running**: poll `/app/jobs` (or the progress view text) until State = Running / timeline shows "Job is now running". Queued time varies with machine availability.
-7. **Prove readiness before delegating work in**: check the progress view for the SSH command (SSH tab) or use "Open terminal"; inside the job run §8 probes.
+7. **Prove readiness before delegating work in**: if SSH-enabled, parse `ssh ucloud@ssh.cloud.sdu.dk -p <PORT>` from the SSH widget (§2.4) and verify with a real `ssh … hostname` round-trip; otherwise check the progress view's "Open terminal". Inside the job run §8 probes.
 8. **Teardown**: Stop the job when done (or let the lifetime elapse); check outputs in `Jobs/<id>` — copy anything you need from the output folder/`stdout.txt` before the job ages out.
 
 Offer, don't assume: submitting a job **consumes credits** and starts compute — confirm the target project/machine size/hours at the point of submission.
@@ -360,6 +381,9 @@ which singularity apptainer docker  # none — WekaFS container, no user contain
 
 Portal / launch side:
 - **Top-right dropdown is the workspace switcher** (see §1.3) — never treat it as settings/account; verify the active project before submitting or picking folders, or you bill the wrong project.
+- **Stop application needs a press-and-hold (~3 s)**, not a click — a plain click silently does nothing; hold and release on the button (§5.2).
+- **Form selects are native `<select>`s** even though AX reports "combobox" — set `.value` + dispatch `change`; clicking visible "Enabled/Disabled" options is flaky. SSH access ships as `Enabled`/`Disabled` with `value` `true`/`false`.
+- **SSH is a submission-time choice** — the SSH widget (and port) does not exist for jobs launched without it; must stop + relaunch (§2.4).
 - **SAML/WAYF flow hangs** under automation (spinner on the ForgeRock consent page) — prefer the direct login form off "Other login options →"; don't fight the IdP redirect loops.
 - **TOTP expires fast** (30 s) — fetch/submit promptly; a stale code yields "invalid code" and you must re-enter.
 - **Submit consumed credits silently** — check Est. cost vs Balance and the machine availability color before hitting Submit.
