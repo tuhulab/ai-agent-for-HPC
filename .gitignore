@@ -4,6 +4,7 @@
 .vscode/
 *.swp
 *.swo
+.omp/
 
 # Python
 __pycache__/

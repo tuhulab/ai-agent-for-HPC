@@ -458,18 +458,6 @@ module list                  # Loaded modules
 module load Python/3.11.3    # Load module
 ```
 
----
-
-## Additional Resources
-
-- **UCloud Docs**: https://docs.cloud.sdu.dk/
-- **UCloud Hands-on**: https://docs.cloud.sdu.dk/hands-on/use-cases.html
-- **Service Desk**: https://support.escience.sdu.dk/
-- **Lmod Documentation**: https://lmod.readthedocs.io/
-- **WekaFS Documentation**: https://docs.weka.io/
-
----
-
 ## Access & Automation
 
 ### Login Methods
@@ -494,17 +482,27 @@ UCloud supports two primary login mechanisms:
 - **Input Field Caution**: When setting job duration (e.g., "Hours"), the input field may have a default value. Automation scripts must **clear the field** before typing to avoid appending values (e.g., typing "1" into a field with "1" results in "11").
 - **Stopping Applications**: The "Stop application" button features an "anti-dump" mechanism. It requires a **Long Click** (press and hold for ~2-3 seconds) to trigger. Standard clicks will not stop the job.
 - **Cleanup Protocol**: Automated agents should **always prompt the user** after a job session to ask if the job should be stopped (using the Long Click method) to prevent unnecessary resource usage.
-- **Backup Implementation** (Added Dec 2025):
+- **Backup Implementation**:
     - **Strategy**: Periodic backup using `restic` (snapshot-based, incremental).
     - **Source**: `TB group` drive (mount to `/work/TB_group`).
     - **Destination**: `Data_backup` drive (mount to `/work/Data_backup`).
     - **Setup**:
         1.  **Critical**: Ensure drives are mounted correctly in the job configuration. For "TB group", verify it appears in `/work` after starting the job.
-        2.  Copy the `restic_wrapper.sh` script to the destination drive (or `/work`).
+        2.  Copy the `scripts/restic_wrapper.sh` script to the destination drive (or `/work`).
         3.  Create a secure password file (e.g., `restic_pw.txt`).
-        4.  Run: `./restic_wrapper.sh backup -r /work/Data_backup/repo -s /work/TB_group -p /work/Data_backup/restic_pw.txt`.
+        4.  Run: `./scripts/restic_wrapper.sh backup -r /work/Data_backup/repo -s /work/TB_group -p /work/Data_backup/restic_pw.txt`.
 
-## Changelog
+---
+
+## Additional Resources
+
+- **UCloud Docs**: https://docs.cloud.sdu.dk/
+- **UCloud Hands-on**: https://docs.cloud.sdu.dk/hands-on/use-cases.html
+- **Service Desk**: https://support.escience.sdu.dk/
+- **Lmod Documentation**: https://lmod.readthedocs.io/
+- **WekaFS Documentation**: https://docs.weka.io/
+
+---
 
 ## Changelog
 
@@ -512,4 +510,5 @@ UCloud supports two primary login mechanisms:
 |---------|------|---------|
 | 1.0 | November 2025 | Initial release |
 | 1.1 | December 2025 | Added Access & Automation section |
+| 1.2 | September 2026 | Added mounted directories architecture, hold-to-cancel, and unmounted recovery |
 
