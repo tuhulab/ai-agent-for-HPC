@@ -136,22 +136,54 @@ ssh ucloud@ssh.cloud.sdu.dk -p <PORT>
 - `ssh.cloud.sdu.dk` is the gateway; the job itself answers as `ucloud@j-<jobid>-job-0` inside the cluster. Verify: `ssh -p <PORT> ucloud@ssh.cloud.sdu.dk 'hostname'` should print `j-<jobid>-job-0`.
 - The only way to get SSH on a running-but-not-ssh-enabled job is to stop it and relaunch with SSH enabled — the setting cannot be added mid-run (the SSH widget is absent for non-SSH jobs).
 
-### 2.5 Connecting with the local `connect_ucloud` utility
+### 2.5 Human Connection Helper (`connect_ucloud`) — SIT vs Non-SIT
 
-On the **host machine** (not inside the job), connect with the bundled helper:
+> ℹ️ **FOR HUMAN USERS ONLY**: This utility updates the human operator's local `~/.ssh/config` and launches VSCode Remote-SSH. **AI agents should NOT use this helper or mutate `~/.ssh/config`** — see §6.3 for AI agent SSH workflows.
+
+On the **host machine**, human users connect with the bundled helper:
 
 ```bash
-connect_ucloud <PORT>     # installed at /usr/local/bin/connect_ucloud
+# Statens IT (SIT) managed equipment (SSI network — ProxyJump via uGerm)
+connect_ucloud <PORT>                     # auto-detects SIT on SSI machines
+connect_ucloud --sit <PORT>               # explicitly force SIT mode
+connect_ucloud --sit --ugerm-user hutu <PORT>
+
+# Non-SIT / Personal / Unrestricted equipment (Direct connection)
+connect_ucloud --direct <PORT>            # direct connection without ProxyJump
 ```
 
-Source: [`skills/ucloud-hpc/connect_ucloud.sh`](skills/ucloud-hpc/connect_ucloud.sh) in this repo (copy to `/usr/local/bin/connect_ucloud` if not installed). It:
+Source: [`skills/ucloud-hpc/connect_ucloud.sh`](skills/ucloud-hpc/connect_ucloud.sh) in this repo (installed at `/usr/local/bin/connect_ucloud` or `~/bin/connect_ucloud`). It:
 
 1. backs up `~/.ssh/config` → `~/.ssh/config_backups/config_<timestamp>`,
-2. rewrites the `Host ucloud` block's `Port` to the job's gateway port,
-3. opens VSCode Remote-SSH at `vscode-remote://ssh-remote+ucloud/work`.
+2. normalizes and updates the `Host ucloud` block's `Port`, `ProxyJump`, `LocalForward`, and host-checking directives,
+3. opens VSCode Remote-SSH at `vscode-remote://ssh-remote+ucloud/work` (or updates config without launching if `--no-code` is passed).
 
-Afterwards `ssh ucloud` connects straight to the job. Verify: `ssh ucloud 'hostname'` → `j-<jobid>-job-0`. (VSCode window only appears if `code` is installed; the config rewrite works regardless, so CLI `ssh ucloud` is always usable.)
+#### Manual `~/.ssh/config` Reference for Human Users
 
+**1. Statens IT (SIT) Managed Equipment (SSI Network)**
+```sshconfig
+Host ucloud
+  HostName ssh.cloud.sdu.dk
+  User ucloud
+  Port <PORT>
+  ProxyJump <UGERM_USER>@login.ugerm.dksund.dk
+  LocalForward 8888 localhost:8888
+  StrictHostKeyChecking no
+  UserKnownHostsFile /dev/null
+```
+
+**2. Non-SIT / Personal Equipment (Direct Connection)**
+```sshconfig
+Host ucloud
+  HostName ssh.cloud.sdu.dk
+  User ucloud
+  Port <PORT>
+  LocalForward 8888 localhost:8888
+  StrictHostKeyChecking no
+  UserKnownHostsFile /dev/null
+```
+
+Afterwards `ssh ucloud` connects straight to the job. Verify: `ssh ucloud 'hostname'` → `j-<jobid>-job-0`.
 ## 3. Machine Types & Products (DeiC Interactive HPC SDU/K8s)
 
 From `https://docs.cloud.sdu.dk/guide/resources-products.html` + live dialog:
@@ -404,20 +436,45 @@ for (let i = 0; i < 30; i++) {
 
 ---
 
-### 6.3 Host SSH Connection & In-Container Execution
+### 6.3 Agent In-Container Execution vs Human Connection
 
-Once `sshPort` is parsed:
+#### AI Agent Workflow: Parameterized Direct SSH (In-Memory Port)
 
+> ⚠️ **CRITICAL AGENT RULE**: AI agents **MUST NOT modify `~/.ssh/config`**. Retain `sshPort` in memory from step 8 above and execute remote commands directly:
+
+**1. Non-SIT / Personal / Unrestricted Environment (Direct SSH)**:
 ```bash
-# 1. Update ~/.ssh/config Host ucloud
-connect_ucloud <PORT>
-
-# 2. Verify connection
-ssh ucloud 'hostname'
+# Verify connection
+ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -p "$SSH_PORT" ucloud@ssh.cloud.sdu.dk 'hostname'
 # Returns: j-<job-id>-job-0
 
-# 3. Run workload inside the persistent mount
-ssh ucloud 'cd "/work/TB group" && python3 my_script.py'
+# Execute workload inside persistent mount
+ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -p "$SSH_PORT" ucloud@ssh.cloud.sdu.dk 'cd "/work/TB group" && python3 my_script.py'
+```
+
+**2. Statens IT (SIT) Managed Equipment (via uGerm Jump Host)**:
+```bash
+# When running on SSI / Statens IT equipment where outbound high ports are firewalled:
+UGERM_USER="${UGERM_USER:-hutu}"
+ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -J "${UGERM_USER}@login.ugerm.dksund.dk" -p "$SSH_PORT" ucloud@ssh.cloud.sdu.dk 'hostname'
+
+# Execute workload
+ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -J "${UGERM_USER}@login.ugerm.dksund.dk" -p "$SSH_PORT" ucloud@ssh.cloud.sdu.dk 'cd "/work/TB group" && python3 my_script.py'
+```
+
+#### Human Operator Workflow (VSCode / SSH Config Helper)
+
+If a human operator wants to inspect or work inside the running job via VSCode Remote-SSH or a dedicated terminal:
+
+```bash
+# Statens IT (SIT) equipment
+connect_ucloud <PORT>
+
+# Non-SIT equipment
+connect_ucloud --direct <PORT>
+
+# Afterwards, human can use:
+ssh ucloud 'hostname'
 ```
 
 Offer, don't assume: submitting a job **consumes credits** and starts compute — confirm the target project/machine size/hours at the point of submission.
@@ -600,7 +657,8 @@ Portal / launch side:
 - **Submit consumed credits silently** — check Est. cost vs Balance and the machine availability color before hitting Submit.
 - **Import dialog shows "No jobs found with active filters"** even when old jobs exist — filters scope to current workspace/app/version; broaden or upload a JobParameters.json instead.
 - **Reading a job row's Actions on the wrong row** — row selection persists; confirm the job id (top of Properties page) matches the intended run before Stop/Run again.
-
+- **AI agents mutating `~/.ssh/config`** (see §6.3) — agents must never mutate host SSH configuration files. Retain the parsed `sshPort` in memory and invoke SSH directly (`-p <PORT>` or `-J <ugerm_user>@login.ugerm.dksund.dk -p <PORT>`).
+- **Direct connection failure on Statens IT (SIT) equipment** (see §2.5, §6.3) — on the SSI network, outbound SSH to high ports is blocked; must use uGerm ProxyJump (`-J <user>@login.ugerm.dksund.dk` or `connect_ucloud --sit`).
 In-job side:
 - **Empty slurm.conf** → run `bash /tmp/tm1.sh`? No — `gen_slurm_conf` needs sed replacement; inspect `/tmp/tm1.sh` instead.
 - **MODULEPATH overwritten** — `/opt/easybuild/ubuntu-24.04/amd/modules/all` is set in `~/.bashrc`; `module use /opt/easybuild/modules/all` silently masks vendor modules.
