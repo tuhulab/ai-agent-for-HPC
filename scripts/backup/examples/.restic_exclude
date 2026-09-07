@@ -1,0 +1,53 @@
+# Exclude patterns for Restic backups
+# Use with: --exclude-file .restic_exclude
+#
+# Syntax:
+#   - One pattern per line
+#   - Patterns are relative to backup source
+#   - Use * for wildcards
+#   - Use ** for recursive wildcards
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*~
+
+# Cache directories
+cache/
+.cache/
+__pycache__/
+*.pyc
+
+# Build artifacts
+node_modules/
+dist/
+build/
+target/
+
+# Large binary files (customize based on your needs)
+*.bam
+*.sam
+*.fastq
+*.fastq.gz
+*.fasta.gz
+
+# Log files (if not needed in backups)
+*.log
+logs/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Version control
+.git/
+.svn/
+.hg/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo

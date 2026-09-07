@@ -1,0 +1,40 @@
+# INFIMM raw-data migration manifest (Sections B + D + raw subdirs)
+#
+# Format: <source_path_on_computerome>,<relative_destination_under_DEST_ROOT>
+# DEST_ROOT = /work/data_migration  (everything migrates into /data_migration)
+# Source is READ-ONLY. Items in this file are TO MIGRATE (raw fastq / runs).
+#
+# Decisions applied 2026-08-27:
+#   - Julie (julzim) raw BCL IS necessary  -> BHYG7TDRX2 run INCLUDED
+#   - TB-group raw BCL is NOT necessary    -> sequencing_thomas / totallung /
+#     adjuvant04 runs are NOT included (demux fastq sufficient; already migrated)
+#   - All destinations -> /work/data_migration
+
+# ===== katwor (Section D) - raw demultiplexed fastq =====
+/home/projects/cu_10181/people/katwor/experiments/F2902/data/F2902_F2907_fastqfiles_v2,katwor_F2902_F2907_fastqfiles_v2
+/home/projects/cu_10181/people/katwor/experiments/F2902/data/F2902_F2907_input_samplesheet.csv,katwor_F2902/
+/home/projects/cu_10181/people/katwor/experiments/F2902/data/F2902_F2907_input_samplesheet_2.csv,katwor_F2902/
+
+# ===== julzim GEO (Section B) - raw fastq + counts for GEO submission =====
+/home/projects/cu_10181/people/s144334/data/GEO/F2859,julzim_GEO_F2859
+/home/projects/cu_10181/people/s144334/data/GEO/F2907,julzim_GEO_F2907
+/home/projects/cu_10181/people/s144334/data/GEO/F2702,julzim_GEO_F2702
+/home/projects/cu_10181/people/s144334/data/GEO/F2833,julzim_GEO_F2833
+
+# ===== julzim TI_F2768 - raw + fastq (skip RNA_seq intermediate) =====
+/home/projects/cu_10181/people/s144334/data/TI_F2768/fastq_files,julzim_TI_F2768/fastq_files
+/home/projects/cu_10181/people/s144334/data/TI_F2768/raw_files,julzim_TI_F2768/raw_files
+
+# ===== julzim rhapsody_F2833 - raw fastq =====
+/home/projects/cu_10181/people/s144334/data/rhapsody_F2833/fastq_files,julzim_rhapsody_F2833/fastq_files
+/home/projects/cu_10181/people/s144334/data/rhapsody_F2833/Undetermined_S0_R1_001.fastq.gz,julzim_rhapsody_F2833/
+/home/projects/cu_10181/people/s144334/data/rhapsody_F2833/Undetermined_S0_R2_001.fastq.gz,julzim_rhapsody_F2833/
+
+# ===== julzim YFP_F2702 - raw fastq only =====
+/home/projects/cu_10181/people/s144334/data/YFP_F2702/fastq_files,julzim_YFP_F2702/fastq_files
+
+# ===== julzim 10x F2853/F2859/F2866 - raw fastq subdir only =====
+/home/projects/cu_10181/people/s144334/results/10x_F2853_F2859_F2866/fastq_files,julzim_10x_F2853_F2859_F2866_fastq_files
+
+# ===== julzim BHYG7TDRX2 raw BCL run (Julie's BCL - NECESSARY) =====
+/home/projects/cu_10181/people/s144334/data/230315_A00962_0093_BHYG7TDRX2,julzim_BHYG7TDRX2_run

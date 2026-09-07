@@ -1,0 +1,51 @@
+# ============================================================================
+# FILES REQUIRING PERMISSION GRANT - for Computerome admin
+# (Generated 2026-08-27 during INFIMM Computerome -> UCloud migration)
+#
+# Account migrating:  tuhu  (already a member of group: cu_10181)
+# Note: tuhu is ALREADY in the owning group (cu_10181, gid 1478).
+# The only problem is the permission bits: each file below is mode 700
+# (owner julzim only; group has NO read).
+#
+# REQUESTED FIX: set group-read, e.g.  chmod g+r  on these files
+#   (or recursively on the parent dirs GEO/F2702 and GEO/F2833).
+# No ownership change required - just add group-read.
+# ============================================================================
+
+# ---- /home/projects/cu_10181/people/s144334/data/GEO/F2702/ ----
+/home/projects/cu_10181/people/s144334/data/GEO/F2702/GEO_upload_F2702_bulkRNAseq_v2.xlsx
+/home/projects/cu_10181/people/s144334/data/GEO/F2702/18134XR-75-13V2-S12_CAF01_counts.txt
+/home/projects/cu_10181/people/s144334/data/GEO/F2702/18134XR-75-14V2-S13_CAF01_counts.txt
+/home/projects/cu_10181/people/s144334/data/GEO/F2702/18134XR-75-15V2-S14_CAF01_counts.txt
+/home/projects/cu_10181/people/s144334/data/GEO/F2702/18134XR-75-16V2-S15_CAF01.CAF16_counts.txt
+/home/projects/cu_10181/people/s144334/data/GEO/F2702/18134XR-75-17V2-S16_CAF01.CAF16_counts.txt
+/home/projects/cu_10181/people/s144334/data/GEO/F2702/18134XR-75-18V2-S17_CAF01.CAF16_counts.txt
+
+# ---- /home/projects/cu_10181/people/s144334/data/GEO/F2833/ ----
+/home/projects/cu_10181/people/s144334/data/GEO/F2833/GEO_upload_F2833_scRNAseq_v3.xlsx
+/home/projects/cu_10181/people/s144334/data/GEO/F2833/B_DBEC_MolsPerCell_Unfiltered.csv.gz
+/home/projects/cu_10181/people/s144334/data/GEO/F2833/C_DBEC_MolsPerCell_Unfiltered.csv.gz
+
+# TOTAL: 10 files. All owned by julzim:cu_10181, mode 700.
+# Suggested admin fix (READ only):  chmod g+r <each file>   OR   chmod -R g+r <dir>
+
+# ============================================================================
+# ADDITIONAL NOTE ON FUTURE DELETION (migrate-and-delete cleanup)
+# ============================================================================
+# Separately from reading (above), the owner wants to DELETE source files after
+# confirming migration. Deletion requires WRITE+EXECUTE on the PARENT DIRECTORY
+# (file mode is irrelevant). Checked 2026-08-27 (tuhu is in group cu_10181):
+#
+#   GEO/F2702      drwxrwxr-x  -> writable (can delete)   OK
+#   GEO/F2833      drwxrwxr-x  -> writable (can delete)   OK
+#   GEO/F2859      drwxr-xr-x  -> NOT group-writable      NEED chmod g+w
+#   GEO/F2907      drwxr-xr-x  -> NOT group-writable      NEED chmod g+w
+#   TI_F2768, rhapsody_F2833, YFP_F2702, 10x_fastq, BHYG  drwxrwxr-x (OK)
+#   katwor F2902_fastqfiles_v2                            drwxrwxrwx (OK)
+#
+# To enable deletion everywhere, request the admin to also grant group write on
+# the two dirs above, e.g.:
+#   chmod g+w /home/projects/cu_10181/people/s144334/data/GEO/F2859
+#   chmod g+w /home/projects/cu_10181/people/s144334/data/GEO/F2907
+# (or set an ACL: setfacl -m g:cu_10181:rwx <dir>) so group members can delete
+# files after they are confirmed migrated.

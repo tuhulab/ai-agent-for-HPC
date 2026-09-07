@@ -1,17 +1,30 @@
 #!/bin/bash
+
+# Restic Wrapper Script for UCloud Periodic Backups
+# This script automates the setup, backup, and restoration of data using Restic
+# Documentation: https://docs.cloud.sdu.dk/hands-on/periodic-backup.html
+
 # Function to install Restic and cron, and configure Restic
 set_up_restic () {
-    (sudo apt-get update; \
-    sudo apt-get install -y cron restic; \
-    sudo restic self-update; \
-    sudo restic generate --bash-completion /etc/bash_completion.d/restic; \
-    sudo cron) >/dev/null 2>&1
+        (sudo apt-get update; \
+         sudo apt-get install -y cron restic; \
+         sudo restic self-update; \
+         sudo restic generate --bash-completion /etc/bash_completion.d/restic; \
+         sudo cron) >/dev/null 2>&1
 }
 
 # Function to update the crontab with new jobs
 update_crontab () {
-    (crontab -l 2>/dev/null; echo "$1") | crontab -
+        (crontab -l 2>/dev/null; echo "$1") | crontab -
 }
+
+# Initialize variables
+ACTION=""
+RESTIC_REPOSITORY=""
+RESTIC_SOURCE=""
+RESTIC_TARGET=""
+RESTIC_PASSWORD_FILE=""
+EXTRA_ARGS=()
 
 # Parse command-line arguments
 while [[ $# -gt 0 ]]; do
@@ -26,6 +39,10 @@ while [[ $# -gt 0 ]]; do
             ;;
         -s)
             RESTIC_SOURCE="$2"
+            shift 2
+            ;;
+        -t)
+            RESTIC_TARGET="$2"
             shift 2
             ;;
         -p)
@@ -70,7 +87,6 @@ if [[ ${ACTION} == "backup" ]]; then
     BACKUP_JOB="0 */2 * * * restic --password-file $RESTIC_PASSWORD_FILE -r $RESTIC_REPOSITORY backup --host UCloud --verbose $RESTIC_SOURCE ${EXTRA_ARGS[@]} >> /work/backup.log"
     update_crontab "$BACKUP_JOB"
     crontab -l
-
 elif [[ ${ACTION} == "restore" ]]; then
     restic -r "$RESTIC_REPOSITORY" restore latest --password-file "$RESTIC_PASSWORD_FILE" --target "$RESTIC_TARGET" --host UCloud "${EXTRA_ARGS[@]}"
     echo "Data restoration initiated."

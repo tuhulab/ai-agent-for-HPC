@@ -1,0 +1,4 @@
+08ad0b718ed22245ba65470959d86d61  /work/data_migration/sc_CAF01_CAF08b_CAF39/CAF08b_raw_feature_bc_matrix.h5
+7828419e57ffbd0d3a19b04dcbda1a21  /work/data_migration/sc_CAF01_CAF08b_CAF39/CAF39_raw_feature_bc_matrix.h5
+7dff27f6534394fce526f07c01fdbd9c  /work/data_migration/sc_CAF01_CAF08b_CAF39/CAF01_raw_feature_bc_matrix.h5
+b4f8d0f7cd1753febd3c7c10e299c930  /work/data_migration/sc_CAF01_CAF08b_CAF39/tris_raw_feature_bc_matrix.h5

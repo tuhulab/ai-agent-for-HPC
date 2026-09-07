@@ -1,0 +1,256 @@
+-rwxrwxr-x 1 julzim cu_10181  36G Mar 20  2023 data/230315_A00962_0093_BHYG7TDRX2.zip
+-rw-r--r-- 1 julzim cu_10181   53 Sep 12  2023 F2853_F2859_F2866/_cmdline
+-rw-r--r-- 1 julzim cu_10181  94K Sep 12  2023 F2853_F2859_F2866/F2853_F2859_F2866.mri.tgz
+-rw-r--r-- 1 julzim cu_10181  12K Sep 12  2023 F2853_F2859_F2866/_filelist
+-rw-r--r-- 1 julzim cu_10181 141K Sep 12  2023 F2853_F2859_F2866/_finalstate
+-rw-r--r-- 1 julzim cu_10181 1.7K Sep 12  2023 F2853_F2859_F2866/_invocation
+-rw-r--r-- 1 julzim cu_10181    5 Sep 12  2023 F2853_F2859_F2866/_jobmode
+-rw-r--r-- 1 julzim cu_10181  35K Sep 12  2023 F2853_F2859_F2866/_log
+-rw-r--r-- 1 julzim cu_10181  13K Sep 12  2023 F2853_F2859_F2866/_mrosource
+-rw-r--r-- 1 julzim cu_10181 108K Sep 12  2023 F2853_F2859_F2866/_perf
+-rw-r--r-- 1 julzim cu_10181  19K Sep 12  2023 F2853_F2859_F2866/_sitecheck
+-rw-r--r-- 1 julzim cu_10181    2 Sep 12  2023 F2853_F2859_F2866/_tags
+-rw-r--r-- 1 julzim cu_10181   51 Sep 12  2023 F2853_F2859_F2866/_timestamp
+-rw-r--r-- 1 julzim cu_10181   36 Sep 12  2023 F2853_F2859_F2866/_uuid
+-rw-r--r-- 1 julzim cu_10181 1.3K Sep 12  2023 F2853_F2859_F2866/_vdrkill
+-rw-r--r-- 1 julzim cu_10181   65 Sep 12  2023 F2853_F2859_F2866/_versions
+-rwx------ 1 julzim cu_10181 316M Nov 17  2023 F2867/MMM11-14-23.06.01.csv
+-rw-r--r-- 1 julzim cu_10181 316M Nov 17  2023 F2867/new_file.csv
+-rw-rw-r-- 1 julzim cu_10181  963 Mar 20  2023 src/bcl2fastq.sh
+-rw------- 1 julzim cu_10181 7.7K Mar 20  2023 src/bcl2fastq.sh.e39938526
+-rw------- 1 julzim cu_10181 3.7K Mar 20  2023 src/bcl2fastq.sh.e39939157
+-rw------- 1 julzim cu_10181 3.7K Mar 20  2023 src/bcl2fastq.sh.e39939609
+-rw------- 1 julzim cu_10181 3.7K Mar 20  2023 src/bcl2fastq.sh.e39939654
+-rw------- 1 julzim cu_10181    0 Mar 20  2023 src/bcl2fastq.sh.o39938526
+-rw------- 1 julzim cu_10181    0 Mar 20  2023 src/bcl2fastq.sh.o39939157
+-rw------- 1 julzim cu_10181    0 Mar 20  2023 src/bcl2fastq.sh.o39939609
+-rw------- 1 julzim cu_10181    0 Mar 20  2023 src/bcl2fastq.sh.o39939654
+-rwxrwxr-x 1 julzim cu_10181  814 Sep 13  2023 src/fastqc_report.sh
+-rw------- 1 julzim cu_10181  38K Sep 13  2023 src/fastqc_report.sh.e45425047
+-rw------- 1 julzim cu_10181 1.9K Sep 13  2023 src/fastqc_report.sh.o45425047
+-rwxrwxr-x 1 julzim cu_10181  612 Nov 18  2020 src/index_genome.sh
+-rw-rw-r-- 1 julzim cu_10181  692 Sep 29  2023 src/PacBio_bam2fastq.sh
+-rw------- 1 julzim cu_10181 1003 Sep 29  2023 src/PacBio_bam2fastq.sh.e45818903
+-rw------- 1 julzim cu_10181    0 Sep 29  2023 src/PacBio_bam2fastq.sh.o45818903
+
+data/10x_F2795:
+total 108G
+-rwxrwxr-x 1 julzim cu_10181  40G Jul 11  2022 220630_A00962_0075_AHC3T2DRX2.zip
+-rwxrwxr-x 1 julzim cu_10181  69G Jul 11  2022 Fastq filer.zip
+drwxrwxr-x 2 julzim cu_10181 4.0K Dec  5  2023 fastq_files
+drwxrwxr-x 2 julzim cu_10181 4.0K Dec  5  2023 fastq_rest
+
+data/230315_A00962_0093_BHYG7TDRX2:
+total 83K
+drwxrwxr-x   2 julzim cu_10181 4.0K Dec  5  2023 Config
+-rwxrwxr-x   1 julzim cu_10181    0 Mar 16  2023 CopyComplete.txt
+drwxrwxr-x   3 julzim cu_10181 4.0K Mar 16  2023 Data
+drwxrwxr-x 140 julzim cu_10181  16K Dec  5  2023 InterOp
+drwxrwxr-x  10 julzim cu_10181  16K Dec  5  2023 Logs
+drwxrwxr-x   2 julzim cu_10181 4.0K Dec  5  2023 Recipe
+-rwxrwxr-x   1 julzim cu_10181 4.2K Mar 16  2023 RTA3.cfg
+-rwxrwxr-x   1 julzim cu_10181    1 Mar 16  2023 RTAComplete.txt
+-rwxrwxr-x   1 julzim cu_10181 8.5K Mar 16  2023 RunInfo.xml
+-rwxrwxr-x   1 julzim cu_10181 6.7K Mar 16  2023 RunParameters.xml
+-rwxrwxr-x   1 julzim cu_10181    0 Mar 16  2023 SequenceComplete.txt
+drwxrwxr-x   4 julzim cu_10181 4.0K Dec  5  2023 Thumbnail_Images
+
+data/F2853_F2859_F2866:
+total 512
+drwxrwsr-x 8 julzim cu_10181 4.0K Dec  5  2023 230825_A01428_0427_AH2CMNDSX3
+
+data/GEO:
+total 1.0K
+drwxrwxr-x 2 julzim cu_10181 4.0K Dec  5  2023 F2702
+drwxrwxr-x 2 julzim cu_10181 4.0K Dec  5  2023 F2833
+
+data/mouse_genome:
+total 13G
+-rwxrwxrwx 1 julzim cu_10181 2.7G Oct 16  2019 GCF_000001635.26_GRCm38.p6_genomic.fna
+-rwxrwxrwx 1 julzim cu_10181 741M Oct 16  2019 GCF_000001635.26_GRCm38.p6_genomic.gff
+drwxrwxrwx 2 julzim cu_10181 4.0K Dec  5  2023 index
+drwxrwxrwx 6 julzim cu_10181 4.0K Dec  5  2023 refdata-gex-mm10-2020-A
+-rwxrwxrwx 1 julzim cu_10181 9.7G Jul 29  2022 refdata-gex-mm10-2020-A.tar.gz
+
+data/mRNA_PacBio_Ida:
+total 82G
+-rw-rw-r-- 1 julzim cu_10181  735 Sep 20  2023 MD5.txt
+-rw-rw-r-- 1 julzim cu_10181  18G Jul 18  2023 mRNA_SSI_1_m64164_230715_092029.subreads.bam
+-rw-rw-r-- 1 julzim cu_10181  37M Jul 18  2023 mRNA_SSI_1_m64164_230715_092029.subreads.bam.pbi
+-rw-rw-r-- 1 julzim cu_10181  19K Jul 18  2023 mRNA_SSI_1_m64164_230715_092029.subreadset.xml
+-rw-r--r-- 1 julzim cu_10181 3.0G Oct 12  2023 mRNA_SSI_1_m64164_230715_092029.subreads.fasta.gz
+-rw-r--r-- 1 julzim cu_10181 3.0G Oct 12  2023 mRNA_SSI_1_m64164_230715_092029.subreads.fastq.gz
+-rw-rw-r-- 1 julzim cu_10181 7.3G Aug 25  2023 mRNA_SSI_1_m64267e_230822_093133.subreads.bam
+-rw-rw-r-- 1 julzim cu_10181  19M Aug 25  2023 mRNA_SSI_1_m64267e_230822_093133.subreads.bam.pbi
+-rw-rw-r-- 1 julzim cu_10181  19K Aug 25  2023 mRNA_SSI_1_m64267e_230822_093133.subreadset.xml
+-rw-r--r-- 1 julzim cu_10181 1.3G Oct 12  2023 mRNA_SSI_1_m64267e_230822_093133.subreads.fasta.gz
+-rw-r--r-- 1 julzim cu_10181 1.3G Oct 12  2023 mRNA_SSI_1_m64267e_230822_093133.subreads.fastq.gz
+-rw-rw-r-- 1 julzim cu_10181  11G Aug 31  2023 mRNA_SSI_1_m64285e_230828_133915.subreads.bam
+-rw-rw-r-- 1 julzim cu_10181  23M Aug 31  2023 mRNA_SSI_1_m64285e_230828_133915.subreads.bam.pbi
+-rw-rw-r-- 1 julzim cu_10181  19K Aug 31  2023 mRNA_SSI_1_m64285e_230828_133915.subreadset.xml
+-rw-r--r-- 1 julzim cu_10181 1.8G Oct 12  2023 mRNA_SSI_1_m64285e_230828_133915.subreads.fasta.gz
+-rw-r--r-- 1 julzim cu_10181 1.8G Oct 12  2023 mRNA_SSI_1_m64285e_230828_133915.subreads.fastq.gz
+-rwxr-xr-x 1 julzim cu_10181  35G Oct 11  2023 mRNA_SSI_1.zip
+
+data/rhapsody_F2766:
+total 147K
+-rwxrwxr-x  1 julzim cu_10181 142K Aug 15  2022 BD_Rhapsody_Immune_Response_Panel_Mm_FASTA.fasta
+drwxrwxr-x 15 julzim cu_10181 4.0K Apr 15  2022 CRSwDev-cwl-fe2db663942b
+-rwxrwxr-x  1 julzim cu_10181   85 Aug 16  2022 docker-compose.yaml
+drwxrwxr-x  2 julzim cu_10181 4.0K Dec  5  2023 fastq_files
+drwxrwxr-x  2 julzim cu_10181 4.0K Aug 16  2022 results
+drwxrwxr-x  2 julzim cu_10181 4.0K Jul 12  2022 Rhapsody
+
+data/rhapsody_F2833:
+total 12G
+drwxr-xr-x 2 julzim cu_10181 4.0K Dec  5  2023 fastq_files
+drwxr-xr-x 3 julzim cu_10181 4.0K Dec  5  2023 Reports
+drwxrwxr-x 2 julzim cu_10181 4.0K Mar 20  2023 sample_sheet
+drwxr-xr-x 2 julzim cu_10181 4.0K Dec  5  2023 Stats
+-rw-r--r-- 1 julzim cu_10181 5.8G Mar 22  2023 Undetermined_S0_R1_001.fastq.gz
+-rw-r--r-- 1 julzim cu_10181 5.8G Mar 22  2023 Undetermined_S0_R2_001.fastq.gz
+
+data/TI_F2768:
+total 1.5K
+drwxrwxr-x 2 julzim cu_10181 4.0K Dec  5  2023 fastq_files
+drwxrwxr-x 3 julzim cu_10181 4.0K Dec  5  2023 raw_files
+drwxrwxr-x 3 julzim cu_10181 4.0K Dec  5  2023 RNA_seq
+
+data/xDC_thesis:
+total 512
+drwxrwxr-x 2 julzim cu_10181 4.0K Dec  5  2023 fastq_files
+
+data/YFP_F2702:
+total 2.0K
+drwxrwxr-x 2 julzim cu_10181 4.0K Dec  5  2023 adapterremoval_withot_specific_adapter
+drwxrwxr-x 2 julzim cu_10181 4.0K Dec  5  2023 fastq_files
+-rwxrwxr-x 1 julzim cu_10181  346 Nov 15  2021 index.html
+drwxrwxr-x 2 julzim cu_10181 4.0K Dec  5  2023 test
+
+F2853_F2859_F2866/MAKE_FASTQS_CS:
+total 1.0K
+drwxr-xr-x 5 julzim cu_10181 4.0K Dec  5  2023 fork0
+drwxr-xr-x 8 julzim cu_10181 4.0K Dec  5  2023 MAKE_FASTQS
+
+F2853_F2859_F2866/outs:
+total 1.5K
+lrwxrwxrwx 1 julzim cu_10181   80 Sep 12  2023 fastq_path -> /home/projects/cu_10181/people/s144334/results/10x_F2853_F2859_F2866/fastq_files
+-rwx------ 1 julzim cu_10181  276 Sep 12  2023 input_samplesheet.csv
+drwxr-xr-x 2 julzim cu_10181 4.0K Dec  5  2023 interop_path
+
+projects/F2859:
+total 323K
+drwxrwxr-x 2 julzim julzim   4.0K Feb  2  2024 analysis
+-rw------- 1 julzim cu_10181  274 Jan 17  2024 cellranger_count_antibody.sh.e48134984
+-rw------- 1 julzim cu_10181 315K Jan 17  2024 cellranger_count_antibody.sh.o48134984
+drwxr-xr-x 4 julzim cu_10181 4.0K Jan 17  2024 F2859_Alum_HA
+drwxr-xr-x 4 julzim cu_10181 4.0K Jan 17  2024 F2859_CAF01_HA
+drwxr-xr-x 4 julzim cu_10181 4.0K Jan 17  2024 F2859_control
+drwxr-xr-x 4 julzim cu_10181 4.0K Jan 17  2024 F2859_HA
+
+projects/F2866:
+total 2.0K
+drwxrwxr-x 2 julzim julzim   4.0K May  8 21:28 analysis
+drwxr-xr-x 4 julzim cu_10181 4.0K May  8 21:27 F2866_Alum_HA
+drwxr-xr-x 4 julzim cu_10181 4.0K May  8 21:28 F2866_CAF01_HA
+drwxr-xr-x 4 julzim cu_10181 4.0K May  8 21:28 F2866_HA
+
+projects/F2907:
+total 2.5K
+drwxrwxr-x 2 julzim julzim   4.0K Jan 31  2024 analysis
+drwxr-xr-x 4 julzim cu_10181 4.0K Jan 30  2024 F2907_Alum_HA
+drwxr-xr-x 4 julzim cu_10181 4.0K Jan 30  2024 F2907_CAF01_HA
+drwxr-xr-x 4 julzim cu_10181 4.0K Jan 31  2024 F2907_control
+drwxr-xr-x 4 julzim cu_10181 4.0K Jan 31  2024 F2907_HA
+
+results/10x_F2795:
+total 18K
+drwxrwxr-x 6 julzim cu_10181 4.0K Dec  5  2023 cellrange
+-rw-rw-r-- 1 julzim cu_10181  412 Aug 17  2022 cellranger_info.csv
+drwxr-xr-x 4 julzim cu_10181 4.0K Dec  5  2023 F2795_aggr
+drwxrwxr-x 2 julzim cu_10181 4.0K Dec  5  2023 F2795_GEO_submission
+drwxrwxr-x 2 julzim cu_10181  16K Dec  5  2023 FastQC
+
+results/10x_F2853_F2859_F2866:
+total 18K
+drwxrwxr-x 12 julzim cu_10181 4.0K Dec  5  2023 cellranger_count
+drwxr-xr-x  2 julzim cu_10181  16K Dec  6  2023 fastqc
+drwxrwxr-x  5 julzim cu_10181 4.0K Dec  6  2023 fastq_files
+-rwxrwx---  1 julzim cu_10181  276 Sep 12  2023 input_samplesheet.csv
+
+results/rhapsody_F2766:
+total 2.0M
+-rw-r--r-- 1 julzim cu_10181 443K Jul 12  2022 Rhapsody_S1_R1_001_fastqc.html
+-rw-r--r-- 1 julzim cu_10181 676K Jul 12  2022 Rhapsody_S1_R1_001_fastqc.zip
+-rw-r--r-- 1 julzim cu_10181 347K Jul 12  2022 Rhapsody_S1_R2_001_fastqc.html
+-rw-r--r-- 1 julzim cu_10181 518K Jul 12  2022 Rhapsody_S1_R2_001_fastqc.zip
+
+results/TI_F2768:
+total 5.7M
+-rw-r--r-- 1 julzim cu_10181 470K Jul 29  2022 A1_S1.txt
+-rw-r--r-- 1 julzim cu_10181 469K Jul 29  2022 A2_S2.txt
+-rw-r--r-- 1 julzim cu_10181 472K Jul 29  2022 A7_S3.txt
+-rw-r--r-- 1 julzim cu_10181 470K Jul 29  2022 A8_S4.txt
+-rw-r--r-- 1 julzim cu_10181 470K Jul 29  2022 B1_S5.txt
+-rw-r--r-- 1 julzim cu_10181 470K Jul 29  2022 B2_S6.txt
+-rw-r--r-- 1 julzim cu_10181 469K Jul 29  2022 B7_S7.txt
+-rw-r--r-- 1 julzim cu_10181 470K Jul 29  2022 B8_S8.txt
+-rw-r--r-- 1 julzim cu_10181 471K Jul 29  2022 C1_S9.txt
+-rw-r--r-- 1 julzim cu_10181 471K Jul 29  2022 C2_S10.txt
+-rw-r--r-- 1 julzim cu_10181 470K Jul 29  2022 C7_S11.txt
+-rw-r--r-- 1 julzim cu_10181 469K Jul 29  2022 C8_S12.txt
+drwxrwxr-x 3 julzim cu_10181 4.0K Dec  6  2023 FastQC
+
+results/xDC_thesis:
+total 4.0K
+drwxrwxr-x 2 julzim cu_10181 4.0K Dec  6  2023 bam_files
+drwxrwxr-x 2 julzim cu_10181 4.0K Dec  6  2023 count_files
+drwxrwxr-x 2 julzim cu_10181 4.0K Dec  6  2023 fastq_files_after_trim
+drwxrwxr-x 2 julzim cu_10181 4.0K Dec  6  2023 mouse_genome_index
+drwxrwxr-x 2 julzim cu_10181 4.0K Dec  6  2023 output_after_adapterRemoval
+drwxrwxr-x 4 julzim cu_10181 4.0K Dec  6  2023 QC
+-rw-rw-r-- 1 julzim cu_10181 1.4K Nov 18  2020 readme.sh
+drwxrwxr-x 3 julzim cu_10181 4.0K Dec  6  2023 sam_files
+
+results/YFP_F2702:
+total 3.0K
+drwxrwxr-x 2 julzim cu_10181 4.0K Dec  6  2023 after_trim
+drwxrwxr-x 2 julzim cu_10181 4.0K Dec  6  2023 bam_files
+drwxrwxr-x 2 julzim cu_10181 4.0K Nov 22  2021 count_files
+drwxrwxr-x 2 julzim cu_10181 4.0K Dec  6  2023 fastq_after_trim
+drwxrwxr-x 4 julzim cu_10181 4.0K Nov 17  2021 fastQC
+drwxrwxr-x 2 julzim cu_10181 4.0K Dec  6  2023 sam_files
+
+src/10x:
+total 21K
+-rw-rw-r-- 1 julzim cu_10181  836 Sep 28  2022 cellranger_A.sh
+-rw-rw-r-- 1 julzim cu_10181  835 Sep 28  2022 cellranger_C.sh
+-rw-rw-r-- 1 julzim cu_10181  835 Sep 28  2022 cellranger_D.sh
+-rw-rw-r-- 1 julzim cu_10181  835 Sep 28  2022 cellranger_E.sh
+-rw-rw-r-- 1 julzim julzim    962 Jan 26  2024 cellranger_mkfastq_F2902.sh
+-rw------- 1 julzim cu_10181  166 Jan 26  2024 cellranger_mkfastq_F2902.sh.e48420614
+-rw------- 1 julzim cu_10181  327 Jan 26  2024 cellranger_mkfastq_F2902.sh.o48420614
+-rw-rw-r-- 1 julzim cu_10181  921 Sep 12  2023 cellranger_mkfastq.sh
+-rw------- 1 julzim cu_10181    0 Sep 12  2023 cellranger_mkfastq.sh.e45390427
+-rw------- 1 julzim cu_10181    0 Sep 12  2023 cellranger_mkfastq.sh.e45390909
+-rw------- 1 julzim cu_10181  860 Sep 12  2023 cellranger_mkfastq.sh.o45390427
+-rw------- 1 julzim cu_10181  15K Sep 12  2023 cellranger_mkfastq.sh.o45390909
+drwxrwxr-x 2 julzim cu_10181 4.0K Dec  6  2023 F2853_F2859_F2866
+
+src/nextflow:
+total 18K
+-rw-rw-r-- 1 julzim cu_10181 2.1K Jul 28  2022 fastqc_2.nf
+-rw-rw-r-- 1 julzim cu_10181 2.9K Jul 29  2022 fastqc.nf
+-rwx--x--x 1 julzim cu_10181  15K Jul 27  2022 nextflow
+-rw-rw-r-- 1 julzim cu_10181  427 Jul 29  2022 nextflow.config
+-rw-rw-r-- 1 julzim cu_10181 2.3K Jul 22  2022 RNA_seq.nf
+
+src/RNA_seq:
+total 3.5K
+-rwxrwxr-x 1 julzim cu_10181 608 Nov 17  2021 adaptorRemoval_onefile.sh
+-rwxrwxr-x 1 julzim cu_10181 700 Nov 17  2021 adaptorRemoval_twofiles.sh
+-rwxrwxr-x 1 julzim cu_10181 795 Nov 17  2021 fastqc_report_aftertrim.sh
+-rwxrwxr-x 1 julzim cu_10181 732 Nov 17  2021 hisat2_build.sh
+-rwxrwxr-x 1 julzim cu_10181 900 Nov 18  2021 hisat2.sh
+-rwxrwxr-x 1 julzim cu_10181 787 Nov 19  2021 htseq_count.sh
+-rwxrwxr-x 1 julzim cu_10181 770 Nov 18  2021 samtools.sh

@@ -1,0 +1,110 @@
+-rw------- 1 katwor katwor    566 Jan 25  2024 analyse/01_cellranger_mkfastq.save
+-rwxrwxrwx 1 katwor katwor    705 Jan 26  2024 data/bcl2fastq_scrpt.sh
+-rwxrwxrwx 1 katwor cu_10181    0 Jan 26  2024 data/bcl2fastq_scrpt.sh.e48420488
+-rw------- 1 katwor cu_10181    0 Jan 26  2024 data/bcl2fastq_scrpt.sh.e48420660
+-rwxrwxrwx 1 katwor cu_10181  957 Jan 26  2024 data/bcl2fastq_scrpt.sh.o48420488
+-rw------- 1 katwor cu_10181  18K Jan 26  2024 data/bcl2fastq_scrpt.sh.o48420660
+-rwxrwxrwx 1 katwor katwor    962 Jan 30  2024 data/cellranger_count.sh
+-rw------- 1 julzim cu_10181  392 Jan 26  2024 data/cellranger_count.sh.e48422128
+-rw------- 1 julzim cu_10181  694 Jan 26  2024 data/cellranger_count.sh.e48422238
+-rw------- 1 julzim cu_10181  528 Jan 26  2024 data/cellranger_count.sh.e48422277
+-rw------- 1 julzim cu_10181  201 Jan 27  2024 data/cellranger_count.sh.e48422304
+-rw------- 1 julzim cu_10181    0 Jan 29  2024 data/cellranger_count.sh.e48435560
+-rw------- 1 julzim cu_10181    0 Jan 30  2024 data/cellranger_count.sh.e48451169
+-rw------- 1 julzim cu_10181    0 Jan 26  2024 data/cellranger_count.sh.o48422128
+-rw------- 1 julzim cu_10181    0 Jan 26  2024 data/cellranger_count.sh.o48422238
+-rw------- 1 julzim cu_10181    0 Jan 26  2024 data/cellranger_count.sh.o48422277
+-rw------- 1 julzim cu_10181  88K Jan 27  2024 data/cellranger_count.sh.o48422304
+-rw------- 1 julzim cu_10181 3.0K Jan 29  2024 data/cellranger_count.sh.o48435560
+-rw------- 1 julzim cu_10181 149K Jan 31  2024 data/cellranger_count.sh.o48451169
+-rwxrwxrwx 1 katwor katwor    244 Jan 26  2024 data/F2902_F2907_input_samplesheet_2.csv
+-rw-rw-r-- 1 tuhu   tuhu      244 Jan 26  2024 data/F2902_F2907_input_samplesheet.csv
+
+data/F2902_counts_B:
+total 8.7M
+-rw-r--r--  1 julzim cu_10181  291 Jan 30  2024 _cmdline
+-rw-r--r--  1 julzim cu_10181 3.4M Jan 30  2024 F2902_counts_B.mri.tgz
+-rw-r--r--  1 julzim cu_10181 170K Jan 30  2024 _filelist
+-rw-r--r--  1 julzim cu_10181 3.4M Jan 27  2024 _finalstate
+-rw-r--r--  1 julzim cu_10181 1.5K Jan 26  2024 _invocation
+-rw-r--r--  1 julzim cu_10181    5 Jan 26  2024 _jobmode
+-rw-r--r--  1 julzim cu_10181 146K Jan 30  2024 _log
+-rw-r--r--  1 julzim cu_10181 289K Jan 26  2024 _mrosource
+drwxr-xr-x  5 julzim cu_10181 4.0K Jan 27  2024 outs
+-rw-r--r--  1 julzim cu_10181 1.1M Jan 27  2024 _perf
+-rw-r--r--  1 julzim cu_10181  11K Jan 30  2024 _perf._truncated_
+drwxr-xr-x 10 julzim cu_10181 4.0K Jan 27  2024 SC_RNA_COUNTER_CS
+-rw-r--r--  1 julzim cu_10181  19K Jan 30  2024 _sitecheck
+-rw-r--r--  1 julzim cu_10181    2 Jan 26  2024 _tags
+-rw-r--r--  1 julzim cu_10181  101 Jan 30  2024 _timestamp
+-rw-r--r--  1 julzim cu_10181   36 Jan 26  2024 _uuid
+-rw-r--r--  1 julzim cu_10181 161K Jan 30  2024 _vdrkill
+-rw-r--r--  1 julzim cu_10181   65 Jan 26  2024 _versions
+
+data/F2902_counts_C:
+total 12M
+-rw-r--r--  1 julzim cu_10181  291 Jan 31  2024 _cmdline
+-rw-r--r--  1 julzim cu_10181 3.9M Jan 31  2024 F2902_counts_C.mri.tgz
+-rw-r--r--  1 julzim cu_10181 217K Jan 31  2024 _filelist
+-rw-r--r--  1 julzim cu_10181 4.9M Jan 31  2024 _finalstate
+-rw-r--r--  1 julzim cu_10181 1.5K Jan 30  2024 _invocation
+-rw-r--r--  1 julzim cu_10181    5 Jan 30  2024 _jobmode
+-rw-r--r--  1 julzim cu_10181 190K Jan 31  2024 _log
+-rw-r--r--  1 julzim cu_10181 289K Jan 30  2024 _mrosource
+drwxr-xr-x  5 julzim cu_10181 4.0K Jan 31  2024 outs
+-rw-r--r--  1 julzim cu_10181 1.4M Jan 31  2024 _perf
+-rw-r--r--  1 julzim cu_10181  11K Jan 31  2024 _perf._truncated_
+drwxr-xr-x 10 julzim cu_10181 4.0K Jan 31  2024 SC_RNA_COUNTER_CS
+-rw-r--r--  1 julzim cu_10181  19K Jan 31  2024 _sitecheck
+-rw-r--r--  1 julzim cu_10181    2 Jan 30  2024 _tags
+-rw-r--r--  1 julzim cu_10181   51 Jan 31  2024 _timestamp
+-rw-r--r--  1 julzim cu_10181   36 Jan 30  2024 _uuid
+-rw-r--r--  1 julzim cu_10181 363K Jan 31  2024 _vdrkill
+-rw-r--r--  1 julzim cu_10181   65 Jan 30  2024 _versions
+
+data/F2902_F2907_fastqfiles_v2:
+total 83G
+-rw-r--r-- 1 katwor cu_10181   53 Jan 26  2024 _cmdline
+-rw-r--r-- 1 katwor cu_10181   45 Jan 26  2024 F2902_F2907_fastqfiles_v2.mri.tgz
+-rw-r--r-- 1 katwor cu_10181 148K Jan 26  2024 _filelist
+-rw-r--r-- 1 katwor cu_10181 144K Jan 26  2024 _finalstate
+drwxr-xr-x 2 katwor cu_10181  16K Jan 26  2024 HJHNHDSX3
+-rw-r--r-- 1 katwor cu_10181 1.7K Jan 26  2024 _invocation
+-rw-r--r-- 1 katwor cu_10181    5 Jan 26  2024 _jobmode
+-rw-r--r-- 1 katwor cu_10181  28K Jan 26  2024 _log
+drwxr-xr-x 4 katwor cu_10181 4.0K Jan 26  2024 MAKE_FASTQS_CS
+-rw-r--r-- 1 katwor cu_10181  13K Jan 26  2024 _mrosource
+drwxr-xr-x 3 katwor cu_10181 4.0K Jan 26  2024 outs
+-rw-r--r-- 1 katwor cu_10181 106K Jan 26  2024 _perf
+drwxr-xr-x 3 katwor cu_10181 4.0K Jan 26  2024 Reports
+-rw-r--r-- 1 katwor cu_10181  19K Jan 26  2024 _sitecheck
+drwxr-xr-x 2 katwor cu_10181 4.0K Jan 26  2024 Stats
+-rw-r--r-- 1 katwor cu_10181    2 Jan 26  2024 _tags
+-rw-r--r-- 1 katwor cu_10181   51 Jan 26  2024 _timestamp
+-rw-r--r-- 1 katwor cu_10181 2.6G Jan 26  2024 Undetermined_S0_L001_I1_001.fastq.gz
+-rw-r--r-- 1 katwor cu_10181 2.6G Jan 26  2024 Undetermined_S0_L001_I2_001.fastq.gz
+-rw-r--r-- 1 katwor cu_10181 5.0G Jan 26  2024 Undetermined_S0_L001_R1_001.fastq.gz
+-rw-r--r-- 1 katwor cu_10181  11G Jan 26  2024 Undetermined_S0_L001_R2_001.fastq.gz
+-rw-r--r-- 1 katwor cu_10181 2.7G Jan 26  2024 Undetermined_S0_L002_I1_001.fastq.gz
+-rw-r--r-- 1 katwor cu_10181 2.6G Jan 26  2024 Undetermined_S0_L002_I2_001.fastq.gz
+-rw-r--r-- 1 katwor cu_10181 5.0G Jan 26  2024 Undetermined_S0_L002_R1_001.fastq.gz
+-rw-r--r-- 1 katwor cu_10181  11G Jan 26  2024 Undetermined_S0_L002_R2_001.fastq.gz
+-rw-r--r-- 1 katwor cu_10181 2.7G Jan 26  2024 Undetermined_S0_L003_I1_001.fastq.gz
+-rw-r--r-- 1 katwor cu_10181 2.6G Jan 26  2024 Undetermined_S0_L003_I2_001.fastq.gz
+-rw-r--r-- 1 katwor cu_10181 5.0G Jan 26  2024 Undetermined_S0_L003_R1_001.fastq.gz
+-rw-r--r-- 1 katwor cu_10181  11G Jan 26  2024 Undetermined_S0_L003_R2_001.fastq.gz
+-rw-r--r-- 1 katwor cu_10181 2.7G Jan 26  2024 Undetermined_S0_L004_I1_001.fastq.gz
+-rw-r--r-- 1 katwor cu_10181 2.6G Jan 26  2024 Undetermined_S0_L004_I2_001.fastq.gz
+-rw-r--r-- 1 katwor cu_10181 5.0G Jan 26  2024 Undetermined_S0_L004_R1_001.fastq.gz
+-rw-r--r-- 1 katwor cu_10181  11G Jan 26  2024 Undetermined_S0_L004_R2_001.fastq.gz
+-rw-r--r-- 1 katwor cu_10181   36 Jan 26  2024 _uuid
+-rw-r--r-- 1 katwor cu_10181 1.2K Jan 26  2024 _vdrkill
+-rw-r--r-- 1 katwor cu_10181   65 Jan 26  2024 _versions
+
+data/refdata-gex-mm10-2020-A:
+total 2.5K
+drwxrwxr-x 2 julzim julzim 4.0K Jan 26  2024 fasta
+drwxrwxr-x 2 julzim julzim 4.0K Jan 26  2024 genes
+drwxrwxr-x 2 julzim julzim 4.0K Jan 26  2024 pickle
+-rwxrwxr-x 1 julzim julzim  455 Jan 26  2024 reference.json
+drwxrwxr-x 2 julzim julzim 4.0K Jan 26  2024 star

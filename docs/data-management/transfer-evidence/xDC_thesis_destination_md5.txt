@@ -1,0 +1,12 @@
+0f406e4e211fd23f18c26176ae08fce3  /work/data_migration/xDC_thesis/fastq_files/18134XR-25-09_S223_L006_R1_001.fastq.gz
+213e76bf1c2e5a0074a5c37f35f28cd2  /work/data_migration/xDC_thesis/fastq_files/18134XR-25-08_S222_L006_R2_001.fastq.gz
+242ccc69ddf825c3ca66ef38ef9528a9  /work/data_migration/xDC_thesis/fastq_files/18134XR-25-01_S218_L006_R1_001.fastq.gz
+56fe587a98e93494f600fa75da5544e0  /work/data_migration/xDC_thesis/fastq_files/18134XR-25-03_S220_L006_R2_001.fastq.gz
+75ddc148803c2fad79cda85a669ba89a  /work/data_migration/xDC_thesis/fastq_files/18134XR-25-09_S223_L006_R2_001.fastq.gz
+9626fc8a6d0fc04de59ce179579d12b6  /work/data_migration/xDC_thesis/fastq_files/18134XR-25-02_S219_L006_R1_001.fastq.gz
+98d2e40cec79b59f1e510a0cdad0a1fe  /work/data_migration/xDC_thesis/fastq_files/18134XR-25-07_S221_L006_R1_001.fastq.gz
+a8005258c1ea12d583e3298dede4b7ad  /work/data_migration/xDC_thesis/fastq_files/18134XR-25-08_S222_L006_R1_001.fastq.gz
+c4660cacf651eefccec81d161f9dd711  /work/data_migration/xDC_thesis/fastq_files/18134XR-25-03_S220_L006_R1_001.fastq.gz
+c8f2873fd4168f2db6e794bfbb42e4e1  /work/data_migration/xDC_thesis/fastq_files/18134XR-25-02_S219_L006_R2_001.fastq.gz
+f60100cc4faf4261750a952ccf366d33  /work/data_migration/xDC_thesis/fastq_files/18134XR-25-01_S218_L006_R2_001.fastq.gz
+fbbac8026bc3dea40b194fac13ea0bbc  /work/data_migration/xDC_thesis/fastq_files/18134XR-25-07_S221_L006_R2_001.fastq.gz

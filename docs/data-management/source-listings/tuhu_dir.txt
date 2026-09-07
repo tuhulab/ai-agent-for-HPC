@@ -1,0 +1,1558 @@
+-rw-r--r--  1 tuhu cu_10181  205 Jun 15  2023 10xFLEX/project.Rproj
+-rw-rw-r--  1 tuhu cu_10181  22K Jun 14  2023 10xFLEX/renv.lock
+-rw-rw-r--  1 tuhu tuhu     9.5K Apr 30 20:52 adpso_endotypes_federated/analyse_clusters.R
+-rw-rw-r--  1 tuhu tuhu     2.0K Apr 30 20:52 adpso_endotypes_federated/prepare_data.R
+-rw-rw-r--  1 tuhu tuhu     3.8K Apr 30 20:52 adpso_endotypes_federated/README.md
+-rw-rw-r--  1 tuhu cu_10181 1.1K May 22  2023 bd_rhapsody_velocyto/LICENSE
+-rw-rw-r--  1 tuhu cu_10181  765 May 22  2023 bd_rhapsody_velocyto/nf_velocyto.config
+-rw-rw-r--  1 tuhu cu_10181  477 May 22  2023 bd_rhapsody_velocyto/README.md
+-rw-rw-r--  1 tuhu cu_10181 1.6K May 22  2023 bd_rhapsody_velocyto/velocyto.nf
+-rw-r--r--  1 tuhu cu_10181  363 May 22  2023 bd_rhapsody_velocyto/velocyto.sh
+-rw-------  1 tuhu cu_10181   37 May 22  2023 bd_rhapsody_velocyto/velocyto.sh.e43005901
+-rw-------  1 tuhu cu_10181    0 May 22  2023 bd_rhapsody_velocyto/velocyto.sh.e43013448
+-rw-------  1 tuhu cu_10181   36 May 22  2023 bd_rhapsody_velocyto/velocyto.sh.o43005901
+-rw-------  1 tuhu cu_10181  17K May 22  2023 bd_rhapsody_velocyto/velocyto.sh.o43013448
+-rw-r--r--  1 tuhu cu_10181   62 Mar 27  2023 _cache_R/projects
+-rwxr-xr-x  1 tuhu cu_10181 265M Apr 13  2023 _cache_singularity/depot.galaxyproject.org-singularity-bbmap-39.01--h5c4e2a8_0.img
+-rw-rw-r--  1 tuhu cu_10181  31M Apr 13  2023 _cache_singularity/depot.galaxyproject.org-singularity-bedtools-2.30.0--hc088bd4_0.img
+-rw-rw-r--  1 tuhu cu_10181 301M Apr 13  2023 _cache_singularity/depot.galaxyproject.org-singularity-bioconductor-dupradar-1.28.0--r42hdfd78af_0.img
+-rw-rw-r--  1 tuhu cu_10181 293M Apr 13  2023 _cache_singularity/depot.galaxyproject.org-singularity-bioconductor-summarizedexperiment-1.24.0--r41hdfd78af_0.img
+-rw-rw-r--  1 tuhu cu_10181 391M Apr 13  2023 _cache_singularity/depot.galaxyproject.org-singularity-bioconductor-tximeta-1.12.0--r41hdfd78af_0.img
+-rw-rw-r--  1 tuhu cu_10181  16M Apr 13  2023 _cache_singularity/depot.galaxyproject.org-singularity-fastp-0.23.2--h79da9fb_0.img
+-rwxr-xr-x  1 tuhu cu_10181  14M Jun 18  2023 _cache_singularity/depot.galaxyproject.org-singularity-fastp-0.23.4--h5f740d0_0.img
+-rwxr-xr-x  1 tuhu cu_10181 253M Apr 13  2023 _cache_singularity/depot.galaxyproject.org-singularity-fastqc-0.11.9--0.img
+-rwxr-xr-x  1 tuhu ku_00216 280M May  7 08:58 _cache_singularity/depot.galaxyproject.org-singularity-fastqc-0.12.1--hdfd78af_0.img
+-rwxr-xr-x  1 tuhu cu_10181 5.6M Apr 13  2023 _cache_singularity/depot.galaxyproject.org-singularity-fq-0.9.1--h9ee0642_0.img
+-rw-rw-r--  1 tuhu cu_10181  17M Apr 13  2023 _cache_singularity/depot.galaxyproject.org-singularity-gffread-0.12.1--h8b12597_0.img
+-rw-rw-r--  1 tuhu cu_10181  96M Apr 13  2023 _cache_singularity/depot.galaxyproject.org-singularity-hisat2-2.2.1--h1b792b2_3.img
+-rwxr-xr-x  1 tuhu cu_10181  28M Apr 13  2023 _cache_singularity/depot.galaxyproject.org-singularity-mulled-v2-1fa26d1ce03c295fe2fdcf85831a92fbcbd7e8c2-1df389393721fc66f3fd8778ad938ac711951107-0.img
+-rw-rw-r--  1 tuhu cu_10181  37M Apr 13  2023 _cache_singularity/depot.galaxyproject.org-singularity-mulled-v2-1fa26d1ce03c295fe2fdcf85831a92fbcbd7e8c2-59cdd445419f14abac76b31dd0d71217994cbcc9-0.img
+-rw-r--r--  1 tuhu cu_10181 134M Apr 13  2023 _cache_singularity/depot.galaxyproject.org-singularity-mulled-v2-5f89fe0cd045cb1d615630b9261a1d17943a9b6a-6a9ff0e76ec016c3d0d27e0c0d362339f2d787e6-0.img
+-rw-rw-r--  1 tuhu cu_10181 341M Apr 13  2023 _cache_singularity/depot.galaxyproject.org-singularity-mulled-v2-8849acf39a43cdd6c839a369a74c0adc823e2f91-ab110436faf952a33575c64dd74615a84011450b-0.img
+-rw-rw-r--  1 tuhu cu_10181 106M Apr 13  2023 _cache_singularity/depot.galaxyproject.org-singularity-mulled-v2-a97e90b3b802d1da3d6958e0867610c718cb5eb1-2cdf6bf1e92acbeb9b2834b1c58754167173a410-0.img
+-rw-rw-r--  1 tuhu cu_10181 318M Apr 13  2023 _cache_singularity/depot.galaxyproject.org-singularity-mulled-v2-cf0123ef83b3c38c13e3b0696a3f285d3f20f15b-64aad4a4e144878400649e71f42105311be7ed87-0.img
+-rw-r--r--  1 tuhu cu_10181 136M Apr 13  2023 _cache_singularity/depot.galaxyproject.org-singularity-multiqc-1.13--pyhdfd78af_0.img
+-rw-rw-r--  1 tuhu cu_10181 154M Apr 13  2023 _cache_singularity/depot.galaxyproject.org-singularity-multiqc-1.14--pyhdfd78af_0.img
+-rwxr-xr-x  1 tuhu ku_00216 158M May  7 10:09 _cache_singularity/depot.galaxyproject.org-singularity-multiqc-1.19--pyhdfd78af_0.img
+-rwxr-xr-x  1 tuhu cu_10181  30M Apr 13  2023 _cache_singularity/depot.galaxyproject.org-singularity-perl-5.26.2.img
+-rwxr-xr-x  1 tuhu cu_10181 465M Apr 14  2023 _cache_singularity/depot.galaxyproject.org-singularity-picard-2.27.4--hdfd78af_0.img
+-rwxr-xr-x  1 tuhu cu_10181 465M Apr 13  2023 _cache_singularity/depot.galaxyproject.org-singularity-picard-2.27.4--hdfd78af_0.img.pulling.1681389473346
+-rwxr-xr-x  1 tuhu cu_10181 465M Apr 13  2023 _cache_singularity/depot.galaxyproject.org-singularity-picard-2.27.4--hdfd78af_0.img.pulling.1681390381008
+-rw-rw-r--  1 tuhu cu_10181 484M Apr 13  2023 _cache_singularity/depot.galaxyproject.org-singularity-picard-3.0.0--hdfd78af_1.img
+-rw-rw-r--  1 tuhu cu_10181  55M Apr 13  2023 _cache_singularity/depot.galaxyproject.org-singularity-preseq-3.1.2--h445547b_2.img
+-rw-r--r--  1 tuhu cu_10181  60M Apr 13  2023 _cache_singularity/depot.galaxyproject.org-singularity-python-3.9--1.img
+-rw-rw-r--  1 tuhu cu_10181 517M Apr 13  2023 _cache_singularity/depot.galaxyproject.org-singularity-qualimap-2.2.2d--1.img
+-rwxr-xr-x  1 tuhu ku_00216 656M May  7 09:56 _cache_singularity/depot.galaxyproject.org-singularity-qualimap-2.3--hdfd78af_0.img
+-rw-rw-r--  1 tuhu cu_10181 283M Apr 13  2023 _cache_singularity/depot.galaxyproject.org-singularity-rseqc-3.0.1--py37h516909a_1.img
+-rwxr-xr-x  1 tuhu ku_00216 330M May  7 09:55 _cache_singularity/depot.galaxyproject.org-singularity-rseqc-5.0.3--py39hf95cd2a_0.img
+-rw-rw-r--  1 tuhu cu_10181  59M Apr 13  2023 _cache_singularity/depot.galaxyproject.org-singularity-salmon-1.10.1--h7e5ed60_0.img
+-rwxr-xr-x  1 tuhu cu_10181  53M Apr 13  2023 _cache_singularity/depot.galaxyproject.org-singularity-salmon-1.9.0--h7e5ed60_1.img
+-rwxr-xr-x  1 tuhu cu_10181  22M Apr 13  2023 _cache_singularity/depot.galaxyproject.org-singularity-samtools-1.16.1--h6899075_1.img
+-rwxr-xr-x  1 tuhu cu_10181  22M Jun 13  2023 _cache_singularity/depot.galaxyproject.org-singularity-samtools-1.17--h00cdaf9_0.img
+-rw-rw-r--  1 tuhu cu_10181 8.3M Apr 13  2023 _cache_singularity/depot.galaxyproject.org-singularity-sortmerna-4.3.4--h9ee0642_0.img
+-rw-r--r--  1 tuhu cu_10181 132M Apr 13  2023 _cache_singularity/depot.galaxyproject.org-singularity-sra-tools-2.11.0--pl5321ha49a11a_3.img
+-rw-rw-r--  1 tuhu cu_10181  65M Apr 13  2023 _cache_singularity/depot.galaxyproject.org-singularity-stringtie-2.2.1--hecb563c_2.img
+-rw-rw-r--  1 tuhu cu_10181  32M Apr 13  2023 _cache_singularity/depot.galaxyproject.org-singularity-subread-2.0.1--hed695b0_0.img
+-rw-r--r--  1 tuhu cu_10181  73M Apr 13  2023 _cache_singularity/depot.galaxyproject.org-singularity-synapseclient-2.6.0--pyh5e36f6f_0.img
+-rwxr-xr-x  1 tuhu cu_10181 313M Apr 13  2023 _cache_singularity/depot.galaxyproject.org-singularity-trim-galore-0.6.7--hdfd78af_0.img
+-rw-r--r--  1 tuhu cu_10181  27M Apr 13  2023 _cache_singularity/depot.galaxyproject.org-singularity-ubuntu-20.04.img
+-rw-rw-r--  1 tuhu cu_10181  23M Apr 13  2023 _cache_singularity/depot.galaxyproject.org-singularity-ucsc-bedclip-377--h0b8a92a_2.img
+-rw-rw-r--  1 tuhu cu_10181  22M Apr 13  2023 _cache_singularity/depot.galaxyproject.org-singularity-ucsc-bedgraphtobigwig-377--h446ed27_1.img
+-rwxr-xr-x  1 tuhu ku_00216  19M May  7 09:52 _cache_singularity/depot.galaxyproject.org-singularity-ucsc-bedgraphtobigwig-445--h954228d_0.img
+-rw-rw-r--  1 tuhu cu_10181 151M Apr 13  2023 _cache_singularity/depot.galaxyproject.org-singularity-umi_tools-1.1.4--py38hbff2b2d_1.img
+-rwxr-xr-x  1 tuhu cu_10181 230M May 22  2023 _cache_singularity/depot.galaxyproject.org-singularity-velocyto.py%3A0.17.17--py38h17adfb0_5.img
+-rw-------  1 tuhu cu_10181  22K Feb  6  2024 chlamydia01/demultiplexing.sh.e48571948
+-rw-------  1 tuhu cu_10181 1.1K Aug 16 15:21 chlamydia01/demultiplexing.sh.e51026946
+-rw-------  1 tuhu cu_10181  37K Aug 16 15:48 chlamydia01/demultiplexing.sh.e51026951
+-rw-------  1 tuhu cu_10181    0 Feb  6  2024 chlamydia01/demultiplexing.sh.o48571948
+-rw-------  1 tuhu cu_10181    0 Aug 16 15:21 chlamydia01/demultiplexing.sh.o51026946
+-rw-------  1 tuhu cu_10181    0 Aug 16 15:37 chlamydia01/demultiplexing.sh.o51026951
+-rw-rw-r--  1 tuhu tuhu       48 Feb  6  2024 chlamydia01/README.md
+-rw-rw-r--  1 tuhu cu_10181  23G Oct 19  2023 _download/20231012 H107.lif
+-rw-rw-r--  1 tuhu cu_10181  39G May 29  2023 _download/230523_A00962_0100_AH7CKYDRX3.zip
+-rw-------  1 tuhu cu_10181  420 Mar 10  2023 GSE200151_granuloma/geo_download.sh.e39809640
+-rw-------  1 tuhu cu_10181  12K Mar 10  2023 GSE200151_granuloma/geo_download.sh.e39809677
+-rw-------  1 tuhu cu_10181  42K Mar 10  2023 GSE200151_granuloma/geo_download.sh.e39812335
+-rw-------  1 tuhu cu_10181    1 Mar 10  2023 GSE200151_granuloma/geo_download.sh.o39809640
+-rw-------  1 tuhu cu_10181   17 Mar 10  2023 GSE200151_granuloma/geo_download.sh.o39809677
+-rw-------  1 tuhu cu_10181   38 Mar 10  2023 GSE200151_granuloma/geo_download.sh.o39812335
+-rw-rw-r--  1 tuhu cu_10181  205 May 25  2023 GSE200151_granuloma/GSE200151_granuloma.Rproj
+-rw-rw-r--  1 tuhu cu_10181 1.1K Mar 10  2023 GSE200151_granuloma/LICENSE
+-rw-rw-r--  1 tuhu cu_10181  595 Mar 10  2023 GSE200151_granuloma/README.md
+-rw-r--r--  1 tuhu cu_10181 1.1K Mar 13  2023 guide-nextflow-scRNA-seq/LICENSE
+-rw-r--r--  1 tuhu cu_10181  100 Mar 13  2023 guide-nextflow-scRNA-seq/README.md
+-rw-rw-r--  1 tuhu cu_10181  205 Apr 24  2023 INFIMM-caf01_caf08b_caf39/caf01vscaf08b.Rproj
+-rw-r--r--  1 tuhu cu_10181 284M Apr 11  2023 INFIMM-caf01_caf08b_caf39/environment_data_4apr.RData
+-rw-rw-r--  1 tuhu cu_10181   69 Mar 22  2023 INFIMM-caf01_caf08b_caf39/README.md
+-rw-rw-r--  1 tuhu cu_10181  85K Apr  5  2023 INFIMM-caf01_caf08b_caf39/renv.lock
+-rw-------  1 tuhu ku_00216    0 Oct  5  2023 INFIMM-TB-F2853/10_data_processing_ssi.sh.e46200498
+-rw-------  1 tuhu ku_00216 179K Oct  5  2023 INFIMM-TB-F2853/10_data_processing_ssi.sh.o46200498
+-rw-------  1 tuhu ku_00216    0 Oct 26  2023 INFIMM-TB-F2853/2_1_cellranger_mkfastq.sh.e46917157
+-rw-------  1 tuhu ku_00216    0 Oct 26  2023 INFIMM-TB-F2853/2_1_cellranger_mkfastq.sh.e46917256
+-rw-------  1 tuhu ku_00216    0 Oct 26  2023 INFIMM-TB-F2853/2_1_cellranger_mkfastq.sh.e46917367
+-rw-------  1 tuhu ku_00216    0 Oct 26  2023 INFIMM-TB-F2853/2_1_cellranger_mkfastq.sh.e46917442
+-rw-------  1 tuhu ku_00216 2.2K Oct 26  2023 INFIMM-TB-F2853/2_1_cellranger_mkfastq.sh.o46917157
+-rw-------  1 tuhu ku_00216 2.3K Oct 26  2023 INFIMM-TB-F2853/2_1_cellranger_mkfastq.sh.o46917256
+-rw-------  1 tuhu ku_00216  648 Oct 26  2023 INFIMM-TB-F2853/2_1_cellranger_mkfastq.sh.o46917367
+-rw-------  1 tuhu ku_00216  21K Oct 26  2023 INFIMM-TB-F2853/2_1_cellranger_mkfastq.sh.o46917442
+-rw-r--r--  1 tuhu cu_10181  205 Jun 19  2023 INFIMM-TB-F2853/INFIMM-TB-F2853.Rproj
+-rw-rw-r--  1 tuhu cu_10181 1.1K May 24  2023 INFIMM-TB-F2853/LICENSE
+-rw-rw-r--  1 tuhu cu_10181  350 May 24  2023 INFIMM-TB-F2853/README.md
+-rw-rw-r--  1 tuhu cu_10181  90K Oct  5  2023 INFIMM-TB-F2853/renv.lock
+-rw-------  1 tuhu ku_00216    0 Nov  6  2023 INFIMM-TB-FLEX/1_cellranger_mkfastq.sh.e47129960
+-rw-------  1 tuhu ku_00216    0 Nov  6  2023 INFIMM-TB-FLEX/1_cellranger_mkfastq.sh.e47130120
+-rw-------  1 tuhu ku_00216 2.2K Nov  6  2023 INFIMM-TB-FLEX/1_cellranger_mkfastq.sh.o47129960
+-rw-------  1 tuhu ku_00216 4.9K Nov  6  2023 INFIMM-TB-FLEX/1_cellranger_mkfastq.sh.o47130120
+-rw-------  1 tuhu ku_00216    6 Nov  9  2023 INFIMM-TB-FLEX/2_cellranger_multi_probe2.sh.e47271182
+-rw-------  1 tuhu ku_00216 351K Nov  9  2023 INFIMM-TB-FLEX/2_cellranger_multi_probe2.sh.o47271182
+-rw-------  1 tuhu ku_00216    2 Nov  7  2023 INFIMM-TB-FLEX/2_cellranger_multi.sh.e47162249
+-rw-------  1 tuhu ku_00216    2 Nov  7  2023 INFIMM-TB-FLEX/2_cellranger_multi.sh.e47162282
+-rw-------  1 tuhu ku_00216    8 Nov  7  2023 INFIMM-TB-FLEX/2_cellranger_multi.sh.e47206373
+-rw-------  1 tuhu ku_00216  414 Nov  7  2023 INFIMM-TB-FLEX/2_cellranger_multi.sh.o47162249
+-rw-------  1 tuhu ku_00216 128K Nov  7  2023 INFIMM-TB-FLEX/2_cellranger_multi.sh.o47162282
+-rw-------  1 tuhu ku_00216 413K Nov  7  2023 INFIMM-TB-FLEX/2_cellranger_multi.sh.o47206373
+-rw-------  1 tuhu ku_00216    8 Nov  7  2023 INFIMM-TB-FLEX/2_cellranger_multi_spliced.sh.e47218717
+-rw-------  1 tuhu ku_00216 434K Nov  7  2023 INFIMM-TB-FLEX/2_cellranger_multi_spliced.sh.o47218717
+-rw-r--r--  1 tuhu cu_10181  205 May 16  2023 INFIMM-TB-FLEX/INFIMM-TB-FLEX.Rproj
+-rw-rw-r--  1 tuhu cu_10181  205 Nov  6  2023 INFIMM-TB-FLEX/project.Rproj
+-rw-r--r--  1 tuhu cu_10181   49 May 10  2023 INFIMM-TB-FLEX/README.md
+-rw-rw-r--  1 tuhu cu_10181  16K Nov  6  2023 INFIMM-TB-FLEX/renv.lock
+-rw-------  1 tuhu ku_00216    0 Oct 24  2023 INFIMM-TB-MINCLE/fetch_GSE142688.sh.e46883943
+-rw-------  1 tuhu ku_00216    0 Oct 24  2023 INFIMM-TB-MINCLE/fetch_GSE142688.sh.e46884245
+-rw-------  1 tuhu ku_00216  141 Oct 24  2023 INFIMM-TB-MINCLE/fetch_GSE142688.sh.e46884452
+-rw-------  1 tuhu ku_00216    0 Oct 24  2023 INFIMM-TB-MINCLE/fetch_GSE142688.sh.e46884633
+-rw-------  1 tuhu ku_00216  155 Oct 24  2023 INFIMM-TB-MINCLE/fetch_GSE142688.sh.o46883943
+-rw-------  1 tuhu ku_00216 2.3K Oct 24  2023 INFIMM-TB-MINCLE/fetch_GSE142688.sh.o46884245
+-rw-------  1 tuhu ku_00216 1.9K Oct 24  2023 INFIMM-TB-MINCLE/fetch_GSE142688.sh.o46884452
+-rw-------  1 tuhu ku_00216  24K Oct 24  2023 INFIMM-TB-MINCLE/fetch_GSE142688.sh.o46884633
+-rw-------  1 tuhu ku_00216   77 Oct 24  2023 INFIMM-TB-MINCLE/fetch_GSE142689.sh.e46883952
+-rw-------  1 tuhu ku_00216  43K Oct 24  2023 INFIMM-TB-MINCLE/fetch_GSE142689.sh.e46884248
+-rw-------  1 tuhu ku_00216  141 Oct 24  2023 INFIMM-TB-MINCLE/fetch_GSE142689.sh.e46884459
+-rw-------  1 tuhu ku_00216    0 Oct 24  2023 INFIMM-TB-MINCLE/fetch_GSE142689.sh.e46884634
+-rw-------  1 tuhu ku_00216  261 Oct 24  2023 INFIMM-TB-MINCLE/fetch_GSE142689.sh.o46883952
+-rw-------  1 tuhu ku_00216 2.3K Oct 24  2023 INFIMM-TB-MINCLE/fetch_GSE142689.sh.o46884248
+-rw-------  1 tuhu ku_00216 1.9K Oct 24  2023 INFIMM-TB-MINCLE/fetch_GSE142689.sh.o46884459
+-rw-------  1 tuhu ku_00216  22K Oct 24  2023 INFIMM-TB-MINCLE/fetch_GSE142689.sh.o46884634
+-rw-rw-r--  1 tuhu cu_10181 1.1K Oct 24  2023 INFIMM-TB-MINCLE/LICENSE
+-rw-rw-r--  1 tuhu cu_10181  852 Oct 24  2023 INFIMM-TB-MINCLE/README.md
+-rw-------  1 tuhu ku_00216    0 Oct 24  2023 INFIMM-TB-MINCLE/rna_seq_GSE142688.sh.e46886268
+-rw-------  1 tuhu ku_00216    0 Oct 24  2023 INFIMM-TB-MINCLE/rna_seq_GSE142688.sh.e46887778
+-rw-------  1 tuhu ku_00216    0 Oct 24  2023 INFIMM-TB-MINCLE/rna_seq_GSE142688.sh.e46887893
+-rw-------  1 tuhu ku_00216 2.6K Oct 24  2023 INFIMM-TB-MINCLE/rna_seq_GSE142688.sh.o46886268
+-rw-------  1 tuhu ku_00216  22K Oct 24  2023 INFIMM-TB-MINCLE/rna_seq_GSE142688.sh.o46887778
+-rw-------  1 tuhu ku_00216 165K Oct 24  2023 INFIMM-TB-MINCLE/rna_seq_GSE142688.sh.o46887893
+-rw-------  1 tuhu ku_00216    0 Oct 25  2023 INFIMM-TB-MINCLE/rna_seq_GSE142689.sh.e46908539
+-rw-------  1 tuhu ku_00216    0 Oct 26  2023 INFIMM-TB-MINCLE/rna_seq_GSE142689.sh.e46915563
+-rw-------  1 tuhu ku_00216  24K Oct 25  2023 INFIMM-TB-MINCLE/rna_seq_GSE142689.sh.o46908539
+-rw-------  1 tuhu ku_00216 172K Oct 26  2023 INFIMM-TB-MINCLE/rna_seq_GSE142689.sh.o46915563
+-rw-------  1 tuhu ku_00216 9.2K Oct 25  2023 INFIMM-TB-MINCLE/sratool_download_GSE142689.sh.e46907783
+-rw-------  1 tuhu ku_00216   12 Oct 25  2023 INFIMM-TB-MINCLE/sratool_download_GSE142689.sh.o46907783
+-rw-------  1 tuhu ku_00216    0 Oct  9  2023 kelvin_collaboration/1_nfcore_rnaseq_mapping.sh.e46237841
+-rw-------  1 tuhu ku_00216    0 Oct  9  2023 kelvin_collaboration/1_nfcore_rnaseq_mapping.sh.e46255522
+-rw-------  1 tuhu ku_00216 2.6K Oct  9  2023 kelvin_collaboration/1_nfcore_rnaseq_mapping.sh.o46237841
+-rw-------  1 tuhu ku_00216 3.1M Oct  9  2023 kelvin_collaboration/1_nfcore_rnaseq_mapping.sh.o46255522
+-rw-rw-r--  1 tuhu cu_10181 1.1K Oct  7  2023 kelvin_collaboration/LICENSE
+-rw-rw-r--  1 tuhu cu_10181   48 Oct  7  2023 kelvin_collaboration/README.md
+-rw-------  1 tuhu cu_10181 366K Dec 15  2023 TB-Endothelial/1_bcl2fastq.sh.e47949051
+-rw-------  1 tuhu cu_10181 368K Dec 15  2023 TB-Endothelial/1_bcl2fastq.sh.e47950521
+-rw-------  1 tuhu cu_10181 369K Dec 20  2023 TB-Endothelial/1_bcl2fastq.sh.e47991448
+-rw-------  1 tuhu cu_10181    0 Dec 15  2023 TB-Endothelial/1_bcl2fastq.sh.o47949051
+-rw-------  1 tuhu cu_10181    0 Dec 15  2023 TB-Endothelial/1_bcl2fastq.sh.o47950521
+-rw-------  1 tuhu cu_10181    0 Dec 20  2023 TB-Endothelial/1_bcl2fastq.sh.o47991448
+-rw-------  1 tuhu ku_00216  119 Dec 20  2023 TB-Endothelial/2_nextflow_rnaseq.sh.e47992565
+-rw-------  1 tuhu ku_00216 3.0K Dec 20  2023 TB-Endothelial/2_nextflow_rnaseq.sh.e47992599
+-rw-------  1 tuhu ku_00216   77 Dec 20  2023 TB-Endothelial/2_nextflow_rnaseq.sh.e47992638
+-rw-------  1 tuhu ku_00216    0 Dec 20  2023 TB-Endothelial/2_nextflow_rnaseq.sh.e47992664
+-rw-------  1 tuhu ku_00216    0 Dec 20  2023 TB-Endothelial/2_nextflow_rnaseq.sh.e47992667
+-rw-------  1 tuhu ku_00216   36 Dec 20  2023 TB-Endothelial/2_nextflow_rnaseq.sh.o47992565
+-rw-------  1 tuhu ku_00216  220 Dec 20  2023 TB-Endothelial/2_nextflow_rnaseq.sh.o47992599
+-rw-------  1 tuhu ku_00216 2.2K Dec 20  2023 TB-Endothelial/2_nextflow_rnaseq.sh.o47992638
+-rw-------  1 tuhu ku_00216  23K Dec 20  2023 TB-Endothelial/2_nextflow_rnaseq.sh.o47992664
+-rw-------  1 tuhu ku_00216 280K Dec 20  2023 TB-Endothelial/2_nextflow_rnaseq.sh.o47992667
+-rw-r--r--  1 tuhu cu_10181 1.1K Dec 15  2023 TB-Endothelial/LICENSE
+-rw-r--r--  1 tuhu cu_10181   69 Dec 15  2023 TB-Endothelial/README.md
+-rw-------  1 tuhu ku_00216    2 Dec 27  2023 TB-FLEX-total-lung/1_cellranger_mkfastq.sh.e48015178
+-rw-------  1 tuhu ku_00216    2 Jan  2  2024 TB-FLEX-total-lung/1_cellranger_mkfastq.sh.e48023978
+-rw-------  1 tuhu ku_00216    2 Jan  2  2024 TB-FLEX-total-lung/1_cellranger_mkfastq.sh.e48023985
+-rw-------  1 tuhu ku_00216  12K Dec 27  2023 TB-FLEX-total-lung/1_cellranger_mkfastq.sh.o48015178
+-rw-------  1 tuhu ku_00216 1.9K Jan  2  2024 TB-FLEX-total-lung/1_cellranger_mkfastq.sh.o48023978
+-rw-------  1 tuhu ku_00216  15K Jan  2  2024 TB-FLEX-total-lung/1_cellranger_mkfastq.sh.o48023985
+-rw-------  1 tuhu ku_00216    2 Jan  3  2024 TB-FLEX-total-lung/2_cellranger_multi_pool1.sh.e48031484
+-rw-------  1 tuhu ku_00216 224K Jan  3  2024 TB-FLEX-total-lung/2_cellranger_multi_pool1.sh.o48031484
+-rw-rw-r--  1 tuhu tuhu     1.1K Dec 27  2023 TB-FLEX-total-lung/LICENSE
+-rw-rw-r--  1 tuhu tuhu      313 Jan 24  2024 TB-FLEX-total-lung/README.md
+-rw-rw-r--  1 tuhu tuhu      205 Jan 24  2024 TB-FLEX-total-lung/TB-FLEX-total-lung.Rproj
+-rw-r--r--  1 tuhu cu_10181   95 May 19  2023 _test_rocker/test_rocker.sh
+
+10xFLEX/data:
+total 1.5K
+-rw-rw-r-- 1 tuhu cu_10181 728 Jun 14  2023 EYFP.fa
+-rw-r--r-- 1 tuhu cu_10181 623 May 24  2023 YFP_candidate.csv
+-rw-r--r-- 1 tuhu cu_10181 416 May 24  2023 YFP_candidate_sequences.txt
+
+10xFLEX/R:
+total 16K
+-rw-rw-r-- 1 tuhu cu_10181 5.2K Jun 14  2023 1_YFP.qmd
+
+10xFLEX/renv:
+total 34K
+-rw-rw-r-- 1 tuhu cu_10181  28K Jun 14  2023 activate.R
+drwxr-xr-x 3 tuhu cu_10181 4.0K Jun 15  2023 library
+-rw-rw-r-- 1 tuhu cu_10181  363 Jun 14  2023 settings.json
+drwxr-xr-x 2 tuhu cu_10181 4.0K Jun 15  2023 staging
+
+adpso_endotypes_federated/analysis:
+total 1.0K
+drwxrwxr-x 2 tuhu tuhu 4.0K Apr 30 20:52 array_affy
+drwxrwxr-x 2 tuhu tuhu 4.0K Apr 30 20:52 rnaseq
+
+adpso_endotypes_federated/data:
+total 8.7M
+-rw-rw-r-- 1 tuhu tuhu  11K Apr 30 20:52 ad_cluster_membership.csv
+-rw-rw-r-- 1 tuhu tuhu 4.1M Apr 30 20:52 ad_degs_inter_cluster.csv
+-rw-rw-r-- 1 tuhu tuhu  37K Apr 30 20:52 ad_genes.txt
+-rw-rw-r-- 1 tuhu tuhu 207K Apr 30 20:52 common_genes.txt
+-rw-rw-r-- 1 tuhu tuhu  21K Apr 30 20:52 dictionary.xlsx
+-rw-rw-r-- 1 tuhu tuhu  13K Apr 30 20:52 pso_cluster_membership.csv
+-rw-rw-r-- 1 tuhu tuhu 4.2M Apr 30 20:52 pso_degs_inter_cluster.csv
+-rw-rw-r-- 1 tuhu tuhu  77K Apr 30 20:52 pso_genes.txt
+
+adpso_endotypes_federated/docker:
+total 16K
+-rw-rw-r-- 1 tuhu tuhu 4.3K Apr 30 20:52 Dockerfile
+
+adpso_endotypes_federated/singularity:
+total 16K
+-rw-rw-r-- 1 tuhu tuhu 4.3K Apr 30 20:52 Singularity
+
+adpso_endotypes_federated/test:
+total 17K
+-rw-rw-r-- 1 tuhu tuhu 4.8K Apr 30 20:52 les_ad_pheno.raw.csv
+-rw-rw-r-- 1 tuhu tuhu 3.6K Apr 30 20:52 les_pso_pheno.raw.csv
+-rw-rw-r-- 1 tuhu tuhu  557 Apr 30 20:52 test.R
+
+bd_rhapsody_velocyto/work:
+total 3.0K
+drwxr-xr-x 3 tuhu cu_10181 4.0K May 22  2023 6c
+drwxr-xr-x 3 tuhu cu_10181 4.0K May 22  2023 7e
+drwxr-xr-x 3 tuhu cu_10181 4.0K May 22  2023 8a
+drwxr-xr-x 3 tuhu cu_10181 4.0K May 22  2023 c1
+drwxr-xr-x 3 tuhu cu_10181 4.0K Dec  6  2023 dd
+drwxr-xr-x 3 tuhu cu_10181 4.0K Dec  6  2023 f0
+
+_cache_nextflow/assets:
+total 1.0K
+drwxr-xr-x 3 tuhu cu_10181 4.0K Mar 11  2023 nextflow-io
+drwxr-xr-x 5 tuhu cu_10181 4.0K Dec  6  2023 nf-core
+
+_cache_nextflow/capsule:
+total 512
+drwxr-xr-x 14 tuhu cu_10181 4.0K Mar 11  2023 deps
+
+_cache_nextflow/framework:
+total 512
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 22.10.4
+
+_cache_nextflow/nf-core:
+total 80K
+-rw-r--r-- 1 tuhu cu_10181 6.5K Apr 13  2023 wf-config-cache-19e1cb1b9592bf7a85cbe0c9b.json
+-rw-rw-r-- 1 tuhu cu_10181  60K Apr 13  2023 wf-config-cache-b134709b91d2a4078bc4956da.json
+
+_cache_nextflow/plugins:
+total 512
+drwxr-xr-x 5 tuhu cu_10181 4.0K Dec  6  2023 nf-amazon-1.11.2
+
+_cache_nextflow/tmp:
+total 1.0K
+drwxr-xr-x 3 tuhu cu_10181 4.0K Mar 11  2023 launcher
+drwxr-xr-x 2 tuhu cu_10181 4.0K Mar 11  2023 ver
+
+_cache_nextflow/work:
+total 17K
+drwxr-xr-x 2 tuhu cu_10181 4.0K Mar 11  2023 07
+drwxr-xr-x 2 tuhu cu_10181 4.0K Mar 11  2023 1d
+drwxr-xr-x 2 tuhu cu_10181 4.0K Mar 11  2023 24
+drwxr-xr-x 2 tuhu cu_10181 4.0K Mar 11  2023 25
+drwxr-xr-x 2 tuhu cu_10181 4.0K Mar 11  2023 2a
+drwxr-xr-x 2 tuhu cu_10181 4.0K Mar 11  2023 2e
+drwxr-xr-x 2 tuhu cu_10181 4.0K Mar 11  2023 30
+drwxr-xr-x 2 tuhu cu_10181 4.0K Mar 11  2023 31
+drwxr-xr-x 2 tuhu cu_10181 4.0K Mar 11  2023 3b
+drwxr-xr-x 2 tuhu cu_10181 4.0K Mar 11  2023 44
+drwxr-xr-x 2 tuhu cu_10181 4.0K Mar 11  2023 4d
+drwxr-xr-x 2 tuhu cu_10181 4.0K Mar 11  2023 54
+drwxr-xr-x 2 tuhu cu_10181 4.0K Mar 11  2023 65
+drwxr-xr-x 2 tuhu cu_10181 4.0K Mar 11  2023 68
+drwxr-xr-x 2 tuhu cu_10181 4.0K Mar 11  2023 77
+drwxr-xr-x 2 tuhu cu_10181 4.0K Mar 11  2023 7d
+drwxr-xr-x 2 tuhu cu_10181 4.0K Mar 11  2023 7f
+drwxr-xr-x 2 tuhu cu_10181 4.0K Mar 11  2023 83
+drwxr-xr-x 2 tuhu cu_10181 4.0K Mar 11  2023 84
+drwxr-xr-x 2 tuhu cu_10181 4.0K Mar 11  2023 86
+drwxr-xr-x 2 tuhu cu_10181 4.0K Mar 11  2023 8d
+drwxr-xr-x 2 tuhu cu_10181 4.0K Mar 11  2023 b3
+drwxr-xr-x 2 tuhu cu_10181 4.0K Mar 11  2023 b4
+drwxr-xr-x 2 tuhu cu_10181 4.0K Mar 11  2023 b6
+drwxr-xr-x 2 tuhu cu_10181 4.0K Mar 11  2023 c6
+drwxr-xr-x 2 tuhu cu_10181 4.0K Mar 11  2023 ca
+drwxr-xr-x 2 tuhu cu_10181 4.0K Mar 11  2023 de
+drwxr-xr-x 2 tuhu cu_10181 4.0K Mar 11  2023 e1
+drwxr-xr-x 2 tuhu cu_10181 4.0K Mar 11  2023 ee
+drwxr-xr-x 2 tuhu cu_10181 4.0K Mar 11  2023 f8
+drwxr-xr-x 2 tuhu cu_10181 4.0K Mar 11  2023 f9
+drwxr-xr-x 2 tuhu cu_10181 4.0K Mar 11  2023 fd
+drwxr-xr-x 2 tuhu cu_10181 4.0K Mar 11  2023 singularity
+drwxr-xr-x 3 tuhu cu_10181 4.0K Mar 11  2023 tmp
+
+_cache_R/cache:
+total 512
+drwxr-xr-x 3 tuhu cu_10181 4.0K Mar 27  2023 v5
+
+_cache_R/index:
+total 512
+drwxr-xr-x 3 tuhu cu_10181 4.0K Dec  6  2023 R-4.2
+
+_cache_R/R:
+total 1.0K
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 ExperimentHub
+drwxr-xr-x 6 tuhu cu_10181 4.0K Dec  6  2023 renv
+
+_cache_R/source:
+total 512
+drwxr-xr-x 3 tuhu cu_10181 4.0K Mar 27  2023 repository
+
+_cache_R/v5:
+total 512
+drwxr-xr-x 3 tuhu cu_10181 4.0K May  4  2023 R-4.2
+
+_cache_vscode/vsc-ext:
+total 55K
+drwxrwxr-x  5 tuhu cu_10181 4.0K Dec  6  2023 alefragnani.project-manager-12.7.0
+drwxr-xr-x 13 tuhu cu_10181 4.0K Dec  6  2023 cweijan.vscode-office-3.1.6
+drwxr-xr-x  4 tuhu cu_10181 4.0K Dec  6  2023 davidanson.vscode-markdownlint-0.51.0
+drwxrwxr-x  5 tuhu cu_10181 4.0K Dec  6  2023 eamodio.gitlens-13.5.0
+drwxrwxr-x  7 tuhu cu_10181 4.0K Dec  6  2023 eighthundreds.vscode-drawio-1.0.3
+drwxr-xr-x  4 tuhu cu_10181 4.0K Dec  6  2023 emmanuelbeziat.vscode-great-icons-2.1.93
+-rw-rw-r--  1 tuhu cu_10181  26K Jun 18  2023 extensions.json
+drwxr-xr-x  5 tuhu cu_10181 4.0K Dec  6  2023 github.codespaces-1.14.8
+drwxr-xr-x  4 tuhu cu_10181 4.0K Dec  6  2023 github.copilot-1.89.156
+drwxrwxr-x  4 tuhu cu_10181 4.0K Dec  6  2023 github.vscode-pull-request-github-0.62.0
+drwxr-xr-x  4 tuhu cu_10181 4.0K Dec  6  2023 gitpod.gitpod-desktop-0.0.128
+drwxrwxr-x  6 tuhu cu_10181 4.0K Dec  6  2023 grapecity.gc-excelviewer-4.2.57
+drwxrwxr-x 10 tuhu cu_10181 4.0K Dec  6  2023 jkroening.vscoder-0.0.2
+drwxr-xr-x  6 tuhu cu_10181 4.0K Dec  6  2023 kevinrose.vsc-python-indent-1.18.0
+drwxrwxr-x  9 tuhu cu_10181 4.0K Dec  6  2023 mikhail-arkhipov.r-0.0.30
+drwxr-xr-x  4 tuhu cu_10181 4.0K Dec  6  2023 ms-azuretools.vscode-docker-1.25.1
+drwxrwxr-x  7 tuhu cu_10181 4.0K Dec  6  2023 ms-python.isort-2022.8.0
+drwxrwxr-x 10 tuhu cu_10181 4.0K Dec  6  2023 ms-python.python-2023.6.1
+drwxr-xr-x  4 tuhu cu_10181 4.0K Dec  6  2023 ms-python.vscode-pylance-2023.5.30
+drwxrwxr-x  9 tuhu cu_10181 4.0K Dec  6  2023 ms-toolsai.jupyter-2023.3.1201040234
+drwxrwxr-x  3 tuhu cu_10181 4.0K Dec  6  2023 ms-toolsai.jupyter-keymap-1.1.0
+drwxrwxr-x  4 tuhu cu_10181 4.0K Dec  6  2023 ms-toolsai.jupyter-renderers-1.0.15
+drwxrwxr-x  6 tuhu cu_10181 4.0K Dec  6  2023 ms-toolsai.vscode-jupyter-cell-tags-0.1.8
+drwxrwxr-x  5 tuhu cu_10181 4.0K Dec  6  2023 ms-toolsai.vscode-jupyter-slideshow-0.1.5
+drwxrwxr-x  7 tuhu cu_10181 4.0K Dec  6  2023 ms-vscode.remote-explorer-0.4.0
+drwxr-xr-x  8 tuhu cu_10181 4.0K Dec  6  2023 ms-vscode-remote.remote-containers-0.295.0
+drwxr-xr-x  7 tuhu cu_10181 4.0K Dec  6  2023 ms-vscode-remote.remote-ssh-0.102.0
+drwxr-xr-x  8 tuhu cu_10181 4.0K Dec  6  2023 ms-vscode-remote.remote-ssh-edit-0.86.0
+drwxr-xr-x  7 tuhu cu_10181 4.0K Dec  6  2023 ms-vscode-remote.remote-wsl-0.77.0
+drwxr-xr-x  5 tuhu cu_10181 4.0K Dec  6  2023 ms-vscode.remote-server-1.2.2023060622
+drwxr-xr-x  9 tuhu cu_10181 4.0K Dec  6  2023 ms-vsliveshare.vsliveshare-1.0.5873
+drwxr-xr-x  7 tuhu cu_10181 4.0K Dec  6  2023 quarto.quarto-1.87.3
+drwxrwxr-x  8 tuhu cu_10181 4.0K Dec  6  2023 randomfractalsinc.vscode-data-preview-2.3.0
+drwxrwxr-x  7 tuhu cu_10181 4.0K Dec  6  2023 reageyao.biosyntax-0.0.11
+drwxrwxr-x  5 tuhu cu_10181 4.0K Dec  6  2023 redhat.vscode-commons-0.0.6
+drwxr-xr-x  6 tuhu cu_10181 4.0K Dec  6  2023 redhat.vscode-yaml-1.13.0
+drwxr-xr-x  9 tuhu cu_10181 4.0K Dec  6  2023 reditorsupport.r-2.8.1
+drwxr-xr-x 12 tuhu cu_10181 4.0K Dec  6  2023 sonarsource.sonarlint-vscode-3.18.0-linux-x64
+drwxr-xr-x  6 tuhu cu_10181 4.0K Dec  6  2023 streetsidesoftware.code-spell-checker-2.20.5
+drwxrwxr-x  7 tuhu cu_10181 4.0K Dec  6  2023 techer.open-in-browser-2.0.0
+drwxrwxr-x  6 tuhu cu_10181 4.0K Dec  6  2023 threadheap.serverless-ide-vscode-0.6.1
+drwxrwxr-x  9 tuhu cu_10181 4.0K Dec  6  2023 tianyishi.rmarkdown-0.0.14
+drwxrwxr-x  5 tuhu cu_10181 4.0K Dec  6  2023 tomoki1207.pdf-1.2.2
+drwxrwxr-x  5 tuhu cu_10181 4.0K Dec  6  2023 vscode-icons-team.vscode-icons-12.4.0
+drwxrwxr-x  8 tuhu cu_10181 4.0K Dec  6  2023 yzane.markdown-pdf-1.4.4
+drwxrwxr-x  8 tuhu cu_10181 4.0K Dec  6  2023 yzhang.markdown-all-in-one-3.5.1
+
+_cache_vscode/vsc-user-data:
+total 60K
+drwxrwxr-x  2 tuhu cu_10181 4.0K Jun 18  2023 Backups
+drwx------  3 tuhu cu_10181 4.0K Dec  6  2023 blob_storage
+drwx------  3 tuhu cu_10181 4.0K Apr 25  2023 Cache
+drwxr-xr-x  3 tuhu cu_10181 4.0K Dec  6  2023 CachedConfigurations
+drwxrwxr-x  3 tuhu cu_10181 4.0K Dec  6  2023 CachedData
+drwxrwxr-x  2 tuhu cu_10181 4.0K Dec  6  2023 CachedExtensionVSIXs
+drwxrwxr-x  3 tuhu cu_10181 4.0K Dec  6  2023 CachedProfilesData
+drwx------  4 tuhu cu_10181 4.0K Dec  6  2023 Code Cache
+-rw-------  1 tuhu cu_10181  20K Apr 25  2023 Cookies
+-rw-------  1 tuhu cu_10181    0 Apr 25  2023 Cookies-journal
+drwx------  6 tuhu cu_10181 4.0K Dec  6  2023 Crashpad
+drwx------  2 tuhu cu_10181 4.0K Dec  6  2023 databases
+drwx------  2 tuhu cu_10181 4.0K Dec  6  2023 Dictionaries
+drwx------  2 tuhu cu_10181 4.0K Dec  6  2023 GPUCache
+-rw-rw-r--  1 tuhu cu_10181    2 Jun 18  2023 languagepacks.json
+drwx------  3 tuhu cu_10181 4.0K Dec  6  2023 Local Storage
+drwxrwxr-x 12 tuhu cu_10181 4.0K Dec  6  2023 logs
+-rw-rw-r--  1 tuhu cu_10181   36 Apr 25  2023 machineid
+-rw-------  1 tuhu cu_10181 3.8K Jun 18  2023 Network Persistent State
+-rw-------  1 tuhu cu_10181  153 Jun 18  2023 Preferences
+drwx------  5 tuhu cu_10181 4.0K Dec  6  2023 Service Worker
+drwx------  2 tuhu cu_10181 4.0K Dec  6  2023 Session Storage
+-rw-------  1 tuhu cu_10181 6.4K Jun 18  2023 TransportSecurity
+drwxrwxr-x  7 tuhu cu_10181 4.0K Dec  6  2023 User
+drwx------  2 tuhu cu_10181 4.0K Dec  6  2023 WebStorage
+drwxr-xr-x  2 tuhu cu_10181 4.0K Jun 14  2023 Workspaces
+
+chlamydia01/data:
+total 512
+-rw-rw-r-- 1 tuhu tuhu 1.8K Aug 16 15:11 transgenic.fa
+
+chlamydia01/pre-processing:
+total 1.0K
+-rw-rw-r-- 1 tuhu tuhu 781 Feb  6  2024 demultiplexing.sh
+-rw-rw-r-- 1 tuhu tuhu 562 Aug 16 15:30 SampleSheet.csv
+
+_download/230523_A00962_0100_AH7CKYDRX3:
+total 83K
+drwxr-x---   2 tuhu cu_10181 4.0K Dec  6  2023 Config
+-rwxr-x---   1 tuhu cu_10181    0 May 23  2023 CopyComplete.txt
+drwxr-x---   3 tuhu cu_10181 4.0K May 23  2023 Data
+drwxr-x--- 140 tuhu cu_10181  16K Dec  6  2023 InterOp
+drwxr-x---  10 tuhu cu_10181  16K Dec  6  2023 Logs
+drwxr-x---   2 tuhu cu_10181 4.0K Dec  6  2023 Recipe
+-rwxr-x---   1 tuhu cu_10181 4.2K May 23  2023 RTA3.cfg
+-rwxr-x---   1 tuhu cu_10181    1 May 23  2023 RTAComplete.txt
+-rwxr-x---   1 tuhu cu_10181 8.5K May 23  2023 RunInfo.xml
+-rwxr-x---   1 tuhu cu_10181 6.7K May 23  2023 RunParameters.xml
+-rwxr-x---   1 tuhu cu_10181    0 May 23  2023 SequenceComplete.txt
+drwxr-x---   4 tuhu cu_10181 4.0K Dec  6  2023 Thumbnail_Images
+
+GSE200151_granuloma/data:
+total 43M
+-rw-rw-r-- 1 tuhu cu_10181  41M Mar 10  2023 GSE200151_Updated10wk_alexandria_structured_metadata10.txt
+-rw-rw-r-- 1 tuhu cu_10181 2.7M Mar 10  2023 GSE200151_Updated4wk_alexandria_structured_metadata3.txt
+
+GSE200151_granuloma/doc:
+total 512
+-rw-rw-r-- 1 tuhu cu_10181 1.1K Mar 13  2023 geo_download.sh
+
+GSE200151_granuloma/R:
+total 512
+-rw-rw-r-- 1 tuhu cu_10181 374 Mar 10  2023 0_data_checking_cleaning.qmd
+
+GSE200151_granuloma/R_author:
+total 177K
+-rw-rw-r-- 1 tuhu cu_10181  48K Mar 10  2023 Figure6.Rmd
+-rw-rw-r-- 1 tuhu cu_10181  44K Mar 10  2023 Figures1to5.rmd
+-rw-rw-r-- 1 tuhu cu_10181 2.1K Mar 10  2023 GranulomaEmptyDrops.r
+-rw-rw-r-- 1 tuhu cu_10181 8.5K Mar 10  2023 GranulomaSoupX.rmd
+-rw-rw-r-- 1 tuhu cu_10181  63K Mar 10  2023 Plotting.Rmd
+
+guide-nextflow-scRNA-seq/doc:
+total 512
+-rw-r--r-- 1 tuhu cu_10181 889 Mar 13  2023 test.sh
+
+INFIMM-caf01_caf08b_caf39/caf39:
+total 0
+
+INFIMM-caf01_caf08b_caf39/data:
+total 264M
+-rw-rw-r-- 1 tuhu cu_10181 25M Mar 24  2023 CAF01_raw_feature_bc_matrix.h5
+-rw-rw-r-- 1 tuhu cu_10181 28M Mar 24  2023 CAF08b_raw_feature_bc_matrix.h5
+-rw-rw-r-- 1 tuhu cu_10181 18M Mar 24  2023 CAF39_raw_feature_bc_matrix.h5
+-rw-r--r-- 1 tuhu cu_10181 80M Mar 27  2023 l_matrix.rds
+-rw-r--r-- 1 tuhu cu_10181 80M Mar 27  2023 l_matrix_test.rds
+-rw-rw-r-- 1 tuhu cu_10181 35M Mar 24  2023 tris_raw_feature_bc_matrix.h5
+
+INFIMM-caf01_caf08b_caf39/renv:
+total 33K
+-rw-rw-r-- 1 tuhu cu_10181  28K Mar 22  2023 activate.R
+drwxr-xr-x 4 tuhu cu_10181 4.0K Apr  4  2023 library
+drwxr-xr-x 2 tuhu cu_10181 4.0K Apr  4  2023 staging
+
+INFIMM-caf01_caf08b_caf39/Rmd:
+total 129K
+drwxr-xr-x 3 tuhu cu_10181 4.0K Apr 12  2023 scRNA-seq-reanalysis_cache
+drwxr-xr-x 4 tuhu cu_10181 4.0K Apr 12  2023 scRNA-seq-reanalysis_files
+-rw-r--r-- 1 tuhu cu_10181  99K Apr 12  2023 scRNA-seq-reanalysis.html
+-rw-r--r-- 1 tuhu cu_10181 6.7K Apr 12  2023 scRNA-seq-reanalysis.qmd
+
+INFIMM-TB-F2853/analysis:
+total 54K
+-rw-r--r-- 1 tuhu cu_10181  163 May 24  2023 0_cellranger_site_check.sh
+-rw-rw-r-- 1 tuhu cu_10181  953 Oct  5  2023 10_data_processing_ssi.sh
+-rw------- 1 tuhu ku_00216  300 Oct  5  2023 10_data_processing_ssi.sh.e46193872
+-rw------- 1 tuhu ku_00216    0 Oct  5  2023 10_data_processing_ssi.sh.o46193872
+-rw-r--r-- 1 tuhu cu_10181 2.2K May 24  2023 1_custom_ref_genome.qmd
+-rw-rw-r-- 1 tuhu cu_10181  521 Oct 26  2023 2_1_cellranger_mkfastq.sh
+-rw-rw-r-- 1 tuhu cu_10181  509 Aug  2  2023 2_convert_bcl_fastq.sh
+-rw-r--r-- 1 tuhu cu_10181  500 May 29  2023 3_mapping_vaccine.sh
+-rw-r--r-- 1 tuhu cu_10181  500 May 29  2023 4_mapping_control.sh
+-rw-rw-r-- 1 tuhu cu_10181 4.7K Oct  5  2023 5_QC_sanitycheck.qmd
+-rw-rw-r-- 1 tuhu cu_10181 8.7K Oct  5  2023 6_vacc_dimension_reduction_clustering.Rmd
+-rw-rw-r-- 1 tuhu cu_10181 4.1K Aug  2  2023 7_evidence_in_literature.Rmd
+-rw-rw-r-- 1 tuhu cu_10181  190 Oct  5  2023 8_compare_two_groups.Rmd
+-rw-rw-r-- 1 tuhu cu_10181 3.5K Aug  2  2023 9_eYFP_pos_vs_neg.Rmd
+drwxr-xr-x 4 tuhu cu_10181 4.0K Dec  6  2023 renv
+-rw-rw-r-- 1 tuhu cu_10181  184 Aug  2  2023 transfer_ssi_computerome.sh
+
+INFIMM-TB-F2853/control:
+total 8.7M
+-rw-r--r--  1 tuhu cu_10181  195 May 29  2023 _cmdline
+-rw-r--r--  1 tuhu cu_10181 3.8M May 29  2023 control.mri.tgz
+-rw-r--r--  1 tuhu cu_10181 163K May 29  2023 _filelist
+-rw-r--r--  1 tuhu cu_10181 3.1M May 29  2023 _finalstate
+-rw-r--r--  1 tuhu cu_10181 1.5K May 29  2023 _invocation
+-rw-r--r--  1 tuhu cu_10181    5 May 29  2023 _jobmode
+-rw-r--r--  1 tuhu cu_10181 124K May 29  2023 _log
+-rw-r--r--  1 tuhu cu_10181 289K May 29  2023 _mrosource
+drwxr-xr-x  3 tuhu cu_10181 4.0K Dec  6  2023 outs
+-rw-r--r--  1 tuhu cu_10181 1.1M May 29  2023 _perf
+-rw-r--r--  1 tuhu cu_10181  11K May 29  2023 _perf._truncated_
+drwxr-xr-x 10 tuhu cu_10181 4.0K Dec  6  2023 SC_RNA_COUNTER_CS
+-rw-r--r--  1 tuhu cu_10181  19K May 29  2023 _sitecheck
+-rw-r--r--  1 tuhu cu_10181    2 May 29  2023 _tags
+-rw-r--r--  1 tuhu cu_10181   51 May 29  2023 _timestamp
+-rw-r--r--  1 tuhu cu_10181   36 May 29  2023 _uuid
+-rw-r--r--  1 tuhu cu_10181 146K May 29  2023 _vdrkill
+-rw-r--r--  1 tuhu cu_10181   65 May 29  2023 _versions
+
+INFIMM-TB-F2853/ctrl_ssiseq:
+total 9.0M
+-rw-r--r--  1 tuhu cu_10181  275 Oct  5  2023 _cmdline
+-rw-r--r--  1 tuhu cu_10181 3.7M Oct  5  2023 ctrl_ssiseq.mri.tgz
+-rw-r--r--  1 tuhu cu_10181 172K Oct  5  2023 _filelist
+-rw-r--r--  1 tuhu cu_10181 3.4M Oct  5  2023 _finalstate
+-rw-r--r--  1 tuhu cu_10181 1.5K Oct  5  2023 _invocation
+-rw-r--r--  1 tuhu cu_10181    5 Oct  5  2023 _jobmode
+-rw-r--r--  1 tuhu cu_10181 124K Oct  5  2023 _log
+-rw-r--r--  1 tuhu cu_10181 289K Oct  5  2023 _mrosource
+drwxr-xr-x  5 tuhu cu_10181 4.0K Oct  5  2023 outs
+-rw-r--r--  1 tuhu cu_10181 1.1M Oct  5  2023 _perf
+-rw-r--r--  1 tuhu cu_10181  11K Oct  5  2023 _perf._truncated_
+drwxr-xr-x 10 tuhu cu_10181 4.0K Oct  5  2023 SC_RNA_COUNTER_CS
+-rw-r--r--  1 tuhu cu_10181  19K Oct  5  2023 _sitecheck
+-rw-r--r--  1 tuhu cu_10181    2 Oct  5  2023 _tags
+-rw-r--r--  1 tuhu cu_10181   51 Oct  5  2023 _timestamp
+-rw-r--r--  1 tuhu cu_10181   36 Oct  5  2023 _uuid
+-rw-r--r--  1 tuhu cu_10181 180K Oct  5  2023 _vdrkill
+-rw-r--r--  1 tuhu cu_10181   65 Oct  5  2023 _versions
+
+INFIMM-TB-F2853/data:
+total 174M
+drwxr-xr-x 4 tuhu cu_10181 4.0K Dec  6  2023 ctrl
+-rw-r--r-- 1 tuhu cu_10181  728 May 24  2023 EYFP.fa
+-rw-r--r-- 1 tuhu cu_10181  126 May 24  2023 EYFP.gtf
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 figure
+-rw-r--r-- 1 tuhu cu_10181 1.7K Jun 15  2023 g_eyfp_pos_vs_neg.gene
+-rw-r--r-- 1 tuhu cu_10181  41M Jun  8  2023 l_sce_r_p.rds
+-rw-r--r-- 1 tuhu cu_10181  41M Jun  8  2023 l_sce_r_p_with_death_prediction.rds
+-rw-r--r-- 1 tuhu cu_10181 229K Jun  5  2023 PMID28060797.xml
+-rw-r--r-- 1 tuhu cu_10181 248K Jun  5  2023 PMID30568299.xml
+-rw-r--r-- 1 tuhu cu_10181 8.0M Jun  6  2023 sce_r_p_t_c_bat.rds
+-rw-r--r-- 1 tuhu cu_10181  27M Jun  2  2023 sce_rpvb.rds
+-rw-r--r-- 1 tuhu cu_10181  57M Jun  9  2023 sce_vacc_pca_hv_umap_clst.rds
+drwxrwxr-x 4 tuhu cu_10181 4.0K Dec  6  2023 seq_ssi
+-rw-r--r-- 1 tuhu cu_10181   57 May 29  2023 _sequencing_meta.csv
+-rw-rw-r-- 1 tuhu cu_10181  547 Oct 26  2023 _sequencing_meta_SSI.csv
+drwxr-xr-x 4 tuhu cu_10181 4.0K Dec  6  2023 vacc
+
+INFIMM-TB-F2853/F2853:
+total 309K
+-rw-r--r-- 1 tuhu cu_10181   53 May 29  2023 _cmdline
+-rw-r--r-- 1 tuhu cu_10181  85K May 29  2023 F2853.mri.tgz
+-rw-r--r-- 1 tuhu cu_10181 4.9K May 29  2023 _filelist
+-rw-r--r-- 1 tuhu cu_10181  77K May 29  2023 _finalstate
+-rw-r--r-- 1 tuhu cu_10181 1.5K May 29  2023 _invocation
+-rw-r--r-- 1 tuhu cu_10181    5 May 29  2023 _jobmode
+-rw-r--r-- 1 tuhu cu_10181  14K May 29  2023 _log
+drwxr-xr-x 4 tuhu cu_10181 4.0K Dec  6  2023 MAKE_FASTQS_CS
+-rw-r--r-- 1 tuhu cu_10181  12K May 29  2023 _mrosource
+drwxr-xr-x 4 tuhu cu_10181 4.0K Dec  6  2023 outs
+-rw-r--r-- 1 tuhu cu_10181  40K May 29  2023 _perf
+-rw-r--r-- 1 tuhu cu_10181  19K May 29  2023 _sitecheck
+-rw-r--r-- 1 tuhu cu_10181    2 May 29  2023 _tags
+-rw-r--r-- 1 tuhu cu_10181   51 May 29  2023 _timestamp
+-rw-r--r-- 1 tuhu cu_10181   36 May 29  2023 _uuid
+-rw-r--r-- 1 tuhu cu_10181 1.2K May 29  2023 _vdrkill
+-rw-r--r-- 1 tuhu cu_10181   65 May 29  2023 _versions
+
+INFIMM-TB-F2853/F2853_SSI:
+total 86K
+-rw-r--r-- 1 tuhu cu_10181   53 Aug  2  2023 _cmdline
+-rw-r--r-- 1 tuhu cu_10181  15K Aug  2  2023 F2853_SSI.mri.tgz
+-rw-r--r-- 1 tuhu cu_10181 2.4K Aug  2  2023 _filelist
+-rw-r--r-- 1 tuhu cu_10181 1.4K Aug  2  2023 _invocation
+-rw-r--r-- 1 tuhu cu_10181    5 Aug  2  2023 _jobmode
+drwxr-xr-x 2 tuhu cu_10181 4.0K Aug  2  2023 journal
+-rw-r--r-- 1 tuhu cu_10181  14K Aug  2  2023 _log
+drwxr-xr-x 4 tuhu cu_10181 4.0K Dec  6  2023 MAKE_FASTQS_CS
+-rw-r--r-- 1 tuhu cu_10181  12K Aug  2  2023 _mrosource
+-rw-r--r-- 1 tuhu cu_10181  19K Aug  2  2023 _sitecheck
+-rw-r--r-- 1 tuhu cu_10181    2 Aug  2  2023 _tags
+-rw-r--r-- 1 tuhu cu_10181   26 Aug  2  2023 _timestamp
+drwxr-xr-x 2 tuhu cu_10181 4.0K Aug  2  2023 tmp
+-rw-r--r-- 1 tuhu cu_10181   36 Aug  2  2023 _uuid
+-rw-r--r-- 1 tuhu cu_10181   65 Aug  2  2023 _versions
+
+INFIMM-TB-F2853/jupyter:
+total 16K
+-rw-rw-r-- 1 tuhu cu_10181 7.9K Aug  2  2023 anndata.ipynb
+
+INFIMM-TB-F2853/mysite:
+total 2.5K
+-rw-rw-r-- 1 tuhu cu_10181   40 Jun  8  2023 about.qmd
+-rw-rw-r-- 1 tuhu cu_10181  130 Jun  8  2023 index.qmd
+-rw-rw-r-- 1 tuhu cu_10181  205 Jun  8  2023 _quarto.yml
+drwxrwxr-x 3 tuhu cu_10181 4.0K Dec  6  2023 _site
+-rw-r--r-- 1 tuhu cu_10181   17 Jun  8  2023 styles.css
+
+INFIMM-TB-F2853/renv:
+total 50K
+-rw-rw-r-- 1 tuhu cu_10181  33K Oct  5  2023 activate.R
+drwxr-xr-x 3 tuhu cu_10181 4.0K Jun  8  2023 library
+drwxr-xr-x 3 tuhu cu_10181 4.0K Dec  6  2023 sandbox
+-rw-rw-r-- 1 tuhu cu_10181  412 Aug  2  2023 settings.json
+drwxr-xr-x 2 tuhu cu_10181 4.0K Jun  8  2023 staging
+
+INFIMM-TB-F2853/vaccine:
+total 8.6M
+-rw-r--r--  1 tuhu cu_10181  195 May 29  2023 _cmdline
+-rw-r--r--  1 tuhu cu_10181 162K May 29  2023 _filelist
+-rw-r--r--  1 tuhu cu_10181 3.1M May 29  2023 _finalstate
+-rw-r--r--  1 tuhu cu_10181 1.5K May 29  2023 _invocation
+-rw-r--r--  1 tuhu cu_10181    5 May 29  2023 _jobmode
+-rw-r--r--  1 tuhu cu_10181 117K May 29  2023 _log
+-rw-r--r--  1 tuhu cu_10181 289K May 29  2023 _mrosource
+drwxr-xr-x  4 tuhu cu_10181 4.0K Dec  6  2023 outs
+-rw-r--r--  1 tuhu cu_10181 1.1M May 29  2023 _perf
+-rw-r--r--  1 tuhu cu_10181  11K May 29  2023 _perf._truncated_
+drwxr-xr-x 10 tuhu cu_10181 4.0K Dec  6  2023 SC_RNA_COUNTER_CS
+-rw-r--r--  1 tuhu cu_10181  19K May 29  2023 _sitecheck
+-rw-r--r--  1 tuhu cu_10181    2 May 29  2023 _tags
+-rw-r--r--  1 tuhu cu_10181   51 May 29  2023 _timestamp
+-rw-r--r--  1 tuhu cu_10181   36 May 29  2023 _uuid
+-rw-r--r--  1 tuhu cu_10181 3.8M May 29  2023 vaccine.mri.tgz
+-rw-r--r--  1 tuhu cu_10181 138K May 29  2023 _vdrkill
+-rw-r--r--  1 tuhu cu_10181   65 May 29  2023 _versions
+
+INFIMM-TB-F2853/vacc_ssiseq:
+total 9.2M
+-rw-r--r--  1 tuhu cu_10181  275 Oct  5  2023 _cmdline
+-rw-r--r--  1 tuhu cu_10181 177K Oct  5  2023 _filelist
+-rw-r--r--  1 tuhu cu_10181 3.6M Oct  5  2023 _finalstate
+-rw-r--r--  1 tuhu cu_10181 1.5K Oct  5  2023 _invocation
+-rw-r--r--  1 tuhu cu_10181    5 Oct  5  2023 _jobmode
+-rw-r--r--  1 tuhu cu_10181 131K Oct  5  2023 _log
+-rw-r--r--  1 tuhu cu_10181 289K Oct  5  2023 _mrosource
+drwxr-xr-x  5 tuhu cu_10181 4.0K Dec  6  2023 outs
+-rw-r--r--  1 tuhu cu_10181 1.1M Oct  5  2023 _perf
+-rw-r--r--  1 tuhu cu_10181  11K Oct  5  2023 _perf._truncated_
+drwxr-xr-x 10 tuhu cu_10181 4.0K Dec  6  2023 SC_RNA_COUNTER_CS
+-rw-r--r--  1 tuhu cu_10181  19K Oct  5  2023 _sitecheck
+-rw-r--r--  1 tuhu cu_10181    2 Oct  5  2023 _tags
+-rw-r--r--  1 tuhu cu_10181   51 Oct  5  2023 _timestamp
+-rw-r--r--  1 tuhu cu_10181   36 Oct  5  2023 _uuid
+-rw-r--r--  1 tuhu cu_10181 3.7M Oct  5  2023 vacc_ssiseq.mri.tgz
+-rw-r--r--  1 tuhu cu_10181 201K Oct  5  2023 _vdrkill
+-rw-r--r--  1 tuhu cu_10181   65 Oct  5  2023 _versions
+
+INFIMM-TB-FLEX/analysis:
+total 20K
+-rw-rw-r-- 1 tuhu cu_10181  494 Nov  6  2023 1_cellranger_mkfastq.sh
+-rw-rw-r-- 1 tuhu cu_10181  611 Nov  9  2023 2_cellranger_multi_probe2.sh
+-rw-rw-r-- 1 tuhu cu_10181  603 Nov  8  2023 2_cellranger_multi_probe.sh
+-rw-rw-r-- 1 tuhu cu_10181  575 Nov  7  2023 2_cellranger_multi.sh
+-rw-rw-r-- 1 tuhu cu_10181  675 Nov  8  2023 2_cellranger_multi_spliced.sh
+-rw-rw-r-- 1 tuhu cu_10181 4.6K Nov  9  2023 3_check_EYFP_expression.qmd
+drwxrwsr-x 2 tuhu cu_10181 4.0K Dec  6  2023 images
+-rwxrwxr-x 1 tuhu cu_10181  634 Nov  9  2023 rsync_to_local_probe123.sh
+-rwxrwxr-x 1 tuhu cu_10181  664 Nov  8  2023 rsync_to_local.sh
+
+INFIMM-TB-FLEX/data:
+total 51M
+-rw-r--r-- 1 tuhu cu_10181 6.3M Nov  7  2023 Chromium_Mouse_Transcriptome_Probe_Set_v1.0.1_mm10-2020-A.csv
+-rw-rw-r-- 1 tuhu cu_10181 6.3M Nov  9  2023 Chromium_Mouse_Transcriptome_Probe_Set_v1.0.1_mm10-2020-A_probe12.csv
+-rw-rw-r-- 1 tuhu cu_10181 6.3M Nov  9  2023 Chromium_Mouse_Transcriptome_Probe_Set_v1.0.1_mm10-2020-A_probe13.csv
+-rw-rw-r-- 1 tuhu cu_10181 6.3M Nov  8  2023 Chromium_Mouse_Transcriptome_Probe_Set_v1.0.1_mm10-2020-A_probe1.csv
+-rw-rw-r-- 1 tuhu cu_10181 6.3M Nov  9  2023 Chromium_Mouse_Transcriptome_Probe_Set_v1.0.1_mm10-2020-A_probe23.csv
+-rw-rw-r-- 1 tuhu cu_10181 6.3M Nov  8  2023 Chromium_Mouse_Transcriptome_Probe_Set_v1.0.1_mm10-2020-A_probe2.csv
+-rw-rw-r-- 1 tuhu cu_10181 6.3M Nov  8  2023 Chromium_Mouse_Transcriptome_Probe_Set_v1.0.1_mm10-2020-A_probe3.csv
+-rw-rw-r-- 1 tuhu cu_10181 6.3M Nov  7  2023 Chromium_Mouse_Transcriptome_Probe_Set_v1.0.1_mm10-2020-A_spliced.csv
+drwxrwsr-x 2 tuhu cu_10181 4.0K Dec  6  2023 config
+-rw-rw-r-- 1 tuhu cu_10181  388 Nov  7  2023 config_F2857_ctrl_IVneg.csv
+-rw-rw-r-- 1 tuhu cu_10181  396 Nov  7  2023 config_F2857_ctrl_IVneg_spliced.csv
+-rw-rw-r-- 1 tuhu cu_10181  388 Nov  7  2023 config_F2857_ctrl_IVpos.csv
+-rw-rw-r-- 1 tuhu cu_10181  396 Nov  7  2023 config_F2857_ctrl_IVpos_spliced.csv
+-rw-rw-r-- 1 tuhu cu_10181  388 Nov  7  2023 config_F2857_vacc_IVneg.csv
+-rw-rw-r-- 1 tuhu cu_10181  396 Nov  7  2023 config_F2857_vacc_IVneg_spliced.csv
+-rw-rw-r-- 1 tuhu cu_10181  387 Nov  7  2023 config_F2857_vacc_IVpos.csv
+-rw-rw-r-- 1 tuhu cu_10181  395 Nov  7  2023 config_F2857_vacc_IVpos_spliced.csv
+-rw-rw-r-- 1 tuhu cu_10181  728 Nov  6  2023 EYFP.fa
+drwxr-sr-x 8 tuhu cu_10181 4.0K Dec  6  2023 sequencing_data_ssi
+-rw-rw-r-- 1 tuhu cu_10181  130 Nov  6  2023 _sequencing_meta_ssi.csv
+
+INFIMM-TB-FLEX/F2857:
+total 16M
+-rw-r--r--  1 tuhu cu_10181   50 Nov  7  2023 _cmdline
+-rw-r--r--  1 tuhu cu_10181 5.4M Nov  7  2023 F2857.mri.tgz
+-rw-r--r--  1 tuhu cu_10181 232K Nov  7  2023 _filelist
+-rw-r--r--  1 tuhu cu_10181 7.3M Nov  7  2023 _finalstate
+-rw-r--r--  1 tuhu cu_10181 1.1K Nov  7  2023 _invocation
+-rw-r--r--  1 tuhu cu_10181    5 Nov  7  2023 _jobmode
+-rw-r--r--  1 tuhu cu_10181 163K Nov  7  2023 _log
+-rw-r--r--  1 tuhu cu_10181 282K Nov  7  2023 _mrosource
+drwxr-sr-x  4 tuhu cu_10181 4.0K Dec  6  2023 outs
+-rw-r--r--  1 tuhu cu_10181 1.6M Nov  7  2023 _perf
+-rw-r--r--  1 tuhu cu_10181  10K Nov  7  2023 _perf._truncated_
+drwxr-sr-x 12 tuhu cu_10181 4.0K Dec  6  2023 SC_MULTI_CS
+-rw-r--r--  1 tuhu cu_10181  19K Nov  7  2023 _sitecheck
+-rw-r--r--  1 tuhu cu_10181    2 Nov  7  2023 _tags
+-rw-r--r--  1 tuhu cu_10181   51 Nov  7  2023 _timestamp
+-rw-r--r--  1 tuhu cu_10181   36 Nov  7  2023 _uuid
+-rw-r--r--  1 tuhu cu_10181 240K Nov  7  2023 _vdrkill
+-rw-r--r--  1 tuhu cu_10181   65 Nov  7  2023 _versions
+
+INFIMM-TB-FLEX/F2857_ctrl_IVneg:
+total 11M
+-rw-r--r--  1 tuhu cu_10181   78 Nov  7  2023 _cmdline
+-rw-r--r--  1 tuhu cu_10181 4.1M Nov  7  2023 F2857_ctrl_IVneg.mri.tgz
+-rw-r--r--  1 tuhu cu_10181 212K Nov  7  2023 _filelist
+-rw-r--r--  1 tuhu cu_10181 4.2M Nov  7  2023 _finalstate
+-rw-r--r--  1 tuhu cu_10181  782 Nov  7  2023 _invocation
+-rw-r--r--  1 tuhu cu_10181    5 Nov  7  2023 _jobmode
+-rw-r--r--  1 tuhu cu_10181 142K Nov  7  2023 _log
+-rw-r--r--  1 tuhu cu_10181 282K Nov  7  2023 _mrosource
+drwxr-sr-x  4 tuhu cu_10181 4.0K Dec  6  2023 outs
+-rw-r--r--  1 tuhu cu_10181 1.3M Nov  7  2023 _perf
+-rw-r--r--  1 tuhu cu_10181  10K Nov  7  2023 _perf._truncated_
+drwxr-sr-x 12 tuhu cu_10181 4.0K Nov  7  2023 SC_MULTI_CS
+-rw-r--r--  1 tuhu cu_10181  19K Nov  7  2023 _sitecheck
+-rw-r--r--  1 tuhu cu_10181    2 Nov  7  2023 _tags
+-rw-r--r--  1 tuhu cu_10181   51 Nov  7  2023 _timestamp
+-rw-r--r--  1 tuhu cu_10181   36 Nov  7  2023 _uuid
+-rw-r--r--  1 tuhu cu_10181 103K Nov  7  2023 _vdrkill
+-rw-r--r--  1 tuhu cu_10181   65 Nov  7  2023 _versions
+
+INFIMM-TB-FLEX/F2857_ctrl_IVneg_spliced:
+total 11M
+-rw-r--r--  1 tuhu cu_10181   94 Nov  7  2023 _cmdline
+-rw-r--r--  1 tuhu cu_10181 4.1M Nov  7  2023 F2857_ctrl_IVneg_spliced.mri.tgz
+-rw-r--r--  1 tuhu cu_10181 223K Nov  7  2023 _filelist
+-rw-r--r--  1 tuhu cu_10181 4.3M Nov  7  2023 _finalstate
+-rw-r--r--  1 tuhu cu_10181  806 Nov  7  2023 _invocation
+-rw-r--r--  1 tuhu cu_10181    5 Nov  7  2023 _jobmode
+-rw-r--r--  1 tuhu cu_10181 149K Nov  7  2023 _log
+-rw-r--r--  1 tuhu cu_10181 282K Nov  7  2023 _mrosource
+drwxr-sr-x  4 tuhu cu_10181 4.0K Dec  6  2023 outs
+-rw-r--r--  1 tuhu cu_10181 1.3M Nov  7  2023 _perf
+-rw-r--r--  1 tuhu cu_10181  10K Nov  7  2023 _perf._truncated_
+drwxr-sr-x 12 tuhu cu_10181 4.0K Dec  6  2023 SC_MULTI_CS
+-rw-r--r--  1 tuhu cu_10181  19K Nov  7  2023 _sitecheck
+-rw-r--r--  1 tuhu cu_10181    2 Nov  7  2023 _tags
+-rw-r--r--  1 tuhu cu_10181   51 Nov  7  2023 _timestamp
+-rw-r--r--  1 tuhu cu_10181   36 Nov  7  2023 _uuid
+-rw-r--r--  1 tuhu cu_10181 105K Nov  7  2023 _vdrkill
+-rw-r--r--  1 tuhu cu_10181   65 Nov  7  2023 _versions
+
+INFIMM-TB-FLEX/F2857_ctrl_IVpos:
+total 9.3M
+-rw-r--r--  1 tuhu cu_10181   78 Nov  7  2023 _cmdline
+-rw-r--r--  1 tuhu cu_10181 3.6M Nov  7  2023 F2857_ctrl_IVpos.mri.tgz
+-rw-r--r--  1 tuhu cu_10181 207K Nov  7  2023 _filelist
+-rw-r--r--  1 tuhu cu_10181 3.7M Nov  7  2023 _finalstate
+-rw-r--r--  1 tuhu cu_10181  782 Nov  7  2023 _invocation
+-rw-r--r--  1 tuhu cu_10181    5 Nov  7  2023 _jobmode
+-rw-r--r--  1 tuhu cu_10181 137K Nov  7  2023 _log
+-rw-r--r--  1 tuhu cu_10181 282K Nov  7  2023 _mrosource
+drwxr-sr-x  4 tuhu cu_10181 4.0K Dec  6  2023 outs
+-rw-r--r--  1 tuhu cu_10181 1.3M Nov  7  2023 _perf
+-rw-r--r--  1 tuhu cu_10181  10K Nov  7  2023 _perf._truncated_
+drwxr-sr-x 12 tuhu cu_10181 4.0K Dec  6  2023 SC_MULTI_CS
+-rw-r--r--  1 tuhu cu_10181  19K Nov  7  2023 _sitecheck
+-rw-r--r--  1 tuhu cu_10181    2 Nov  7  2023 _tags
+-rw-r--r--  1 tuhu cu_10181   51 Nov  7  2023 _timestamp
+-rw-r--r--  1 tuhu cu_10181   36 Nov  7  2023 _uuid
+-rw-r--r--  1 tuhu cu_10181  91K Nov  7  2023 _vdrkill
+-rw-r--r--  1 tuhu cu_10181   65 Nov  7  2023 _versions
+
+INFIMM-TB-FLEX/F2857_ctrl_IVpos_spliced:
+total 9.4M
+-rw-r--r--  1 tuhu cu_10181   94 Nov  7  2023 _cmdline
+-rw-r--r--  1 tuhu cu_10181 3.6M Nov  7  2023 F2857_ctrl_IVpos_spliced.mri.tgz
+-rw-r--r--  1 tuhu cu_10181 217K Nov  7  2023 _filelist
+-rw-r--r--  1 tuhu cu_10181 3.7M Nov  7  2023 _finalstate
+-rw-r--r--  1 tuhu cu_10181  806 Nov  7  2023 _invocation
+-rw-r--r--  1 tuhu cu_10181    5 Nov  7  2023 _jobmode
+-rw-r--r--  1 tuhu cu_10181 144K Nov  7  2023 _log
+-rw-r--r--  1 tuhu cu_10181 282K Nov  7  2023 _mrosource
+drwxr-sr-x  4 tuhu cu_10181 4.0K Dec  6  2023 outs
+-rw-r--r--  1 tuhu cu_10181 1.3M Nov  7  2023 _perf
+-rw-r--r--  1 tuhu cu_10181  10K Nov  7  2023 _perf._truncated_
+drwxr-sr-x 12 tuhu cu_10181 4.0K Dec  6  2023 SC_MULTI_CS
+-rw-r--r--  1 tuhu cu_10181  19K Nov  7  2023 _sitecheck
+-rw-r--r--  1 tuhu cu_10181    2 Nov  7  2023 _tags
+-rw-r--r--  1 tuhu cu_10181   51 Nov  7  2023 _timestamp
+-rw-r--r--  1 tuhu cu_10181   36 Nov  7  2023 _uuid
+-rw-r--r--  1 tuhu cu_10181  95K Nov  7  2023 _vdrkill
+-rw-r--r--  1 tuhu cu_10181   65 Nov  7  2023 _versions
+
+INFIMM-TB-FLEX/F2857_vacc_IVneg:
+total 11M
+-rw-r--r--  1 tuhu cu_10181   78 Nov  7  2023 _cmdline
+-rw-r--r--  1 tuhu cu_10181 3.9M Nov  7  2023 F2857_vacc_IVneg.mri.tgz
+-rw-r--r--  1 tuhu cu_10181 213K Nov  7  2023 _filelist
+-rw-r--r--  1 tuhu cu_10181 4.3M Nov  7  2023 _finalstate
+-rw-r--r--  1 tuhu cu_10181  782 Nov  7  2023 _invocation
+-rw-r--r--  1 tuhu cu_10181    5 Nov  7  2023 _jobmode
+-rw-r--r--  1 tuhu cu_10181 143K Nov  7  2023 _log
+-rw-r--r--  1 tuhu cu_10181 282K Nov  7  2023 _mrosource
+drwxr-sr-x  4 tuhu cu_10181 4.0K Dec  6  2023 outs
+-rw-r--r--  1 tuhu cu_10181 1.3M Nov  7  2023 _perf
+-rw-r--r--  1 tuhu cu_10181  10K Nov  7  2023 _perf._truncated_
+drwxr-sr-x 12 tuhu cu_10181 4.0K Dec  6  2023 SC_MULTI_CS
+-rw-r--r--  1 tuhu cu_10181  19K Nov  7  2023 _sitecheck
+-rw-r--r--  1 tuhu cu_10181    2 Nov  7  2023 _tags
+-rw-r--r--  1 tuhu cu_10181   51 Nov  7  2023 _timestamp
+-rw-r--r--  1 tuhu cu_10181   36 Nov  7  2023 _uuid
+-rw-r--r--  1 tuhu cu_10181 109K Nov  7  2023 _vdrkill
+-rw-r--r--  1 tuhu cu_10181   65 Nov  7  2023 _versions
+
+INFIMM-TB-FLEX/F2857_vacc_IVneg_probe1:
+total 11M
+-rw-r--r--  1 tuhu cu_10181   99 Nov  8  2023 _cmdline
+-rw-r--r--  1 tuhu cu_10181 4.0M Nov  8  2023 F2857_vacc_IVneg_probe1.mri.tgz
+-rw-r--r--  1 tuhu cu_10181 228K Nov  8  2023 _filelist
+-rw-r--r--  1 tuhu cu_10181 4.4M Nov  8  2023 _finalstate
+-rw-r--r--  1 tuhu cu_10181  811 Nov  8  2023 _invocation
+-rw-r--r--  1 tuhu cu_10181    5 Nov  8  2023 _jobmode
+-rw-r--r--  1 tuhu cu_10181 155K Nov  8  2023 _log
+-rw-r--r--  1 tuhu cu_10181 282K Nov  8  2023 _mrosource
+drwxr-sr-x  4 tuhu cu_10181 4.0K Dec  6  2023 outs
+-rw-r--r--  1 tuhu cu_10181 1.4M Nov  8  2023 _perf
+-rw-r--r--  1 tuhu cu_10181  10K Nov  8  2023 _perf._truncated_
+drwxr-sr-x 12 tuhu cu_10181 4.0K Dec  6  2023 SC_MULTI_CS
+-rw-r--r--  1 tuhu cu_10181  19K Nov  8  2023 _sitecheck
+-rw-r--r--  1 tuhu cu_10181    2 Nov  8  2023 _tags
+-rw-r--r--  1 tuhu cu_10181   51 Nov  8  2023 _timestamp
+-rw-r--r--  1 tuhu cu_10181   36 Nov  8  2023 _uuid
+-rw-r--r--  1 tuhu cu_10181 125K Nov  8  2023 _vdrkill
+-rw-r--r--  1 tuhu cu_10181   65 Nov  8  2023 _versions
+
+INFIMM-TB-FLEX/F2857_vacc_IVneg_probe12:
+total 11M
+-rw-r--r--  1 tuhu cu_10181  101 Nov  9  2023 _cmdline
+-rw-r--r--  1 tuhu cu_10181 4.0M Nov  9  2023 F2857_vacc_IVneg_probe12.mri.tgz
+-rw-r--r--  1 tuhu cu_10181 229K Nov  9  2023 _filelist
+-rw-r--r--  1 tuhu cu_10181 4.4M Nov  9  2023 _finalstate
+-rw-r--r--  1 tuhu cu_10181  814 Nov  9  2023 _invocation
+-rw-r--r--  1 tuhu cu_10181    5 Nov  9  2023 _jobmode
+-rw-r--r--  1 tuhu cu_10181 156K Nov  9  2023 _log
+-rw-r--r--  1 tuhu cu_10181 282K Nov  9  2023 _mrosource
+drwxr-sr-x  4 tuhu cu_10181 4.0K Dec  6  2023 outs
+-rw-r--r--  1 tuhu cu_10181 1.4M Nov  9  2023 _perf
+-rw-r--r--  1 tuhu cu_10181  10K Nov  9  2023 _perf._truncated_
+drwxr-sr-x 12 tuhu cu_10181 4.0K Nov  9  2023 SC_MULTI_CS
+-rw-r--r--  1 tuhu cu_10181  19K Nov  9  2023 _sitecheck
+-rw-r--r--  1 tuhu cu_10181    2 Nov  9  2023 _tags
+-rw-r--r--  1 tuhu cu_10181   51 Nov  9  2023 _timestamp
+-rw-r--r--  1 tuhu cu_10181   36 Nov  9  2023 _uuid
+-rw-r--r--  1 tuhu cu_10181 126K Nov  9  2023 _vdrkill
+-rw-r--r--  1 tuhu cu_10181   65 Nov  9  2023 _versions
+
+INFIMM-TB-FLEX/F2857_vacc_IVneg_probe13:
+total 11M
+-rw-r--r--  1 tuhu cu_10181  101 Nov  9  2023 _cmdline
+-rw-r--r--  1 tuhu cu_10181 4.0M Nov  9  2023 F2857_vacc_IVneg_probe13.mri.tgz
+-rw-r--r--  1 tuhu cu_10181 229K Nov  9  2023 _filelist
+-rw-r--r--  1 tuhu cu_10181 4.4M Nov  9  2023 _finalstate
+-rw-r--r--  1 tuhu cu_10181  814 Nov  9  2023 _invocation
+-rw-r--r--  1 tuhu cu_10181    5 Nov  9  2023 _jobmode
+-rw-r--r--  1 tuhu cu_10181 156K Nov  9  2023 _log
+-rw-r--r--  1 tuhu cu_10181 282K Nov  9  2023 _mrosource
+drwxr-sr-x  4 tuhu cu_10181 4.0K Dec  6  2023 outs
+-rw-r--r--  1 tuhu cu_10181 1.4M Nov  9  2023 _perf
+-rw-r--r--  1 tuhu cu_10181  10K Nov  9  2023 _perf._truncated_
+drwxr-sr-x 12 tuhu cu_10181 4.0K Dec  6  2023 SC_MULTI_CS
+-rw-r--r--  1 tuhu cu_10181  19K Nov  9  2023 _sitecheck
+-rw-r--r--  1 tuhu cu_10181    2 Nov  9  2023 _tags
+-rw-r--r--  1 tuhu cu_10181   51 Nov  9  2023 _timestamp
+-rw-r--r--  1 tuhu cu_10181   36 Nov  9  2023 _uuid
+-rw-r--r--  1 tuhu cu_10181 126K Nov  9  2023 _vdrkill
+-rw-r--r--  1 tuhu cu_10181   65 Nov  9  2023 _versions
+
+INFIMM-TB-FLEX/F2857_vacc_IVneg_probe2:
+total 11M
+-rw-r--r--  1 tuhu cu_10181   99 Nov  8  2023 _cmdline
+-rw-r--r--  1 tuhu cu_10181 4.0M Nov  8  2023 F2857_vacc_IVneg_probe2.mri.tgz
+-rw-r--r--  1 tuhu cu_10181 228K Nov  8  2023 _filelist
+-rw-r--r--  1 tuhu cu_10181 4.4M Nov  8  2023 _finalstate
+-rw-r--r--  1 tuhu cu_10181  811 Nov  8  2023 _invocation
+-rw-r--r--  1 tuhu cu_10181    5 Nov  8  2023 _jobmode
+-rw-r--r--  1 tuhu cu_10181 155K Nov  8  2023 _log
+-rw-r--r--  1 tuhu cu_10181 282K Nov  8  2023 _mrosource
+drwxr-sr-x  4 tuhu cu_10181 4.0K Dec  6  2023 outs
+-rw-r--r--  1 tuhu cu_10181 1.4M Nov  8  2023 _perf
+-rw-r--r--  1 tuhu cu_10181 9.9K Nov  8  2023 _perf._truncated_
+drwxr-sr-x 12 tuhu cu_10181 4.0K Nov  8  2023 SC_MULTI_CS
+-rw-r--r--  1 tuhu cu_10181  19K Nov  8  2023 _sitecheck
+-rw-r--r--  1 tuhu cu_10181    2 Nov  8  2023 _tags
+-rw-r--r--  1 tuhu cu_10181   51 Nov  8  2023 _timestamp
+-rw-r--r--  1 tuhu cu_10181   36 Nov  8  2023 _uuid
+-rw-r--r--  1 tuhu cu_10181 125K Nov  8  2023 _vdrkill
+-rw-r--r--  1 tuhu cu_10181   65 Nov  8  2023 _versions
+
+INFIMM-TB-FLEX/F2857_vacc_IVneg_probe23:
+total 11M
+-rw-r--r--  1 tuhu cu_10181  101 Nov  9  2023 _cmdline
+-rw-r--r--  1 tuhu cu_10181 4.0M Nov  9  2023 F2857_vacc_IVneg_probe22.mri.tgz
+-rw-r--r--  1 tuhu cu_10181 229K Nov  9  2023 _filelist
+-rw-r--r--  1 tuhu cu_10181 4.4M Nov  9  2023 _finalstate
+-rw-r--r--  1 tuhu cu_10181  814 Nov  9  2023 _invocation
+-rw-r--r--  1 tuhu cu_10181    5 Nov  9  2023 _jobmode
+-rw-r--r--  1 tuhu cu_10181 156K Nov  9  2023 _log
+-rw-r--r--  1 tuhu cu_10181 282K Nov  9  2023 _mrosource
+drwxr-sr-x  4 tuhu cu_10181 4.0K Dec  6  2023 outs
+-rw-r--r--  1 tuhu cu_10181 1.4M Nov  9  2023 _perf
+-rw-r--r--  1 tuhu cu_10181  10K Nov  9  2023 _perf._truncated_
+drwxr-sr-x 12 tuhu cu_10181 4.0K Dec  6  2023 SC_MULTI_CS
+-rw-r--r--  1 tuhu cu_10181  19K Nov  9  2023 _sitecheck
+-rw-r--r--  1 tuhu cu_10181    2 Nov  9  2023 _tags
+-rw-r--r--  1 tuhu cu_10181   51 Nov  9  2023 _timestamp
+-rw-r--r--  1 tuhu cu_10181   36 Nov  9  2023 _uuid
+-rw-r--r--  1 tuhu cu_10181 126K Nov  9  2023 _vdrkill
+-rw-r--r--  1 tuhu cu_10181   65 Nov  9  2023 _versions
+
+INFIMM-TB-FLEX/F2857_vacc_IVneg_probe3:
+total 11M
+-rw-r--r--  1 tuhu cu_10181   99 Nov  8  2023 _cmdline
+-rw-r--r--  1 tuhu cu_10181 4.0M Nov  8  2023 F2857_vacc_IVneg_probe3.mri.tgz
+-rw-r--r--  1 tuhu cu_10181 228K Nov  8  2023 _filelist
+-rw-r--r--  1 tuhu cu_10181 4.4M Nov  8  2023 _finalstate
+-rw-r--r--  1 tuhu cu_10181  811 Nov  8  2023 _invocation
+-rw-r--r--  1 tuhu cu_10181    5 Nov  8  2023 _jobmode
+-rw-r--r--  1 tuhu cu_10181 155K Nov  8  2023 _log
+-rw-r--r--  1 tuhu cu_10181 282K Nov  8  2023 _mrosource
+drwxr-sr-x  4 tuhu cu_10181 4.0K Dec  6  2023 outs
+-rw-r--r--  1 tuhu cu_10181 1.4M Nov  8  2023 _perf
+-rw-r--r--  1 tuhu cu_10181  10K Nov  8  2023 _perf._truncated_
+drwxr-sr-x 12 tuhu cu_10181 4.0K Dec  6  2023 SC_MULTI_CS
+-rw-r--r--  1 tuhu cu_10181  19K Nov  8  2023 _sitecheck
+-rw-r--r--  1 tuhu cu_10181    2 Nov  8  2023 _tags
+-rw-r--r--  1 tuhu cu_10181   51 Nov  8  2023 _timestamp
+-rw-r--r--  1 tuhu cu_10181   36 Nov  8  2023 _uuid
+-rw-r--r--  1 tuhu cu_10181 126K Nov  8  2023 _vdrkill
+-rw-r--r--  1 tuhu cu_10181   65 Nov  8  2023 _versions
+
+INFIMM-TB-FLEX/F2857_vacc_IVneg_spliced:
+total 11M
+-rw-r--r--  1 tuhu cu_10181   94 Nov  7  2023 _cmdline
+-rw-r--r--  1 tuhu cu_10181 4.0M Nov  7  2023 F2857_vacc_IVneg_spliced.mri.tgz
+-rw-r--r--  1 tuhu cu_10181 224K Nov  7  2023 _filelist
+-rw-r--r--  1 tuhu cu_10181 4.3M Nov  7  2023 _finalstate
+-rw-r--r--  1 tuhu cu_10181  806 Nov  7  2023 _invocation
+-rw-r--r--  1 tuhu cu_10181    5 Nov  7  2023 _jobmode
+-rw-r--r--  1 tuhu cu_10181 150K Nov  7  2023 _log
+-rw-r--r--  1 tuhu cu_10181 282K Nov  7  2023 _mrosource
+drwxr-sr-x  4 tuhu cu_10181 4.0K Dec  6  2023 outs
+-rw-r--r--  1 tuhu cu_10181 1.3M Nov  7  2023 _perf
+-rw-r--r--  1 tuhu cu_10181  10K Nov  7  2023 _perf._truncated_
+drwxr-sr-x 12 tuhu cu_10181 4.0K Dec  6  2023 SC_MULTI_CS
+-rw-r--r--  1 tuhu cu_10181  19K Nov  7  2023 _sitecheck
+-rw-r--r--  1 tuhu cu_10181    2 Nov  7  2023 _tags
+-rw-r--r--  1 tuhu cu_10181   51 Nov  7  2023 _timestamp
+-rw-r--r--  1 tuhu cu_10181   36 Nov  7  2023 _uuid
+-rw-r--r--  1 tuhu cu_10181 112K Nov  7  2023 _vdrkill
+-rw-r--r--  1 tuhu cu_10181   65 Nov  7  2023 _versions
+
+INFIMM-TB-FLEX/F2857_vacc_IVpos:
+total 8.7M
+-rw-r--r--  1 tuhu cu_10181   78 Nov  7  2023 _cmdline
+-rw-r--r--  1 tuhu cu_10181 3.2M Nov  7  2023 F2857_vacc_IVpos.mri.tgz
+-rw-r--r--  1 tuhu cu_10181 207K Nov  7  2023 _filelist
+-rw-r--r--  1 tuhu cu_10181 3.6M Nov  7  2023 _finalstate
+-rw-r--r--  1 tuhu cu_10181  782 Nov  7  2023 _invocation
+-rw-r--r--  1 tuhu cu_10181    5 Nov  7  2023 _jobmode
+-rw-r--r--  1 tuhu cu_10181 137K Nov  7  2023 _log
+-rw-r--r--  1 tuhu cu_10181 282K Nov  7  2023 _mrosource
+drwxr-sr-x  4 tuhu cu_10181 4.0K Dec  6  2023 outs
+-rw-r--r--  1 tuhu cu_10181 1.3M Nov  7  2023 _perf
+-rw-r--r--  1 tuhu cu_10181 9.9K Nov  7  2023 _perf._truncated_
+drwxr-sr-x 12 tuhu cu_10181 4.0K Dec  6  2023 SC_MULTI_CS
+-rw-r--r--  1 tuhu cu_10181  19K Nov  7  2023 _sitecheck
+-rw-r--r--  1 tuhu cu_10181    2 Nov  7  2023 _tags
+-rw-r--r--  1 tuhu cu_10181   51 Nov  7  2023 _timestamp
+-rw-r--r--  1 tuhu cu_10181   36 Nov  7  2023 _uuid
+-rw-r--r--  1 tuhu cu_10181  94K Nov  7  2023 _vdrkill
+-rw-r--r--  1 tuhu cu_10181   65 Nov  7  2023 _versions
+
+INFIMM-TB-FLEX/F2857_vacc_IVpos_spliced:
+total 8.9M
+-rw-r--r--  1 tuhu cu_10181   94 Nov  7  2023 _cmdline
+-rw-r--r--  1 tuhu cu_10181 3.2M Nov  7  2023 F2857_vacc_IVpos_spliced.mri.tgz
+-rw-r--r--  1 tuhu cu_10181 217K Nov  7  2023 _filelist
+-rw-r--r--  1 tuhu cu_10181 3.6M Nov  7  2023 _finalstate
+-rw-r--r--  1 tuhu cu_10181  806 Nov  7  2023 _invocation
+-rw-r--r--  1 tuhu cu_10181    5 Nov  7  2023 _jobmode
+-rw-r--r--  1 tuhu cu_10181 144K Nov  7  2023 _log
+-rw-r--r--  1 tuhu cu_10181 282K Nov  7  2023 _mrosource
+drwxr-sr-x  4 tuhu cu_10181 4.0K Dec  6  2023 outs
+-rw-r--r--  1 tuhu cu_10181 1.3M Nov  7  2023 _perf
+-rw-r--r--  1 tuhu cu_10181  10K Nov  7  2023 _perf._truncated_
+drwxr-sr-x 12 tuhu cu_10181 4.0K Dec  6  2023 SC_MULTI_CS
+-rw-r--r--  1 tuhu cu_10181  19K Nov  7  2023 _sitecheck
+-rw-r--r--  1 tuhu cu_10181    2 Nov  7  2023 _tags
+-rw-r--r--  1 tuhu cu_10181   51 Nov  7  2023 _timestamp
+-rw-r--r--  1 tuhu cu_10181   36 Nov  7  2023 _uuid
+-rw-r--r--  1 tuhu cu_10181  97K Nov  7  2023 _vdrkill
+-rw-r--r--  1 tuhu cu_10181   65 Nov  7  2023 _versions
+
+INFIMM-TB-FLEX/fig:
+total 512K
+-rw-rw-r-- 1 tuhu cu_10181  36K Nov  9  2023 BINF_protocol_1.png
+-rw-rw-r-- 1 tuhu cu_10181  68K Nov  9  2023 BINF_protocol_2.png
+-rw-rw-r-- 1 tuhu cu_10181  99K Nov  9  2023 BINF_protocol_3.png
+-rw-rw-r-- 1 tuhu cu_10181 161K Nov  9  2023 BINF_protocol_4.png
+-rw-rw-r-- 1 tuhu cu_10181  88K Nov  9  2023 BINF_protocol_5.png
+
+INFIMM-TB-FLEX/R:
+total 17K
+-rw-r--r-- 1 tuhu cu_10181  272 May 10  2023 1_design_flex_probes.Rmd
+-rw-rw-r-- 1 tuhu cu_10181 5.1K Nov  9  2023 1_YFP.qmd
+
+INFIMM-TB-FLEX/renv:
+total 49K
+-rw-rw-r-- 1 tuhu cu_10181 33K Nov  6  2023 activate.R
+-rw-rw-r-- 1 tuhu cu_10181 412 Nov  6  2023 settings.json
+
+INFIMM-TB-FLEX/test_F2857_ctrl_IVneg:
+total 11M
+-rw-r--r--  1 tuhu cu_10181   66 Nov  7  2023 _cmdline
+-rw-r--r--  1 tuhu cu_10181 219K Nov  7  2023 _filelist
+-rw-r--r--  1 tuhu cu_10181 4.2M Nov  7  2023 _finalstate
+-rw-r--r--  1 tuhu cu_10181  770 Nov  7  2023 _invocation
+-rw-r--r--  1 tuhu cu_10181    5 Nov  7  2023 _jobmode
+-rw-r--r--  1 tuhu cu_10181 148K Nov  7  2023 _log
+-rw-r--r--  1 tuhu cu_10181 282K Nov  7  2023 _mrosource
+drwxr-sr-x  4 tuhu cu_10181 4.0K Dec  6  2023 outs
+-rw-r--r--  1 tuhu cu_10181 1.3M Nov  7  2023 _perf
+-rw-r--r--  1 tuhu cu_10181  10K Nov  7  2023 _perf._truncated_
+drwxr-sr-x 12 tuhu cu_10181 4.0K Dec  6  2023 SC_MULTI_CS
+-rw-r--r--  1 tuhu cu_10181  24K Nov  7  2023 _sitecheck
+-rw-r--r--  1 tuhu cu_10181    2 Nov  7  2023 _tags
+-rw-r--r--  1 tuhu cu_10181 4.1M Nov  7  2023 test_F2857_ctrl_IVneg.mri.tgz
+-rw-r--r--  1 tuhu cu_10181   51 Nov  7  2023 _timestamp
+-rw-r--r--  1 tuhu cu_10181   36 Nov  7  2023 _uuid
+-rw-r--r--  1 tuhu cu_10181 103K Nov  7  2023 _vdrkill
+-rw-r--r--  1 tuhu cu_10181   65 Nov  7  2023 _versions
+
+INFIMM-TB-MINCLE/data:
+total 15M
+drwxrwxr-x  2 tuhu cu_10181  4.0K Dec  6  2023 ENCODE_activated_B
+-rw-rw-r--  1 tuhu cu_10181  1.1M Oct 24  2023 ENCODE_gene_data.rds
+drwxrwxr-x  2 tuhu cu_10181  4.0K Oct 24  2023 ENCODE_resting_B
+drwxr-xr-x  7 tuhu cu_10181  4.0K Dec  6  2023 fetchngs_outdir_GSE142688
+drwxr-xr-x  8 tuhu cu_10181  4.0K Dec  6  2023 fetchngs_outdir_GSE142689
+-rw-r--r--  1 tuhu cu_10181  3.2M Oct 25  2023 GSE142688_counts.tsv
+-rw-rw-r--  1 tuhu cu_10181   360 Oct 25  2023 GSE142688_metadata.csv
+-rw-rw-r--  1 tuhu cu_10181 1017K Oct 26  2023 GSE142688_se.rds
+-rw-r--r--  1 tuhu cu_10181  3.8M Oct 26  2023 GSE142689_counts.tsv
+-rw-rw-r--  1 tuhu cu_10181   216 Oct 26  2023 GSE142689_metadata.csv
+-rw-rw-r--  1 tuhu cu_10181  1.2M Oct 25  2023 mus_gene_data.rds
+drwxr-xr-x 52 tuhu cu_10181  4.0K Dec  6  2023 nf_fetchngs_wd_GSE142688
+drwxr-xr-x 46 tuhu cu_10181  4.0K Dec  6  2023 nf_fetchngs_wd_GSE142689
+-rw-rw-r--  1 tuhu cu_10181  2.1K Oct 24  2023 nf_input_GSE142688.csv
+-rw-rw-r--  1 tuhu cu_10181  2.3K Oct 26  2023 nf_input_GSE142689.csv
+drwxr-xr-x 79 tuhu cu_10181  4.0K Dec  6  2023 nf_salmon_wd
+drwxr-xr-x 79 tuhu cu_10181  4.0K Dec  6  2023 nf_salmon_wd_GSE142689
+drwxr-xr-x  7 tuhu cu_10181  4.0K Dec  6  2023 rnaseq_outdir_GSE142688
+drwxr-xr-x  7 tuhu cu_10181  4.0K Dec  6  2023 rnaseq_outdir_GSE142689
+-rw-rw-r--  1 tuhu cu_10181  4.5M Oct 24  2023 se.rds
+-rw-rw-r--  1 tuhu cu_10181   144 Oct 24  2023 SRR_Acc_List_GSE142688.csv
+-rw-rw-r--  1 tuhu cu_10181   144 Oct 24  2023 SRR_Acc_List_GSE142689.csv
+
+INFIMM-TB-MINCLE/MINCLE_analysis:
+total 134K
+-rw-rw-r-- 1 tuhu cu_10181 3.9K Oct 26  2023 1_ENCODE_data_cleaning.qmd
+-rw-rw-r-- 1 tuhu cu_10181 2.3K Oct 26  2023 2_ENCODE_data_analysis.qmd
+-rw-rw-r-- 1 tuhu cu_10181 3.5K Oct 26  2023 3_murine_pDC_data_downloading_preprocessing.qmd
+-rw-rw-r-- 1 tuhu cu_10181 5.6K Oct 26  2023 4_murine_pDC_data_analysis.qmd
+-rw-rw-r-- 1 tuhu cu_10181 2.7K Oct 26  2023 5_murine_Bcell_data_downloading_preprocessing.qmd
+-rw-rw-r-- 1 tuhu cu_10181   77 Oct 26  2023 6_murine_Bcell_data_analysis.qmd
+-rw-rw-r-- 1 tuhu cu_10181  50K Oct 24  2023 cover.png
+-rw-rw-r-- 1 tuhu cu_10181 1.1K Oct 24  2023 index.qmd
+-rw-rw-r-- 1 tuhu cu_10181  204 Oct 24  2023 MINCLE_analysis.Rproj
+-rw-rw-r-- 1 tuhu cu_10181  632 Oct 26  2023 _quarto.yml
+-rw-rw-r-- 1 tuhu cu_10181  417 Oct 24  2023 references.bib
+-rw-rw-r-- 1 tuhu cu_10181   44 Oct 24  2023 references.qmd
+drwxrwxr-x 2 tuhu cu_10181 4.0K Oct 24  2023 renv
+-rw-rw-r-- 1 tuhu cu_10181  44K Oct 26  2023 renv.lock
+
+INFIMM-TB-MINCLE/rnaseq_outdire_GSE142689:
+total 512
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 pipeline_info
+
+INFIMM-TB-MINCLE/sh:
+total 2.5K
+-rw-rw-r-- 1 tuhu cu_10181 566 Oct 24  2023 fetch_GSE142688.sh
+-rw-rw-r-- 1 tuhu cu_10181 566 Oct 24  2023 fetch_GSE142689.sh
+-rw-rw-r-- 1 tuhu cu_10181 837 Oct 24  2023 rna_seq_GSE142688.sh
+-rw-rw-r-- 1 tuhu cu_10181 842 Oct 26  2023 rna_seq_GSE142689.sh
+-rw-rw-r-- 1 tuhu cu_10181 954 Oct 25  2023 sratool_download_GSE142689.sh
+
+kelvin_collaboration/analysis:
+total 21K
+-rw-rw-r-- 1 tuhu cu_10181  683 Oct  7  2023 0_generate_nextflow_input.qmd
+-rw-rw-r-- 1 tuhu cu_10181  988 Oct  9  2023 1_nfcore_rnaseq_mapping.sh
+-rw-rw-r-- 1 tuhu cu_10181   40 Oct  7  2023 about.qmd
+-rw-rw-r-- 1 tuhu cu_10181  204 Oct  7  2023 analysis.Rproj
+-rw-rw-r-- 1 tuhu cu_10181  132 Oct  7  2023 index.qmd
+-rw-rw-r-- 1 tuhu cu_10181  207 Oct  7  2023 _quarto.yml
+drwxrwxr-x 4 tuhu cu_10181 4.0K Dec  6  2023 renv
+-rw-rw-r-- 1 tuhu cu_10181 8.7K Oct  7  2023 renv.lock
+drwxrwxr-x 3 tuhu cu_10181 4.0K Dec  6  2023 _site
+-rw-rw-r-- 1 tuhu cu_10181   17 Oct  7  2023 styles.css
+
+kelvin_collaboration/data:
+total 11M
+drwxrwxr-x   2 tuhu cu_10181 4.0K Dec  6  2023 fastq
+-rw-rw-r--   1 tuhu cu_10181 2.7K Oct  7  2023 nextflow_input.csv
+drwxr-xr-x   8 tuhu cu_10181 4.0K Oct  9  2023 nextflow_outputdir
+drwxr-xr-x 236 tuhu cu_10181  16K Dec  6  2023 nextflow_wd
+-rw-r--r--   1 tuhu cu_10181 6.3M Oct 10  2023 salmon.merged.gene_counts_scaled.rds
+-rw-r--r--   1 tuhu cu_10181 4.4M Oct 23  2023 salmon.merged.gene_counts.tsv
+
+TB-Endothelial/analysis:
+total 18K
+-rw-rw-r-- 1 tuhu tuhu 5.5K Dec 20  2023 0_create_SampleSheet.ipynb
+-rw-rw-r-- 1 tuhu tuhu  835 Dec 20  2023 1_bcl2fastq.sh
+-rw-rw-r-- 1 tuhu tuhu 1017 Dec 20  2023 2_0_generate_nf_sample_list.R
+-rw-rw-r-- 1 tuhu tuhu  947 Dec 20  2023 2_nextflow_rnaseq.sh
+
+TB-Endothelial/data:
+total 4.9M
+drwxr-xr-x   7 tuhu ku_00216 4.0K Dec 20  2023 nextflow_outputdir_salmon
+drwxr-xr-x 131 tuhu ku_00216  16K Dec 20  2023 nextflow_wd_salmon
+-rw-rw-r--   1 tuhu tuhu     4.9M Dec 21  2023 salmon.merged.gene_counts.tsv
+-rw-r--r--   1 tuhu cu_10181  16K Dec 20  2023 sample_sheet.csv
+-rw-r--r--   1 tuhu cu_10181 1.5K Dec 15  2023 TB-02.csv
+-rw-rw-r--   1 tuhu tuhu     1.5K Dec 20  2023 TB-02_i5RC.csv
+-rw-rw-r--   1 tuhu tuhu     1.5K Dec 15  2023 TB-02_i5R.csv
+
+TB-Endothelial/my_env:
+total 1.0K
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec 20  2023 conda-meta
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec 20  2023 etc
+
+TB-FLEX-total-lung/analysis:
+total 150K
+-rw-rw-r-- 1 tuhu tuhu 4.6K Jan 24  2024 1_qc_sanity_check.qmd
+-rw-rw-r-- 1 tuhu tuhu 3.3K Jan 24  2024 2_data_sanity_low.qmd
+-rw-rw-r-- 1 tuhu tuhu 3.3K Jan 24  2024 3_data_sanity_high.qmd
+-rw-rw-r-- 1 tuhu tuhu 2.0K Jan 24  2024 4_benchmark.qmd
+-rw-rw-r-- 1 tuhu tuhu  14K Jan 24  2024 5_harmony_sce_implementation.qmd
+-rw-rw-r-- 1 tuhu tuhu 1.2K Jan 24  2024 5_harmony_Seurat_implementation.qmd
+-rw-rw-r-- 1 tuhu tuhu  12K Jan 24  2024 5_NIH_plot.qmd
+-rw-rw-r-- 1 tuhu tuhu  177 Jan 24  2024 about.qmd
+-rw-rw-r-- 1 tuhu tuhu  205 Jan 24  2024 analysis.Rproj
+drwxrwxr-x 2 tuhu tuhu 4.0K Jan 24  2024 images
+-rw-rw-r-- 1 tuhu tuhu  544 Jan 24  2024 index.qmd
+-rw-rw-r-- 1 tuhu tuhu 3.4K Jan 24  2024 individual_processing.qmd
+-rw-rw-r-- 1 tuhu tuhu  522 Jan 24  2024 _quarto.yml
+-rw-rw-r-- 1 tuhu tuhu  90K Jan 24  2024 renv.lock
+-rw-rw-r-- 1 tuhu tuhu   17 Jan 24  2024 styles.css
+-rw-rw-r-- 1 tuhu tuhu 3.7K Jan 25  2024 validation_EYFP.qmd
+
+TB-FLEX-total-lung/data:
+total 35K
+drwxrwxr-x  3 tuhu tuhu 4.0K Jan 24  2024 config
+drwxrwxr-x  2 tuhu tuhu 4.0K Jan 24  2024 figure
+-rw-rw-r--  1 tuhu tuhu  13K Jan 24  2024 metadata.xlsx
+drwxrwxr-x 10 tuhu tuhu  16K Jan 25  2024 multi
+drwxrwxr-x  2 tuhu tuhu 4.0K Jan 25  2024 probe
+drwxrwxr-x  2 tuhu tuhu 4.0K Jan 24  2024 qc
+-rw-rw-r--  1 tuhu tuhu   89 Jan  2  2024 sequencing_fastq.csv
+-rw-rw-r--  1 tuhu tuhu   58 Jan 24  2024 wk2_EYFP.csv
+
+TB-FLEX-total-lung/pre-processing:
+total 4.5K
+-rw-rw-r-- 1 tuhu tuhu 475 Dec 27  2023 1_cellranger_mkfastq.sh
+-rw-rw-r-- 1 tuhu tuhu 355 Jan  3  2024 2_cellranger_multi_pool1.sh
+-rw-rw-r-- 1 tuhu tuhu 398 Jan 24  2024 2_cellranger_multi_pool2_probe123.sh
+-rw-rw-r-- 1 tuhu tuhu 398 Jan 24  2024 2_cellranger_multi_pool2_probe124.sh
+-rw-rw-r-- 1 tuhu tuhu 398 Jan 25  2024 2_cellranger_multi_pool2_probe134.sh
+-rw-rw-r-- 1 tuhu tuhu 398 Jan 24  2024 2_cellranger_multi_pool2_probe234.sh
+-rw-rw-r-- 1 tuhu tuhu 356 Jan  3  2024 2_cellranger_multi_pool2.sh
+-rw-rw-r-- 1 tuhu tuhu 356 Jan  3  2024 2_cellranger_multi_pool3.sh
+-rw-rw-r-- 1 tuhu tuhu 356 Jan  3  2024 2_cellranger_multi_pool4.sh
+
+_test_fetchngs/00:
+total 512
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 211b16acfb9c94e31be38ba7b12161
+
+_test_fetchngs/02:
+total 512
+drwxr-xr-x 2 tuhu cu_10181 4.0K Apr 14  2023 c5232c412987f9a90eb9ce4a7b6f9c
+
+_test_fetchngs/05:
+total 512
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 7694ee4e5b50c4e99f48110d3210a2
+
+_test_fetchngs/08:
+total 512
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 1de2e568ab72ba8f41c1b4211ae3cd
+
+_test_fetchngs/0b:
+total 512
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 bed6fb7dc9abcd49145fb1be7f5f21
+
+_test_fetchngs/0c:
+total 512
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 89f4177f833c23665fbf37721e2943
+
+_test_fetchngs/12:
+total 512
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 91d3f492a68b063bf3c69f8cf3ef72
+
+_test_fetchngs/14:
+total 512
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 3ff2eab2f8acfb6a27b659dad302ba
+
+_test_fetchngs/16:
+total 1.5K
+drwxr-xr-x 4 tuhu cu_10181 4.0K Dec  6  2023 8ae8eb527e0efd2178f1f44ca8a583
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 c577666237ac53f21e3648269e2096
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 fc909ff8b2f9678efee7045954aa6f
+
+_test_fetchngs/19:
+total 512
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 1ebcae9b7d766b8d54396e2becd4c7
+
+_test_fetchngs/1d:
+total 512
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 0bffbd8518a6972d39c15511c94946
+
+_test_fetchngs/1e:
+total 512
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 eb5597976f8a8c0b27b09ccb462b68
+
+_test_fetchngs/20:
+total 512
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 c5d434fa2703627ccaf499e0ff1b9b
+
+_test_fetchngs/2a:
+total 512
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 a67473f39a6a6d434688c9ca543aa8
+
+_test_fetchngs/2e:
+total 1.0K
+drwxr-xr-x 3 tuhu cu_10181 4.0K Dec  6  2023 23c29e0c7daf456929d754d87f6155
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 3446d3b802daa96c0931b2887d5714
+
+_test_fetchngs/35:
+total 512
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 cf40ed7421fe92bca8e14770977939
+
+_test_fetchngs/37:
+total 512
+drwxr-xr-x 4 tuhu cu_10181 4.0K Dec  6  2023 a656a992180e8b72580202f223aa66
+
+_test_fetchngs/38:
+total 512
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 9231dc523296fdc844f92341cd33ac
+
+_test_fetchngs/3b:
+total 512
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 cdffdf5460d8735101fe5b074268de
+
+_test_fetchngs/3c:
+total 512
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 93b19dfc7da13dfb549358e58ee5ed
+
+_test_fetchngs/3d:
+total 512
+drwxr-xr-x 3 tuhu cu_10181 4.0K Dec  6  2023 ff116bf38eed6a11d6eed41e14e547
+
+_test_fetchngs/41:
+total 512
+drwxr-xr-x 3 tuhu cu_10181 4.0K Dec  6  2023 be8748be0a19bf7fc7ea448ae5c89c
+
+_test_fetchngs/52:
+total 512
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 5a22014dd11a7b7442ab8a49f93d13
+
+_test_fetchngs/56:
+total 512
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 813a6a7617ed845381ab9eab652a31
+
+_test_fetchngs/58:
+total 1.5K
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 2c87e691370f7bb1f383d1e6f851dc
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 9e4e4cbe7ab59138db429aad4a7af2
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 e14906b712facddf90539e94b9e819
+
+_test_fetchngs/5f:
+total 1.5K
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 6a1e3e7cdcd755fca0f1dd7a2cfe0b
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 9711f572a6960dd76912f4ef200861
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 ffe6615ab89d204b76ec9d0e75e1d6
+
+_test_fetchngs/62:
+total 1.0K
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 2beb944c9ecf60a5270c2d653e1284
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 4e6e156aeb890373ae4219a134f3b3
+
+_test_fetchngs/6d:
+total 512
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 e6093f49aaf077dc58d6a459fc8031
+
+_test_fetchngs/6f:
+total 512
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 8b0a9c8755845cb4eb6f0d6eabe74c
+
+_test_fetchngs/77:
+total 512
+drwxr-xr-x 3 tuhu cu_10181 4.0K Dec  6  2023 03f25f1375349bd3cd9ef615992e86
+
+_test_fetchngs/7e:
+total 1.0K
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 5d7325e281e936bdc2782a12e42fa5
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 9b132af055d3cf677f1ee2094209ea
+
+_test_fetchngs/80:
+total 512
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 d82d75f8d5c336e0b7a4011fd83ffa
+
+_test_fetchngs/85:
+total 512
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 4b151331b0ff813cc8122f01502a48
+
+_test_fetchngs/87:
+total 512
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 00c5d0cc863da2b0be5f70039bf3c5
+
+_test_fetchngs/88:
+total 512
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 1beb465760f2d9a0e4022d276ed96e
+
+_test_fetchngs/8b:
+total 512
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 b362118d48f0a25ea743d294d92721
+
+_test_fetchngs/90:
+total 512
+drwxr-xr-x 3 tuhu cu_10181 4.0K Dec  6  2023 d4217f7b01ff0be918a8f7750eeda7
+
+_test_fetchngs/92:
+total 512
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 fc59e6d9db2d7115936eae048e6394
+
+_test_fetchngs/94:
+total 512
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 67da2ea350e02d1398417906628e05
+
+_test_fetchngs/95:
+total 512
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 10a2c2dc534e5c5e242813df3e7317
+
+_test_fetchngs/96:
+total 512
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 8d22cafc2739c04f5555459e6489c6
+
+_test_fetchngs/97:
+total 512
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 0023ba24871502967fbff464e18504
+
+_test_fetchngs/98:
+total 512
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 c7ebafc6bd793b6a1356470a2d468a
+
+_test_fetchngs/a4:
+total 1.0K
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 a587792c7fc2e4879837f4c446e0fe
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 b06a53bff5ea70c1f305b68cb2c4ad
+
+_test_fetchngs/a5:
+total 512
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 4c746aa1815f7e353f37a3fb9c71dd
+
+_test_fetchngs/af:
+total 512
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 e028355324c894dadc9c54f681496f
+
+_test_fetchngs/b0:
+total 512
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 ab2972aee045e5fdeb1cf6dfe1e3b9
+
+_test_fetchngs/b1:
+total 512
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 3c81bc25a67273e5b6db53543134e4
+
+_test_fetchngs/b2:
+total 512
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 9e136deb6f19559dd6a34f68666ed6
+
+_test_fetchngs/b4:
+total 512
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 67814a37753179231f119fcd710681
+
+_test_fetchngs/b8:
+total 512
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 d7b13c25e9ae86a2e0d248f3bedee7
+
+_test_fetchngs/ba:
+total 512
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 e0adb44db8c3f7593a6b0bccfd1768
+
+_test_fetchngs/be:
+total 1.0K
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 69e475ab2ed5a160bce620c280539a
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 85d6c55f69ee20cb80542f25a8d48e
+
+_test_fetchngs/c0:
+total 512
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 cc0049a20ce261999abbb66097eddb
+
+_test_fetchngs/c3:
+total 512
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 2f7080de6da3d55751e60ac03f9925
+
+_test_fetchngs/c8:
+total 512
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 54d3cad2da22c6973037cbaebf7882
+
+_test_fetchngs/ca:
+total 512
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 5c0e483ce946b609aac5812a1a46fc
+
+_test_fetchngs/cd:
+total 512
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 59ed3efa4aba98ff334cd094dbae81
+
+_test_fetchngs/d2:
+total 512
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 674c36cffaee7bcf6fc4dbacd12b86
+
+_test_fetchngs/d3:
+total 512
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 449fc1399f2fc11710b33dc3efc5dc
+
+_test_fetchngs/d5:
+total 512
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 4b42557b6314a4d5b14d2e49fb0883
+
+_test_fetchngs/db:
+total 512
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 6dd4d03dd2eab27db75d35d4d9c016
+
+_test_fetchngs/dc:
+total 512
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 07a45f1376d6e48a849e941fa684e9
+
+_test_fetchngs/df:
+total 512
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 4628ff9eb4cd1002e9f1a233d3acce
+
+_test_fetchngs/e2:
+total 1.0K
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 6a408a321d76da0784d22e358e75e5
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 94c5a14a7d9139eccbe1be8b803e0a
+
+_test_fetchngs/e7:
+total 512
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 6d12c9d51eea4eec2c308931ca5b6b
+
+_test_fetchngs/eb:
+total 512
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 e45f31835df6cfba7d3430e384f9a3
+
+_test_fetchngs/ee:
+total 512
+drwxr-xr-x 3 tuhu cu_10181 4.0K Dec  6  2023 fd03aa510fb1298b1bba3d2e0ba2fb
+
+_test_fetchngs/f4:
+total 512
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 3af2a88fa5b9a9d910fbea998724af
+
+_test_fetchngs/f6:
+total 1.0K
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 1019fcb35207fc5a5aa36e32f6a4b1
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 a2490d85d9cbf747703d844a77813f
+
+_test_fetchngs/f8:
+total 512
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 89c071ee0a6f8dc6081bd53adf1d84
+
+_test_fetchngs/fa:
+total 512
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 d41b5b3cbb8a9ba139bdd813d7047e
+
+_test_fetchngs/fb:
+total 512
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 aaab6dbc0940379fe7c7199f9ca5a7
+
+_test_fetchngs_outdir/custom:
+total 512
+-rw------- 1 tuhu cu_10181 1.3K Apr 14  2023 user-settings.mkfg
+
+_test_fetchngs_outdir/fastq:
+total 1.2M
+-rw-r--r-- 1 tuhu cu_10181  38K Apr 14  2023 DRX024467_DRR026872.fastq.gz
+-rw-r--r-- 1 tuhu cu_10181  59K Apr 14  2023 DRX026011_DRR028935_1.fastq.gz
+-rw-r--r-- 1 tuhu cu_10181  61K Apr 14  2023 DRX026011_DRR028935_2.fastq.gz
+-rw-r--r-- 1 tuhu cu_10181 8.0K Apr 14  2023 ERX1188904_ERR1109373_1.fastq.gz
+-rw-r--r-- 1 tuhu cu_10181 8.0K Apr 14  2023 ERX1188904_ERR1109373_2.fastq.gz
+-rw-r--r-- 1 tuhu cu_10181  18K Apr 14  2023 ERX1234253_ERR1160846.fastq.gz
+drwxr-xr-x 2 tuhu cu_10181 4.0K Dec  6  2023 md5
+-rw-r--r-- 1 tuhu cu_10181  459 Apr 14  2023 SRX10940790_SRR14593545_1.fastq.gz
+-rw-r--r-- 1 tuhu cu_10181  473 Apr 14  2023 SRX10940790_SRR14593545_2.fastq.gz
+-rw-r--r-- 1 tuhu cu_10181  150 Apr 14  2023 SRX11047067_SRR14709033.fastq.gz
+-rw-r--r-- 1 tuhu cu_10181 592K Apr 14  2023 SRX6725035_SRR9984183.fastq.gz
+-rw-r--r-- 1 tuhu cu_10181 121K Apr 14  2023 SRX9315476_SRR12848126_1.fastq.gz
+-rw-r--r-- 1 tuhu cu_10181 129K Apr 14  2023 SRX9315476_SRR12848126_2.fastq.gz
+-rw-r--r-- 1 tuhu cu_10181  16K Apr 14  2023 SRX9626017_SRR13191702_1.fastq.gz
+-rw-r--r-- 1 tuhu cu_10181  16K Apr 14  2023 SRX9626017_SRR13191702_2.fastq.gz
+
+_test_fetchngs_outdir/metadata:
+total 4.5K
+-rw-r--r-- 1 tuhu cu_10181 1.5K Apr 14  2023 DRR026872.runinfo_ftp.tsv
+-rw-r--r-- 1 tuhu cu_10181 1.9K Apr 14  2023 DRR028935.runinfo_ftp.tsv
+-rw-r--r-- 1 tuhu cu_10181 2.2K Apr 14  2023 ERR1109373.runinfo_ftp.tsv
+-rw-r--r-- 1 tuhu cu_10181 1.5K Apr 14  2023 ERR1160846.runinfo_ftp.tsv
+-rw-r--r-- 1 tuhu cu_10181 1.3K Apr 14  2023 SRR12848126.runinfo_ftp.tsv
+-rw-r--r-- 1 tuhu cu_10181 2.1K Apr 14  2023 SRR13191702.runinfo_ftp.tsv
+-rw-r--r-- 1 tuhu cu_10181 1.2K Apr 14  2023 SRR14593545.runinfo_ftp.tsv
+-rw-r--r-- 1 tuhu cu_10181 1.1K Apr 14  2023 SRR14709033.runinfo_ftp.tsv
+-rw-r--r-- 1 tuhu cu_10181 1.8K Apr 14  2023 SRR9984183.runinfo_ftp.tsv
+
+_test_fetchngs_outdir/pipeline_info:
+total 13M
+-rw-r--r-- 1 tuhu cu_10181 2.8M Apr 14  2023 execution_report_2023-04-14_12-03-48.html
+-rw-r--r-- 1 tuhu cu_10181 2.8M Apr 14  2023 execution_report_2023-04-14_12-04-21.html
+-rw-r--r-- 1 tuhu cu_10181 2.9M Apr 14  2023 execution_report_2023-04-14_12-04-40.html
+-rw-r--r-- 1 tuhu cu_10181 2.9M Apr 14  2023 execution_report_2023-04-14_12-07-45.html
+-rw-r--r-- 1 tuhu cu_10181 246K Apr 14  2023 execution_timeline_2023-04-14_12-03-48.html
+-rw-r--r-- 1 tuhu cu_10181 246K Apr 14  2023 execution_timeline_2023-04-14_12-04-21.html
+-rw-r--r-- 1 tuhu cu_10181 258K Apr 14  2023 execution_timeline_2023-04-14_12-04-40.html
+-rw-r--r-- 1 tuhu cu_10181 258K Apr 14  2023 execution_timeline_2023-04-14_12-07-45.html
+-rw-r--r-- 1 tuhu cu_10181  101 Apr 14  2023 execution_trace_2023-04-14_12-03-48.txt
+-rw-r--r-- 1 tuhu cu_10181  101 Apr 14  2023 execution_trace_2023-04-14_12-04-21.txt
+-rw-r--r-- 1 tuhu cu_10181 6.6K Apr 14  2023 execution_trace_2023-04-14_12-04-40.txt
+-rw-r--r-- 1 tuhu cu_10181 6.6K Apr 14  2023 execution_trace_2023-04-14_12-07-45.txt
+-rw-r--r-- 1 tuhu cu_10181  12K Apr 14  2023 pipeline_dag_2023-04-14_12-03-48.html
+-rw-r--r-- 1 tuhu cu_10181  12K Apr 14  2023 pipeline_dag_2023-04-14_12-04-21.html
+-rw-r--r-- 1 tuhu cu_10181  12K Apr 14  2023 pipeline_dag_2023-04-14_12-04-40.html
+-rw-r--r-- 1 tuhu cu_10181  12K Apr 14  2023 pipeline_dag_2023-04-14_12-07-45.html
+-rw-r--r-- 1 tuhu cu_10181  343 Apr 14  2023 software_versions.yml
+
+_test_fetchngs_outdir/samplesheet:
+total 33K
+-rw-r--r-- 1 tuhu cu_10181 3.9K Apr 14  2023 id_mappings.csv
+-rw-r--r-- 1 tuhu cu_10181 4.1K Apr 14  2023 multiqc_config.yml
+-rw-r--r-- 1 tuhu cu_10181  11K Apr 14  2023 samplesheet.csv
+
+_test_fetchngs/tmp:
+total 1.5K
+drwxr-xr-x 3 tuhu cu_10181 4.0K Dec  6  2023 03
+drwxr-xr-x 4 tuhu cu_10181 4.0K Apr 14  2023 6c
+drwxr-xr-x 3 tuhu cu_10181 4.0K Apr 14  2023 ce

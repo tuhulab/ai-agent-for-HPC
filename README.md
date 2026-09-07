@@ -82,30 +82,24 @@ Feel free to fork and customize these documents for your specific:
 - Local policies and quotas
 
 
-## 🤖 Pi Coding Agent (Skills)
+## 🤖 Pi Coding Agent (Skills Package)
 
-This repo is now a **pi package** — install the `ucloud-hpc` skill directly:
+This repo is a **pi package** containing three modular HPC agent skills:
 
 ```bash
-# from GitHub (pinned)
-pi install git:github.com/tuhulab/ai-agent-for-HPC@v1.1.0
-# or local
+# Install from INFIMM repository
+pi install git:github.com/INFIMM-Bioinformatics/ai-agent-for-HPC
+# or local development
 pi install /path/to/ai-agent-for-HPC
-# ephemeral try
-pi -e git:github.com/tuhulab/ai-agent-for-HPC
 ```
 
-Then `/skill:ucloud-hpc` or auto-trigger on HPC tasks. Skill lives at `skills/ucloud-hpc/SKILL.md` (19 sections, ~26KB) and covers:
+### Available Skills:
 
-- **Job lifecycle automation via the web portal** — direct login + TOTP, workspace/project switcher, app create form (machine type + vCPU slider, folder attach, SSH enable + per-job gateway port via bundled `connect_ucloud` utility), Import/`JobParameters.json`, monitoring states (queued → running → completed/suspended), hold-to-stop, rerun/properties, hotkeys
-- WekaFS layout (ephemeral `/work` mount root with persistent mounted folders `/work/<MOUNTED_FOLDER>`)
-- Lmod/EasyBuild vendor paths (`amd`/`intel`)
-- OpenMPI 5.0.10 + PMIx, CUDA checks
-- Emulated Slurm (`gen_slurm_conf` sed template, no systemd)
-- Multi-node SSH via `/etc/ucloud` + `/tmp/hostfile`
-- Resource truth from `JobParameters.json`
-
-> Also installable via `npm` when published: `pi install npm:ai-agent-for-hpc`
+| Skill | Trigger | Description |
+|---|---|---|
+| **`ucloud-hpc`** | `/skill:ucloud-hpc` | Full job lifecycle automation via web portal, SSH connections, container orchestration, WekaFS mounted directory persistence, modules, and emulated Slurm. |
+| **`data-transfer`** | `/skill:data-transfer` | Cross-platform data transfer with MD5 checksum verification and background resilience across S-Drive, uGerm HPC (SLURM), Computerome, and UCloud. |
+| **`data-backup`** | `/skill:data-backup` | Automated incremental backups, point-in-time snapshot recovery, cron scheduling, and retention pruning using Restic. |
 
 ## 🤝 Contributing
 

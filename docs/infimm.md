@@ -68,7 +68,9 @@ On UCloud, the `/work` root directory is an **ephemeral mount point**. Only the 
 
 ## 🔄 Automated Backup Protocol (Restic)
 
-The INFIMM environment uses `scripts/restic_wrapper.sh` for incremental snapshot backups from the working drive to the backup drive.
+The INFIMM environment uses `scripts/backup/restic_wrapper.sh` and `scripts/backup/run_incremental_backups.sh` for snapshot-based incremental backups from the working drive (`TB group`) to the backup drive (`Data_backup`).
+
+See [`skills/data-backup/SKILL.md`](../skills/data-backup/SKILL.md) for complete instructions.
 
 ### Setup & Execution
 
@@ -79,7 +81,7 @@ When launching a backup job, attach both `TB group` and `Data_backup` folders:
 ls -d /work/TB_group /work/Data_backup
 
 # 2. Run backup and register automated 2-hour cron job
-./scripts/restic_wrapper.sh backup \
+./scripts/backup/restic_wrapper.sh backup \
   -r /work/Data_backup/repo \
   -s /work/TB_group \
   -p /work/Data_backup/restic_pw.txt
@@ -92,12 +94,44 @@ restic -r /work/Data_backup/repo --password-file /work/Data_backup/restic_pw.txt
 ### Restoring from Backup
 
 ```bash
-./scripts/restic_wrapper.sh restore \
+./scripts/backup/restic_wrapper.sh restore \
   -r /work/Data_backup/repo \
+  -t /work/TB_group/restored_data \
   -p /work/Data_backup/restic_pw.txt
 ```
 
 ---
+
+## 🚀 Cross-Platform Data Transfer & Migration
+
+The lab maintains specialized tooling and AI skills for moving sequencing data across infrastructure with end-to-end MD5 checksum verification.
+
+See [`skills/data-transfer/SKILL.md`](../skills/data-transfer/SKILL.md) and [`docs/data-management/`](data-management/migration-plan.md).
+
+### 1. Local Mac / S-Drive $\rightarrow$ UCloud
+```bash
+# Using scripts/transfer/transfer_to_ucloud.sh (rsync + MD5 verification)
+./scripts/transfer/transfer_to_ucloud.sh \
+  /path/to/source_data \
+  /work/TB_group/data_migration/dataset_name \
+  <UCLOUD_PORT> \
+  ssh.cloud.sdu.dk
+```
+
+### 2. uGerm HPC $\rightarrow$ UCloud (via SLURM)
+```bash
+# Submit batch transfer on uGerm cluster
+sbatch scripts/transfer/submit_transfer_ucloud.sh \
+  /srvdata/Projects/shll_INFIMM/proj/sequence_data/TB-2998/fastq/ \
+  /work/TB_group/data_migration/total_lung_TBD/ \
+  <UCLOUD_PORT> \
+  ssh.cloud.sdu.dk
+```
+
+### 3. Computerome (`cu_10181`) Migration Tracking
+- **Manifests & Plans**: [`docs/data-management/migration-plan.md`](data-management/migration-plan.md) and [`docs/data-management/migration-status.md`](data-management/migration-status.md)
+- **Dry-Run Preflight**: `python3 scripts/migration/dry_run.py --manifest docs/data-management/runbook/manifest_raw.csv`
+- **Migration Runner**: `./scripts/migration/migrate.sh`
 
 ## 🧬 Standard Bioinformatics Pipelines & Environment Setup
 

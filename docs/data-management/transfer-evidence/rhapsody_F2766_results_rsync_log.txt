@@ -1,0 +1,13 @@
+receiving incremental file list
+rhapsody_F2766/
+rhapsody_F2766/Rhapsody_S1_R1_001_fastqc.html
+              0   0%    0.00kB/s    0:00:00          452,888 100%   16.00MB/s    0:00:00 (xfr#1, to-chk=3/5)
+rhapsody_F2766/Rhapsody_S1_R1_001_fastqc.zip
+              0   0%    0.00kB/s    0:00:00          691,500 100%    9.99MB/s    0:00:00 (xfr#2, to-chk=2/5)
+rhapsody_F2766/Rhapsody_S1_R2_001_fastqc.html
+              0   0%    0.00kB/s    0:00:00          354,742 100%    3.28MB/s    0:00:00 (xfr#3, to-chk=1/5)
+rhapsody_F2766/Rhapsody_S1_R2_001_fastqc.zip
+              0   0%    0.00kB/s    0:00:00          530,288 100%    4.32MB/s    0:00:00 (xfr#4, to-chk=0/5)
+
+sent 104 bytes  received 1,727,444 bytes  73,512.68 bytes/sec
+total size is 2,029,418  speedup is 1.17

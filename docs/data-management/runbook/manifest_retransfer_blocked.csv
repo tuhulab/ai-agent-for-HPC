@@ -1,0 +1,14 @@
+# Re-transfer manifest: files blocked by permissions (awaiting admin chmod g+r)
+# Run AFTER the admin grants tuhu group-read access on these.
+# Format: <source>,<relative_destination_under_DEST_ROOT>
+# DEST_ROOT = /work/data_migration
+/home/projects/cu_10181/people/s144334/data/GEO/F2702/GEO_upload_F2702_bulkRNAseq_v2.xlsx,julzim_GEO_F2702/
+/home/projects/cu_10181/people/s144334/data/GEO/F2702/18134XR-75-13V2-S12_CAF01_counts.txt,julzim_GEO_F2702/
+/home/projects/cu_10181/people/s144334/data/GEO/F2702/18134XR-75-14V2-S13_CAF01_counts.txt,julzim_GEO_F2702/
+/home/projects/cu_10181/people/s144334/data/GEO/F2702/18134XR-75-15V2-S14_CAF01_counts.txt,julzim_GEO_F2702/
+/home/projects/cu_10181/people/s144334/data/GEO/F2702/18134XR-75-16V2-S15_CAF01.CAF16_counts.txt,julzim_GEO_F2702/
+/home/projects/cu_10181/people/s144334/data/GEO/F2702/18134XR-75-17V2-S16_CAF01.CAF16_counts.txt,julzim_GEO_F2702/
+/home/projects/cu_10181/people/s144334/data/GEO/F2702/18134XR-75-18V2-S17_CAF01.CAF16_counts.txt,julzim_GEO_F2702/
+/home/projects/cu_10181/people/s144334/data/GEO/F2833/GEO_upload_F2833_scRNAseq_v3.xlsx,julzim_GEO_F2833/
+/home/projects/cu_10181/people/s144334/data/GEO/F2833/B_DBEC_MolsPerCell_Unfiltered.csv.gz,julzim_GEO_F2833/
+/home/projects/cu_10181/people/s144334/data/GEO/F2833/C_DBEC_MolsPerCell_Unfiltered.csv.gz,julzim_GEO_F2833/
