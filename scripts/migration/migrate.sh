@@ -33,7 +33,7 @@ cat > "$ASKPASS" <<'EOF'
 #!/bin/bash
 echo "$CM_PASS"
 EOF
-chmod 600 "$ASKPASS"
+chmod 700 "$ASKPASS"
 
 # Base SSH options shared everywhere.
 SSH_BASE=(
@@ -58,12 +58,16 @@ establish_master() {
     -o ExitOnForwardFailure=yes \
     -N -f "${CM_USER}@${CM_HOST}" \
     >>"$LOGDIR/master.log" 2>&1
-  sleep 2
-  if [ -S "$CTL" ]; then
-    echo "[$(date +%T)] Master SSH established: $CTL"
-  else
-    echo "ERROR: master connection not established. See $LOGDIR/master.log"; exit 1
-  fi
+  echo "[$(date +%T)] Waiting up to 90s for 2FA approval..."
+  for i in $(seq 1 45); do
+    if [ -S "$CTL" ]; then
+      echo "[$(date +%T)] Master SSH established: $CTL"
+      return 0
+    fi
+    sleep 2
+  done
+  echo "ERROR: master connection not established within 90s. See $LOGDIR/master.log"
+  exit 1
 }
 
 # rsync ssh wrapper reusing the master (auto = reuse if socket exists).
