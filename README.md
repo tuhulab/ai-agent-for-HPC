@@ -24,10 +24,11 @@ These instruction documents bridge that knowledge gap, enabling AI assistants to
 
 ## 📚 Available Instructions
 
-| Platform | Location | Description |
-|----------|----------|-------------|
+| Platform / Organization | Location | Description |
+|-------------------------|----------|-------------|
 | **UCloud (SDU)** | [`docs/ucloud-sdu.md`](docs/ucloud-sdu.md) | SDU eScience Center's containerized HPC platform (k3s, WekaFS) |
 | **Computerome (DTU)** | [`docs/computerome-dtu.md`](docs/computerome-dtu.md) | DTU's traditional HPC cluster (PBS/Torque, Moab) |
+| **INFIMM Bioinformatics** | [`docs/infimm.md`](docs/infimm.md) | Lab-specific UCloud drive topology, Restic backups, and workflows |
 
 ## 🚀 Quick Start
 
