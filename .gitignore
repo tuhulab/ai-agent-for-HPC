@@ -1,0 +1,63 @@
+# Basics
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+.pytest_cache/
+.coverage
+htmlcov/
+site/
+
+# Virtual Environments
+venv/
+env/
+ENV/
+.env
+.venv
+
+# HPC / Job Scheduler Logs
+*.o[0-9]*
+*.e[0-9]*
+*.log
+slurm-*.out
+core.*
+
+# Model weights and large data
+*.pth
+*.pt
+*.h5
+*.onnx
+*.safetensors
+data/
+datasets/
+models/
+checkpoints/
+secrets.json
+
+# Local SSH credentials
+ssh_keys/
+*.key
+*.pem

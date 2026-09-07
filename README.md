@@ -108,18 +108,7 @@ Then `/skill:ucloud-hpc` or auto-trigger on HPC tasks. Skill lives at `skills/uc
 
 ## 🤝 Contributing
 
-Contributions are welcome! If you have experience with other HPC systems, please consider:
-
-1. **Adding a new platform**: Create a new file in `docs/` following the existing format
-2. **Improving existing docs**: Submit PRs with corrections or additions
-3. **Sharing your experience**: Open issues with suggestions or common pitfalls
-
-### Contribution Guidelines
-
-- Follow the existing document structure for consistency
-- Include practical examples and code snippets
-- Add troubleshooting sections for common issues
-- Include disclaimers for unofficial documentation
+See [CONTRIBUTING.md](CONTRIBUTING.md) for details on how to add new platforms or improve existing documentation.
 
 ## ⚠️ Disclaimer
 
