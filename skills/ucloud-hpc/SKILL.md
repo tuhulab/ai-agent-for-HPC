@@ -37,21 +37,21 @@ Official docs: `https://docs.cloud.sdu.dk` (guide/submitting.html, guide/monitor
 
 Left nav icons: Files, Project, Resources, Applications, Compute. Bottom of the rail: theme toggle, task monitor, notifications, support, **user avatar** (account settings, logout).
 
-### 1.2 Authentication
+### 1.2 Authentication & Guardrail Protocol
 
-- The SAML path (`Login` button → WAYF via `auth.cloud.sdu.dk`) is a ForgeRock flow that is slow and flaky under automation (consent stage "Continue to WAYF" renders late; the page can sit on a spinner). Prefer the **direct login form**: on `/app/login` click **"Other login options →"**, which reveals Username + Password textboxes (AX names: "Username", "Password") and a Login button.
-- After submit, a **"6-digit code"** TOTP field appears when 2FA is enabled. The code rotates every 30 s — type and submit immediately.
+- The SAML path (`Login` button → WAYF via `auth.cloud.sdu.dk`) is a ForgeRock flow that is slow and flaky under automation. Prefer the **direct login form**: on `/app/login` click **"Other login options →"**, which reveals Username + Password textboxes (AX names: "Username", "Password") and a Login button.
+- **Interactive Guardrail**: When an automated agent lands on the login page without an active session, it **must prompt the user** for their Username and Password via interactive input (`ask` tool), fill the fields, and submit.
+- After submitting credentials, a **"6-digit code"** TOTP field appears when 2FA is enabled. The agent **must immediately prompt the user** for the current 6-digit TOTP code and submit without delay (the code rotates every 30 s).
 - Prove login succeeded: page title becomes `UCloud | Dashboard` and the URL is `/app` (not `/app/login`).
-- The session lives in the browser; it persists across page navigations. If `/app/*` redirects back to `/app/login`, the session expired — re-authenticate.
+- The session lives in the browser cookies and persists across navigations. If `/app/*` redirects back to `/app/login`, the session expired — re-authenticate through the guardrail.
 
 ### 1.3 Workspace / project selector — ⚠️ the top-right dropdown
 
-The **top-right dropdown** (shows the current workspace, e.g. `My workspace`) is the **workspace/project switcher** — NOT settings and NOT an app menu. Clicking it opens a searchable project list (starred first; `My workspace` is always starred; hidden projects can be toggled). Selecting a project changes the context for EVERYTHING: file browser (Places/drives), cost balance, allocations, folder picker, and job list.
-
+The **top-right dropdown** (shows the current workspace, e.g. `My workspace`) is the **workspace/project switcher** — NOT settings and NOT an app menu.
+- DOM structure: `.project-switcher` contains `[data-component="project-switcher"]` and `.context-switcher-trigger74` (or `span[data-dropdown-trigger]`).
+- Clicking `.context-switcher-trigger74` opens the searchable project list popover (e.g. `BINF INFIMM`, `CSCC`, `image_analysis`, `Machine Learning`, `VUA clinical data`). Clicking the target project switches the global context for file dialogs, drives, billing, and job creation.
 - Before launching, monitoring, or touching files, **read the value of the top-right dropdown and confirm it is the intended project.** An agent clicking around can silently submit a job billed to the wrong project or attach the wrong drive.
-- Never confuse it with the **user avatar at the bottom of the left rail** (account settings / logout) or the theme toggle.
 - Equivalent effect is available via the command palette (`Cmd+P` / `Ctrl+P`) from any page.
-
 ## 2. Launch a Job (create form)
 
 Entry points — either path lands on `/app/jobs/create?app=<id>`:
@@ -91,21 +91,21 @@ terminal-ubuntu specifics (observed UCloud 2026.5.0):
 
 ### 2.1 Machine type dialog
 
-Click "No machine type selected". A modal table opens with row: Type | Machine type | Description | Status (e.g. `CPU | cpu-amd-zen5 | General purpose CPU machines.`). Click the row — the dialog closes and the field shows the selection (e.g. `cpu-amd-zen5`). Then:
+Click `div[data-job-info-field="machine"]` (displays "No machine type selected" initially). A modal table opens with rows: Type | Machine type | Description | Status (e.g. `CPU | cpu-amd-zen5 | General purpose CPU machines.`). Click the `<tr>` corresponding to `cpu-amd-zen5` — the dialog closes and the field updates:
 
-- Right side shows queue status text: **"This machine type is available."** (green), a busy warning (yellow), or unavailable/queued (red). A red status means the job will wait.
-- **Est. cost** (Core-hours) and **Balance** appear after selection; an insufficient balance shows a warning + "Apply for resources" button. Never submit past a balance warning without confirming.
+- Hidden input `reservation-machine` is populated with JSON, e.g. `{"provider":"ucloud","category":"cpu-amd-zen5","id":"cpu-amd-zen5-1-vcpu"}`.
+- Right side shows queue status text: **"This machine type is available."** (green), a busy warning (yellow), or unavailable/queued (red).
+- **Est. cost** (Core-hours) and **Balance** appear after selection; an insufficient balance shows a warning. Never submit past a balance warning without confirming.
 
-### 2.2 Attaching folders (Permanent Storage Mounts)
+### 2.2 Attaching folders (Permanent Storage Mounts — UCloud 2026.5.0 Layout)
 
-Click "Folder #1" → Places browser opens:
+Click `Folder #1` (`#app-param-resourceFolder0visual`) → Places browser opens:
 
-- Left: sidebar with `Favorites`, `My workspace`, and project drives (e.g. `BINF INFIMM`, `CSCC`, `image_analysis`, …).
-- Right: the selected drive's contents (`Jobs`, `Syncthing`, …) with a **Use** button per row; header buttons **"Use this folder" (⌥G)**, **"Create folder" (⌥F)**, **"Upload files" (⌥U)**.
-- Click a folder row (or navigate into it) then "Use this folder".
-- **Mount mapping**: Attached folders mount as subdirectories under `/work/<FolderName>` inside the container (e.g., Folder #1 named `my-analysis` mounts at `/work/my-analysis`). Multiple folders can be attached as Folder #1, Folder #2, …, creating separate subdirectories under `/work/`.
+- **Sidebar navigation**: The left sidebar lists `Favorites`, `My workspace`, and project drives under the active workspace (e.g. under `BINF INFIMM`: `TB group`, `Adjuvant group`, `Data_backup`, `Bioinformatics`, `Chlamydia group`, `INFIMM Public`, `data_migration`).
+- Click the drive name in the sidebar (e.g. `TB group`).
+- **Mount Selection**: Click the header button **"Use this folder" (`button[data-tag="Use_this_folder-action"]` or ⌥G)** to select the root of that drive.
+- **Mount mapping**: Attached folders mount as subdirectories under `/work/<FolderName>` inside the container (e.g., Folder #1 named `TB group` mounts at `/work/TB group`). Multiple folders can be attached as Folder #1, Folder #2, etc.
 - ⚠️ **CRITICAL PERSISTENCE RULE**: The `/work` root directory in the container is an **ephemeral mount point**. Only the subdirectories that correspond to attached folders (`/work/<FolderName>/...`) are backed by persistent WekaFS storage and survive job termination. If a job is launched **without attaching a folder**, `/work` contains no persistent volumes, and all work done in the container is permanently lost on exit.
-
 ### 2.3 Initialization script (auto-setup on boot) — key automation lever
 
 "Initialization" attaches a `.sh` script that runs at job startup. Use it to bootstrap the container deterministically every launch:

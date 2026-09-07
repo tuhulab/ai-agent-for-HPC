@@ -1,0 +1,1509 @@
+[
+  {
+    "name": "NAFP Image analysis",
+    "modality": "Histology & Image Analysis (QuPath)",
+    "size_gb": 9.51,
+    "total_files": 9709,
+    "total_dirs": 2558,
+    "date_range": "2025-01 to 2026-08",
+    "sample_ids": [
+      "CD31",
+      "CD312",
+      "CD313"
+    ],
+    "top_exts": [
+      [
+        ".json",
+        4794
+      ],
+      [
+        ".jpg",
+        2409
+      ],
+      [
+        ".qpdata",
+        2371
+      ],
+      [
+        ".png",
+        27
+      ],
+      [
+        ".qpproj",
+        24
+      ]
+    ],
+    "top_items": [
+      "ChatGPT",
+      "F2630_QuPath Analysis_neutrophils_NAFP March 2026",
+      "F2701_HEV and memory",
+      "NAFP F2944_HEV vs iBALT",
+      "QuPath Analysis F2805_B cell aggregates wk 2 4 and 6",
+      "QuPath Analysis F2805_B cell aggregates wk 4 and 6",
+      "QuPath Analysis F2944_with HEV annot",
+      "QuPath Analysis F2944_with HEV annot (copy 1)",
+      "QuPath Analysis F2944_with HEV annot MFIs",
+      "QuPath Analysis F2944_with comb HEV",
+      "QuPath Analysis F2944_with comb HEV tiles_mis",
+      "QuPath Analysis F2944_with comb HEV(2)"
+    ],
+    "has_readme": false,
+    "has_git": false,
+    "has_venv": false,
+    "has_scripts": false,
+    "has_notebooks": false,
+    "has_qpproj": true,
+    "has_fastq": false,
+    "has_raw_images": false,
+    "has_singlecell": false,
+    "has_backup_copies": true
+  },
+  {
+    "name": "QuPath Analysis F2944",
+    "modality": "Histology & Image Analysis (QuPath)",
+    "size_gb": 0.51,
+    "total_files": 735,
+    "total_dirs": 188,
+    "date_range": "2025-01 to 2025-02",
+    "sample_ids": [
+      "F2944"
+    ],
+    "top_exts": [
+      [
+        ".json",
+        363
+      ],
+      [
+        ".qpdata",
+        184
+      ],
+      [
+        ".jpg",
+        184
+      ],
+      [
+        ".csv",
+        2
+      ],
+      [
+        ".qpproj",
+        1
+      ]
+    ],
+    "top_items": [
+      "classifiers",
+      "data",
+      "measurements.csv",
+      "measurements2.csv",
+      "project.qpproj",
+      "project.qpproj.backup"
+    ],
+    "has_readme": false,
+    "has_git": false,
+    "has_venv": false,
+    "has_scripts": false,
+    "has_notebooks": false,
+    "has_qpproj": true,
+    "has_fastq": false,
+    "has_raw_images": false,
+    "has_singlecell": false,
+    "has_backup_copies": true
+  },
+  {
+    "name": "QuPath Analysis F2944(1)",
+    "modality": "Histology & Image Analysis (QuPath)",
+    "size_gb": 0.02,
+    "total_files": 707,
+    "total_dirs": 178,
+    "date_range": "2025-01 to 2025-01",
+    "sample_ids": [
+      "F2944"
+    ],
+    "top_exts": [
+      [
+        ".json",
+        353
+      ],
+      [
+        ".jpg",
+        176
+      ],
+      [
+        ".qpdata",
+        176
+      ],
+      [
+        ".qpproj",
+        1
+      ],
+      [
+        ".backup",
+        1
+      ]
+    ],
+    "top_items": [
+      "classifiers",
+      "data",
+      "project.qpproj",
+      "project.qpproj.backup"
+    ],
+    "has_readme": false,
+    "has_git": false,
+    "has_venv": false,
+    "has_scripts": false,
+    "has_notebooks": false,
+    "has_qpproj": true,
+    "has_fastq": false,
+    "has_raw_images": false,
+    "has_singlecell": false,
+    "has_backup_copies": true
+  },
+  {
+    "name": "TB-Endothelial",
+    "modality": "Single-Cell Analysis Project",
+    "size_gb": 0.86,
+    "total_files": 24239,
+    "total_dirs": 3473,
+    "date_range": "2024-04 to 2026-03",
+    "sample_ids": [
+      "CD86",
+      "Endothelial",
+      "cd3679",
+      "f0098",
+      "f0318",
+      "f1087",
+      "f1096",
+      "f1127"
+    ],
+    "top_exts": [
+      [
+        ".hpp",
+        13231
+      ],
+      [
+        ".rds",
+        1855
+      ],
+      [
+        "(no ext)",
+        1649
+      ],
+      [
+        ".h",
+        1198
+      ],
+      [
+        ".r",
+        1193
+      ]
+    ],
+    "top_items": [
+      ".Renviron",
+      ".Rprofile",
+      ".Rproj.user",
+      ".git",
+      ".gitignore",
+      "LICENSE",
+      "README.md",
+      "TB-Endothelial.Rproj",
+      "analysis",
+      "data",
+      "renv",
+      "renv.lock"
+    ],
+    "has_readme": true,
+    "has_git": true,
+    "has_venv": true,
+    "has_scripts": true,
+    "has_notebooks": true,
+    "has_qpproj": false,
+    "has_fastq": false,
+    "has_raw_images": false,
+    "has_singlecell": true,
+    "has_backup_copies": true
+  },
+  {
+    "name": "TB-VIT",
+    "modality": "Single-Cell Analysis Project",
+    "size_gb": 10.08,
+    "total_files": 7700,
+    "total_dirs": 1835,
+    "date_range": "2024-04 to 2026-09",
+    "sample_ids": [
+      "CD0",
+      "CD8744",
+      "Cd27",
+      "F2662",
+      "F3363",
+      "F4327",
+      "F6413",
+      "F6462"
+    ],
+    "top_exts": [
+      [
+        "(no ext)",
+        2300
+      ],
+      [
+        ".r",
+        747
+      ],
+      [
+        ".rds",
+        742
+      ],
+      [
+        ".png",
+        515
+      ],
+      [
+        ".csv",
+        403
+      ]
+    ],
+    "top_items": [
+      ".DS_Store",
+      ".Rprofile",
+      ".git",
+      ".github",
+      ".gitignore",
+      ".ipynb_checkpoints",
+      ".matplotlib_cache",
+      ".vscode",
+      "LICENSE",
+      "README.md",
+      "_tmp",
+      "archive"
+    ],
+    "has_readme": true,
+    "has_git": true,
+    "has_venv": true,
+    "has_scripts": true,
+    "has_notebooks": true,
+    "has_qpproj": false,
+    "has_fastq": false,
+    "has_raw_images": false,
+    "has_singlecell": true,
+    "has_backup_copies": true
+  },
+  {
+    "name": "TB-scverse",
+    "modality": "Microscopy & Raw Imaging Data",
+    "size_gb": 20.69,
+    "total_files": 29388,
+    "total_dirs": 3726,
+    "date_range": "2019-10 to 2026-09",
+    "sample_ids": [
+      "CD103",
+      "CD4",
+      "Cd103",
+      "cd0",
+      "cd10",
+      "cd103",
+      "cd12",
+      "cd4"
+    ],
+    "top_exts": [
+      [
+        ".py",
+        9443
+      ],
+      [
+        ".pyc",
+        9441
+      ],
+      [
+        "(no ext)",
+        2354
+      ],
+      [
+        ".pyi",
+        2139
+      ],
+      [
+        ".rds",
+        618
+      ]
+    ],
+    "top_items": [
+      ".git",
+      ".gitignore",
+      ".ipynb_checkpoints",
+      ".venv",
+      "CellxGene_CD103",
+      "LICENSE",
+      "README.md",
+      "TB_VITinefct",
+      "TB_human",
+      "TB_monkey",
+      "TB_totallung",
+      "__pycache__"
+    ],
+    "has_readme": true,
+    "has_git": true,
+    "has_venv": true,
+    "has_scripts": true,
+    "has_notebooks": true,
+    "has_qpproj": false,
+    "has_fastq": false,
+    "has_raw_images": true,
+    "has_singlecell": true,
+    "has_backup_copies": true
+  },
+  {
+    "name": "TB-total-lung",
+    "modality": "Microscopy & Raw Imaging Data",
+    "size_gb": 25.82,
+    "total_files": 54219,
+    "total_dirs": 8546,
+    "date_range": "2023-08 to 2026-09",
+    "sample_ids": [
+      "CD077815",
+      "CD7",
+      "Cd27",
+      "F0806",
+      "F1136",
+      "F1983",
+      "F2181",
+      "F2229"
+    ],
+    "top_exts": [
+      [
+        ".hpp",
+        25862
+      ],
+      [
+        "(no ext)",
+        4454
+      ],
+      [
+        ".rds",
+        4394
+      ],
+      [
+        ".r",
+        2897
+      ],
+      [
+        ".h",
+        2077
+      ]
+    ],
+    "top_items": [
+      ".DS_Store",
+      ".git",
+      ".gitignore",
+      ".ipynb_checkpoints",
+      ".pytest_cache",
+      "AGENTS.md",
+      "LICENSE",
+      "README.md",
+      "_tmp",
+      "analysis",
+      "analysis_python",
+      "data"
+    ],
+    "has_readme": true,
+    "has_git": true,
+    "has_venv": true,
+    "has_scripts": true,
+    "has_notebooks": true,
+    "has_qpproj": false,
+    "has_fastq": false,
+    "has_raw_images": true,
+    "has_singlecell": true,
+    "has_backup_copies": true
+  },
+  {
+    "name": "TB_TL",
+    "modality": "Single-Cell Analysis Project",
+    "size_gb": 173.6,
+    "total_files": 770,
+    "total_dirs": 237,
+    "date_range": "2025-09 to 2026-08",
+    "sample_ids": [
+      "Cd19",
+      "Cd226",
+      "Cd3",
+      "Cd4",
+      "Cd40",
+      "Cd74",
+      "Cd79",
+      "Cd8"
+    ],
+    "top_exts": [
+      [
+        ".png",
+        403
+      ],
+      [
+        "(no ext)",
+        183
+      ],
+      [
+        ".csv",
+        66
+      ],
+      [
+        ".h5ad",
+        31
+      ],
+      [
+        ".log",
+        29
+      ]
+    ],
+    "top_items": [
+      ".git",
+      ".gitignore",
+      ".ssh",
+      "LICENSE",
+      "README.md",
+      "code",
+      "data",
+      "results"
+    ],
+    "has_readme": true,
+    "has_git": true,
+    "has_venv": false,
+    "has_scripts": true,
+    "has_notebooks": true,
+    "has_qpproj": false,
+    "has_fastq": false,
+    "has_raw_images": false,
+    "has_singlecell": true,
+    "has_backup_copies": false
+  },
+  {
+    "name": "TB_TL_AdTx_F2998_F3035",
+    "modality": "Single-Cell Analysis Project",
+    "size_gb": 236.15,
+    "total_files": 104286,
+    "total_dirs": 82912,
+    "date_range": "2026-05 to 2026-07",
+    "sample_ids": [
+      "AdTx",
+      "CD4",
+      "F2998",
+      "F3035",
+      "cd1",
+      "cd2076",
+      "cd4578",
+      "cd5"
+    ],
+    "top_exts": [
+      [
+        "(no ext)",
+        98999
+      ],
+      [
+        ".csv",
+        3068
+      ],
+      [
+        ".h5",
+        650
+      ],
+      [
+        ".gz",
+        615
+      ],
+      [
+        ".json",
+        472
+      ]
+    ],
+    "top_items": [
+      ".git",
+      ".gitignore",
+      ".ssh",
+      "README.md",
+      "code",
+      "data",
+      "results"
+    ],
+    "has_readme": true,
+    "has_git": true,
+    "has_venv": false,
+    "has_scripts": true,
+    "has_notebooks": true,
+    "has_qpproj": false,
+    "has_fastq": false,
+    "has_raw_images": false,
+    "has_singlecell": true,
+    "has_backup_copies": true
+  },
+  {
+    "name": "TB_TL_Non_Tcell",
+    "modality": "Single-Cell Analysis Project",
+    "size_gb": 123.54,
+    "total_files": 824,
+    "total_dirs": 220,
+    "date_range": "2025-02 to 2026-08",
+    "sample_ids": [
+      "Cd28",
+      "Cd3",
+      "Cd40",
+      "cd0",
+      "cd0218162",
+      "cd048602",
+      "cd0513",
+      "cd115"
+    ],
+    "top_exts": [
+      [
+        ".png",
+        436
+      ],
+      [
+        "(no ext)",
+        249
+      ],
+      [
+        ".pdf",
+        58
+      ],
+      [
+        ".h5ad",
+        20
+      ],
+      [
+        ".ipynb",
+        19
+      ]
+    ],
+    "top_items": [
+      ".git",
+      ".gitignore",
+      ".ipynb_checkpoints",
+      ".ssh",
+      "LICENSE",
+      "README.md",
+      "cache",
+      "code",
+      "data",
+      "doc",
+      "results"
+    ],
+    "has_readme": true,
+    "has_git": true,
+    "has_venv": false,
+    "has_scripts": true,
+    "has_notebooks": true,
+    "has_qpproj": false,
+    "has_fastq": false,
+    "has_raw_images": false,
+    "has_singlecell": true,
+    "has_backup_copies": true
+  },
+  {
+    "name": "TB_TL_TBD2_F2998",
+    "modality": "Single-Cell Processed Objects",
+    "size_gb": 55.12,
+    "total_files": 44192,
+    "total_dirs": 38232,
+    "date_range": "2026-04 to 2026-04",
+    "sample_ids": [
+      "CD4",
+      "F2998",
+      "F3035",
+      "TBD2"
+    ],
+    "top_exts": [
+      [
+        "(no ext)",
+        41585
+      ],
+      [
+        ".csv",
+        1549
+      ],
+      [
+        ".h5",
+        326
+      ],
+      [
+        ".gz",
+        309
+      ],
+      [
+        ".json",
+        238
+      ]
+    ],
+    "top_items": [
+      "data"
+    ],
+    "has_readme": false,
+    "has_git": false,
+    "has_venv": false,
+    "has_scripts": false,
+    "has_notebooks": false,
+    "has_qpproj": false,
+    "has_fastq": false,
+    "has_raw_images": false,
+    "has_singlecell": true,
+    "has_backup_copies": false
+  },
+  {
+    "name": "TB_TL_TBD3_F2998_F3035",
+    "modality": "Single-Cell Processed Objects",
+    "size_gb": 54.46,
+    "total_files": 44333,
+    "total_dirs": 38274,
+    "date_range": "2026-05 to 2026-05",
+    "sample_ids": [
+      "CD4",
+      "F2998",
+      "F3035",
+      "TBD3"
+    ],
+    "top_exts": [
+      [
+        "(no ext)",
+        41683
+      ],
+      [
+        ".csv",
+        1549
+      ],
+      [
+        ".h5",
+        326
+      ],
+      [
+        ".gz",
+        309
+      ],
+      [
+        ".json",
+        281
+      ]
+    ],
+    "top_items": [
+      "data"
+    ],
+    "has_readme": false,
+    "has_git": false,
+    "has_venv": false,
+    "has_scripts": false,
+    "has_notebooks": false,
+    "has_qpproj": false,
+    "has_fastq": false,
+    "has_raw_images": false,
+    "has_singlecell": true,
+    "has_backup_copies": false
+  },
+  {
+    "name": "TB_TL_TBD_F2998",
+    "modality": "Single-Cell Analysis Project",
+    "size_gb": 34.87,
+    "total_files": 24638,
+    "total_dirs": 20773,
+    "date_range": "2026-02 to 2026-04",
+    "sample_ids": [
+      "CD4",
+      "F2998",
+      "TBD",
+      "f5664"
+    ],
+    "top_exts": [
+      [
+        "(no ext)",
+        23222
+      ],
+      [
+        ".csv",
+        821
+      ],
+      [
+        ".h5",
+        166
+      ],
+      [
+        ".gz",
+        159
+      ],
+      [
+        ".json",
+        128
+      ]
+    ],
+    "top_items": [
+      "TB_TL_TBD_analysis",
+      "data"
+    ],
+    "has_readme": true,
+    "has_git": true,
+    "has_venv": false,
+    "has_scripts": true,
+    "has_notebooks": true,
+    "has_qpproj": false,
+    "has_fastq": false,
+    "has_raw_images": false,
+    "has_singlecell": true,
+    "has_backup_copies": false
+  },
+  {
+    "name": "imaging_analysis_f2805_HEV",
+    "modality": "Microscopy & Raw Imaging Data",
+    "size_gb": 134.32,
+    "total_files": 150254,
+    "total_dirs": 15489,
+    "date_range": "2016-09 to 2026-06",
+    "sample_ids": [
+      "F2805",
+      "HEV",
+      "cd00",
+      "cd01",
+      "cd0785",
+      "cd0834",
+      "cd085",
+      "cd1"
+    ],
+    "top_exts": [
+      [
+        ".pyc",
+        49690
+      ],
+      [
+        ".py",
+        49689
+      ],
+      [
+        ".h",
+        18814
+      ],
+      [
+        ".png",
+        7365
+      ],
+      [
+        "(no ext)",
+        4921
+      ]
+    ],
+    "top_items": [
+      ".venv",
+      "B_Box.png",
+      "B_density.png",
+      "B_ratio.png",
+      "B_total.png",
+      "DL",
+      "HEV_lesion_area.tsv",
+      "HEV_test.ipynb",
+      "Lesion_box.png",
+      "T_Box.png",
+      "T_density.png",
+      "T_ratio.png"
+    ],
+    "has_readme": true,
+    "has_git": false,
+    "has_venv": true,
+    "has_scripts": true,
+    "has_notebooks": true,
+    "has_qpproj": false,
+    "has_fastq": false,
+    "has_raw_images": true,
+    "has_singlecell": true,
+    "has_backup_copies": true
+  },
+  {
+    "name": "imaging_data_CD31pilot_#1_#2",
+    "modality": "Microscopy & Raw Imaging Data",
+    "size_gb": 83.57,
+    "total_files": 5,
+    "total_dirs": 0,
+    "date_range": "2024-07 to 2024-07",
+    "sample_ids": [
+      "CD31"
+    ],
+    "top_exts": [
+      [
+        ".czi",
+        5
+      ]
+    ],
+    "top_items": [
+      "2024_07_03__10480.czi",
+      "2024_07_03__10481.czi",
+      "2024_07_03__10482.czi",
+      "2024_07_03__10483.czi",
+      "2024_07_03__10484.czi"
+    ],
+    "has_readme": false,
+    "has_git": false,
+    "has_venv": false,
+    "has_scripts": false,
+    "has_notebooks": false,
+    "has_qpproj": false,
+    "has_fastq": false,
+    "has_raw_images": true,
+    "has_singlecell": false,
+    "has_backup_copies": false
+  },
+  {
+    "name": "imaging_data_f2630_HEV",
+    "modality": "Microscopy & Raw Imaging Data",
+    "size_gb": 260.63,
+    "total_files": 20,
+    "total_dirs": 0,
+    "date_range": "2024-06 to 2024-06",
+    "sample_ids": [
+      "HEV",
+      "f2630"
+    ],
+    "top_exts": [
+      [
+        ".czi",
+        20
+      ]
+    ],
+    "top_items": [
+      "2024_06_10__10_31__0235.czi",
+      "2024_06_10__10_33__0239.czi",
+      "2024_06_10__10_34__0240.czi",
+      "2024_06_10__10_34__0241.czi",
+      "2024_06_10__10_34__0242.czi",
+      "2024_06_10__10_34__0243.czi",
+      "2024_06_10__10_34__0244.czi",
+      "2024_06_10__10_34__0245.czi",
+      "2024_06_10__10_35__0246.czi",
+      "2024_06_10__10_35__0247.czi",
+      "2024_06_10__10_35__0248.czi",
+      "2024_06_10__10_35__0249.czi"
+    ],
+    "has_readme": false,
+    "has_git": false,
+    "has_venv": false,
+    "has_scripts": false,
+    "has_notebooks": false,
+    "has_qpproj": false,
+    "has_fastq": false,
+    "has_raw_images": true,
+    "has_singlecell": false,
+    "has_backup_copies": false
+  },
+  {
+    "name": "imaging_data_f2630_neutrophils",
+    "modality": "Histology & Image Analysis (QuPath)",
+    "size_gb": 256.74,
+    "total_files": 158,
+    "total_dirs": 36,
+    "date_range": "2024-05 to 2024-08",
+    "sample_ids": [
+      "f2630",
+      "neutrophil"
+    ],
+    "top_exts": [
+      [
+        ".json",
+        61
+      ],
+      [
+        ".jpg",
+        33
+      ],
+      [
+        ".czi",
+        32
+      ],
+      [
+        ".qpdata",
+        30
+      ],
+      [
+        ".backup",
+        1
+      ]
+    ],
+    "top_items": [
+      "2024_05_28__9860.czi",
+      "2024_05_28__9861.czi",
+      "2024_05_28__9862.czi",
+      "2024_05_28__9863.czi",
+      "2024_05_28__9864.czi",
+      "2024_05_28__9865.czi",
+      "2024_05_28__9866.czi",
+      "2024_05_28__9867.czi",
+      "2024_05_28__9868.czi",
+      "2024_05_28__9869.czi",
+      "2024_05_28__9870.czi",
+      "2024_05_28__9871.czi"
+    ],
+    "has_readme": false,
+    "has_git": false,
+    "has_venv": false,
+    "has_scripts": false,
+    "has_notebooks": false,
+    "has_qpproj": true,
+    "has_fastq": false,
+    "has_raw_images": true,
+    "has_singlecell": false,
+    "has_backup_copies": true
+  },
+  {
+    "name": "imaging_data_f2701_HEV",
+    "modality": "Microscopy & Raw Imaging Data",
+    "size_gb": 228.16,
+    "total_files": 26,
+    "total_dirs": 2,
+    "date_range": "2023-07 to 2024-06",
+    "sample_ids": [
+      "F2805",
+      "HEV",
+      "f2701"
+    ],
+    "top_exts": [
+      [
+        ".czi",
+        26
+      ]
+    ],
+    "top_items": [
+      "2024_06_12__09_03__0305.czi",
+      "2024_06_12__09_03__0306.czi",
+      "2024_06_12__09_03__0307.czi",
+      "2024_06_12__09_03__0308.czi",
+      "2024_06_12__09_04__0309.czi",
+      "2024_06_12__09_04__0310.czi",
+      "2024_06_12__09_04__0311.czi",
+      "2024_06_12__09_04__0312.czi",
+      "2024_06_12__09_05__0313.czi",
+      "2024_06_12__09_05__0314.czi",
+      "imaging_data_f2805_HEV"
+    ],
+    "has_readme": false,
+    "has_git": false,
+    "has_venv": false,
+    "has_scripts": false,
+    "has_notebooks": false,
+    "has_qpproj": false,
+    "has_fastq": false,
+    "has_raw_images": true,
+    "has_singlecell": false,
+    "has_backup_copies": false
+  },
+  {
+    "name": "imaging_data_f2805_HEV",
+    "modality": "Microscopy & Raw Imaging Data",
+    "size_gb": 53.57,
+    "total_files": 19,
+    "total_dirs": 0,
+    "date_range": "2023-07 to 2023-07",
+    "sample_ids": [
+      "F2805",
+      "HEV",
+      "f2805"
+    ],
+    "top_exts": [
+      [
+        ".czi",
+        19
+      ]
+    ],
+    "top_items": [
+      "2023_07_14_F2805_w.16 A1+A2_iBALT.czi",
+      "2023_07_14_F2805_w.16 A3+A4_iBALT.czi",
+      "2023_07_14_F2805_w.16 B1+B2_iBALT.czi",
+      "2023_07_14_F2805_w.16 B3+B4_iBALT.czi",
+      "2023_07_14_F2805_w.2 A1+A2_iBALT.czi",
+      "2023_07_14_F2805_w.2 A3+A4_iBALT.czi",
+      "2023_07_14_F2805_w.2 B1+B2_iBALT.czi",
+      "2023_07_14_F2805_w.2 B3+B4_iBALT.czi",
+      "2023_07_14_F2805_w.4 A1+A2_iBALT.czi",
+      "2023_07_14_F2805_w.4 A3+A4_iBALT.czi",
+      "2023_07_14_F2805_w.4 B1+B2_iBALT.czi",
+      "2023_07_14_F2805_w.4 B3+B4_iBALT.czi"
+    ],
+    "has_readme": false,
+    "has_git": false,
+    "has_venv": false,
+    "has_scripts": false,
+    "has_notebooks": false,
+    "has_qpproj": false,
+    "has_fastq": false,
+    "has_raw_images": true,
+    "has_singlecell": false,
+    "has_backup_copies": true
+  },
+  {
+    "name": "imaging_data_f2944_1",
+    "modality": "Histology & Image Analysis (QuPath)",
+    "size_gb": 860.38,
+    "total_files": 722,
+    "total_dirs": 177,
+    "date_range": "2024-10 to 2025-01",
+    "sample_ids": [
+      "f2944"
+    ],
+    "top_exts": [
+      [
+        ".json",
+        349
+      ],
+      [
+        ".jpg",
+        174
+      ],
+      [
+        ".qpdata",
+        174
+      ],
+      [
+        ".czi",
+        23
+      ],
+      [
+        ".qpproj",
+        1
+      ]
+    ],
+    "top_items": [
+      "2024_10_10__12339.czi",
+      "2024_10_10__12340.czi",
+      "2024_10_10__12341.czi",
+      "2024_10_10__12342.czi",
+      "2024_10_10__12343.czi",
+      "2024_10_10__12344.czi",
+      "2024_10_10__12345.czi",
+      "2024_10_10__12346.czi",
+      "2024_10_10__12347.czi",
+      "2024_10_10__12348.czi",
+      "2024_10_10__12349.czi",
+      "2024_10_10__12350.czi"
+    ],
+    "has_readme": false,
+    "has_git": false,
+    "has_venv": false,
+    "has_scripts": false,
+    "has_notebooks": false,
+    "has_qpproj": true,
+    "has_fastq": false,
+    "has_raw_images": true,
+    "has_singlecell": false,
+    "has_backup_copies": true
+  },
+  {
+    "name": "imaging_data_f2944_2",
+    "modality": "Microscopy & Raw Imaging Data",
+    "size_gb": 718.16,
+    "total_files": 21,
+    "total_dirs": 0,
+    "date_range": "2024-11 to 2024-11",
+    "sample_ids": [
+      "f2944"
+    ],
+    "top_exts": [
+      [
+        ".czi",
+        21
+      ]
+    ],
+    "top_items": [
+      "2024_10_31__15_01__1130.czi",
+      "2024_10_31__15_01__1131.czi",
+      "2024_10_31__15_01__1132.czi",
+      "2024_10_31__15_01__1133.czi",
+      "2024_10_31__15_01__1134.czi",
+      "2024_10_31__15_02__1135.czi",
+      "2024_10_31__15_02__1136.czi",
+      "2024_10_31__15_02__1137.czi",
+      "2024_10_31__15_02__1138.czi",
+      "2024_10_31__15_02__1139.czi",
+      "2024_10_31__15_03__1140.czi",
+      "2024_10_31__15_03__1141.czi"
+    ],
+    "has_readme": false,
+    "has_git": false,
+    "has_venv": false,
+    "has_scripts": false,
+    "has_notebooks": false,
+    "has_qpproj": false,
+    "has_fastq": false,
+    "has_raw_images": true,
+    "has_singlecell": false,
+    "has_backup_copies": false
+  },
+  {
+    "name": "imaging_data_seattle",
+    "modality": "Microscopy & Raw Imaging Data",
+    "size_gb": 22.15,
+    "total_files": 1,
+    "total_dirs": 0,
+    "date_range": "2023-11 to 2023-11",
+    "sample_ids": [],
+    "top_exts": [
+      [
+        ".lif",
+        1
+      ]
+    ],
+    "top_items": [
+      "20231012 H107.lif"
+    ],
+    "has_readme": false,
+    "has_git": false,
+    "has_venv": false,
+    "has_scripts": false,
+    "has_notebooks": false,
+    "has_qpproj": false,
+    "has_fastq": false,
+    "has_raw_images": true,
+    "has_singlecell": false,
+    "has_backup_copies": false
+  },
+  {
+    "name": "imaging_data_test_cellpose",
+    "modality": "Microscopy & Raw Imaging Data",
+    "size_gb": 244.82,
+    "total_files": 11301,
+    "total_dirs": 154,
+    "date_range": "2022-04 to 2026-08",
+    "sample_ids": [
+      "CD31",
+      "cd0",
+      "cd1398",
+      "cd3",
+      "cd3848772",
+      "cd4875",
+      "cd562",
+      "cd59"
+    ],
+    "top_exts": [
+      [
+        ".tif",
+        7218
+      ],
+      [
+        ".npy",
+        3863
+      ],
+      [
+        "(no ext)",
+        122
+      ],
+      [
+        ".json",
+        16
+      ],
+      [
+        ".sample",
+        14
+      ]
+    ],
+    "top_items": [
+      ".git",
+      ".gitignore",
+      ".ssh",
+      "LICENSE",
+      "README.md",
+      "data",
+      "environment.yml",
+      "results",
+      "scripts"
+    ],
+    "has_readme": true,
+    "has_git": true,
+    "has_venv": false,
+    "has_scripts": true,
+    "has_notebooks": true,
+    "has_qpproj": false,
+    "has_fastq": false,
+    "has_raw_images": true,
+    "has_singlecell": false,
+    "has_backup_copies": false
+  },
+  {
+    "name": "imaging_py",
+    "modality": "Code / Analysis Pipeline",
+    "size_gb": 0.0,
+    "total_files": 4,
+    "total_dirs": 1,
+    "date_range": "2024-07 to 2024-07",
+    "sample_ids": [],
+    "top_exts": [
+      [
+        ".ipynb",
+        4
+      ]
+    ],
+    "top_items": [
+      ".ipynb_checkpoints",
+      "test_load_image.ipynb",
+      "test_ski.ipynb",
+      "testing_env.ipynb"
+    ],
+    "has_readme": false,
+    "has_git": false,
+    "has_venv": false,
+    "has_scripts": false,
+    "has_notebooks": true,
+    "has_qpproj": false,
+    "has_fastq": false,
+    "has_raw_images": false,
+    "has_singlecell": false,
+    "has_backup_copies": false
+  },
+  {
+    "name": "nagar_F2657_csv",
+    "modality": "Microscopy & Raw Imaging Data",
+    "size_gb": 210.76,
+    "total_files": 433594,
+    "total_dirs": 49714,
+    "date_range": "2006-05 to 2026-08",
+    "sample_ids": [
+      "CD27",
+      "CD4",
+      "F2000",
+      "F2008",
+      "F2014",
+      "F2020",
+      "F2657",
+      "cd0"
+    ],
+    "top_exts": [
+      [
+        ".py",
+        110083
+      ],
+      [
+        ".pyc",
+        100574
+      ],
+      [
+        ".h",
+        66203
+      ],
+      [
+        "(no ext)",
+        47213
+      ],
+      [
+        ".pyi",
+        15153
+      ]
+    ],
+    "top_items": [
+      ".vscode",
+      "Sim_testing",
+      "TB_QUICHE_01",
+      "data",
+      "delte.png",
+      "master_thesis_project_quiche3d",
+      "miniconda3",
+      "nn_stats.png",
+      "old",
+      "quiche",
+      "quiche-3d",
+      "tb_quiche_august"
+    ],
+    "has_readme": true,
+    "has_git": true,
+    "has_venv": false,
+    "has_scripts": true,
+    "has_notebooks": true,
+    "has_qpproj": false,
+    "has_fastq": false,
+    "has_raw_images": true,
+    "has_singlecell": true,
+    "has_backup_copies": true
+  },
+  {
+    "name": "sequencing_data_MonkeyPAXgene_GEO241235",
+    "modality": "Raw Sequencing (FASTQ)",
+    "size_gb": 144.49,
+    "total_files": 62,
+    "total_dirs": 0,
+    "date_range": "2023-06 to 2023-08",
+    "sample_ids": [
+      "Monkey",
+      "PAXgene"
+    ],
+    "top_exts": [
+      [
+        ".gz",
+        60
+      ],
+      [
+        ".tsv",
+        1
+      ],
+      [
+        ".xlsx",
+        1
+      ]
+    ],
+    "top_items": [
+      "CFL069-2019-06-24_R1_001.fastq.gz",
+      "CFL069-2019-06-24_R2_001.fastq.gz",
+      "CFL069-2019-06-25_R1_001.fastq.gz",
+      "CFL069-2019-06-25_R2_001.fastq.gz",
+      "CFL069-2019-07-23_R1_001.fastq.gz",
+      "CFL069-2019-07-23_R2_001.fastq.gz",
+      "CFL098-2019-06-24_R1_001.fastq.gz",
+      "CFL098-2019-06-24_R2_001.fastq.gz",
+      "CFL098-2019-06-25_R1_001.fastq.gz",
+      "CFL098-2019-06-25_R2_001.fastq.gz",
+      "CFL098-2019-07-23_R1_001.fastq.gz",
+      "CFL098-2019-07-23_R2_001.fastq.gz"
+    ],
+    "has_readme": false,
+    "has_git": false,
+    "has_venv": false,
+    "has_scripts": false,
+    "has_notebooks": false,
+    "has_qpproj": false,
+    "has_fastq": true,
+    "has_raw_images": false,
+    "has_singlecell": false,
+    "has_backup_copies": false
+  },
+  {
+    "name": "sequencing_data_endothelial",
+    "modality": "Raw Sequencing (FASTQ)",
+    "size_gb": 670.41,
+    "total_files": 138,
+    "total_dirs": 0,
+    "date_range": "2023-12 to 2025-03",
+    "sample_ids": [
+      "endothelial"
+    ],
+    "top_exts": [
+      [
+        ".gz",
+        136
+      ],
+      [
+        ".md5",
+        1
+      ],
+      [
+        ".eve8n4",
+        1
+      ]
+    ],
+    "top_items": [
+      ".Endothelial_03_S3_L002_R1_001.fastq.gz.EVE8n4",
+      "Endothelial_01_S1_L001_R1_001.fastq.gz",
+      "Endothelial_01_S1_L001_R2_001.fastq.gz",
+      "Endothelial_01_S1_L002_R1_001.fastq.gz",
+      "Endothelial_01_S1_L002_R2_001.fastq.gz",
+      "Endothelial_01_S1_L003_R1_001.fastq.gz",
+      "Endothelial_01_S1_L003_R2_001.fastq.gz",
+      "Endothelial_01_S1_L004_R1_001.fastq.gz",
+      "Endothelial_01_S1_L004_R2_001.fastq.gz",
+      "Endothelial_02_S2_L001_R1_001.fastq.gz",
+      "Endothelial_02_S2_L001_R2_001.fastq.gz",
+      "Endothelial_02_S2_L002_R1_001.fastq.gz"
+    ],
+    "has_readme": false,
+    "has_git": false,
+    "has_venv": false,
+    "has_scripts": false,
+    "has_notebooks": false,
+    "has_qpproj": false,
+    "has_fastq": true,
+    "has_raw_images": false,
+    "has_singlecell": false,
+    "has_backup_copies": false
+  },
+  {
+    "name": "sequencing_data_totallung",
+    "modality": "Raw Sequencing (FASTQ)",
+    "size_gb": 1008.93,
+    "total_files": 64,
+    "total_dirs": 0,
+    "date_range": "2024-01 to 2024-01",
+    "sample_ids": [
+      "totallung"
+    ],
+    "top_exts": [
+      [
+        ".gz",
+        64
+      ]
+    ],
+    "top_items": [
+      "pool_1_S1_L001_I1_001.fastq.gz",
+      "pool_1_S1_L001_I2_001.fastq.gz",
+      "pool_1_S1_L001_R1_001.fastq.gz",
+      "pool_1_S1_L001_R2_001.fastq.gz",
+      "pool_1_S1_L002_I1_001.fastq.gz",
+      "pool_1_S1_L002_I2_001.fastq.gz",
+      "pool_1_S1_L002_R1_001.fastq.gz",
+      "pool_1_S1_L002_R2_001.fastq.gz",
+      "pool_1_S1_L003_I1_001.fastq.gz",
+      "pool_1_S1_L003_I2_001.fastq.gz",
+      "pool_1_S1_L003_R1_001.fastq.gz",
+      "pool_1_S1_L003_R2_001.fastq.gz"
+    ],
+    "has_readme": false,
+    "has_git": false,
+    "has_venv": false,
+    "has_scripts": false,
+    "has_notebooks": false,
+    "has_qpproj": false,
+    "has_fastq": true,
+    "has_raw_images": false,
+    "has_singlecell": false,
+    "has_backup_copies": false
+  },
+  {
+    "name": "tb-lung-atlas",
+    "modality": "Single-Cell Analysis Project",
+    "size_gb": 0.69,
+    "total_files": 15841,
+    "total_dirs": 1633,
+    "date_range": "2024-04 to 2025-03",
+    "sample_ids": [
+      "cd09",
+      "cd27",
+      "cd5",
+      "f0409",
+      "f1798",
+      "f2244",
+      "f2887",
+      "f3790"
+    ],
+    "top_exts": [
+      [
+        ".hpp",
+        12916
+      ],
+      [
+        "(no ext)",
+        555
+      ],
+      [
+        ".r",
+        513
+      ],
+      [
+        ".rds",
+        418
+      ],
+      [
+        ".ipp",
+        262
+      ]
+    ],
+    "top_items": [
+      ".Rproj.user",
+      ".git",
+      "README.md",
+      "analysis",
+      "data"
+    ],
+    "has_readme": true,
+    "has_git": true,
+    "has_venv": true,
+    "has_scripts": true,
+    "has_notebooks": false,
+    "has_qpproj": false,
+    "has_fastq": false,
+    "has_raw_images": false,
+    "has_singlecell": true,
+    "has_backup_copies": true
+  }
+]

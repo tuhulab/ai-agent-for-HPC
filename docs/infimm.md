@@ -34,11 +34,12 @@ On UCloud, the `/work` root directory is an **ephemeral mount point**. Only the 
 
 ```
 /work/                                   # Container mount namespace (ephemeral root)
-├── TB_group/                            # Primary working drive (Folder #1) — PERSISTENT
-│   ├── raw_data/                        # Raw sequencing data (read-only recommended)
-│   ├── analysis/                        # Active analysis projects
-│   ├── venvs/                           # Shared Python virtual environments
-│   └── conda_envs/                      # Shared Conda/Mamba environments
+├── TB group/                            # Primary working drive (Folder #1) — PERSISTENT (5.51 TB)
+│   ├── sequencing_data_*                # Demultiplexed raw FASTQs (totallung, endothelial, monkey)
+│   ├── imaging_data_*                   # Raw Zeiss CZI / Leica LIF slides & QuPath caches
+│   ├── NAFP Image analysis/             # Multi-project QuPath annotations & measurements
+│   ├── TB_TL_*                          # 10x Cell Ranger count matrices & Scanpy AnnData suites
+│   └── tb-lung-atlas/                   # Reproducible R/Seurat single-cell pipeline
 ├── Data_backup/                         # Backup repository drive (Folder #2) — PERSISTENT
 │   ├── repo/                            # Restic backup repository
 │   └── restic_pw.txt                    # Secure password file for restic
@@ -50,8 +51,8 @@ On UCloud, the `/work` root directory is an **ephemeral mount point**. Only the 
 
 1. **Working Data (`TB group`)**:
    - In the job create form, attach `TB group` as **Folder #1**.
-   - Accessible in-container at `/work/TB_group/`.
-   - All scripts, inputs, virtual environments, and outputs **must** reside inside `/work/TB_group/` or another mounted project directory.
+   - Accessible in-container at `/work/TB group/`.
+   - All scripts, inputs, virtual environments, and outputs **must** reside inside `/work/TB group/` or another mounted project directory.
 
 2. **Backup Storage (`Data_backup`)**:
    - In jobs performing backups, attach `Data_backup` as **Folder #2**.
@@ -62,8 +63,7 @@ On UCloud, the `/work` root directory is an **ephemeral mount point**. Only the 
      ```
      /Member Files: <User#Tag> (<DriveID>)/Jobs/<AppName>/<JobID>/<User#Tag>/
      ```
-   - To recover, navigate to `Files` (`/app/drives`) in the web portal and move the files into `/work/TB_group/`.
-
+   - To recover, navigate to `Files` (`/app/drives`) in the web portal and move the files into `/work/TB group/`.
 ---
 
 ## 🔄 Automated Backup Protocol (Restic)
