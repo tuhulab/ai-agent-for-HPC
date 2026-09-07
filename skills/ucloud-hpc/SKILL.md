@@ -479,6 +479,55 @@ ssh ucloud 'hostname'
 
 Offer, don't assume: submitting a job **consumes credits** and starts compute — confirm the target project/machine size/hours at the point of submission.
 
+---
+
+### 6.4 Job Teardown & Credit Preservation Protocol (Human Confirmation Guardrail)
+
+> ⚠️ **CRITICAL CREDIT PRESERVATION DIRECTIVE**:
+> Active UCloud jobs continuously consume project core-hours (e.g., $32\text{ vCPUs} \times 24\text{ hours} = 768\text{ Core-hours}$). Leaving an instance running idle after workload completion bleeds project allocation.
+
+#### 1. Mandatory Post-Execution Prompt
+Whenever an automated workload (analysis, batch transfer, verification, compile, etc.) completes, the agent **MUST prompt the human user** (using `ask` tool or turn confirmation) before ending the turn:
+
+> *"Workload completed successfully on UCloud job `<JOB_ID>` (`<JOB_NAME>`). Would you like me to terminate the job now to stop credit consumption, or keep it running for further interactive work?"*
+
+#### 2. Programmatic Job Termination Recipe (Puppeteer Press-and-Hold)
+
+When confirmed by the user, automate job termination via headless browser:
+
+```javascript
+// 1. Open / Navigate to Job Properties View
+const tab = await browser.open({ name: "ucloud", url: `https://cloud.sdu.dk/app/jobs/properties/${jobId}` });
+await new Promise(r => setTimeout(r, 2000));
+
+// 2. Perform Press-and-Hold (~3.2s) on "Stop application" or "Cancel reservation"
+await tab.run(async ({ page }) => {
+  const btn = await page.evaluateHandle(() => {
+    return Array.from(document.querySelectorAll('button')).find(b => 
+      b.innerText && (b.innerText.includes('Stop application') || b.innerText.includes('Cancel reservation'))
+    );
+  });
+  if (btn && (await btn.evaluate(b => !b.disabled))) {
+    const box = await btn.boundingBox();
+    if (box) {
+      await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+      await page.mouse.down();
+      await new Promise(r => setTimeout(r, 3200));
+      await page.mouse.up();
+    }
+  }
+});
+await new Promise(r => setTimeout(r, 3000));
+
+// 3. Verify Job Status Flips to Completed
+const completed = await tab.run(async ({ page }) => {
+  return await page.evaluate(() => {
+    return document.body.innerText.includes('Your job has completed') || 
+           document.body.innerText.includes('processed successfully');
+  });
+});
+await tab.close();
+```
 ## 7. Hotkeys & Navigation Reference (observed)
 
 | Keys | Action |
@@ -644,6 +693,7 @@ which singularity apptainer docker  # none — WekaFS container, no user contain
 6. **Persist env** — append exports to `/work/<MOUNTED_FOLDER>/env.sh` not `.bashrc` directly; source it.
 7. **Multi-node**: test `srun -N <N> hostname` or `mpirun --hostfile /tmp/hostfile` after SSH ready.
 8. **Cache downloads** inside `/work/<MOUNTED_FOLDER>/`, not `/tmp` or bare `/work/`.
+9. **Post-work Teardown Confirmation** — when automated tasks finish, always prompt the human operator whether to terminate the job to stop continuous credit consumption (see §6.4).
 ## 17. Common Pitfalls
 
 Portal / launch side:
@@ -659,7 +709,7 @@ Portal / launch side:
 - **Reading a job row's Actions on the wrong row** — row selection persists; confirm the job id (top of Properties page) matches the intended run before Stop/Run again.
 - **AI agents mutating `~/.ssh/config`** (see §6.3) — agents must never mutate host SSH configuration files. Retain the parsed `sshPort` in memory and invoke SSH directly (`-p <PORT>` or `-J <ugerm_user>@login.ugerm.dksund.dk -p <PORT>`).
 - **Direct connection failure on Statens IT (SIT) equipment** (see §2.5, §6.3) — on the SSI network, outbound SSH to high ports is blocked; must use uGerm ProxyJump (`-J <user>@login.ugerm.dksund.dk` or `connect_ucloud --sit`).
-In-job side:
+- **Leaving idle jobs running after workload completion (Credit Bleed)** (see §6.4) — jobs consume project allocations every active hour. Agents must prompt the user upon finishing and execute press-and-hold teardown when confirmed.
 - **Empty slurm.conf** → run `bash /tmp/tm1.sh`? No — `gen_slurm_conf` needs sed replacement; inspect `/tmp/tm1.sh` instead.
 - **MODULEPATH overwritten** — `/opt/easybuild/ubuntu-24.04/amd/modules/all` is set in `~/.bashrc`; `module use /opt/easybuild/modules/all` silently masks vendor modules.
 - **Creating an unmounted repo directly in /work/** → Next job won't find it under `/work/`! It gets archived to `/Member Files: <User#Tag> (<DriveID>)/Jobs/<AppName>/<JobID>/<User#Tag>/`. To avoid having to recover files from job archives, always clone and write inside `/work/<MOUNTED_FOLDER>/`.
