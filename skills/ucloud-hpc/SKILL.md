@@ -96,14 +96,15 @@ Click "No machine type selected". A modal table opens with row: Type | Machine t
 - Right side shows queue status text: **"This machine type is available."** (green), a busy warning (yellow), or unavailable/queued (red). A red status means the job will wait.
 - **Est. cost** (Core-hours) and **Balance** appear after selection; an insufficient balance shows a warning + "Apply for resources" button. Never submit past a balance warning without confirming.
 
-### 2.2 Attaching folders
+### 2.2 Attaching folders (Permanent Storage Mounts)
 
 Click "Folder #1" → Places browser opens:
 
 - Left: sidebar with `Favorites`, `My workspace`, and project drives (e.g. `BINF INFIMM`, `CSCC`, `image_analysis`, …).
 - Right: the selected drive's contents (`Jobs`, `Syncthing`, …) with a **Use** button per row; header buttons **"Use this folder" (⌥G)**, **"Create folder" (⌥F)**, **"Upload files" (⌥U)**.
-- Click a folder row (or navigate into it) then "Use this folder". Attached folders mount under `/work/` inside the job. Multiple folders = Folder #1, #2, …
-- **Only attached folders (your default working tree under `/work`) persist after the job ends.** Anything else in the container is lost.
+- Click a folder row (or navigate into it) then "Use this folder".
+- **Mount mapping**: Attached folders mount as subdirectories under `/work/<FolderName>` inside the container (e.g., Folder #1 named `my-analysis` mounts at `/work/my-analysis`). Multiple folders can be attached as Folder #1, Folder #2, …, creating separate subdirectories under `/work/`.
+- ⚠️ **CRITICAL PERSISTENCE RULE**: The `/work` root directory in the container is an **ephemeral mount point**. Only the subdirectories that correspond to attached folders (`/work/<FolderName>/...`) are backed by persistent WekaFS storage and survive job termination. If a job is launched **without attaching a folder**, `/work` contains no persistent volumes, and all work done in the container is permanently lost on exit.
 
 ### 2.3 Initialization script (auto-setup on boot) — key automation lever
 
@@ -112,8 +113,10 @@ Click "Folder #1" → Places browser opens:
 ```bash
 #!/bin/bash
 set -e
-source /work/<COLLECTION>/env.sh 2>/dev/null || true   # persistent env (see §9)
-export PATH="/work/<COLLECTION>/nodejs/current/bin:$PATH"
+# Discover primary mounted persistent directory under /work
+MOUNTED_DIR="$(ls -d /work/*/ 2>/dev/null | grep -v 'lost+found' | head -n 1 | sed 's/\/$//')"
+[ -n "$MOUNTED_DIR" ] && source "$MOUNTED_DIR/env.sh" 2>/dev/null || true
+[ -n "$MOUNTED_DIR" ] && export PATH="$MOUNTED_DIR/nodejs/current/bin:$PATH"
 # load modules, install what's missing, start services…
 ```
 
@@ -221,15 +224,26 @@ Selecting a row reveals the action bar: **Run again (⌥B)** · **Rename (⌥R)*
 - **Running**: time allocation can be extended; **"Stop application" requires a press-and-hold (~3 s)** — a plain click is ignored, so `mouse.down()` → wait ~3 s → `mouse.up()` on the button center. Terminating early this way completes the job (state flips to "Your job has completed … processed successfully"). "Open terminal" opens an in-browser terminal; the **SSH widget** (see §2.4) shows `ssh ucloud@ssh.cloud.sdu.dk -p <PORT>` with a copy button when SSH was enabled; live CPU/memory/network (+GPU) widgets top-right; the job id shown in the title (`(ID: …)`).
 - **Completed**: "Your job has completed" + **Run again** button (reruns with identical params); output folder + results listed (`Jobs/<app>/<id>` in your drive). Jobs can be **Suspended** when idle (machine powered off) — resume by starting it again.
 
-### 5.3 Job output folder
+### 5.3 Job output folder & Unmounted `/work` Artifacts
 
-`Jobs/<job-id>` under your drive (also listed on the completed progress view). Contains:
+When a job completes, UCloud saves its output into the member's drive under:
 
-- `stdout.txt` — the program's stdout (first stop when debugging a failed run),
+```
+/Member Files: <User#Tag> (<DriveID>)/Jobs/<AppName>/<JobID>/<User#Tag>/
+```
+(e.g. `/Member Files: TuHu#2222 (914637)/Jobs/JupyterLab/12378971/TuHu#2222/` or `Jobs/<app>/<job-id>/...`)
+
+Contains:
+- `stdout.txt` — program stdout / logs,
 - `JobParameters.json` — exact submission params (reuse via Import),
-- `job-report.csv` — resource sampling (only if sample rate set),
-- `job-0.sh` etc. — backend start command.
+- `job-report.csv` — resource sampling (if enabled),
+- `job-0.sh` — backend start command,
+- **Any unmounted files/repos created directly in `/work/`** — e.g. if you ran `git clone` or created a folder at `/work/my-repo`, it will NOT appear at `/work/my-repo` in future jobs; instead, it is archived inside this job output folder on your drive.
 
+**How to recover unmounted files from a prior run**:
+1. In web UI: go to `Files` (`/app/drives`) → open `Jobs/<AppName>/<JobID>/<User#Tag>/` → Move/Copy the folder into your persistent project drive.
+2. In launch form: attach the prior job output folder `Jobs/<AppName>/<JobID>/...` as Folder #1 to access its contents inside a new container.
+3. **Best practice**: Avoid recovery altogether by always working inside a pre-mounted persistent folder `/work/<MOUNTED_FOLDER>/...`.
 ## 6. Post-Launch Automation Recipe (agent step list)
 
 1. **Confirm session**: load `/app`; if it redirects to `/app/login`, do §1.2 (direct login form + TOTP).
@@ -265,49 +279,61 @@ Offer, don't assume: submitting a job **consumes credits** and starts compute �
 Always probe before heavy work:
 
 ```bash
-cat /work/JobParameters.json          # allocated resources (truth)
+# Resources & job metadata (truth)
+cat /work/JobParameters.json          # allocated resources
 cat /work/.script-params.yaml         # template params
 cat /etc/ucloud/nodes.txt             # head node hostname
 cat /etc/ucloud/number_of_nodes.txt   # node count
 cat /tmp/hostfile 2>/dev/null || echo "single-node"
-lscpu | head -20; free -h; df -h /work  # lscpu/free show HOST (e.g. 256 cores / 754 GiB), not your allocation
-jq . /work/JobParameters.json  # YOUR allocation: cpu/memory/gpu/nodes/time vary per job — never hardcode 1 vCPU / 3 GiB
+lscpu | head -20; free -h             # lscpu/free show HOST (e.g. 256 cores / 754 GiB), not your allocation
+jq . /work/JobParameters.json        # YOUR allocation: cpu/memory/gpu/nodes/time vary per job — never hardcode 1 vCPU / 3 GiB
 env | grep -E "UCLOUD|PI_|MODULEPATH"
+
+# Discover mounted permanent directories under /work (CRITICAL)
+df -h | grep wekafs                  # shows mounted WekaFS persistent drives under /work/
+mount | grep '/work/'                # shows exact mount points
+ls -ld /work/*/                      # lists attached permanent directory candidates
+jq -r '.request.parameters | to_entries[] | select(.value.type? == "file") | .value.path' /work/JobParameters.json 2>/dev/null
 ```
 
 Key env (discover, don't hardcode):
 - `UCLOUD_JOB_ID`, `UCLOUD_RANK`, `UCLOUD_TASK_COUNT`
 - `UCLOUD_BASE_URL` (web UI)
-- `COLLECTION_ROOT` — your persistent collection dir, e.g. `/work/my-collection` (resolve via `ls /work` or `mount | grep wekafs` or `printenv | grep -i collection`)
-- `PI_CODING_AGENT_DIR` — e.g. `$COLLECTION_ROOT/.pi/agent` or `/work/<COLLECTION>/.pi/agent` (not `~/.pi`)
+- `PERSISTENT_ROOT` / `COLLECTION_ROOT` — your persistent mounted dir, e.g. `/work/<MOUNTED_FOLDER>` (resolve via `mount | grep wekafs` or `ls -d /work/*/` or `df -h /work/*`)
+- `PI_CODING_AGENT_DIR` — e.g. `/work/<MOUNTED_FOLDER>/.pi/agent` (not `~/.pi`)
 - `MODULEPATH=/opt/easybuild/ubuntu-24.04/amd/modules/all` (or `intel`)
 
 ## 9. Filesystem — What Persists?
 
 ```
- /work                WekaFS 5.4P shared volume — PERSISTENT across jobs
-   /work/<COLLECTION>  Your persistent collection dir (name varies! e.g. `/work/my-collection`)
-                      Discover via `ls /work` or `mount | grep wekafs` or `printenv | grep -i collection`
-     env.sh           Persistent PATH / npm prefix / pi config  → $COLLECTION_ROOT/env.sh  (or /work/<COLLECTION>/env.sh)
-     nodejs/current   Node v22.23.2 (copied from image, do not use /usr/bin/node)
-     bin/pi, bin/claude
-     .pi/agent        Real pi config (settings, sessions, auth) → $COLLECTION_ROOT/.pi/agent  (or /work/<COLLECTION>/.pi/agent)
-   /work/initiation.sh -> $COLLECTION_ROOT/initiation.sh (runs each job; path is /work/<COLLECTION>/initiation.sh)
- /home/ucloud         Container overlay — EPHEMERAL (lost on job end)
- /opt/easybuild/ubuntu-24.04  WekaFS RO mount — modules + software (790604)
- /tmp                 Local XFS scratch — fast but ephemeral, on /dev/mapper/vg0-lv_scratch
- /etc/ucloud          K8s emptyDir — node list, rank, token
- overlay /            Container root — overlayfs, 1.5T, ephemeral
+ /work/                               Ephemeral container mount root (NOT persistent!)
+   ├── <MOUNTED_FOLDER_1>/            WekaFS shared volume (Folder #1) — PERSISTENT across jobs
+   │     ├── env.sh                   Persistent PATH / npm prefix / pi config
+   │     ├── nodejs/current           Node v22.23.2
+   │     ├── bin/pi, bin/claude
+   │     ├── .pi/agent                Real pi config (settings, sessions, auth)
+   │     ├── initiation.sh            Startup script
+   │     └── venv/                    Python virtual environments
+   ├── <MOUNTED_FOLDER_2>/            WekaFS shared volume (Folder #2, if attached) — PERSISTENT
+   ├── JobParameters.json             Job metadata — EPHEMERAL in container (copied to Jobs/<id>/)
+   └── job-report.csv                 Resource metric sampling — EPHEMERAL in container
+ /home/ucloud                         Container overlay — EPHEMERAL (lost on job end)
+ /opt/easybuild/ubuntu-24.04          WekaFS RO mount — modules + software (790604)
+ /tmp                                 Local XFS scratch — fast but ephemeral, on /dev/mapper/vg0-lv_scratch
+ /etc/ucloud                          K8s emptyDir — node list, rank, token
+ overlay /                            Container root — overlayfs, 1.5T, ephemeral
 ```
 
-> ⚠️ Collection name varies per user (e.g. `/work/my-collection`, `/work/ProjectA`). **Never hardcode** it. Always resolve via `ls /work` or `mount | grep wekafs` — your persistent dir is the wekafs mount at `/work/<COLLECTION>`.
-
+> ⚠️ **Persistent vs Ephemeral under `/work`**:
+> - `/work` itself is an ephemeral mount namespace.
+> - **If you create a repo/file directly under `/work` (unmounted)** (e.g. `/work/my-repo`), it will **NOT** be at `/work/my-repo` in your next job. Instead, UCloud captures it on job completion and moves it to your drive at `/Member Files: <User#Tag> (<DriveID>)/Jobs/<AppName>/<JobID>/<User#Tag>/my-repo`.
+> - **Only subdirectories corresponding to mounted folders** (`/work/<MOUNTED_FOLDER>/...`) persist directly in place across jobs.
+> - Always locate your mounted folder via `ls -d /work/*/` or `mount | grep wekafs` (e.g., `/work/my-project` or `/work/my-collection`). Never hardcode folder names.
 **Rules:**
-- Write results to `/work` not `/home` or `/tmp` if you need them after the job.
-- Do not write large data to overlay `/` (counts against 1.5T, slow GC).
-- `/work/<COLLECTION>` is bind-mounted (e.g. `/work/my-collection` → same files); find yours via `ls /work` or `mount | grep wekafs`.
-- Global `npm install -g` goes to `$COLLECTION_ROOT` via `npm_config_prefix=$COLLECTION_ROOT` (see `$COLLECTION_ROOT/env.sh` or `/work/<COLLECTION>/env.sh`). Never `sudo npm`.
-- Keep `.bashrc`/`.zshrc` persistent hook: `source $COLLECTION_ROOT/env.sh` (or `source /work/<COLLECTION>/env.sh`) is auto-added; do not remove — it restores PATH/pi/node.
+- **Never write directly to `/work/` root** — write all code, venvs, configs, and output files to `/work/<MOUNTED_FOLDER>/...`.
+- Do not write large data to overlay `/` or `/home` (ephemeral).
+- Global `npm install -g` goes to `/work/<MOUNTED_FOLDER>` via `npm_config_prefix=/work/<MOUNTED_FOLDER>`. Never `sudo npm`.
+- Keep `.bashrc`/`.zshrc` persistent hook: `source /work/<MOUNTED_FOLDER>/env.sh` restores PATH/pi/node.
 
 ## 10. Modules (Lmod + EasyBuild)
 
@@ -381,23 +407,26 @@ npm --version => 10.9.8, prefix=$COLLECTION_ROOT  (or /work/<COLLECTION>)
 which singularity apptainer docker  # none — WekaFS container, no user containers
 ```
 
-- Create venvs in `/work`: `python3 -m venv /work/venv && source /work/venv/bin/activate`.
+- Create venvs inside your mounted permanent directory: `python3 -m venv /work/<MOUNTED_FOLDER>/venv && source /work/<MOUNTED_FOLDER>/venv/bin/activate` (NEVER at `/work/venv`).
+- For pip cache / target: `pip install --target /work/<MOUNTED_FOLDER>/pydeps package` or configure `PIP_CACHE_DIR=/work/<MOUNTED_FOLDER>/.cache/pip`.
+- For conda: configure `pkgs_dirs` and `envs_dirs` in `~/.condarc` to point inside `/work/<MOUNTED_FOLDER>/`.
 - For reproducible Python use `module load Python-bundle-PyPI` or EasyBuild `SciPy-bundle`.
 
 ## 16. Efficient Agent Workflow
 
-1. **Read JobParameters first** — never assume cores/mem.
-2. **Check module path** — `echo $MODULEPATH` then `module avail <pattern>` before loading.
-3. **Use /tmp for compiles**, `/work` for outputs. WekaFS has `writecache` but high latency — small-file I/O to `/tmp` is faster, then `rsync` to `/work`.
-4. **Batch bash calls** — one `bash` tool call per logical group; avoid N× `module list`.
-5. **Persist env** — append exports to `$COLLECTION_ROOT/env.sh` (e.g. `/work/<COLLECTION>/env.sh`) not `.bashrc` directly; source it.
-6. **Multi-node**: test `srun -N <N> hostname` or `mpirun --hostfile /tmp/hostfile` after SSH ready.
-7. **No internet assumptions** — internet works (google/ping ok) but cache downloads to `/work`.
-
+1. **Detect mounted permanent directories first** — run `ls -d /work/*/` or `mount | grep wekafs` to find your persistent mount path `/work/<MOUNTED_FOLDER>`. If none exists, warn immediately: no persistent storage attached.
+2. **Read JobParameters** — never assume cores/mem.
+3. **Check module path** — `echo $MODULEPATH` then `module avail <pattern>` before loading.
+4. **Use /tmp for compiles**, `/work/<MOUNTED_FOLDER>/` for outputs. WekaFS has `writecache` but high latency — small-file I/O to `/tmp` is faster, then `rsync` to `/work/<MOUNTED_FOLDER>/`.
+5. **Batch bash calls** — one `bash` tool call per logical group; avoid N× `module list`.
+6. **Persist env** — append exports to `/work/<MOUNTED_FOLDER>/env.sh` not `.bashrc` directly; source it.
+7. **Multi-node**: test `srun -N <N> hostname` or `mpirun --hostfile /tmp/hostfile` after SSH ready.
+8. **Cache downloads** inside `/work/<MOUNTED_FOLDER>/`, not `/tmp` or bare `/work/`.
 ## 17. Common Pitfalls
 
 Portal / launch side:
 - **Top-right dropdown is the workspace switcher** (see §1.3) — never treat it as settings/account; verify the active project before submitting or picking folders, or you bill the wrong project.
+- **Launching without attaching a folder** (see §2.2) — leaves `/work` purely ephemeral with no mounted persistent volume; all data generated during the job will be destroyed on exit.
 - **Destructive actions are press-and-hold (~3 s), not clicks** — Stop application (running jobs) AND Cancel reservation (scheduled/suspended jobs) both ignore a plain click; must `mouse.down()` → ~3 s → `mouse.up()` (§5.2).
 - **Form selects are native `<select>`s** even though AX reports "combobox" — set `.value` + dispatch `change`; clicking visible "Enabled/Disabled" options is flaky. SSH access ships as `Enabled`/`Disabled` with `value` `true`/`false`.
 - **SSH is a submission-time choice** — the SSH widget (and port) does not exist for jobs launched without it; must stop + relaunch (§2.4).
@@ -410,7 +439,8 @@ Portal / launch side:
 In-job side:
 - **Empty slurm.conf** → run `bash /tmp/tm1.sh`? No — `gen_slurm_conf` needs sed replacement; inspect `/tmp/tm1.sh` instead.
 - **MODULEPATH overwritten** — `/opt/easybuild/ubuntu-24.04/amd/modules/all` is set in `~/.bashrc`; `module use /opt/easybuild/modules/all` silently masks vendor modules.
-- **Writing to /home** → lost on reschedule. Use `/work`.
+- **Creating an unmounted repo directly in /work/** → Next job won't find it under `/work/`! It gets archived to `/Member Files: <User#Tag> (<DriveID>)/Jobs/<AppName>/<JobID>/<User#Tag>/`. To avoid having to recover files from job archives, always clone and write inside `/work/<MOUNTED_FOLDER>/`.
+- **Writing to /home or /tmp** → lost on reschedule.
 - **Assuming GPU** → `nvidia-smi` fails; check `JobParameters.json` `gpu` field before `module load CUDA`.
 - **256-thread spawn** → OOM-killer (host has 256 threads but job may have 1–64 vCPUs). Pin with `OMP_NUM_THREADS=$(nproc)` or `$(jq .resources[0].memoryInGigs)` / `cpu` from `JobParameters.json`.
 - **Systemd** → `systemctl` always fails (`PID 1` is bash). Use direct daemon calls.
@@ -438,8 +468,8 @@ mpicc /tmp/hello.c -o /tmp/hello && mpirun -np 2 /tmp/hello
 CORES=$(jq -r '.resources[0].cpu // .machineType.cpu // 1' /work/JobParameters.json 2>/dev/null || echo 1); MEM=$(jq -r '.resources[0].memoryInGigs // .machineType.memoryInGigs // 3' /work/JobParameters.json 2>/dev/null || echo 3); sed "s/UCORES/$CORES/;s/UMEMORY/$MEM/;s/UGPUS/0/;s/UGPU_TYPE/cpu-amd-zen5/" /usr/bin/gen_slurm_conf | head -n 80
 
 # persistent install
-npm install -g cowsay        # lands in $COLLECTION_ROOT/bin (e.g. /work/<COLLECTION>/bin) via npm_config_prefix
-pip install --target /work/pydeps package
+npm install -g cowsay        # lands in /work/<MOUNTED_FOLDER>/bin via npm_config_prefix
+pip install --target /work/<MOUNTED_FOLDER>/pydeps package
 ```
 
 ## 19. When to Ignore This Skill

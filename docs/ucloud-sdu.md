@@ -118,52 +118,78 @@ ps aux | grep cron           # Verify running
 | Mount Point | Type | Size | Persistence | Purpose |
 |------------|------|------|-------------|---------|
 | `/` | overlay | 1.0TB | Ephemeral | Container root filesystem |
-| `/work` | wekafs | 4.7PB | **Persistent** | User data, project files |
+| `/work` | container dir | - | **Ephemeral** | Mount root namespace for attached drives |
+| `/work/<mounted-folder>` | wekafs | 4.7PB | **Persistent** | User / project attached folder volumes |
 | `/etc/hosts` | rbd | 48GB | Ephemeral | Network configuration |
 | `/opt` | overlay | - | Ephemeral | Software installations |
 | `/home/ucloud` | overlay | - | Ephemeral | User home |
 
-**Key Insight**: Only `/work` survives job restarts. All other changes are lost when the job ends.
+**Key Insight**: Only subdirectories under `/work` that correspond to attached folders (`/work/<mounted-folder>/...`) survive job termination. Files created directly in the `/work/` root directory or elsewhere in the container are lost when the job ends. If a job is launched without attaching any folders, the entire container is ephemeral.
 
 ---
 
 ## Storage Architecture
 
-### WekaFS Distributed Filesystem
+### WekaFS Distributed Filesystem & Mount Model
+
+On UCloud, `/work` serves as the container mount root. When a user attaches folders (via "Folder #1", "Folder #2", etc. from "My workspace" or project drives), each folder is mounted as a subdirectory under `/work/<FolderName>`.
 
 ```bash
-$ df -h /work
+$ df -h | grep wekafs
 Filesystem      Size  Used Avail Use% Mounted on
-ucloud          4.7P  3.7P  944T  81% /work
+ucloud          4.7P  3.7P  944T  81% /work/my-project
 ```
 
 **Characteristics**:
 - **Technology**: WekaFS (distributed parallel filesystem)
 - **Capacity**: 4.7 petabytes total
-- **Performance**: Optimized for large-scale data operations
-- **Persistence**: Data survives job termination and restarts
+- **Mount Point**: `/work/<FolderName>` for each attached folder
+- **Persistence**: Data inside mounted subdirectories survives job termination and restarts
 
 ### Storage Best Practices
 
-1. **Always use `/work` for persistent data**
+1. **Always use a verified mounted directory (`/work/<mounted-folder>/`) for persistent data**
    ```bash
-   # ✅ Correct
+   # ✅ Correct — files inside a mounted permanent folder
    /work/my-project/data/
-   /work/backup-repository/
+   /work/my-project/venv/
+   /work/my-project/backup-repository/
    
-   # ❌ Wrong (will be lost)
+   # ❌ Wrong — lost on job termination!
+   /work/temp-data/          # top-level in /work is ephemeral
+   /work/venv/               # top-level in /work is ephemeral
    /tmp/important-file
    /opt/custom-install/
    ```
 
 2. **Project Structure**
    ```
-   /work/
-   ├── ProjectA/           # Main project directory
-   ├── ProjectB/           # Another mounted project
-   ├── JobParameters.json  # UCloud job metadata
-   └── vscode-server/      # VS Code server files
+   /work/                               # Ephemeral container mount namespace
+   ├── ProjectA/                        # Persistent WekaFS mount (Folder #1)
+   │   ├── data/                        # Persistent data
+   │   ├── src/                         # Persistent source code
+   │   ├── venv/                        # Python virtual environment
+   │   └── env.sh                       # Persistent environment exports
+   ├── ProjectB/                        # Persistent WekaFS mount (Folder #2, if attached)
+   ├── JobParameters.json               # Ephemeral job metadata (copied to Jobs/<id>/)
+   └── job-report.csv                   # Ephemeral resource sampling
    ```
+
+### Job Output Archival & Unmounted File Recovery
+
+If a repository, dataset, or file is created directly under `/work/` without being pre-mounted as an attached folder (e.g. `/work/my-repo`), it will **not** appear at `/work/my-repo` in future sessions.
+
+Instead, UCloud captures the session's unmounted working tree at job completion and archives it to your drive at:
+
+```
+/Member Files: <User#Tag> (<DriveID>)/Jobs/<AppName>/<JobID>/<User#Tag>/
+```
+(Example: `/Member Files: TuHu#2222 (914637)/Jobs/JupyterLab/12378971/TuHu#2222/my-repo/`)
+
+**Recovery Options**:
+1. **Files UI**: In the UCloud portal, go to `Files` (`/app/drives`) → navigate to `Jobs/<AppName>/<JobID>/<User#Tag>/` → move/copy the repo to your permanent project folder.
+2. **Job Attach**: In the launch dialog for a new job, attach the prior job's output directory as Folder #1.
+3. **Prevention (Best Practice)**: Always clone and store files inside pre-mounted folders (`/work/<mounted-folder>/...`) from the start.
 
 ---
 
@@ -304,7 +330,8 @@ SSH can be enabled per job. Keys stored in `/etc/ucloud/ssh/`
 | `/home/user` | Persistent | Ephemeral |
 | `/tmp` | Ephemeral | Ephemeral |
 | `/opt` | Persistent | Ephemeral |
-| `/work` | N/A | **Persistent (WekaFS)** |
+| `/work` (top-level root) | N/A | Ephemeral mount namespace |
+| `/work/<mounted-folder>` | N/A | **Persistent (WekaFS)** |
 
 ---
 
@@ -313,34 +340,35 @@ SSH can be enabled per job. Keys stored in `/etc/ucloud/ssh/`
 ### 1. Persistent Storage Strategy
 
 ```bash
-# All persistent data in /work
-export PROJECT_ROOT="/work/my-project"
-export DATA_DIR="/work/data"
-export BACKUP_DIR="/work/backups"
+# Discover your primary mounted directory
+PRIMARY_MOUNT="$(ls -d /work/*/ 2>/dev/null | grep -v 'lost+found' | head -n 1 | sed 's/\/$//')"
+export PROJECT_ROOT="${PRIMARY_MOUNT:-/work/my-project}"
+export DATA_DIR="$PROJECT_ROOT/data"
+export BACKUP_DIR="$PROJECT_ROOT/backups"
 ```
 
 ### 2. Service Initialization Pattern
 
 ```bash
 #!/bin/bash
-# /work/init-services.sh
+# Store script inside your mounted project: /work/<mounted-folder>/init-services.sh
 
 sudo cron
 sudo other_daemon
 
-echo "Services initialized at $(date)" >> /work/init.log
+echo "Services initialized at $(date)" >> "$PROJECT_ROOT/init.log"
 ```
 
 ### 3. Environment Configuration
 
 ```bash
-# /work/.bashrc_custom
-export RESTIC_REPOSITORY=/work/backup-repo
-export PROJECT_ROOT=/work/my-project
+# Stored at /work/<mounted-folder>/.bashrc_custom
+export RESTIC_REPOSITORY="$PROJECT_ROOT/backup-repo"
+export PROJECT_ROOT="$PROJECT_ROOT"
 
 # Add to ~/.bashrc
-if [ -f /work/.bashrc_custom ]; then
-    source /work/.bashrc_custom
+if [ -f "$PROJECT_ROOT/.bashrc_custom" ]; then
+    source "$PROJECT_ROOT/.bashrc_custom"
 fi
 ```
 
@@ -366,23 +394,30 @@ fi
 
 **Solution**: `sudo cron` (direct daemon invocation)
 
-### ❌ Pitfall 2: Storing Data Outside /work
+### ❌ Pitfall 2: Writing Directly to /work Root instead of a Mounted Folder
 
-**Problem**: Data in `/opt` or `/tmp` lost after job ends
+**Problem**: Creating a repo or storing data directly at `/work/my-repo` causes it to disappear from `/work/` in the next job.
 
-**Solution**: Always use `/work` for persistent data
+**What Actually Happens**: When the job terminates, UCloud saves unmounted `/work` contents to your member drive under `/Member Files: <User#Tag> (<DriveID>)/Jobs/<AppName>/<JobID>/<User#Tag>/`.
 
-### ❌ Pitfall 3: Expecting Persistent Cron
+**Solution**: Always work inside `/work/<mounted-folder>/...`. If you already created an unmounted repo, recover it from the `Jobs/<AppName>/<JobID>/...` folder via the Files UI or attach that job output folder in your next launch.
+### ❌ Pitfall 3: Launching a Job Without Attaching Folders
+
+**Problem**: If no folder is attached when creating a job in the web portal, `/work` contains no persistent volumes, and all work done in the container is lost upon exit.
+
+**Solution**: Always select and attach at least one persistent folder (via "Folder #1") from "My workspace" or a project drive.
+
+### ❌ Pitfall 4: Expecting Persistent Cron
 
 **Problem**: Crontab lost after job restart
 
 **Solution**:
 ```bash
-crontab -l > /work/my-crontab   # Save
-crontab /work/my-crontab        # Restore on job start
+crontab -l > "$PROJECT_ROOT/my-crontab"   # Save inside mounted directory
+crontab "$PROJECT_ROOT/my-crontab"        # Restore on job start
 ```
 
-### ❌ Pitfall 4: Relative Paths
+### ❌ Pitfall 5: Relative Paths
 
 **Problem**: Scripts fail when working directory changes
 
@@ -401,10 +436,12 @@ hostname | cut -d'-' -f2     # Extract job ID
 cat /work/JobParameters.json | jq '.machineType'  # Resources
 ```
 
-### Storage
+### Storage Discovery & Verification
 ```bash
-df -h /work                  # Check capacity
-du -sh /work/*/              # Directory sizes
+mount | grep wekafs          # List active persistent WekaFS mounts
+ls -ld /work/*/              # List candidate mounted persistent directories
+df -h /work/* 2>/dev/null    # Check capacity of mounted directories
+du -sh /work/*/*/ 2>/dev/null # Subdirectory sizes inside mounted folders
 ```
 
 ### Process Management
