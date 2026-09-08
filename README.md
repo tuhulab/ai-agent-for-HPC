@@ -26,7 +26,8 @@ These instruction documents bridge that knowledge gap, enabling AI assistants to
 
 | Platform / Organization | Location | Description |
 |-------------------------|----------|-------------|
-| **UCloud (SDU)** | [`docs/ucloud-sdu.md`](docs/ucloud-sdu.md) | SDU eScience Center's containerized HPC platform (k3s, WekaFS) |
+| **UCloud Containers** | [`docs/ucloud-sdu.md`](docs/ucloud-sdu.md) | SDU eScience Center's containerized HPC platform (k3s, WekaFS, Lmod) |
+| **UCloud Virtual Machine** | [`docs/vm-ubuntu.md`](docs/vm-ubuntu.md) | Dedicated KVM virtual machine environment (Docker, systemd, persistent root disk) |
 | **Computerome (DTU)** | [`docs/computerome-dtu.md`](docs/computerome-dtu.md) | DTU's traditional HPC cluster (PBS/Torque, Moab) |
 | **INFIMM Bioinformatics** | [`docs/infimm.md`](docs/infimm.md) | Lab-specific UCloud drive topology, Restic backups, and workflows |
 

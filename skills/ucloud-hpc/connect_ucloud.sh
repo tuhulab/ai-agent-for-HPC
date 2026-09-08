@@ -27,7 +27,7 @@ set -e
 
 CONFIG_FILE="$HOME/.ssh/config"
 BACKUP_DIR="$HOME/.ssh/config_backups"
-HOST_NAME="ucloud"
+HOST_NAME="ucloud-vm"
 REMOTE_DIR="/work"
 DEFAULT_UGERM_USER="${UGERM_USER:-hutu}"
 UGERM_HOST="login.ugerm.dksund.dk"
@@ -42,7 +42,7 @@ NC='\033[0m' # No Color
 
 show_help() {
     cat <<EOF
-Usage: connect_ucloud [options] [port-number]
+Usage: connect_ucloud [options] [vm|k8s] [port-number]
 
 Utility for human users to configure ~/.ssh/config for UCloud jobs and launch VSCode.
 
@@ -53,6 +53,10 @@ Modes:
   -s, --sit              Statens IT (SIT) mode: enable ProxyJump via uGerm
   -d, --direct           Direct (Non-SIT) mode: direct connection without ProxyJump
 
+Target Host:
+  vm, --vm               Target 'Host ucloud-vm' in ~/.ssh/config (Virtual Machine, default)
+  k8s, --k8s            Target 'Host ucloud-k8s' in ~/.ssh/config (Kubernetes container)
+  --name HOST            Target arbitrary 'Host <HOST>' in ~/.ssh/config
 Options:
   -u, --ugerm-user USER  uGerm username for ProxyJump (default: \${UGERM_USER:-${DEFAULT_UGERM_USER}})
   -j, --proxyjump TARGET Explicit ProxyJump target (default: USER@${UGERM_HOST})
@@ -66,22 +70,28 @@ Environment Variables:
   UGERM_USER             Default username for uGerm ProxyJump
 
 Examples:
-  # SIT managed equipment (default on SSI network)
-  connect_ucloud 2820
-  connect_ucloud --sit 2820
-  connect_ucloud --sit --ugerm-user hutu 2820
+  # Interactive wizard (prompts for target environment and port)
+  connect_ucloud
 
-  # Non-SIT / Personal machine (direct connection)
-  connect_ucloud --direct 2820
+  # Positional target and port
+  connect_ucloud vm 2523
+  connect_ucloud k8s 2820
+
+  # SIT mode on SSI network
+  connect_ucloud --sit vm 2523
+
+  # Direct mode without ProxyJump
+  connect_ucloud --direct vm 2523
 
   # Update SSH config without launching VSCode
-  connect_ucloud --no-code 2820
+  connect_ucloud --no-code vm 2523
 EOF
 }
 
 # Parse options
 MODE=""
 PORT_NUMBER=""
+HOST_EXPLICIT=false
 UGERM_USER="$DEFAULT_UGERM_USER"
 CUSTOM_PROXYJUMP=""
 LOCAL_FORWARD="$DEFAULT_FORWARD"
@@ -100,6 +110,26 @@ while [[ $# -gt 0 ]]; do
         -d|--direct|--no-sit)
             MODE="direct"
             shift
+            ;;
+        vm|--vm)
+            HOST_NAME="ucloud-vm"
+            HOST_EXPLICIT=true
+            shift
+            ;;
+        k8s|--k8s)
+            HOST_NAME="ucloud-k8s"
+            HOST_EXPLICIT=true
+            shift
+            ;;
+        --name)
+            if [[ -n "${2:-}" && ! "$2" =~ ^- ]]; then
+                HOST_NAME="$2"
+                HOST_EXPLICIT=true
+                shift 2
+            else
+                echo -e "${RED}Error: --name requires a host name${NC}" >&2
+                exit 1
+            fi
             ;;
         -u|--ugerm-user|--user)
             if [[ -n "${2:-}" && ! "$2" =~ ^- ]]; then
@@ -195,8 +225,23 @@ cp "$CONFIG_FILE" "$BACKUP_FILE"
 echo -e "${GREEN}✓ Backup created: $BACKUP_FILE${NC}"
 
 # Get port number interactively if not provided
+if [ "$HOST_EXPLICIT" = false ]; then
+    echo -e "${YELLOW}Select target environment:${NC}"
+    echo -e "  ${CYAN}1)${NC} Virtual Machine (ucloud-vm) [default]"
+    echo -e "  ${CYAN}2)${NC} Kubernetes Container (ucloud-k8s)"
+    read -r -p "Enter choice [1/2, default=1]: " HOST_CHOICE
+    case "$HOST_CHOICE" in
+        2|k8s|container)
+            HOST_NAME="ucloud-k8s"
+            ;;
+        *)
+            HOST_NAME="ucloud-vm"
+            ;;
+    esac
+fi
+
 if [ -z "$PORT_NUMBER" ]; then
-    echo -e "${YELLOW}Enter the new port number for ucloud (from UCloud job portal):${NC}"
+    echo -e "${YELLOW}Enter UCloud SSH port for $HOST_NAME (from job progress view):${NC}"
     read -r PORT_NUMBER
 fi
 
@@ -221,7 +266,8 @@ awk -v hostname="ssh.cloud.sdu.dk" \
     -v proxyjump="$PROXY_JUMP" \
     -v localforward="$LOCAL_FORWARD" \
     -v stricts="no" \
-    -v knownhosts="/dev/null" '
+    -v knownhosts="/dev/null" \
+    -v target_host="$HOST_NAME" '
 BEGIN {
     order[1]="HostName";             val["HostName"]=hostname
     order[2]="User";                 val["User"]=user
@@ -243,7 +289,7 @@ function flush_missing() {
 /^[ \t]*Host[ \t]+/ {
     t=$0; sub(/^[ \t]*Host[ \t]+/, "", t)
     split(t, pats, /[ \t]+/)
-    if (pats[1] == "ucloud") {
+    if (pats[1] == target_host) {
         in_ucloud=1; ucloud_found=1
         print
         next
@@ -273,7 +319,7 @@ END {
     if (in_ucloud) flush_missing()
     if (!ucloud_found) {
         print ""
-        print "Host ucloud"
+        print "Host " target_host
         for (i=1; i<=n; i++) {
             k = order[i]
             if (val[k] != "") {
@@ -290,8 +336,12 @@ chmod 600 "$CONFIG_FILE"
 echo -e "${GREEN}✓ SSH config updated${NC}"
 
 # Display the updated ucloud block
-echo -e "\n${YELLOW}Updated ucloud configuration in ~/.ssh/config:${NC}"
-awk '/^[ \t]*Host ucloud[ \t]*$/ {p=1} p {print} p && /^[ \t]*Host / && !/^[ \t]*Host ucloud[ \t]*$/ {exit}' "$CONFIG_FILE"
+echo -e "\n${YELLOW}Updated $HOST_NAME configuration in ~/.ssh/config:${NC}"
+awk -v target_host="$HOST_NAME" '
+$0 ~ "^[ \t]*Host[ \t]+" target_host "[ \t]*$" {p=1}
+p {print}
+p && /^[ \t]*Host[ \t]+/ && $0 !~ "^[ \t]*Host[ \t]+" target_host "[ \t]*$" {exit}
+' "$CONFIG_FILE"
 
 # Connect via VSCode Remote-SSH if requested
 if [ "$LAUNCH_CODE" = true ]; then
@@ -301,10 +351,10 @@ if [ "$LAUNCH_CODE" = true ]; then
         echo -e "${GREEN}✓ VSCode connection initiated!${NC}"
     else
         echo -e "\n${YELLOW}VSCode CLI ('code') not found in PATH.${NC}"
-        echo -e "You can connect manually via terminal: ${GREEN}ssh ucloud${NC}"
+        echo -e "You can connect manually via terminal: ${GREEN}ssh $HOST_NAME${NC}"
     fi
 else
-    echo -e "\n${GREEN}SSH config ready. Connect via:${NC} ssh ucloud"
+    echo -e "\n${GREEN}SSH config ready. Connect via:${NC} ${CYAN}ssh $HOST_NAME${NC}"
 fi
 
 if [ -n "$LOCAL_FORWARD" ]; then

@@ -1,0 +1,2305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>TB Group Storage Inventory & Governance Catalog</title>
+<style>
+  @page {
+    size: A4 portrait;
+    margin: 10mm 12mm 10mm 12mm;
+  }
+
+  * {
+    box-sizing: border-box;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #0f172a;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+    font-size: 8pt;
+    line-height: 1.3;
+  }
+
+  .page {
+    page-break-after: always;
+    height: 277mm;
+    max-height: 277mm;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .page:last-child {
+    page-break-after: avoid;
+  }
+
+  /* Typography & Utilities */
+  h1, h2, h3, h4 {
+    margin: 0;
+    font-weight: 700;
+    color: #0f172a;
+  }
+  .text-muted { color: #64748b; }
+  .text-right { text-align: right; }
+  .text-center { text-align: center; }
+  .font-mono { font-family: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace; }
+
+  /* Header Banner */
+  .header-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #0284c7;
+    padding-bottom: 5px;
+    margin-bottom: 8px;
+  }
+  .org-title {
+    font-size: 7.8pt;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #0369a1;
+  }
+  .doc-ref {
+    font-size: 7.2pt;
+    font-weight: 600;
+    color: #475569;
+    background: #f1f5f9;
+    padding: 1.5px 5px;
+    border-radius: 3px;
+    border: 1px solid #e2e8f0;
+  }
+
+  /* Page 1 Hero */
+  .hero-block {
+    margin-bottom: 8px;
+  }
+  .hero-title {
+    font-size: 16pt;
+    font-weight: 800;
+    color: #0f172a;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin-bottom: 3px;
+  }
+  .hero-subtitle {
+    font-size: 8.8pt;
+    color: #475569;
+    line-height: 1.25;
+  }
+
+  /* Info Strip */
+  .info-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 5px;
+    padding: 6px 10px;
+    margin-bottom: 10px;
+  }
+  .info-cell {
+    display: flex;
+    flex-direction: column;
+  }
+  .info-cell-label {
+    font-size: 6.2pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #64748b;
+    margin-bottom: 1px;
+  }
+  .info-cell-val {
+    font-size: 7.6pt;
+    font-weight: 600;
+    color: #0f172a;
+  }
+
+  /* KPI Grid */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  .kpi-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 5px;
+    padding: 7px 9px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+    border-left: 3.5px solid #0284c7;
+  }
+  .kpi-card.purple { border-left-color: #7c3aed; }
+  .kpi-card.emerald { border-left-color: #059669; }
+  .kpi-card.amber { border-left-color: #d97706; }
+  .kpi-card.blue { border-left-color: #2563eb; }
+  .kpi-card.rose { border-left-color: #e11d48; }
+
+  .kpi-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3px;
+  }
+  .kpi-label {
+    font-size: 6.8pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #475569;
+  }
+  .kpi-badge {
+    font-size: 6.2pt;
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-weight: 600;
+    background: #f1f5f9;
+    color: #334155;
+    white-space: nowrap;
+  }
+  .kpi-value {
+    font-size: 13.5pt;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.1;
+    margin-bottom: 2px;
+    font-variant-numeric: tabular-nums;
+  }
+  .kpi-subtext {
+    font-size: 6.5pt;
+    color: #64748b;
+    line-height: 1.2;
+  }
+
+  /* Visual Distribution */
+  .section-title {
+    font-size: 9.5pt;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .section-title::before {
+    content: "";
+    display: inline-block;
+    width: 3px;
+    height: 11px;
+    background: #0284c7;
+    border-radius: 2px;
+  }
+
+  .chart-section {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 5px;
+    padding: 8px 10px;
+    margin-bottom: 10px;
+  }
+  .mod-bar-container {
+    height: 12px;
+    display: flex;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 6px;
+    background: #e2e8f0;
+  }
+  .mod-bar-segment {
+    height: 100%;
+  }
+  .mod-legends-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3px 10px;
+  }
+  .mod-legend-item {
+    display: flex;
+    align-items: center;
+    font-size: 6.9pt;
+    color: #334155;
+  }
+  .legend-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    margin-right: 5px;
+    flex-shrink: 0;
+  }
+  .legend-name {
+    font-weight: 600;
+    margin-right: 4px;
+    white-space: nowrap;
+  }
+  .legend-pct {
+    margin-left: auto;
+    color: #64748b;
+    white-space: nowrap;
+  }
+
+  /* Modality Breakdown Table */
+  .summary-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 6.8pt;
+    margin-top: 5px;
+  }
+  .summary-table th {
+    background: #edf2f7;
+    font-weight: 700;
+    text-align: left;
+    padding: 3.5px 5px;
+    border-bottom: 1px solid #cbd5e1;
+    color: #334155;
+  }
+  .summary-table td {
+    padding: 3px 5px;
+    border-bottom: 1px solid #e2e8f0;
+    color: #1e293b;
+  }
+  .mod-color-block {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 2px;
+    margin-right: 4px;
+    vertical-align: middle;
+  }
+
+  /* Executive Insights Box */
+  .insights-box {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 5px;
+    padding: 8px 10px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+  }
+  .insights-list {
+    margin: 0;
+    padding-left: 13px;
+    font-size: 7pt;
+    line-height: 1.35;
+    color: #334155;
+  }
+  .insights-list li {
+    margin-bottom: 3px;
+  }
+  .insights-list li:last-child {
+    margin-bottom: 0;
+  }
+  .insights-list strong {
+    color: #0f172a;
+  }
+
+  /* Catalog Table (Pages 2 & 3) */
+  .catalog-page-header {
+    margin-bottom: 6px;
+  }
+  .catalog-page-header h2 {
+    font-size: 10.5pt;
+    font-weight: 800;
+    color: #0f172a;
+  }
+  .catalog-page-header p {
+    font-size: 7.2pt;
+    color: #64748b;
+    margin: 1px 0 0 0;
+  }
+
+  .catalog-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 6.6pt;
+    border: 1px solid #cbd5e1;
+  }
+  .catalog-table thead th {
+    background: #0f172a;
+    color: #f8fafc;
+    font-weight: 700;
+    text-align: left;
+    padding: 4px 5px;
+    border-right: 1px solid #334155;
+    font-size: 6.3pt;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+  .catalog-table thead th:last-child {
+    border-right: none;
+  }
+  .catalog-table tbody tr {
+    border-bottom: 1px solid #e2e8f0;
+    height: 14.5mm;
+  }
+  .catalog-table tbody tr:nth-child(even) {
+    background-color: #f8fafc;
+  }
+  .catalog-table tbody td {
+    padding: 2px 4px;
+    vertical-align: middle;
+    border-right: 1px solid #f1f5f9;
+  }
+  .catalog-table tbody td:last-child {
+    border-right: none;
+  }
+
+  .col-num {
+    width: 15px;
+    text-align: center;
+    font-weight: 700;
+    color: #64748b;
+  }
+  .col-name {
+    width: 160px;
+  }
+  .dir-title {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-weight: 700;
+    color: #0f172a;
+    font-size: 6.8pt;
+    word-break: break-all;
+    line-height: 1.15;
+  }
+  .dir-meta {
+    display: flex;
+    gap: 4px;
+    font-size: 5.8pt;
+    color: #64748b;
+    margin-top: 1px;
+  }
+  .col-mod {
+    width: 88px;
+  }
+  .modality-pill {
+    display: inline-block;
+    padding: 1.5px 4px;
+    border-radius: 3px;
+    font-size: 5.9pt;
+    font-weight: 600;
+    border: 1px solid transparent;
+    line-height: 1.15;
+    white-space: nowrap;
+  }
+  .col-size {
+    width: 64px;
+    text-align: right;
+  }
+  .size-val {
+    font-weight: 800;
+    font-size: 7pt;
+    color: #0f172a;
+    font-variant-numeric: tabular-nums;
+  }
+  .file-count {
+    font-size: 5.8pt;
+    color: #64748b;
+    font-variant-numeric: tabular-nums;
+  }
+  .col-samples {
+    width: 105px;
+    line-height: 1.15;
+  }
+  .mono-badge {
+    display: inline-block;
+    background: #f1f5f9;
+    color: #1e293b;
+    border: 1px solid #cbd5e1;
+    font-family: ui-monospace, Menlo, monospace;
+    font-size: 5.5pt;
+    padding: 0.5px 2.5px;
+    border-radius: 2px;
+    margin: 0.5px 1px 0.5px 0;
+  }
+  .mono-badge-more {
+    display: inline-block;
+    color: #64748b;
+    font-size: 5.5pt;
+    font-weight: 600;
+  }
+  .col-exts {
+    width: 88px;
+    line-height: 1.15;
+  }
+  .ext-pill {
+    display: inline-block;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    color: #334155;
+    font-family: ui-monospace, Menlo, monospace;
+    font-size: 5.5pt;
+    padding: 0.5px 2.5px;
+    border-radius: 2px;
+    margin: 0.5px 1px 0.5px 0;
+    white-space: nowrap;
+  }
+  .col-flags {
+    width: 42px;
+    text-align: center;
+  }
+  .flag-icon {
+    display: inline-block;
+    font-size: 5.2pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 0.5px 2px;
+    border-radius: 2px;
+    margin: 0.5px;
+    font-family: ui-monospace, Menlo, monospace;
+  }
+  .flag-git { background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; }
+  .flag-doc { background: #ecfdf5; color: #047857; border: 1px solid #a7f3d0; }
+  .flag-env { background: #faf5ff; color: #7e22ce; border: 1px solid #e9d5ff; }
+  .flag-nb  { background: #fffbeb; color: #b45309; border: 1px solid #fde68a; }
+  .flag-bak { background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0; }
+
+  .col-action {
+    width: 140px;
+  }
+  .action-pill {
+    display: inline-block;
+    font-size: 5.6pt;
+    font-weight: 700;
+    padding: 1px 3.5px;
+    border-radius: 2px;
+    border: 1px solid transparent;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin-bottom: 1px;
+  }
+  .action-text {
+    font-size: 5.8pt;
+    color: #475569;
+    line-height: 1.15;
+  }
+
+  /* Page 3 Summary Bar */
+  .catalog-totals-box {
+    margin-top: 8px;
+    background: #0f172a;
+    color: #ffffff;
+    border-radius: 5px;
+    padding: 8px 12px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+  .tot-item {
+    display: flex;
+    flex-direction: column;
+  }
+  .tot-label {
+    font-size: 6pt;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #94a3b8;
+  }
+  .tot-val {
+    font-size: 10.5pt;
+    font-weight: 800;
+    color: #f8fafc;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .action-summary-grid {
+    margin-top: 8px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+  }
+  .act-summary-card {
+    border: 1px solid #e2e8f0;
+    border-radius: 5px;
+    padding: 6px 8px;
+    background: #ffffff;
+  }
+  .act-summary-card.red { border-top: 3px solid #dc2626; }
+  .act-summary-card.blue { border-top: 3px solid #2563eb; }
+  .act-summary-card.green { border-top: 3px solid #16a34a; }
+  .act-summary-card.amber { border-top: 3px solid #d97706; }
+  .act-sum-title {
+    font-size: 6.6pt;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 1px;
+  }
+  .act-sum-stats {
+    font-size: 8.5pt;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 1px;
+  }
+  .act-sum-desc {
+    font-size: 6pt;
+    color: #64748b;
+    line-height: 1.2;
+  }
+
+  /* Page 4 Deep Dive Cards */
+  .deep-dive-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin-top: 4px;
+    margin-bottom: 8px;
+  }
+  .deep-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 5px;
+    padding: 8px 10px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+  }
+  .deep-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 4px;
+    margin-bottom: 5px;
+  }
+  .deep-card-title {
+    font-size: 8.5pt;
+    font-weight: 800;
+    color: #0f172a;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .deep-card-badge {
+    font-size: 6.2pt;
+    font-weight: 700;
+    padding: 1.5px 5px;
+    border-radius: 3px;
+  }
+  .deep-stat-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 4px;
+    font-size: 6.8pt;
+  }
+  .deep-stat-item {
+    display: flex;
+    flex-direction: column;
+  }
+  .deep-stat-label {
+    font-size: 5.8pt;
+    text-transform: uppercase;
+    color: #64748b;
+    font-weight: 700;
+  }
+  .deep-stat-val {
+    font-weight: 800;
+    color: #0f172a;
+  }
+  .deep-content-text {
+    font-size: 6.7pt;
+    line-height: 1.28;
+    color: #334155;
+    margin-bottom: 4px;
+  }
+  .deep-dataset-list {
+    background: #f8fafc;
+    border: 1px solid #f1f5f9;
+    border-radius: 4px;
+    padding: 4px 6px;
+    font-size: 6.4pt;
+    line-height: 1.28;
+    color: #1e293b;
+    margin-bottom: 4px;
+  }
+  .deep-policy-note {
+    font-size: 6.2pt;
+    background: #fef2f2;
+    border-left: 3px solid #dc2626;
+    padding: 3px 5px;
+    color: #991b1b;
+    border-radius: 0 3px 3px 0;
+  }
+  .deep-policy-note.blue {
+    background: #eff6ff;
+    border-left-color: #2563eb;
+    color: #1e40af;
+  }
+  .deep-policy-note.green {
+    background: #f0fdf4;
+    border-left-color: #16a34a;
+    color: #166534;
+  }
+  .deep-policy-note.amber {
+    background: #fffbeb;
+    border-left-color: #d97706;
+    color: #92400e;
+  }
+
+  /* Page 4 Cohort Matrix Table */
+  .cohort-matrix-box {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 5px;
+    padding: 7px 9px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+  }
+  .cohort-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 6.5pt;
+    margin-top: 3px;
+  }
+  .cohort-table th {
+    background: #f1f5f9;
+    color: #334155;
+    font-weight: 700;
+    text-align: left;
+    padding: 2.5px 5px;
+    border-bottom: 1px solid #cbd5e1;
+    font-size: 6.1pt;
+    text-transform: uppercase;
+  }
+  .cohort-table td {
+    padding: 2.5px 5px;
+    border-bottom: 1px solid #f1f5f9;
+    color: #1e293b;
+    vertical-align: middle;
+  }
+  .cohort-pill {
+    display: inline-block;
+    background: #eff6ff;
+    color: #1d4ed8;
+    border: 1px solid #bfdbfe;
+    font-family: ui-monospace, Menlo, monospace;
+    font-weight: 700;
+    font-size: 6.1pt;
+    padding: 0.5px 3px;
+    border-radius: 2px;
+  }
+  .mod-tag {
+    display: inline-block;
+    padding: 0.5px 3px;
+    border-radius: 2px;
+    font-size: 5.6pt;
+    font-weight: 600;
+    margin-right: 2px;
+  }
+
+  /* Page 5 Governance & Topology */
+  .topology-block {
+    background: #0f172a;
+    color: #e2e8f0;
+    border-radius: 5px;
+    padding: 8px 12px;
+    margin-bottom: 10px;
+  }
+  .topology-title {
+    font-size: 8pt;
+    font-weight: 700;
+    color: #38bdf8;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .topology-code {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 6.5pt;
+    line-height: 1.32;
+    color: #cbd5e1;
+    margin: 0;
+  }
+
+  .gov-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  .gov-card {
+    border: 1px solid #cbd5e1;
+    border-radius: 5px;
+    padding: 8px 10px;
+    background: #ffffff;
+  }
+  .gov-card-title {
+    font-size: 8pt;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .gov-card-title::before {
+    content: "";
+    display: inline-block;
+    width: 3px;
+    height: 10px;
+    background: #0284c7;
+    border-radius: 2px;
+  }
+  .gov-list {
+    margin: 0;
+    padding-left: 13px;
+    font-size: 6.7pt;
+    line-height: 1.35;
+    color: #334155;
+  }
+  .gov-list li {
+    margin-bottom: 3px;
+  }
+  .gov-list li:last-child {
+    margin-bottom: 0;
+  }
+
+  .restic-box {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    padding: 5px 7px;
+    margin-top: 4px;
+    font-family: ui-monospace, Menlo, monospace;
+    font-size: 6.2pt;
+    color: #0f172a;
+    line-height: 1.25;
+  }
+
+  .signoff-box {
+    margin-top: auto;
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-radius: 5px;
+    padding: 7px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .signoff-left {
+    font-size: 6.6pt;
+    color: #475569;
+    line-height: 1.25;
+  }
+  .signoff-right {
+    font-size: 6.6pt;
+    text-align: right;
+    color: #64748b;
+  }
+  .signoff-badge {
+    display: inline-block;
+    background: #dcfce7;
+    color: #166534;
+    border: 1px solid #86efac;
+    padding: 1px 4px;
+    border-radius: 3px;
+    font-weight: 700;
+    font-size: 6pt;
+  }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1: EXECUTIVE OVERVIEW & TOPOLOGY DASHBOARD -->
+<div class="page">
+  <div class="header-banner">
+    <div class="org-title">INFIMM Bioinformatics Core &bull; SDU eScience Center UCloud</div>
+    <div class="doc-ref">DOC REF: INFIMM-TB-INV-2026.09 &bull; v1.0</div>
+  </div>
+
+  <div class="hero-block">
+    <h1 class="hero-title">TB Group Storage Inventory &amp; Catalog</h1>
+    <div class="hero-subtitle">
+      Comprehensive Asset Audit, Multi-Omics Modality Breakdown &amp; Data Governance Assessment for <code>/work/TB group/</code>
+    </div>
+  </div>
+
+  <div class="info-strip">
+    <div class="info-cell">
+      <span class="info-cell-label">Platform &amp; Workspace</span>
+      <span class="info-cell-val">SDU eScience UCloud &bull; <code>BINF INFIMM</code></span>
+    </div>
+    <div class="info-cell">
+      <span class="info-cell-label">WekaFS Mount Point</span>
+      <span class="info-cell-val"><code>/work/TB group/</code> (Folder #1)</span>
+    </div>
+    <div class="info-cell">
+      <span class="info-cell-label">Surveyed Assets</span>
+      <span class="info-cell-val">29 Datasets &bull; 957,970 Files</span>
+    </div>
+    <div class="info-cell">
+      <span class="info-cell-label">Survey Date &amp; Scope</span>
+      <span class="info-cell-val">September 2026 &bull; 2023–2026 Cohorts</span>
+    </div>
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi-card blue">
+      <div class="kpi-header">
+        <span class="kpi-label">Total Storage Footprint</span>
+        <span class="kpi-badge">5.51 TB</span>
+      </div>
+      <div class="kpi-value">5,643.01 <small style="font-size:8.5pt;font-weight:600;color:#64748b;">GB</small></div>
+      <div class="kpi-subtext">Active persistent working volume on WekaFS 4.7 PB parallel tier</div>
+    </div>
+
+    <div class="kpi-card emerald">
+      <div class="kpi-header">
+        <span class="kpi-label">File Object Count</span>
+        <span class="kpi-badge">957.9k files</span>
+      </div>
+      <div class="kpi-value">957,970</div>
+      <div class="kpi-subtext">High directory density: 268,358 nested subdirectories</div>
+    </div>
+
+    <div class="kpi-card purple">
+      <div class="kpi-header">
+        <span class="kpi-label">Primary Raw Data</span>
+        <span class="kpi-badge">67.8% volume</span>
+      </div>
+      <div class="kpi-value">3,826.48 <small style="font-size:8.5pt;font-weight:600;color:#64748b;">GB</small></div>
+      <div class="kpi-subtext">14 datasets: Raw FASTQs (1.82 TB) &amp; Zeiss/Leica slides (2.00 TB)</div>
+    </div>
+
+    <div class="kpi-card amber">
+      <div class="kpi-header">
+        <span class="kpi-label">Analysis &amp; Processed</span>
+        <span class="kpi-badge">32.2% volume</span>
+      </div>
+      <div class="kpi-value">1,816.53 <small style="font-size:8.5pt;font-weight:600;color:#64748b;">GB</small></div>
+      <div class="kpi-subtext">15 datasets: Single-cell H5/RDS matrices &amp; QuPath annotations</div>
+    </div>
+
+    <div class="kpi-card rose">
+      <div class="kpi-header">
+        <span class="kpi-label">Git Repositories</span>
+        <span class="kpi-badge">11 tracked</span>
+      </div>
+      <div class="kpi-value">11 <small style="font-size:8.5pt;font-weight:600;color:#64748b;">directories</small></div>
+      <div class="kpi-subtext">Version-controlled pipeline code, analysis repos &amp; notebooks</div>
+    </div>
+
+    <div class="kpi-card">
+      <div class="kpi-header">
+        <span class="kpi-label">Snapshot Backup Status</span>
+        <span class="kpi-badge">15 Backed Up</span>
+      </div>
+      <div class="kpi-value">15 / 29</div>
+      <div class="kpi-subtext">15 datasets with backup copies; 14 require Restic snapshot registration</div>
+    </div>
+  </div>
+
+  <div class="chart-section">
+    <div class="section-title">Storage Allocation by Research Modality</div>
+    <div class="mod-bar-container">
+      <div class="mod-bar-segment" style="width: 35.49%; background-color: #0284c7;" title="Microscopy & Raw Imaging Data: 35.5%"></div><div class="mod-bar-segment" style="width: 32.32%; background-color: #7c3aed;" title="Raw Sequencing (FASTQ): 32.3%"></div><div class="mod-bar-segment" style="width: 19.97%; background-color: #0d9488;" title="Histology & Image Analysis (QuPath): 20.0%"></div><div class="mod-bar-segment" style="width: 10.27%; background-color: #d97706;" title="Single-Cell Analysis Project: 10.3%"></div><div class="mod-bar-segment" style="width: 1.94%; background-color: #ea580c;" title="Single-Cell Processed Objects: 1.9%"></div><div class="mod-bar-segment" style="width: 0.70%; background-color: #475569;" title="Code / Analysis Pipeline: 0.0%"></div>
+    </div>
+    <div class="mod-legends-grid">
+      
+        <div class="mod-legend-item">
+          <span class="legend-dot" style="background-color: #0284c7;"></span>
+          <span class="legend-name">Microscopy (Raw)</span>
+          <span class="legend-pct"><strong>35.5%</strong> (2002.7 GB &bull; 11 datasets)</span>
+        </div>
+        
+
+        <div class="mod-legend-item">
+          <span class="legend-dot" style="background-color: #7c3aed;"></span>
+          <span class="legend-name">Raw Sequencing (FASTQ)</span>
+          <span class="legend-pct"><strong>32.3%</strong> (1823.8 GB &bull; 3 datasets)</span>
+        </div>
+        
+
+        <div class="mod-legend-item">
+          <span class="legend-dot" style="background-color: #0d9488;"></span>
+          <span class="legend-name">Histology (QuPath)</span>
+          <span class="legend-pct"><strong>20.0%</strong> (1127.2 GB &bull; 5 datasets)</span>
+        </div>
+        
+
+        <div class="mod-legend-item">
+          <span class="legend-dot" style="background-color: #d97706;"></span>
+          <span class="legend-name">Single-Cell Project</span>
+          <span class="legend-pct"><strong>10.3%</strong> (579.8 GB &bull; 7 datasets)</span>
+        </div>
+        
+
+        <div class="mod-legend-item">
+          <span class="legend-dot" style="background-color: #ea580c;"></span>
+          <span class="legend-name">Single-Cell Objects</span>
+          <span class="legend-pct"><strong>1.9%</strong> (109.6 GB &bull; 2 datasets)</span>
+        </div>
+        
+
+        <div class="mod-legend-item">
+          <span class="legend-dot" style="background-color: #475569;"></span>
+          <span class="legend-name">Code / Pipeline</span>
+          <span class="legend-pct"><strong><0.1%</strong> (0.0 GB &bull; 1 datasets)</span>
+        </div>
+        
+    </div>
+    <table class="summary-table">
+      <thead>
+        <tr>
+          <th>Modality Classification</th>
+          <th class="text-right">Datasets</th>
+          <th class="text-right">Volume (GB)</th>
+          <th class="text-right">% Share</th>
+          <th class="text-right">Total Files</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        <tr>
+          <td><span class="mod-color-block" style="background:#0284c7;"></span> <strong>Microscopy & Raw Imaging Data</strong></td>
+          <td class="text-right">11</td>
+          <td class="text-right"><strong>2002.65 GB</strong></td>
+          <td class="text-right">35.5%</td>
+          <td class="text-right">678,848</td>
+        </tr>
+        
+
+        <tr>
+          <td><span class="mod-color-block" style="background:#7c3aed;"></span> <strong>Raw Sequencing (FASTQ)</strong></td>
+          <td class="text-right">3</td>
+          <td class="text-right"><strong>1823.83 GB</strong></td>
+          <td class="text-right">32.3%</td>
+          <td class="text-right">264</td>
+        </tr>
+        
+
+        <tr>
+          <td><span class="mod-color-block" style="background:#0d9488;"></span> <strong>Histology & Image Analysis (QuPath)</strong></td>
+          <td class="text-right">5</td>
+          <td class="text-right"><strong>1127.16 GB</strong></td>
+          <td class="text-right">20.0%</td>
+          <td class="text-right">12,031</td>
+        </tr>
+        
+
+        <tr>
+          <td><span class="mod-color-block" style="background:#d97706;"></span> <strong>Single-Cell Analysis Project</strong></td>
+          <td class="text-right">7</td>
+          <td class="text-right"><strong>579.79 GB</strong></td>
+          <td class="text-right">10.3%</td>
+          <td class="text-right">178,298</td>
+        </tr>
+        
+
+        <tr>
+          <td><span class="mod-color-block" style="background:#ea580c;"></span> <strong>Single-Cell Processed Objects</strong></td>
+          <td class="text-right">2</td>
+          <td class="text-right"><strong>109.58 GB</strong></td>
+          <td class="text-right">1.9%</td>
+          <td class="text-right">88,525</td>
+        </tr>
+        
+
+        <tr>
+          <td><span class="mod-color-block" style="background:#475569;"></span> <strong>Code / Analysis Pipeline</strong></td>
+          <td class="text-right">1</td>
+          <td class="text-right"><strong>0.00 GB</strong></td>
+          <td class="text-right">0.0%</td>
+          <td class="text-right">4</td>
+        </tr>
+        
+      </tbody>
+    </table>
+  </div>
+
+  <div class="insights-box">
+    <div class="section-title" style="margin-bottom:3px;">Executive Findings &amp; Governance Priorities</div>
+    <ul class="insights-list">
+      <li><strong>Raw Data Preservation (Tier 1 Priority):</strong> 3,826.48 GB across 14 directories constitutes irreplaceable raw FASTQs and Zeiss CZI slides. These folders must be write-protected (read-only POSIX permissions) and registered in the automated incremental Restic backup to <code>/work/Data_backup/repo/</code>.</li>
+      <li><strong>Git Remote Synchronization:</strong> 11 directories contain <code>.git</code> repositories (e.g. <code>TB_TL</code>, <code>TB-Endothelial</code>, <code>tb-lung-atlas</code>). Verify that all local commits and branches are pushed to GitHub, and ensure large intermediate files (H5, RDS) are excluded via <code>.gitignore</code>.</li>
+      <li><strong>Storage Deduplication Opportunity:</strong> <code>QuPath Analysis F2944(1)</code> (0.02 GB, 707 files) is a redundant clone of <code>QuPath Analysis F2944</code> (0.51 GB). Verify uniqueness and remove the clone to maintain project hygiene.</li>
+      <li><strong>HPC Job Mounting Protocol:</strong> Always mount <code>TB group</code> as <strong>Folder #1</strong> and <code>Data_backup</code> as <strong>Folder #2</strong> on UCloud. Never leave unlinked deliverables in container root <code>/work/</code>.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- PAGE 2: MASTER DIRECTORY CATALOG - PART I (ITEMS 1 - 15) -->
+<div class="page">
+  <div class="header-banner">
+    <div class="org-title">INFIMM Bioinformatics Core &bull; Directory Catalog</div>
+    <div class="doc-ref">CATALOG PART I (DATASETS 01 – 15)</div>
+  </div>
+
+  <div class="catalog-page-header">
+    <h2>📁 Master Directory Catalog — Part I (Datasets 01 to 15)</h2>
+    <p>Detailed breakdown of primary datasets, sample markers, technical stacks, storage footprints, and suggested governance actions.</p>
+  </div>
+
+  <table class="catalog-table">
+    <thead>
+      <tr>
+        <th class="col-num">#</th>
+        <th class="col-name">Directory &amp; Metadata</th>
+        <th class="col-mod">Modality / Type</th>
+        <th class="col-size">Size &amp; Files</th>
+        <th class="col-samples">Sample IDs / Markers</th>
+        <th class="col-exts">Top Formats</th>
+        <th class="col-flags">Flags</th>
+        <th class="col-action">Governance Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+            <tr>
+              <td class="col-num">1</td>
+              <td class="col-name">
+                <div class="dir-title">NAFP Image analysis</div>
+                <div class="dir-meta">
+                  <span>📅 2025-01 to 2026-08</span> &bull; <span>📁 2,558 dirs</span>
+                </div>
+              </td>
+              <td class="col-mod">
+                <span class="modality-pill" style="background:#ccfbf1; color:#0f766e; border-color:#0d948844;">
+                  Histology (QuPath)
+                </span>
+              </td>
+              <td class="col-size">
+                <div class="size-val">9.51 <small>GB</small></div>
+                <div class="file-count">9,709 files</div>
+              </td>
+              <td class="col-samples"><span class="mono-badge">CD31</span><span class="mono-badge">CD312</span><span class="mono-badge">CD313</span></td>
+              <td class="col-exts"><span class="ext-pill">.json <small>(4,794)</small></span> <span class="ext-pill">.jpg <small>(2,409)</small></span> <span class="ext-pill">.qpdata <small>(2,371)</small></span></td>
+              <td class="col-flags"><span class="flag-icon flag-bak" title="Backup Copy Detected">bak</span></td>
+              <td class="col-action">
+                <span class="action-pill" style="background:#dcfce7; color:#166534; border-color:#16a34a55;">
+                  Routine Snapshot
+                </span>
+                <div class="action-text">Maintain regular incremental snapshots in Data_backup.</div>
+              </td>
+            </tr>
+            
+
+            <tr>
+              <td class="col-num">2</td>
+              <td class="col-name">
+                <div class="dir-title">QuPath Analysis F2944</div>
+                <div class="dir-meta">
+                  <span>📅 2025-01 to 2025-02</span> &bull; <span>📁 188 dirs</span>
+                </div>
+              </td>
+              <td class="col-mod">
+                <span class="modality-pill" style="background:#ccfbf1; color:#0f766e; border-color:#0d948844;">
+                  Histology (QuPath)
+                </span>
+              </td>
+              <td class="col-size">
+                <div class="size-val">0.51 <small>GB</small></div>
+                <div class="file-count">735 files</div>
+              </td>
+              <td class="col-samples"><span class="mono-badge">F2944</span></td>
+              <td class="col-exts"><span class="ext-pill">.json <small>(363)</small></span> <span class="ext-pill">.qpdata <small>(184)</small></span> <span class="ext-pill">.jpg <small>(184)</small></span></td>
+              <td class="col-flags"><span class="flag-icon flag-bak" title="Backup Copy Detected">bak</span></td>
+              <td class="col-action">
+                <span class="action-pill" style="background:#dcfce7; color:#166534; border-color:#16a34a55;">
+                  Routine Snapshot
+                </span>
+                <div class="action-text">Maintain regular incremental snapshots in Data_backup.</div>
+              </td>
+            </tr>
+            
+
+            <tr>
+              <td class="col-num">3</td>
+              <td class="col-name">
+                <div class="dir-title">QuPath Analysis F2944(1)</div>
+                <div class="dir-meta">
+                  <span>📅 2025-01 to 2025-01</span> &bull; <span>📁 178 dirs</span>
+                </div>
+              </td>
+              <td class="col-mod">
+                <span class="modality-pill" style="background:#ccfbf1; color:#0f766e; border-color:#0d948844;">
+                  Histology (QuPath)
+                </span>
+              </td>
+              <td class="col-size">
+                <div class="size-val">0.02 <small>GB</small></div>
+                <div class="file-count">707 files</div>
+              </td>
+              <td class="col-samples"><span class="mono-badge">F2944</span></td>
+              <td class="col-exts"><span class="ext-pill">.json <small>(353)</small></span> <span class="ext-pill">.jpg <small>(176)</small></span> <span class="ext-pill">.qpdata <small>(176)</small></span></td>
+              <td class="col-flags"><span class="flag-icon flag-bak" title="Backup Copy Detected">bak</span></td>
+              <td class="col-action">
+                <span class="action-pill" style="background:#fef3c7; color:#92400e; border-color:#d9770655;">
+                  Redundancy Audit
+                </span>
+                <div class="action-text">Compare against master project; verify uniqueness & prune.</div>
+              </td>
+            </tr>
+            
+
+            <tr>
+              <td class="col-num">4</td>
+              <td class="col-name">
+                <div class="dir-title">TB-Endothelial</div>
+                <div class="dir-meta">
+                  <span>📅 2024-04 to 2026-03</span> &bull; <span>📁 3,473 dirs</span>
+                </div>
+              </td>
+              <td class="col-mod">
+                <span class="modality-pill" style="background:#fef3c7; color:#b45309; border-color:#d9770644;">
+                  Single-Cell Project
+                </span>
+              </td>
+              <td class="col-size">
+                <div class="size-val">0.86 <small>GB</small></div>
+                <div class="file-count">24,239 files</div>
+              </td>
+              <td class="col-samples"><span class="mono-badge">CD86</span><span class="mono-badge">Endothelial</span><span class="mono-badge">cd3679</span><span class="mono-badge">f0098</span><span class="mono-badge-more">+4</span></td>
+              <td class="col-exts"><span class="ext-pill">.hpp <small>(13,231)</small></span> <span class="ext-pill">.rds <small>(1,855)</small></span> <span class="ext-pill">(no ext) <small>(1,649)</small></span></td>
+              <td class="col-flags"><span class="flag-icon flag-git" title="Git Tracked">git</span><span class="flag-icon flag-doc" title="README Available">doc</span><span class="flag-icon flag-env" title="Virtualenv">venv</span><span class="flag-icon flag-nb" title="Jupyter Notebooks">ipynb</span><span class="flag-icon flag-bak" title="Backup Copy Detected">bak</span></td>
+              <td class="col-action">
+                <span class="action-pill" style="background:#dbeafe; color:#1e40af; border-color:#2563eb55;">
+                  Git Remote Sync
+                </span>
+                <div class="action-text">Verify local commits and tags pushed to remote GitHub repo.</div>
+              </td>
+            </tr>
+            
+
+            <tr>
+              <td class="col-num">5</td>
+              <td class="col-name">
+                <div class="dir-title">TB-VIT</div>
+                <div class="dir-meta">
+                  <span>📅 2024-04 to 2026-09</span> &bull; <span>📁 1,835 dirs</span>
+                </div>
+              </td>
+              <td class="col-mod">
+                <span class="modality-pill" style="background:#fef3c7; color:#b45309; border-color:#d9770644;">
+                  Single-Cell Project
+                </span>
+              </td>
+              <td class="col-size">
+                <div class="size-val">10.08 <small>GB</small></div>
+                <div class="file-count">7,700 files</div>
+              </td>
+              <td class="col-samples"><span class="mono-badge">CD0</span><span class="mono-badge">CD8744</span><span class="mono-badge">Cd27</span><span class="mono-badge">F2662</span><span class="mono-badge-more">+4</span></td>
+              <td class="col-exts"><span class="ext-pill">(no ext) <small>(2,300)</small></span> <span class="ext-pill">.r <small>(747)</small></span> <span class="ext-pill">.rds <small>(742)</small></span></td>
+              <td class="col-flags"><span class="flag-icon flag-git" title="Git Tracked">git</span><span class="flag-icon flag-doc" title="README Available">doc</span><span class="flag-icon flag-env" title="Virtualenv">venv</span><span class="flag-icon flag-nb" title="Jupyter Notebooks">ipynb</span><span class="flag-icon flag-bak" title="Backup Copy Detected">bak</span></td>
+              <td class="col-action">
+                <span class="action-pill" style="background:#dbeafe; color:#1e40af; border-color:#2563eb55;">
+                  Git Remote Sync
+                </span>
+                <div class="action-text">Verify local commits and tags pushed to remote GitHub repo.</div>
+              </td>
+            </tr>
+            
+
+            <tr>
+              <td class="col-num">6</td>
+              <td class="col-name">
+                <div class="dir-title">TB-scverse</div>
+                <div class="dir-meta">
+                  <span>📅 2019-10 to 2026-09</span> &bull; <span>📁 3,726 dirs</span>
+                </div>
+              </td>
+              <td class="col-mod">
+                <span class="modality-pill" style="background:#e0f2fe; color:#0369a1; border-color:#0284c744;">
+                  Microscopy (Raw)
+                </span>
+              </td>
+              <td class="col-size">
+                <div class="size-val">20.69 <small>GB</small></div>
+                <div class="file-count">29,388 files</div>
+              </td>
+              <td class="col-samples"><span class="mono-badge">CD103</span><span class="mono-badge">CD4</span><span class="mono-badge">Cd103</span><span class="mono-badge">cd0</span><span class="mono-badge-more">+4</span></td>
+              <td class="col-exts"><span class="ext-pill">.py <small>(9,443)</small></span> <span class="ext-pill">.pyc <small>(9,441)</small></span> <span class="ext-pill">(no ext) <small>(2,354)</small></span></td>
+              <td class="col-flags"><span class="flag-icon flag-git" title="Git Tracked">git</span><span class="flag-icon flag-doc" title="README Available">doc</span><span class="flag-icon flag-env" title="Virtualenv">venv</span><span class="flag-icon flag-nb" title="Jupyter Notebooks">ipynb</span><span class="flag-icon flag-bak" title="Backup Copy Detected">bak</span></td>
+              <td class="col-action">
+                <span class="action-pill" style="background:#fee2e2; color:#991b1b; border-color:#dc262655;">
+                  Primary Raw Backup
+                </span>
+                <div class="action-text">Write-protect; register in automated Restic backup to Data_backup.</div>
+              </td>
+            </tr>
+            
+
+            <tr>
+              <td class="col-num">7</td>
+              <td class="col-name">
+                <div class="dir-title">TB-total-lung</div>
+                <div class="dir-meta">
+                  <span>📅 2023-08 to 2026-09</span> &bull; <span>📁 8,546 dirs</span>
+                </div>
+              </td>
+              <td class="col-mod">
+                <span class="modality-pill" style="background:#e0f2fe; color:#0369a1; border-color:#0284c744;">
+                  Microscopy (Raw)
+                </span>
+              </td>
+              <td class="col-size">
+                <div class="size-val">25.82 <small>GB</small></div>
+                <div class="file-count">54,219 files</div>
+              </td>
+              <td class="col-samples"><span class="mono-badge">CD077815</span><span class="mono-badge">CD7</span><span class="mono-badge">Cd27</span><span class="mono-badge">F0806</span><span class="mono-badge-more">+4</span></td>
+              <td class="col-exts"><span class="ext-pill">.hpp <small>(25,862)</small></span> <span class="ext-pill">(no ext) <small>(4,454)</small></span> <span class="ext-pill">.rds <small>(4,394)</small></span></td>
+              <td class="col-flags"><span class="flag-icon flag-git" title="Git Tracked">git</span><span class="flag-icon flag-doc" title="README Available">doc</span><span class="flag-icon flag-env" title="Virtualenv">venv</span><span class="flag-icon flag-nb" title="Jupyter Notebooks">ipynb</span><span class="flag-icon flag-bak" title="Backup Copy Detected">bak</span></td>
+              <td class="col-action">
+                <span class="action-pill" style="background:#fee2e2; color:#991b1b; border-color:#dc262655;">
+                  Primary Raw Backup
+                </span>
+                <div class="action-text">Write-protect; register in automated Restic backup to Data_backup.</div>
+              </td>
+            </tr>
+            
+
+            <tr>
+              <td class="col-num">8</td>
+              <td class="col-name">
+                <div class="dir-title">TB_TL</div>
+                <div class="dir-meta">
+                  <span>📅 2025-09 to 2026-08</span> &bull; <span>📁 237 dirs</span>
+                </div>
+              </td>
+              <td class="col-mod">
+                <span class="modality-pill" style="background:#fef3c7; color:#b45309; border-color:#d9770644;">
+                  Single-Cell Project
+                </span>
+              </td>
+              <td class="col-size">
+                <div class="size-val">173.60 <small>GB</small></div>
+                <div class="file-count">770 files</div>
+              </td>
+              <td class="col-samples"><span class="mono-badge">Cd19</span><span class="mono-badge">Cd226</span><span class="mono-badge">Cd3</span><span class="mono-badge">Cd4</span><span class="mono-badge-more">+4</span></td>
+              <td class="col-exts"><span class="ext-pill">.png <small>(403)</small></span> <span class="ext-pill">(no ext) <small>(183)</small></span> <span class="ext-pill">.csv <small>(66)</small></span></td>
+              <td class="col-flags"><span class="flag-icon flag-git" title="Git Tracked">git</span><span class="flag-icon flag-doc" title="README Available">doc</span><span class="flag-icon flag-nb" title="Jupyter Notebooks">ipynb</span></td>
+              <td class="col-action">
+                <span class="action-pill" style="background:#dbeafe; color:#1e40af; border-color:#2563eb55;">
+                  Git Remote Sync
+                </span>
+                <div class="action-text">Verify local commits and tags pushed to remote GitHub repo.</div>
+              </td>
+            </tr>
+            
+
+            <tr>
+              <td class="col-num">9</td>
+              <td class="col-name">
+                <div class="dir-title">TB_TL_AdTx_F2998_F3035</div>
+                <div class="dir-meta">
+                  <span>📅 2026-05 to 2026-07</span> &bull; <span>📁 82,912 dirs</span>
+                </div>
+              </td>
+              <td class="col-mod">
+                <span class="modality-pill" style="background:#fef3c7; color:#b45309; border-color:#d9770644;">
+                  Single-Cell Project
+                </span>
+              </td>
+              <td class="col-size">
+                <div class="size-val">236.15 <small>GB</small></div>
+                <div class="file-count">104,286 files</div>
+              </td>
+              <td class="col-samples"><span class="mono-badge">AdTx</span><span class="mono-badge">CD4</span><span class="mono-badge">F2998</span><span class="mono-badge">F3035</span><span class="mono-badge-more">+4</span></td>
+              <td class="col-exts"><span class="ext-pill">(no ext) <small>(98,999)</small></span> <span class="ext-pill">.csv <small>(3,068)</small></span> <span class="ext-pill">.h5 <small>(650)</small></span></td>
+              <td class="col-flags"><span class="flag-icon flag-git" title="Git Tracked">git</span><span class="flag-icon flag-doc" title="README Available">doc</span><span class="flag-icon flag-nb" title="Jupyter Notebooks">ipynb</span><span class="flag-icon flag-bak" title="Backup Copy Detected">bak</span></td>
+              <td class="col-action">
+                <span class="action-pill" style="background:#dbeafe; color:#1e40af; border-color:#2563eb55;">
+                  Git Remote Sync
+                </span>
+                <div class="action-text">Verify local commits and tags pushed to remote GitHub repo.</div>
+              </td>
+            </tr>
+            
+
+            <tr>
+              <td class="col-num">10</td>
+              <td class="col-name">
+                <div class="dir-title">TB_TL_Non_Tcell</div>
+                <div class="dir-meta">
+                  <span>📅 2025-02 to 2026-08</span> &bull; <span>📁 220 dirs</span>
+                </div>
+              </td>
+              <td class="col-mod">
+                <span class="modality-pill" style="background:#fef3c7; color:#b45309; border-color:#d9770644;">
+                  Single-Cell Project
+                </span>
+              </td>
+              <td class="col-size">
+                <div class="size-val">123.54 <small>GB</small></div>
+                <div class="file-count">824 files</div>
+              </td>
+              <td class="col-samples"><span class="mono-badge">Cd28</span><span class="mono-badge">Cd3</span><span class="mono-badge">Cd40</span><span class="mono-badge">cd0</span><span class="mono-badge-more">+4</span></td>
+              <td class="col-exts"><span class="ext-pill">.png <small>(436)</small></span> <span class="ext-pill">(no ext) <small>(249)</small></span> <span class="ext-pill">.pdf <small>(58)</small></span></td>
+              <td class="col-flags"><span class="flag-icon flag-git" title="Git Tracked">git</span><span class="flag-icon flag-doc" title="README Available">doc</span><span class="flag-icon flag-nb" title="Jupyter Notebooks">ipynb</span><span class="flag-icon flag-bak" title="Backup Copy Detected">bak</span></td>
+              <td class="col-action">
+                <span class="action-pill" style="background:#dbeafe; color:#1e40af; border-color:#2563eb55;">
+                  Git Remote Sync
+                </span>
+                <div class="action-text">Verify local commits and tags pushed to remote GitHub repo.</div>
+              </td>
+            </tr>
+            
+
+            <tr>
+              <td class="col-num">11</td>
+              <td class="col-name">
+                <div class="dir-title">TB_TL_TBD2_F2998</div>
+                <div class="dir-meta">
+                  <span>📅 2026-04 to 2026-04</span> &bull; <span>📁 38,232 dirs</span>
+                </div>
+              </td>
+              <td class="col-mod">
+                <span class="modality-pill" style="background:#ffedd5; color:#c2410c; border-color:#ea580c44;">
+                  Single-Cell Objects
+                </span>
+              </td>
+              <td class="col-size">
+                <div class="size-val">55.12 <small>GB</small></div>
+                <div class="file-count">44,192 files</div>
+              </td>
+              <td class="col-samples"><span class="mono-badge">CD4</span><span class="mono-badge">F2998</span><span class="mono-badge">F3035</span><span class="mono-badge">TBD2</span></td>
+              <td class="col-exts"><span class="ext-pill">(no ext) <small>(41,585)</small></span> <span class="ext-pill">.csv <small>(1,549)</small></span> <span class="ext-pill">.h5 <small>(326)</small></span></td>
+              <td class="col-flags"><span class="text-muted">—</span></td>
+              <td class="col-action">
+                <span class="action-pill" style="background:#dcfce7; color:#166534; border-color:#16a34a55;">
+                  Routine Snapshot
+                </span>
+                <div class="action-text">Maintain regular incremental snapshots in Data_backup.</div>
+              </td>
+            </tr>
+            
+
+            <tr>
+              <td class="col-num">12</td>
+              <td class="col-name">
+                <div class="dir-title">TB_TL_TBD3_F2998_F3035</div>
+                <div class="dir-meta">
+                  <span>📅 2026-05 to 2026-05</span> &bull; <span>📁 38,274 dirs</span>
+                </div>
+              </td>
+              <td class="col-mod">
+                <span class="modality-pill" style="background:#ffedd5; color:#c2410c; border-color:#ea580c44;">
+                  Single-Cell Objects
+                </span>
+              </td>
+              <td class="col-size">
+                <div class="size-val">54.46 <small>GB</small></div>
+                <div class="file-count">44,333 files</div>
+              </td>
+              <td class="col-samples"><span class="mono-badge">CD4</span><span class="mono-badge">F2998</span><span class="mono-badge">F3035</span><span class="mono-badge">TBD3</span></td>
+              <td class="col-exts"><span class="ext-pill">(no ext) <small>(41,683)</small></span> <span class="ext-pill">.csv <small>(1,549)</small></span> <span class="ext-pill">.h5 <small>(326)</small></span></td>
+              <td class="col-flags"><span class="text-muted">—</span></td>
+              <td class="col-action">
+                <span class="action-pill" style="background:#dcfce7; color:#166534; border-color:#16a34a55;">
+                  Routine Snapshot
+                </span>
+                <div class="action-text">Maintain regular incremental snapshots in Data_backup.</div>
+              </td>
+            </tr>
+            
+
+            <tr>
+              <td class="col-num">13</td>
+              <td class="col-name">
+                <div class="dir-title">TB_TL_TBD_F2998</div>
+                <div class="dir-meta">
+                  <span>📅 2026-02 to 2026-04</span> &bull; <span>📁 20,773 dirs</span>
+                </div>
+              </td>
+              <td class="col-mod">
+                <span class="modality-pill" style="background:#fef3c7; color:#b45309; border-color:#d9770644;">
+                  Single-Cell Project
+                </span>
+              </td>
+              <td class="col-size">
+                <div class="size-val">34.87 <small>GB</small></div>
+                <div class="file-count">24,638 files</div>
+              </td>
+              <td class="col-samples"><span class="mono-badge">CD4</span><span class="mono-badge">F2998</span><span class="mono-badge">TBD</span><span class="mono-badge">f5664</span></td>
+              <td class="col-exts"><span class="ext-pill">(no ext) <small>(23,222)</small></span> <span class="ext-pill">.csv <small>(821)</small></span> <span class="ext-pill">.h5 <small>(166)</small></span></td>
+              <td class="col-flags"><span class="flag-icon flag-git" title="Git Tracked">git</span><span class="flag-icon flag-doc" title="README Available">doc</span><span class="flag-icon flag-nb" title="Jupyter Notebooks">ipynb</span></td>
+              <td class="col-action">
+                <span class="action-pill" style="background:#dbeafe; color:#1e40af; border-color:#2563eb55;">
+                  Git Remote Sync
+                </span>
+                <div class="action-text">Verify local commits and tags pushed to remote GitHub repo.</div>
+              </td>
+            </tr>
+            
+
+            <tr>
+              <td class="col-num">14</td>
+              <td class="col-name">
+                <div class="dir-title">imaging_analysis_f2805_HEV</div>
+                <div class="dir-meta">
+                  <span>📅 2016-09 to 2026-06</span> &bull; <span>📁 15,489 dirs</span>
+                </div>
+              </td>
+              <td class="col-mod">
+                <span class="modality-pill" style="background:#e0f2fe; color:#0369a1; border-color:#0284c744;">
+                  Microscopy (Raw)
+                </span>
+              </td>
+              <td class="col-size">
+                <div class="size-val">134.32 <small>GB</small></div>
+                <div class="file-count">150,254 files</div>
+              </td>
+              <td class="col-samples"><span class="mono-badge">F2805</span><span class="mono-badge">HEV</span><span class="mono-badge">cd00</span><span class="mono-badge">cd01</span><span class="mono-badge-more">+4</span></td>
+              <td class="col-exts"><span class="ext-pill">.pyc <small>(49,690)</small></span> <span class="ext-pill">.py <small>(49,689)</small></span> <span class="ext-pill">.h <small>(18,814)</small></span></td>
+              <td class="col-flags"><span class="flag-icon flag-doc" title="README Available">doc</span><span class="flag-icon flag-env" title="Virtualenv">venv</span><span class="flag-icon flag-nb" title="Jupyter Notebooks">ipynb</span><span class="flag-icon flag-bak" title="Backup Copy Detected">bak</span></td>
+              <td class="col-action">
+                <span class="action-pill" style="background:#fee2e2; color:#991b1b; border-color:#dc262655;">
+                  Primary Raw Backup
+                </span>
+                <div class="action-text">Write-protect; register in automated Restic backup to Data_backup.</div>
+              </td>
+            </tr>
+            
+
+            <tr>
+              <td class="col-num">15</td>
+              <td class="col-name">
+                <div class="dir-title">imaging_data_CD31pilot_#1_#2</div>
+                <div class="dir-meta">
+                  <span>📅 2024-07 to 2024-07</span> &bull; <span>📁 0 dirs</span>
+                </div>
+              </td>
+              <td class="col-mod">
+                <span class="modality-pill" style="background:#e0f2fe; color:#0369a1; border-color:#0284c744;">
+                  Microscopy (Raw)
+                </span>
+              </td>
+              <td class="col-size">
+                <div class="size-val">83.57 <small>GB</small></div>
+                <div class="file-count">5 files</div>
+              </td>
+              <td class="col-samples"><span class="mono-badge">CD31</span></td>
+              <td class="col-exts"><span class="ext-pill">.czi <small>(5)</small></span></td>
+              <td class="col-flags"><span class="text-muted">—</span></td>
+              <td class="col-action">
+                <span class="action-pill" style="background:#fee2e2; color:#991b1b; border-color:#dc262655;">
+                  Primary Raw Backup
+                </span>
+                <div class="action-text">Write-protect; register in automated Restic backup to Data_backup.</div>
+              </td>
+            </tr>
+            
+    </tbody>
+  </table>
+</div>
+
+<!-- PAGE 3: MASTER DIRECTORY CATALOG - PART II (ITEMS 16 - 29) -->
+<div class="page">
+  <div class="header-banner">
+    <div class="org-title">INFIMM Bioinformatics Core &bull; Directory Catalog</div>
+    <div class="doc-ref">CATALOG PART II (DATASETS 16 – 29)</div>
+  </div>
+
+  <div class="catalog-page-header">
+    <h2>📁 Master Directory Catalog — Part II (Datasets 16 to 29)</h2>
+    <p>High-volume imaging runs, raw sequencing archives, and single-cell atlas workflows.</p>
+  </div>
+
+  <table class="catalog-table">
+    <thead>
+      <tr>
+        <th class="col-num">#</th>
+        <th class="col-name">Directory &amp; Metadata</th>
+        <th class="col-mod">Modality / Type</th>
+        <th class="col-size">Size &amp; Files</th>
+        <th class="col-samples">Sample IDs / Markers</th>
+        <th class="col-exts">Top Formats</th>
+        <th class="col-flags">Flags</th>
+        <th class="col-action">Governance Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+            <tr>
+              <td class="col-num">16</td>
+              <td class="col-name">
+                <div class="dir-title">imaging_data_f2630_HEV</div>
+                <div class="dir-meta">
+                  <span>📅 2024-06 to 2024-06</span> &bull; <span>📁 0 dirs</span>
+                </div>
+              </td>
+              <td class="col-mod">
+                <span class="modality-pill" style="background:#e0f2fe; color:#0369a1; border-color:#0284c744;">
+                  Microscopy (Raw)
+                </span>
+              </td>
+              <td class="col-size">
+                <div class="size-val">260.63 <small>GB</small></div>
+                <div class="file-count">20 files</div>
+              </td>
+              <td class="col-samples"><span class="mono-badge">HEV</span><span class="mono-badge">f2630</span></td>
+              <td class="col-exts"><span class="ext-pill">.czi <small>(20)</small></span></td>
+              <td class="col-flags"><span class="text-muted">—</span></td>
+              <td class="col-action">
+                <span class="action-pill" style="background:#fee2e2; color:#991b1b; border-color:#dc262655;">
+                  Primary Raw Backup
+                </span>
+                <div class="action-text">Write-protect; register in automated Restic backup to Data_backup.</div>
+              </td>
+            </tr>
+            
+
+            <tr>
+              <td class="col-num">17</td>
+              <td class="col-name">
+                <div class="dir-title">imaging_data_f2630_neutrophils</div>
+                <div class="dir-meta">
+                  <span>📅 2024-05 to 2024-08</span> &bull; <span>📁 36 dirs</span>
+                </div>
+              </td>
+              <td class="col-mod">
+                <span class="modality-pill" style="background:#ccfbf1; color:#0f766e; border-color:#0d948844;">
+                  Histology (QuPath)
+                </span>
+              </td>
+              <td class="col-size">
+                <div class="size-val">256.74 <small>GB</small></div>
+                <div class="file-count">158 files</div>
+              </td>
+              <td class="col-samples"><span class="mono-badge">f2630</span><span class="mono-badge">neutrophil</span></td>
+              <td class="col-exts"><span class="ext-pill">.json <small>(61)</small></span> <span class="ext-pill">.jpg <small>(33)</small></span> <span class="ext-pill">.czi <small>(32)</small></span></td>
+              <td class="col-flags"><span class="flag-icon flag-bak" title="Backup Copy Detected">bak</span></td>
+              <td class="col-action">
+                <span class="action-pill" style="background:#dcfce7; color:#166534; border-color:#16a34a55;">
+                  Routine Snapshot
+                </span>
+                <div class="action-text">Maintain regular incremental snapshots in Data_backup.</div>
+              </td>
+            </tr>
+            
+
+            <tr>
+              <td class="col-num">18</td>
+              <td class="col-name">
+                <div class="dir-title">imaging_data_f2701_HEV</div>
+                <div class="dir-meta">
+                  <span>📅 2023-07 to 2024-06</span> &bull; <span>📁 2 dirs</span>
+                </div>
+              </td>
+              <td class="col-mod">
+                <span class="modality-pill" style="background:#e0f2fe; color:#0369a1; border-color:#0284c744;">
+                  Microscopy (Raw)
+                </span>
+              </td>
+              <td class="col-size">
+                <div class="size-val">228.16 <small>GB</small></div>
+                <div class="file-count">26 files</div>
+              </td>
+              <td class="col-samples"><span class="mono-badge">F2805</span><span class="mono-badge">HEV</span><span class="mono-badge">f2701</span></td>
+              <td class="col-exts"><span class="ext-pill">.czi <small>(26)</small></span></td>
+              <td class="col-flags"><span class="text-muted">—</span></td>
+              <td class="col-action">
+                <span class="action-pill" style="background:#fee2e2; color:#991b1b; border-color:#dc262655;">
+                  Primary Raw Backup
+                </span>
+                <div class="action-text">Write-protect; register in automated Restic backup to Data_backup.</div>
+              </td>
+            </tr>
+            
+
+            <tr>
+              <td class="col-num">19</td>
+              <td class="col-name">
+                <div class="dir-title">imaging_data_f2805_HEV</div>
+                <div class="dir-meta">
+                  <span>📅 2023-07 to 2023-07</span> &bull; <span>📁 0 dirs</span>
+                </div>
+              </td>
+              <td class="col-mod">
+                <span class="modality-pill" style="background:#e0f2fe; color:#0369a1; border-color:#0284c744;">
+                  Microscopy (Raw)
+                </span>
+              </td>
+              <td class="col-size">
+                <div class="size-val">53.57 <small>GB</small></div>
+                <div class="file-count">19 files</div>
+              </td>
+              <td class="col-samples"><span class="mono-badge">F2805</span><span class="mono-badge">HEV</span><span class="mono-badge">f2805</span></td>
+              <td class="col-exts"><span class="ext-pill">.czi <small>(19)</small></span></td>
+              <td class="col-flags"><span class="flag-icon flag-bak" title="Backup Copy Detected">bak</span></td>
+              <td class="col-action">
+                <span class="action-pill" style="background:#fee2e2; color:#991b1b; border-color:#dc262655;">
+                  Primary Raw Backup
+                </span>
+                <div class="action-text">Write-protect; register in automated Restic backup to Data_backup.</div>
+              </td>
+            </tr>
+            
+
+            <tr>
+              <td class="col-num">20</td>
+              <td class="col-name">
+                <div class="dir-title">imaging_data_f2944_1</div>
+                <div class="dir-meta">
+                  <span>📅 2024-10 to 2025-01</span> &bull; <span>📁 177 dirs</span>
+                </div>
+              </td>
+              <td class="col-mod">
+                <span class="modality-pill" style="background:#ccfbf1; color:#0f766e; border-color:#0d948844;">
+                  Histology (QuPath)
+                </span>
+              </td>
+              <td class="col-size">
+                <div class="size-val">860.38 <small>GB</small></div>
+                <div class="file-count">722 files</div>
+              </td>
+              <td class="col-samples"><span class="mono-badge">f2944</span></td>
+              <td class="col-exts"><span class="ext-pill">.json <small>(349)</small></span> <span class="ext-pill">.jpg <small>(174)</small></span> <span class="ext-pill">.qpdata <small>(174)</small></span></td>
+              <td class="col-flags"><span class="flag-icon flag-bak" title="Backup Copy Detected">bak</span></td>
+              <td class="col-action">
+                <span class="action-pill" style="background:#dcfce7; color:#166534; border-color:#16a34a55;">
+                  Routine Snapshot
+                </span>
+                <div class="action-text">Maintain regular incremental snapshots in Data_backup.</div>
+              </td>
+            </tr>
+            
+
+            <tr>
+              <td class="col-num">21</td>
+              <td class="col-name">
+                <div class="dir-title">imaging_data_f2944_2</div>
+                <div class="dir-meta">
+                  <span>📅 2024-11 to 2024-11</span> &bull; <span>📁 0 dirs</span>
+                </div>
+              </td>
+              <td class="col-mod">
+                <span class="modality-pill" style="background:#e0f2fe; color:#0369a1; border-color:#0284c744;">
+                  Microscopy (Raw)
+                </span>
+              </td>
+              <td class="col-size">
+                <div class="size-val">718.16 <small>GB</small></div>
+                <div class="file-count">21 files</div>
+              </td>
+              <td class="col-samples"><span class="mono-badge">f2944</span></td>
+              <td class="col-exts"><span class="ext-pill">.czi <small>(21)</small></span></td>
+              <td class="col-flags"><span class="text-muted">—</span></td>
+              <td class="col-action">
+                <span class="action-pill" style="background:#fee2e2; color:#991b1b; border-color:#dc262655;">
+                  Primary Raw Backup
+                </span>
+                <div class="action-text">Write-protect; register in automated Restic backup to Data_backup.</div>
+              </td>
+            </tr>
+            
+
+            <tr>
+              <td class="col-num">22</td>
+              <td class="col-name">
+                <div class="dir-title">imaging_data_seattle</div>
+                <div class="dir-meta">
+                  <span>📅 2023-11 to 2023-11</span> &bull; <span>📁 0 dirs</span>
+                </div>
+              </td>
+              <td class="col-mod">
+                <span class="modality-pill" style="background:#e0f2fe; color:#0369a1; border-color:#0284c744;">
+                  Microscopy (Raw)
+                </span>
+              </td>
+              <td class="col-size">
+                <div class="size-val">22.15 <small>GB</small></div>
+                <div class="file-count">1 files</div>
+              </td>
+              <td class="col-samples"><span class="text-muted">—</span></td>
+              <td class="col-exts"><span class="ext-pill">.lif <small>(1)</small></span></td>
+              <td class="col-flags"><span class="text-muted">—</span></td>
+              <td class="col-action">
+                <span class="action-pill" style="background:#fee2e2; color:#991b1b; border-color:#dc262655;">
+                  Primary Raw Backup
+                </span>
+                <div class="action-text">Write-protect; register in automated Restic backup to Data_backup.</div>
+              </td>
+            </tr>
+            
+
+            <tr>
+              <td class="col-num">23</td>
+              <td class="col-name">
+                <div class="dir-title">imaging_data_test_cellpose</div>
+                <div class="dir-meta">
+                  <span>📅 2022-04 to 2026-08</span> &bull; <span>📁 154 dirs</span>
+                </div>
+              </td>
+              <td class="col-mod">
+                <span class="modality-pill" style="background:#e0f2fe; color:#0369a1; border-color:#0284c744;">
+                  Microscopy (Raw)
+                </span>
+              </td>
+              <td class="col-size">
+                <div class="size-val">244.82 <small>GB</small></div>
+                <div class="file-count">11,301 files</div>
+              </td>
+              <td class="col-samples"><span class="mono-badge">CD31</span><span class="mono-badge">cd0</span><span class="mono-badge">cd1398</span><span class="mono-badge">cd3</span><span class="mono-badge-more">+4</span></td>
+              <td class="col-exts"><span class="ext-pill">.tif <small>(7,218)</small></span> <span class="ext-pill">.npy <small>(3,863)</small></span> <span class="ext-pill">(no ext) <small>(122)</small></span></td>
+              <td class="col-flags"><span class="flag-icon flag-git" title="Git Tracked">git</span><span class="flag-icon flag-doc" title="README Available">doc</span><span class="flag-icon flag-nb" title="Jupyter Notebooks">ipynb</span></td>
+              <td class="col-action">
+                <span class="action-pill" style="background:#fee2e2; color:#991b1b; border-color:#dc262655;">
+                  Primary Raw Backup
+                </span>
+                <div class="action-text">Write-protect; register in automated Restic backup to Data_backup.</div>
+              </td>
+            </tr>
+            
+
+            <tr>
+              <td class="col-num">24</td>
+              <td class="col-name">
+                <div class="dir-title">imaging_py</div>
+                <div class="dir-meta">
+                  <span>📅 2024-07 to 2024-07</span> &bull; <span>📁 1 dirs</span>
+                </div>
+              </td>
+              <td class="col-mod">
+                <span class="modality-pill" style="background:#f1f5f9; color:#334155; border-color:#47556944;">
+                  Code / Pipeline
+                </span>
+              </td>
+              <td class="col-size">
+                <div class="size-val">0.00 <small>GB</small></div>
+                <div class="file-count">4 files</div>
+              </td>
+              <td class="col-samples"><span class="text-muted">—</span></td>
+              <td class="col-exts"><span class="ext-pill">.ipynb <small>(4)</small></span></td>
+              <td class="col-flags"><span class="flag-icon flag-nb" title="Jupyter Notebooks">ipynb</span></td>
+              <td class="col-action">
+                <span class="action-pill" style="background:#dcfce7; color:#166534; border-color:#16a34a55;">
+                  Routine Snapshot
+                </span>
+                <div class="action-text">Maintain regular incremental snapshots in Data_backup.</div>
+              </td>
+            </tr>
+            
+
+            <tr>
+              <td class="col-num">25</td>
+              <td class="col-name">
+                <div class="dir-title">nagar_F2657_csv</div>
+                <div class="dir-meta">
+                  <span>📅 2006-05 to 2026-08</span> &bull; <span>📁 49,714 dirs</span>
+                </div>
+              </td>
+              <td class="col-mod">
+                <span class="modality-pill" style="background:#e0f2fe; color:#0369a1; border-color:#0284c744;">
+                  Microscopy (Raw)
+                </span>
+              </td>
+              <td class="col-size">
+                <div class="size-val">210.76 <small>GB</small></div>
+                <div class="file-count">433,594 files</div>
+              </td>
+              <td class="col-samples"><span class="mono-badge">CD27</span><span class="mono-badge">CD4</span><span class="mono-badge">F2000</span><span class="mono-badge">F2008</span><span class="mono-badge-more">+4</span></td>
+              <td class="col-exts"><span class="ext-pill">.py <small>(110,083)</small></span> <span class="ext-pill">.pyc <small>(100,574)</small></span> <span class="ext-pill">.h <small>(66,203)</small></span></td>
+              <td class="col-flags"><span class="flag-icon flag-git" title="Git Tracked">git</span><span class="flag-icon flag-doc" title="README Available">doc</span><span class="flag-icon flag-nb" title="Jupyter Notebooks">ipynb</span><span class="flag-icon flag-bak" title="Backup Copy Detected">bak</span></td>
+              <td class="col-action">
+                <span class="action-pill" style="background:#fee2e2; color:#991b1b; border-color:#dc262655;">
+                  Primary Raw Backup
+                </span>
+                <div class="action-text">Write-protect; register in automated Restic backup to Data_backup.</div>
+              </td>
+            </tr>
+            
+
+            <tr>
+              <td class="col-num">26</td>
+              <td class="col-name">
+                <div class="dir-title">sequencing_data_MonkeyPAXgene_GEO241235</div>
+                <div class="dir-meta">
+                  <span>📅 2023-06 to 2023-08</span> &bull; <span>📁 0 dirs</span>
+                </div>
+              </td>
+              <td class="col-mod">
+                <span class="modality-pill" style="background:#f3e8ff; color:#6d28d9; border-color:#7c3aed44;">
+                  Raw Sequencing (FASTQ)
+                </span>
+              </td>
+              <td class="col-size">
+                <div class="size-val">144.49 <small>GB</small></div>
+                <div class="file-count">62 files</div>
+              </td>
+              <td class="col-samples"><span class="mono-badge">Monkey</span><span class="mono-badge">PAXgene</span></td>
+              <td class="col-exts"><span class="ext-pill">.gz <small>(60)</small></span> <span class="ext-pill">.tsv <small>(1)</small></span> <span class="ext-pill">.xlsx <small>(1)</small></span></td>
+              <td class="col-flags"><span class="text-muted">—</span></td>
+              <td class="col-action">
+                <span class="action-pill" style="background:#fee2e2; color:#991b1b; border-color:#dc262655;">
+                  Primary Raw Backup
+                </span>
+                <div class="action-text">Write-protect; register in automated Restic backup to Data_backup.</div>
+              </td>
+            </tr>
+            
+
+            <tr>
+              <td class="col-num">27</td>
+              <td class="col-name">
+                <div class="dir-title">sequencing_data_endothelial</div>
+                <div class="dir-meta">
+                  <span>📅 2023-12 to 2025-03</span> &bull; <span>📁 0 dirs</span>
+                </div>
+              </td>
+              <td class="col-mod">
+                <span class="modality-pill" style="background:#f3e8ff; color:#6d28d9; border-color:#7c3aed44;">
+                  Raw Sequencing (FASTQ)
+                </span>
+              </td>
+              <td class="col-size">
+                <div class="size-val">670.41 <small>GB</small></div>
+                <div class="file-count">138 files</div>
+              </td>
+              <td class="col-samples"><span class="mono-badge">endothelial</span></td>
+              <td class="col-exts"><span class="ext-pill">.gz <small>(136)</small></span> <span class="ext-pill">.md5 <small>(1)</small></span> <span class="ext-pill">.eve8n4 <small>(1)</small></span></td>
+              <td class="col-flags"><span class="text-muted">—</span></td>
+              <td class="col-action">
+                <span class="action-pill" style="background:#fee2e2; color:#991b1b; border-color:#dc262655;">
+                  Primary Raw Backup
+                </span>
+                <div class="action-text">Write-protect; register in automated Restic backup to Data_backup.</div>
+              </td>
+            </tr>
+            
+
+            <tr>
+              <td class="col-num">28</td>
+              <td class="col-name">
+                <div class="dir-title">sequencing_data_totallung</div>
+                <div class="dir-meta">
+                  <span>📅 2024-01 to 2024-01</span> &bull; <span>📁 0 dirs</span>
+                </div>
+              </td>
+              <td class="col-mod">
+                <span class="modality-pill" style="background:#f3e8ff; color:#6d28d9; border-color:#7c3aed44;">
+                  Raw Sequencing (FASTQ)
+                </span>
+              </td>
+              <td class="col-size">
+                <div class="size-val">1008.93 <small>GB</small></div>
+                <div class="file-count">64 files</div>
+              </td>
+              <td class="col-samples"><span class="mono-badge">totallung</span></td>
+              <td class="col-exts"><span class="ext-pill">.gz <small>(64)</small></span></td>
+              <td class="col-flags"><span class="text-muted">—</span></td>
+              <td class="col-action">
+                <span class="action-pill" style="background:#fee2e2; color:#991b1b; border-color:#dc262655;">
+                  Primary Raw Backup
+                </span>
+                <div class="action-text">Write-protect; register in automated Restic backup to Data_backup.</div>
+              </td>
+            </tr>
+            
+
+            <tr>
+              <td class="col-num">29</td>
+              <td class="col-name">
+                <div class="dir-title">tb-lung-atlas</div>
+                <div class="dir-meta">
+                  <span>📅 2024-04 to 2025-03</span> &bull; <span>📁 1,633 dirs</span>
+                </div>
+              </td>
+              <td class="col-mod">
+                <span class="modality-pill" style="background:#fef3c7; color:#b45309; border-color:#d9770644;">
+                  Single-Cell Project
+                </span>
+              </td>
+              <td class="col-size">
+                <div class="size-val">0.69 <small>GB</small></div>
+                <div class="file-count">15,841 files</div>
+              </td>
+              <td class="col-samples"><span class="mono-badge">cd09</span><span class="mono-badge">cd27</span><span class="mono-badge">cd5</span><span class="mono-badge">f0409</span><span class="mono-badge-more">+4</span></td>
+              <td class="col-exts"><span class="ext-pill">.hpp <small>(12,916)</small></span> <span class="ext-pill">(no ext) <small>(555)</small></span> <span class="ext-pill">.r <small>(513)</small></span></td>
+              <td class="col-flags"><span class="flag-icon flag-git" title="Git Tracked">git</span><span class="flag-icon flag-doc" title="README Available">doc</span><span class="flag-icon flag-env" title="Virtualenv">venv</span><span class="flag-icon flag-bak" title="Backup Copy Detected">bak</span></td>
+              <td class="col-action">
+                <span class="action-pill" style="background:#dbeafe; color:#1e40af; border-color:#2563eb55;">
+                  Git Remote Sync
+                </span>
+                <div class="action-text">Verify local commits and tags pushed to remote GitHub repo.</div>
+              </td>
+            </tr>
+            
+    </tbody>
+  </table>
+
+  <!-- Master Totals Box -->
+  <div class="catalog-totals-box">
+    <div class="tot-item">
+      <span class="tot-label">Total Surveyed Items</span>
+      <span class="tot-val">29 Directories</span>
+    </div>
+    <div class="tot-item">
+      <span class="tot-label">Total Storage Footprint</span>
+      <span class="tot-val">5,643.01 GB (5.51 TB)</span>
+    </div>
+    <div class="tot-item">
+      <span class="tot-label">Total File Inventory</span>
+      <span class="tot-val">957,970 Files</span>
+    </div>
+    <div class="tot-item">
+      <span class="tot-label">Total Directory Trees</span>
+      <span class="tot-val">268,358 Folders</span>
+    </div>
+  </div>
+
+  <!-- Action Category Summary Grid -->
+  <div class="action-summary-grid">
+    <div class="act-summary-card red">
+      <div class="act-sum-title">Primary Raw Backup</div>
+      <div class="act-sum-stats">14 Datasets &bull; 3,826.5 GB</div>
+      <div class="act-sum-desc">Immutable raw FASTQs and microscopy scans. Priority Restic backup snapshots required.</div>
+    </div>
+    <div class="act-summary-card blue">
+      <div class="act-sum-title">Git Remote Sync</div>
+      <div class="act-sum-stats">8 Repos &bull; 570.7 GB</div>
+      <div class="act-sum-desc">Single-cell and analysis code repos. Verify local commits and tags pushed to GitHub.</div>
+    </div>
+    <div class="act-summary-card green">
+      <div class="act-sum-title">Routine Snapshot</div>
+      <div class="act-sum-stats">6 Datasets &bull; 1,245.8 GB</div>
+      <div class="act-sum-desc">Processed objects and QuPath workspaces. Maintain scheduled incremental backup.</div>
+    </div>
+    <div class="act-summary-card amber">
+      <div class="act-sum-title">Redundancy Audit</div>
+      <div class="act-sum-stats">1 Dataset &bull; 0.02 GB</div>
+      <div class="act-sum-desc">Duplicate QuPath folder candidate. Verify uniqueness against master project and prune.</div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 4: MODALITY DEEP-DIVE & COHORT ANALYSIS -->
+<div class="page">
+  <div class="header-banner">
+    <div class="org-title">INFIMM Bioinformatics Core &bull; Modality Architecture</div>
+    <div class="doc-ref">TECHNICAL DEEP-DIVE</div>
+  </div>
+
+  <div class="hero-block" style="margin-bottom:5px;">
+    <h2 style="font-size:11.5pt;font-weight:800;">🔬 Multi-Omics Modality Deep-Dive &amp; Cohort Architecture</h2>
+    <div class="hero-subtitle">Granular technical review of sequencing formats, high-resolution microscopy slides, digital pathology, and single-cell pipelines.</div>
+  </div>
+
+  <div class="deep-dive-grid">
+    <!-- Card 1: Raw Sequencing -->
+    <div class="deep-card">
+      <div class="deep-card-header">
+        <div class="deep-card-title">
+          <span>🧬</span> Raw Sequencing (FASTQ)
+        </div>
+        <span class="deep-card-badge" style="background:#f3e8ff; color:#6d28d9; border:1px solid #d8b4fe;">1,823.83 GB &bull; 32.3%</span>
+      </div>
+      <div class="deep-stat-row">
+        <div class="deep-stat-item">
+          <span class="deep-stat-label">Datasets</span>
+          <span class="deep-stat-val">3 cohorts</span>
+        </div>
+        <div class="deep-stat-item">
+          <span class="deep-stat-label">File Objects</span>
+          <span class="deep-stat-val">264 files</span>
+        </div>
+        <div class="deep-stat-item">
+          <span class="deep-stat-label">Formats</span>
+          <span class="deep-stat-val">.fastq.gz, .md5, .tsv</span>
+        </div>
+      </div>
+      <div class="deep-content-text">
+        High-throughput sequencing archives encompassing whole-lung transcriptomics, sorted endothelial cell populations, and non-human primate peripheral blood RNA-seq:
+      </div>
+      <div class="deep-dataset-list">
+        &bull; <code>sequencing_data_totallung</code>: 1,008.93 GB (64 files) &bull; Demultiplexed pooled runs (I1, I2, R1, R2).<br>
+        &bull; <code>sequencing_data_endothelial</code>: 670.41 GB (138 files) &bull; Endothelial sorted paired libraries.<br>
+        &bull; <code>sequencing_data_MonkeyPAXgene_GEO241235</code>: 144.49 GB (62 files) &bull; Public benchmark RNA-seq.
+      </div>
+      <div class="deep-policy-note">
+        <strong>Governance Requirement:</strong> Raw FASTQs are strictly immutable. Write-protect POSIX directory permissions. Ensure source MD5 verification checksums are archived alongside data.
+      </div>
+    </div>
+
+    <!-- Card 2: High-Resolution Microscopy -->
+    <div class="deep-card">
+      <div class="deep-card-header">
+        <div class="deep-card-title">
+          <span>🔬</span> Microscopy &amp; Raw Imaging
+        </div>
+        <span class="deep-card-badge" style="background:#e0f2fe; color:#0369a1; border:1px solid #bae6fd;">2,002.65 GB &bull; 35.5%</span>
+      </div>
+      <div class="deep-stat-row">
+        <div class="deep-stat-item">
+          <span class="deep-stat-label">Datasets</span>
+          <span class="deep-stat-val">11 cohorts</span>
+        </div>
+        <div class="deep-stat-item">
+          <span class="deep-stat-label">File Objects</span>
+          <span class="deep-stat-val">678,848 files</span>
+        </div>
+        <div class="deep-stat-item">
+          <span class="deep-stat-label">Formats</span>
+          <span class="deep-stat-val">.czi, .lif, .tif, .npy</span>
+        </div>
+      </div>
+      <div class="deep-content-text">
+        Multi-channel Zeiss and Leica whole-slide scans investigating High Endothelial Venules (HEV) and inducible Bronchus-Associated Lymphoid Tissue (iBALT) structures:
+      </div>
+      <div class="deep-dataset-list">
+        &bull; <strong>Zeiss Slide Scans:</strong> <code>f2944_2</code> (718.2 GB), <code>f2630_HEV</code> (260.6 GB), <code>f2701_HEV</code> (228.2 GB), <code>f2805_HEV</code> (53.6 GB), <code>CD31pilot</code> (83.6 GB).<br>
+        &bull; <strong>Leica Slides:</strong> <code>imaging_data_seattle</code> (22.15 GB .lif).<br>
+        &bull; <strong>Cellpose &amp; Spatial ML:</strong> <code>imaging_data_test_cellpose</code> (244.8 GB), <code>nagar_F2657_csv</code> (210.8 GB, 433k files &bull; SIM testing, QUICHE).
+      </div>
+      <div class="deep-policy-note blue">
+        <strong>Storage Note:</strong> Slide files (.czi/.lif) average 5–40 GB per slide. Avoid repeated unpacking or decompression on WekaFS. Register in Restic incremental snapshots.
+      </div>
+    </div>
+
+    <!-- Card 3: QuPath Histology -->
+    <div class="deep-card">
+      <div class="deep-card-header">
+        <div class="deep-card-title">
+          <span>🏷️</span> Histology &amp; Image Analysis
+        </div>
+        <span class="deep-card-badge" style="background:#ccfbf1; color:#0f766e; border:1px solid #99f6e4;">1,127.16 GB &bull; 20.0%</span>
+      </div>
+      <div class="deep-stat-row">
+        <div class="deep-stat-item">
+          <span class="deep-stat-label">Datasets</span>
+          <span class="deep-stat-val">5 projects</span>
+        </div>
+        <div class="deep-stat-item">
+          <span class="deep-stat-label">File Objects</span>
+          <span class="deep-stat-val">12,031 files</span>
+        </div>
+        <div class="deep-stat-item">
+          <span class="deep-stat-label">Formats</span>
+          <span class="deep-stat-val">.qpdata, .qpproj, .json, .csv</span>
+        </div>
+      </div>
+      <div class="deep-content-text">
+        Digital pathology projects containing cell detection classifiers, spatial boundary annotations, and intensity measurement tables:
+      </div>
+      <div class="deep-dataset-list">
+        &bull; <code>imaging_data_f2944_1</code>: 860.38 GB (722 files) &bull; Major QuPath project with embedded raw CZI references.<br>
+        &bull; <code>imaging_data_f2630_neutrophils</code>: 256.74 GB (158 files) &bull; Neutrophil spatial infiltrate quantification.<br>
+        &bull; <code>NAFP Image analysis</code>: 9.51 GB (9,709 files) &bull; Multi-cohort HEV vs iBALT annotations.<br>
+        &bull; <code>QuPath Analysis F2944</code> (510 MB) vs <code>QuPath Analysis F2944(1)</code> (20 MB).
+      </div>
+      <div class="deep-policy-note amber">
+        <strong>Redundancy Alert:</strong> <code>QuPath Analysis F2944(1)</code> is an unlinked duplicate. Conduct differential check against main project and safely prune to reclaim inodes.
+      </div>
+    </div>
+
+    <!-- Card 4: Single-Cell Multi-Omics -->
+    <div class="deep-card">
+      <div class="deep-card-header">
+        <div class="deep-card-title">
+          <span>🔬</span> Single-Cell &amp; Lung Atlas
+        </div>
+        <span class="deep-card-badge" style="background:#fef3c7; color:#b45309; border:1px solid #fde68a;">689.37 GB &bull; 12.2%</span>
+      </div>
+      <div class="deep-stat-row">
+        <div class="deep-stat-item">
+          <span class="deep-stat-label">Datasets</span>
+          <span class="deep-stat-val">9 projects</span>
+        </div>
+        <div class="deep-stat-item">
+          <span class="deep-stat-label">File Objects</span>
+          <span class="deep-stat-val">266,823 files</span>
+        </div>
+        <div class="deep-stat-item">
+          <span class="deep-stat-label">Formats</span>
+          <span class="deep-stat-val">.rds, .h5, .h5ad, .r, .py</span>
+        </div>
+      </div>
+      <div class="deep-content-text">
+        Single-cell RNA-seq pipelines, 10x Genomics Cell Ranger count matrices, and integrated Seurat/Scanpy lung atlas objects:
+      </div>
+      <div class="deep-dataset-list">
+        &bull; <strong>10x Matrices:</strong> <code>TB_TL_AdTx_F2998_F3035</code> (236.2 GB, 104k files), <code>TB_TL</code> (173.6 GB), <code>TB_TL_Non_Tcell</code> (123.5 GB).<br>
+        &bull; <strong>Processed RDS Objects:</strong> <code>TB_TL_TBD2_F2998</code> (55.1 GB) &bull; <code>TB_TL_TBD3_F2998_F3035</code> (54.5 GB) &bull; <code>TB_TL_TBD_F2998</code> (34.9 GB).<br>
+        &bull; <strong>Reproducible Git Pipelines:</strong> <code>TB-Endothelial</code>, <code>TB-VIT</code>, <code>tb-lung-atlas</code>.
+      </div>
+      <div class="deep-policy-note green">
+        <strong>Best Practice:</strong> Keep analysis code versioned in Git. Store heavy `.rds` and `.h5` objects outside git tracking, backed up in `Data_backup`.
+      </div>
+    </div>
+  </div>
+
+  <!-- Cross-Modality Cohort & Sample Integration Matrix -->
+  <div class="cohort-matrix-box">
+    <div class="section-title" style="margin-bottom:2px; font-size:8.8pt;">🧬 Cross-Modality Cohort &amp; Sample Integration Matrix</div>
+    <div style="font-size:6.6pt; color:#64748b; margin-bottom:3px;">
+      Cross-referencing biological cohorts across high-throughput sequencing, slide microscopy, QuPath digital pathology, and single-cell atlas objects.
+    </div>
+    <table class="cohort-table">
+      <thead>
+        <tr>
+          <th style="width:75px;">Cohort ID</th>
+          <th style="width:115px;">Primary Markers / Target</th>
+          <th style="width:125px;">Integrated Modalities</th>
+          <th>Associated Working Directories</th>
+          <th class="text-right" style="width:75px;">Combined Size</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="cohort-pill">F2944</span></td>
+          <td>HEV vs. iBALT spatial microenvironment</td>
+          <td>
+            <span class="mod-tag" style="background:#e0f2fe;color:#0369a1;">Microscopy</span>
+            <span class="mod-tag" style="background:#ccfbf1;color:#0f766e;">QuPath</span>
+          </td>
+          <td><code>imaging_data_f2944_1</code>, <code>imaging_data_f2944_2</code>, <code>QuPath Analysis F2944</code></td>
+          <td class="text-right"><strong>1,579.07 GB</strong></td>
+        </tr>
+        <tr>
+          <td><span class="cohort-pill">F2998 &bull; F3035</span></td>
+          <td>CD4 T cells, AdTx intervention cohorts</td>
+          <td>
+            <span class="mod-tag" style="background:#fef3c7;color:#b45309;">10x Single-Cell</span>
+            <span class="mod-tag" style="background:#ffedd5;color:#c2410c;">Seurat RDS</span>
+          </td>
+          <td><code>TB_TL_AdTx_F2998_F3035</code>, <code>TB_TL_TBD2_F2998</code>, <code>TB_TL_TBD3_F2998_F3035</code></td>
+          <td class="text-right"><strong>345.73 GB</strong></td>
+        </tr>
+        <tr>
+          <td><span class="cohort-pill">F2630</span></td>
+          <td>HEV structures &amp; neutrophil infiltration</td>
+          <td>
+            <span class="mod-tag" style="background:#e0f2fe;color:#0369a1;">Microscopy</span>
+            <span class="mod-tag" style="background:#ccfbf1;color:#0f766e;">QuPath</span>
+          </td>
+          <td><code>imaging_data_f2630_HEV</code>, <code>imaging_data_f2630_neutrophils</code></td>
+          <td class="text-right"><strong>517.37 GB</strong></td>
+        </tr>
+        <tr>
+          <td><span class="cohort-pill">F2805</span></td>
+          <td>HEV maturation, B cell aggregates (wk 2, 4, 6)</td>
+          <td>
+            <span class="mod-tag" style="background:#e0f2fe;color:#0369a1;">Microscopy</span>
+            <span class="mod-tag" style="background:#f1f5f9;color:#334155;">Spatial Graph</span>
+          </td>
+          <td><code>imaging_data_f2805_HEV</code>, <code>imaging_analysis_f2805_HEV</code></td>
+          <td class="text-right"><strong>187.89 GB</strong></td>
+        </tr>
+        <tr>
+          <td><span class="cohort-pill">Endothelial</span></td>
+          <td>CD31, CD86, sorted endothelial transcriptomes</td>
+          <td>
+            <span class="mod-tag" style="background:#f3e8ff;color:#6d28d9;">Raw FASTQ</span>
+            <span class="mod-tag" style="background:#fef3c7;color:#b45309;">R/Seurat</span>
+          </td>
+          <td><code>sequencing_data_endothelial</code>, <code>TB-Endothelial</code>, <code>imaging_data_CD31pilot_#1_#2</code></td>
+          <td class="text-right"><strong>754.84 GB</strong></td>
+        </tr>
+        <tr>
+          <td><span class="cohort-pill">Total Lung</span></td>
+          <td>Whole-lung tissue atlas &amp; spatial profiling</td>
+          <td>
+            <span class="mod-tag" style="background:#f3e8ff;color:#6d28d9;">Raw FASTQ</span>
+            <span class="mod-tag" style="background:#e0f2fe;color:#0369a1;">Microscopy</span>
+            <span class="mod-tag" style="background:#fef3c7;color:#b45309;">Atlas Repo</span>
+          </td>
+          <td><code>sequencing_data_totallung</code>, <code>TB-total-lung</code>, <code>tb-lung-atlas</code></td>
+          <td class="text-right"><strong>1,035.44 GB</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- PAGE 5: STORAGE ARCHITECTURE, BACKUP PLAYBOOK & GOVERNANCE -->
+<div class="page">
+  <div class="header-banner">
+    <div class="org-title">INFIMM Bioinformatics Core &bull; Storage Governance</div>
+    <div class="doc-ref">OPERATIONAL RUNBOOK</div>
+  </div>
+
+  <div class="hero-block" style="margin-bottom:6px;">
+    <h2 style="font-size:12pt;font-weight:800;">⚙️ UCloud Storage Architecture, Backup Playbook &amp; Governance</h2>
+    <div class="hero-subtitle">Operational runbook for mounting drives, automated Restic snapshot management, and FAIR compliance.</div>
+  </div>
+
+  <!-- UCloud Storage Mount Architecture -->
+  <div class="topology-block">
+    <div class="topology-title">
+      <span>UCLOUD STORAGE TOPOLOGY &amp; CONTAINER MOUNT NAMESPACE</span>
+      <span style="color:#94a3b8;font-weight:normal;">DeiC Interactive HPC (K8s) &bull; WekaFS 4.7 PB</span>
+    </div>
+    <pre class="topology-code">/work/                                   # Container mount namespace (EPHEMERAL ROOT - Never store deliverables here!)
+├── TB group/                            # Primary Working Volume (Folder #1) — PERSISTENT (5.51 TB &bull; 957,970 files)
+│   ├── sequencing_data_*                # Demultiplexed paired FASTQs (totallung, endothelial, monkey PAXgene)
+│   ├── imaging_data_*                   # Zeiss .czi &amp; Leica .lif slides, QuPath caches, Cellpose training sets
+│   ├── NAFP Image analysis/             # QuPath multi-project annotations, measurements.csv &amp; .qpdata
+│   ├── TB_TL_*                          # 10x Genomics Cell Ranger count matrices &amp; Scanpy AnnData suites
+│   └── tb-lung-atlas/                   # Version-controlled R/Seurat reproducible single-cell pipeline
+├── Data_backup/                         # Backup Repository Drive (Folder #2) — PERSISTENT (4.31 TB)
+│   ├── repo/                            # Automated Restic deduplicated snapshot repository
+│   └── restic_pw.txt                    # Secure password credentials for restic repository
+├── JobParameters.json                   # Job execution parameters injected by UCloud K8s (ephemeral)
+└── job-report.csv                       # Continuous CPU, memory &amp; I/O sampling telemetry (ephemeral)</pre>
+  </div>
+
+  <!-- Governance & Backup Playbook Grid -->
+  <div class="gov-grid">
+    <div class="gov-card">
+      <div class="gov-card-title">Automated Restic Backup Playbook</div>
+      <ul class="gov-list">
+        <li><strong>Repository Location:</strong> <code>/work/Data_backup/repo/</code> (always mount <code>Data_backup</code> as Folder #2).</li>
+        <li><strong>Password File:</strong> Set <code>export RESTIC_PASSWORD_FILE=/work/Data_backup/restic_pw.txt</code>.</li>
+        <li><strong>Exclusion Rules:</strong> Exclude temporary virtualenvs, checkpoints, and git caches:
+          <div class="restic-box">--exclude=".venv" --exclude=".ipynb_checkpoints" --exclude="*.tmp" --exclude=".git/objects"</div>
+        </li>
+        <li><strong>Snapshot Retention Policy:</strong> Enforce standard grandfather-father-son pruning:
+          <div class="restic-box">restic forget --keep-daily 7 --keep-weekly 4 --keep-monthly 12 --prune</div>
+        </li>
+        <li><strong>Integrity Check:</strong> Execute <code>restic check --read-data-subset=5%</code> monthly to verify repository chunk integrity.</li>
+      </ul>
+    </div>
+
+    <div class="gov-card">
+      <div class="gov-card-title">FAIR Principles &amp; Lab Data Hygiene</div>
+      <ul class="gov-list">
+        <li><strong>Findable (Naming Conventions):</strong> Maintain standardized directory prefixes:
+          <br>&bull; <code>sequencing_data_&lt;cohort&gt;</code> for raw FASTQs.
+          <br>&bull; <code>imaging_data_&lt;sample&gt;_&lt;stain/target&gt;</code> for microscopy.
+          <br>&bull; <code>TB_TL_&lt;sample&gt;_&lt;subset&gt;</code> for single-cell count matrices.
+        </li>
+        <li><strong>Accessible:</strong> Access controlled via UCloud <code>BINF INFIMM</code> workspace membership. Files inherit POSIX group read permissions.</li>
+        <li><strong>Interoperable:</strong> Raw data must remain in standard formats (FASTQ.GZ, CZI, LIF, H5, RDS). Tabular exports must use CSV/TSV with documented headers.</li>
+        <li><strong>Reusable:</strong> Each analysis folder must contain a <code>README.md</code> describing sample metadata, experimental design, and pipeline version tags.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="gov-grid" style="margin-bottom:0;">
+    <div class="gov-card">
+      <div class="gov-card-title">HPC Job Submission Golden Rules</div>
+      <ul class="gov-list">
+        <li><strong>Workspace Selection:</strong> Confirm <code>BINF INFIMM</code> is selected in the top-right workspace dropdown before launching any job.</li>
+        <li><strong>Two-Folder Rule:</strong> Attach <code>TB group</code> as <strong>Folder #1</strong> and <code>Data_backup</code> as <strong>Folder #2</strong> on every compute run.</li>
+        <li><strong>Scratch Usage:</strong> Perform heavy compilations, conda builds, and intermediate temp processing in <code>/tmp</code>; sync final deliverables to <code>/work/TB group/</code>.</li>
+      </ul>
+    </div>
+
+    <div class="gov-card">
+      <div class="gov-card-title">Action Item Checklist for TB Team</div>
+      <ul class="gov-list">
+        <li><span style="color:#dc2626;font-weight:700;">[HIGH]</span> Register 14 raw data directories in automated Restic backup schedule.</li>
+        <li><span style="color:#2563eb;font-weight:700;">[HIGH]</span> Audit 11 Git directories; commit unstaged code and push branches to GitHub.</li>
+        <li><span style="color:#d97706;font-weight:700;">[MED]</span> Delete redundant clone <code>QuPath Analysis F2944(1)</code> after verification.</li>
+        <li><span style="color:#16a34a;font-weight:700;">[INFO]</span> Add missing <code>README.md</code> manifests in 17 directories lacking documentation.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Signoff Box -->
+  <div class="signoff-box">
+    <div class="signoff-left">
+      <strong>INFIMM Bioinformatics Core</strong> &bull; Department of Infection &amp; Immunology &bull; SDU eScience Center<br>
+      Report compiled for: <strong>TB Research Group &bull; Colleague Reference &bull; Data Management</strong>
+    </div>
+    <div class="signoff-right">
+      <span class="signoff-badge">&check; AUDIT VERIFIED</span><br>
+      <span style="font-size:6.2pt;color:#94a3b8;">Source: <code>inventory-tb-group.json</code> &bull; Git HEAD</span>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

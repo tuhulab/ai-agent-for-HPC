@@ -143,14 +143,19 @@ ssh ucloud@ssh.cloud.sdu.dk -p <PORT>
 On the **host machine**, human users connect with the bundled helper:
 
 ```bash
+# Target Host Options:
+#   --vm               Target 'Host ucloud-vm' (default, dedicated KVM VM)
+#   --k8s              Target 'Host ucloud-k8s' (Kubernetes container job)
+
 # Statens IT (SIT) managed equipment (SSI network — ProxyJump via uGerm)
-connect_ucloud <PORT>                     # auto-detects SIT on SSI machines
+connect_ucloud <PORT>                     # auto-detects SIT, updates ucloud-vm
+connect_ucloud --vm <PORT>                # target ucloud-vm
+connect_ucloud --k8s <PORT>               # target ucloud-k8s
 connect_ucloud --sit <PORT>               # explicitly force SIT mode
 connect_ucloud --sit --ugerm-user hutu <PORT>
 
 # Non-SIT / Personal / Unrestricted equipment (Direct connection)
 connect_ucloud --direct <PORT>            # direct connection without ProxyJump
-```
 
 Source: [`skills/ucloud-hpc/connect_ucloud.sh`](skills/ucloud-hpc/connect_ucloud.sh) in this repo (installed at `/usr/local/bin/connect_ucloud` or `~/bin/connect_ucloud`). It:
 
