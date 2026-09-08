@@ -138,7 +138,7 @@ ssh ucloud@ssh.cloud.sdu.dk -p <PORT>
 
 ### 2.5 Human Connection Helper (`connect_ucloud`) — SIT vs Non-SIT
 
-> ℹ️ **FOR HUMAN USERS ONLY**: This utility updates the human operator's local `~/.ssh/config` and launches VSCode Remote-SSH. **AI agents should NOT use this helper or mutate `~/.ssh/config`** — see §6.3 for AI agent SSH workflows.
+> ℹ️ **FOR HUMAN USERS ONLY**: This utility updates the human operator's local `~/.ssh/config` and connects via interactive Terminal (SSH) or VSCode Remote-SSH. **AI agents should NOT use this helper or mutate `~/.ssh/config`** — see §6.3 for AI agent SSH workflows.
 
 On the **host machine**, human users connect with the bundled helper:
 
@@ -148,9 +148,12 @@ On the **host machine**, human users connect with the bundled helper:
 #   --k8s              Target 'Host ucloud-k8s' (Kubernetes container job)
 
 # Statens IT (SIT) managed equipment (SSI network — ProxyJump via uGerm)
-connect_ucloud <PORT>                     # auto-detects SIT, updates ucloud-vm
-connect_ucloud --vm <PORT>                # target ucloud-vm
-connect_ucloud --k8s <PORT>               # target ucloud-k8s
+connect_ucloud <PORT>                     # auto-detects SIT, updates ucloud-vm, connects via Terminal
+connect_ucloud vm <PORT>                  # target ucloud-vm
+connect_ucloud k8s <PORT>                 # target ucloud-k8s
+connect_ucloud -t <PORT>                  # connect via Terminal (default)
+connect_ucloud -c <PORT>                  # connect via VSCode Remote-SSH
+connect_ucloud -n <PORT>                  # update ~/.ssh/config only (do not launch)
 connect_ucloud --sit <PORT>               # explicitly force SIT mode
 connect_ucloud --sit --ugerm-user hutu <PORT>
 
@@ -160,9 +163,8 @@ connect_ucloud --direct <PORT>            # direct connection without ProxyJump
 Source: [`skills/ucloud-hpc/connect_ucloud.sh`](skills/ucloud-hpc/connect_ucloud.sh) in this repo (installed at `/usr/local/bin/connect_ucloud` or `~/bin/connect_ucloud`). It:
 
 1. backs up `~/.ssh/config` → `~/.ssh/config_backups/config_<timestamp>`,
-2. normalizes and updates the `Host ucloud` block's `Port`, `ProxyJump`, `LocalForward`, and host-checking directives,
-3. opens VSCode Remote-SSH at `vscode-remote://ssh-remote+ucloud/work` (or updates config without launching if `--no-code` is passed).
-
+2. normalizes and updates the target host block's `Port`, `ProxyJump`, `LocalForward`, and host-checking directives,
+3. connects via interactive Terminal (SSH, ideal for running `herdr` or `tmux` on the VM) or VSCode Remote-SSH at `vscode-remote://ssh-remote+<HOST>/work` (or updates config without launching if `-n`/`--no-launch` is passed).
 #### Manual `~/.ssh/config` Reference for Human Users
 
 **1. Statens IT (SIT) Managed Equipment (SSI Network)**

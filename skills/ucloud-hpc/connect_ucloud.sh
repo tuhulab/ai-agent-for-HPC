@@ -6,7 +6,7 @@
 # Purpose:
 #   Updates the "Host ucloud" block in ~/.ssh/config with the dynamic port
 #   assigned to a running UCloud job, sets up tunneling / ProxyJump, and
-#   initiates a VSCode Remote-SSH session (or CLI SSH).
+#   connects via interactive Terminal (SSH) or VSCode Remote-SSH.
 #
 # Supports two network environments:
 #   1. Statens IT (SIT) managed equipment (SSI network):
@@ -25,8 +25,8 @@
 
 set -e
 
-CONFIG_FILE="$HOME/.ssh/config"
-BACKUP_DIR="$HOME/.ssh/config_backups"
+CONFIG_FILE="${SSH_CONFIG_FILE:-$HOME/.ssh/config}"
+BACKUP_DIR="${SSH_BACKUP_DIR:-$HOME/.ssh/config_backups}"
 HOST_NAME="ucloud-vm"
 REMOTE_DIR="/work"
 DEFAULT_UGERM_USER="${UGERM_USER:-hutu}"
@@ -42,12 +42,14 @@ NC='\033[0m' # No Color
 
 show_help() {
     cat <<EOF
-Usage: connect_ucloud [options] [vm|k8s] [port-number]
+Usage: connect_ucloud [options] [vm|k8s] [port-number] [terminal|vscode|none]
 
-Utility for human users to configure ~/.ssh/config for UCloud jobs and launch VSCode.
+Utility for human users to configure ~/.ssh/config for UCloud jobs and connect via Terminal or VSCode.
 
 Arguments:
+  target                 Target environment: 'vm' (default) or 'k8s'
   port-number            UCloud SSH port from the job progress page (1-65535)
+  client                 Connection method: 'terminal' (default), 'vscode', or 'none'
 
 Modes:
   -s, --sit              Statens IT (SIT) mode: enable ProxyJump via uGerm
@@ -57,12 +59,18 @@ Target Host:
   vm, --vm               Target 'Host ucloud-vm' in ~/.ssh/config (Virtual Machine, default)
   k8s, --k8s            Target 'Host ucloud-k8s' in ~/.ssh/config (Kubernetes container)
   --name HOST            Target arbitrary 'Host <HOST>' in ~/.ssh/config
+
+Connection Client:
+  -t, --terminal, --ssh  Connect via interactive Terminal SSH (default)
+  -c, --vscode, --code   Connect via VSCode Remote-SSH
+  -n, --no-launch        Update SSH config only; do not launch any client
+      --no-code          Legacy alias for --no-launch
+
 Options:
   -u, --ugerm-user USER  uGerm username for ProxyJump (default: \${UGERM_USER:-${DEFAULT_UGERM_USER}})
   -j, --proxyjump TARGET Explicit ProxyJump target (default: USER@${UGERM_HOST})
   -f, --forward SPEC     Port forwarding spec (default: '${DEFAULT_FORWARD}')
       --no-forward       Disable LocalForward
-  -n, --no-code          Update SSH config only; do not launch VSCode
   -h, --help             Show this help message
 
 Environment Variables:
@@ -70,11 +78,19 @@ Environment Variables:
   UGERM_USER             Default username for uGerm ProxyJump
 
 Examples:
-  # Interactive wizard (prompts for target environment and port)
+  # Interactive wizard (prompts for target environment, port, and client)
   connect_ucloud
 
-  # Positional target and port
+  # Connect to VM via Terminal SSH (default)
   connect_ucloud vm 2523
+  connect_ucloud -t vm 2523
+  connect_ucloud vm 2523 terminal
+
+  # Connect to VM via VSCode Remote-SSH
+  connect_ucloud -c vm 2523
+  connect_ucloud vm 2523 vscode
+
+  # Connect to Kubernetes container via Terminal
   connect_ucloud k8s 2820
 
   # SIT mode on SSI network
@@ -83,8 +99,8 @@ Examples:
   # Direct mode without ProxyJump
   connect_ucloud --direct vm 2523
 
-  # Update SSH config without launching VSCode
-  connect_ucloud --no-code vm 2523
+  # Update SSH config only (no client launch)
+  connect_ucloud -n vm 2523
 EOF
 }
 
@@ -95,7 +111,8 @@ HOST_EXPLICIT=false
 UGERM_USER="$DEFAULT_UGERM_USER"
 CUSTOM_PROXYJUMP=""
 LOCAL_FORWARD="$DEFAULT_FORWARD"
-LAUNCH_CODE=true
+CLIENT=""
+CLIENT_EXPLICIT=false
 
 while [[ $# -gt 0 ]]; do
     case "$1" in
@@ -162,8 +179,34 @@ while [[ $# -gt 0 ]]; do
             LOCAL_FORWARD=""
             shift
             ;;
-        -n|--no-code|--no-launch)
-            LAUNCH_CODE=false
+        -t|--terminal|--ssh)
+            CLIENT="terminal"
+            CLIENT_EXPLICIT=true
+            shift
+            ;;
+        -c|--vscode|--code)
+            CLIENT="vscode"
+            CLIENT_EXPLICIT=true
+            shift
+            ;;
+        -n|--no-launch|--no-code)
+            CLIENT="none"
+            CLIENT_EXPLICIT=true
+            shift
+            ;;
+        vscode|code)
+            CLIENT="vscode"
+            CLIENT_EXPLICIT=true
+            shift
+            ;;
+        terminal|ssh|term)
+            CLIENT="terminal"
+            CLIENT_EXPLICIT=true
+            shift
+            ;;
+        none|no-launch)
+            CLIENT="none"
+            CLIENT_EXPLICIT=true
             shift
             ;;
         *)
@@ -343,20 +386,53 @@ p {print}
 p && /^[ \t]*Host[ \t]+/ && $0 !~ "^[ \t]*Host[ \t]+" target_host "[ \t]*$" {exit}
 ' "$CONFIG_FILE"
 
-# Connect via VSCode Remote-SSH if requested
-if [ "$LAUNCH_CODE" = true ]; then
-    if command -v code >/dev/null 2>&1; then
-        echo -e "\n${GREEN}Connecting to $HOST_NAME via VSCode...${NC}"
-        code --folder-uri "vscode-remote://ssh-remote+$HOST_NAME$REMOTE_DIR"
-        echo -e "${GREEN}✓ VSCode connection initiated!${NC}"
+# Determine connection client if not explicitly specified
+if [ "$CLIENT_EXPLICIT" = false ]; then
+    if [ -t 0 ]; then
+        echo -e "\n${YELLOW}Select connection client:${NC}"
+        echo -e "  ${CYAN}1)${NC} Terminal (SSH) [default]"
+        echo -e "  ${CYAN}2)${NC} VSCode Remote-SSH"
+        echo -e "  ${CYAN}3)${NC} None (update ~/.ssh/config only)"
+        read -r -p "Enter choice [1/2/3, default=1]: " CLIENT_CHOICE
+        case "$CLIENT_CHOICE" in
+            2|vscode|code)
+                CLIENT="vscode"
+                ;;
+            3|none|no|n)
+                CLIENT="none"
+                ;;
+            *)
+                CLIENT="terminal"
+                ;;
+        esac
     else
-        echo -e "\n${YELLOW}VSCode CLI ('code') not found in PATH.${NC}"
-        echo -e "You can connect manually via terminal: ${GREEN}ssh $HOST_NAME${NC}"
+        CLIENT="none"
     fi
-else
-    echo -e "\n${GREEN}SSH config ready. Connect via:${NC} ${CYAN}ssh $HOST_NAME${NC}"
 fi
 
 if [ -n "$LOCAL_FORWARD" ]; then
     echo -e "${YELLOW}Tip: with tunnel active, VM port 8888 is forwarded to ${GREEN}http://localhost:8888${NC}"
 fi
+
+# Connect via selected client
+case "$CLIENT" in
+    vscode)
+        if command -v code >/dev/null 2>&1; then
+            echo -e "\n${GREEN}Connecting to $HOST_NAME via VSCode...${NC}"
+            code --folder-uri "vscode-remote://ssh-remote+$HOST_NAME$REMOTE_DIR"
+            echo -e "${GREEN}✓ VSCode connection initiated!${NC}"
+        else
+            echo -e "\n${YELLOW}VSCode CLI ('code') not found in PATH.${NC}"
+            echo -e "Falling back to Terminal (ssh)..."
+            echo -e "${GREEN}Connecting to $HOST_NAME via Terminal (ssh)...${NC}\n"
+            exec ssh "$HOST_NAME"
+        fi
+        ;;
+    terminal)
+        echo -e "\n${GREEN}Connecting to $HOST_NAME via Terminal (ssh)...${NC}\n"
+        exec ssh "$HOST_NAME"
+        ;;
+    none)
+        echo -e "\n${GREEN}SSH config ready. Connect manually via:${NC} ${CYAN}ssh $HOST_NAME${NC}"
+        ;;
+esac
